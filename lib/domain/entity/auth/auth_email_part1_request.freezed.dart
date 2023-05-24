@@ -22,6 +22,7 @@ AuthEmailPart1Request _$AuthEmailPart1RequestFromJson(
 /// @nodoc
 mixin _$AuthEmailPart1Request {
   String get email => throw _privateConstructorUsedError;
+  int get digits => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $AuthEmailPart1RequestCopyWith<$Res> {
           $Res Function(AuthEmailPart1Request) then) =
       _$AuthEmailPart1RequestCopyWithImpl<$Res, AuthEmailPart1Request>;
   @useResult
-  $Res call({String email});
+  $Res call({String email, int digits});
 }
 
 /// @nodoc
@@ -53,12 +54,17 @@ class _$AuthEmailPart1RequestCopyWithImpl<$Res,
   @override
   $Res call({
     Object? email = null,
+    Object? digits = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      digits: null == digits
+          ? _value.digits
+          : digits // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -71,7 +77,7 @@ abstract class _$$_AuthEmailPart1RequestCopyWith<$Res>
       __$$_AuthEmailPart1RequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email});
+  $Res call({String email, int digits});
 }
 
 /// @nodoc
@@ -86,12 +92,17 @@ class __$$_AuthEmailPart1RequestCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = null,
+    Object? digits = null,
   }) {
     return _then(_$_AuthEmailPart1Request(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      digits: null == digits
+          ? _value.digits
+          : digits // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -99,17 +110,19 @@ class __$$_AuthEmailPart1RequestCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AuthEmailPart1Request implements _AuthEmailPart1Request {
-  const _$_AuthEmailPart1Request({required this.email});
+  const _$_AuthEmailPart1Request({required this.email, required this.digits});
 
   factory _$_AuthEmailPart1Request.fromJson(Map<String, dynamic> json) =>
       _$$_AuthEmailPart1RequestFromJson(json);
 
   @override
   final String email;
+  @override
+  final int digits;
 
   @override
   String toString() {
-    return 'AuthEmailPart1Request(email: $email)';
+    return 'AuthEmailPart1Request(email: $email, digits: $digits)';
   }
 
   @override
@@ -117,12 +130,13 @@ class _$_AuthEmailPart1Request implements _AuthEmailPart1Request {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthEmailPart1Request &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.digits, digits) || other.digits == digits));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email);
+  int get hashCode => Object.hash(runtimeType, email, digits);
 
   @JsonKey(ignore: true)
   @override
@@ -140,14 +154,17 @@ class _$_AuthEmailPart1Request implements _AuthEmailPart1Request {
 }
 
 abstract class _AuthEmailPart1Request implements AuthEmailPart1Request {
-  const factory _AuthEmailPart1Request({required final String email}) =
-      _$_AuthEmailPart1Request;
+  const factory _AuthEmailPart1Request(
+      {required final String email,
+      required final int digits}) = _$_AuthEmailPart1Request;
 
   factory _AuthEmailPart1Request.fromJson(Map<String, dynamic> json) =
       _$_AuthEmailPart1Request.fromJson;
 
   @override
   String get email;
+  @override
+  int get digits;
   @override
   @JsonKey(ignore: true)
   _$$_AuthEmailPart1RequestCopyWith<_$_AuthEmailPart1Request> get copyWith =>

@@ -8,6 +8,7 @@ part 'auth_email_part1_request.freezed.dart';
 class AuthEmailPart1Request with _$AuthEmailPart1Request{
   const factory AuthEmailPart1Request({
     required String email,
+    required int digits,
   }) = _AuthEmailPart1Request;
 
   factory AuthEmailPart1Request.fromJson(Map<String, dynamic> json) =>

@@ -19,27 +19,23 @@ class _AuthService implements AuthService {
   String? baseUrl;
 
   @override
-  Future<AuthEmailPart1Response> authEmailPart1(
-      {required AuthEmailPart1Request request}) async {
+  Future<void> authEmailPart1({required AuthEmailPart1Request request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = request;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<AuthEmailPart1Response>(Options(
+    await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/auth/email/part1/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = AuthEmailPart1Response.fromJson(_result.data!);
-    return value;
+        .compose(
+          _dio.options,
+          '/auth/email/part1/',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
   }
 
   @override

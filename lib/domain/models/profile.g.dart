@@ -6,17 +6,17 @@ part of 'profile.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
-      name: json['name'] as String,
-      picture: json['picture'] as String,
-      description: json['description'] as String,
-      badges: json['badges'] as String,
+_$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
+      firstName: json['firstName'] as String,
+      secondName: json['secondName'] as String,
+      birthDate: json['birthDate'] as String,
+      email: json['email'] as String,
     );
 
-Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
+Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'picture': instance.picture,
-      'description': instance.description,
-      'badges': instance.badges,
+      'firstName': instance.firstName,
+      'secondName': instance.secondName,
+      'birthDate': instance.birthDate,
+      'email': instance.email,
     };

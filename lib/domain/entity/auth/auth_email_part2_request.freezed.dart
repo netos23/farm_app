@@ -14,34 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AuthEmailPart2Request _$AuthPart2RequestFromJson(Map<String, dynamic> json) {
+AuthEmailPart2Request _$AuthEmailPart2RequestFromJson(
+    Map<String, dynamic> json) {
   return _AuthPart2Request.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AuthPart2Request {
+mixin _$AuthEmailPart2Request {
   String get email => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AuthPart2RequestCopyWith<AuthEmailPart2Request> get copyWith =>
+  $AuthEmailPart2RequestCopyWith<AuthEmailPart2Request> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthPart2RequestCopyWith<$Res> {
-  factory $AuthPart2RequestCopyWith(
-          AuthEmailPart2Request value, $Res Function(AuthEmailPart2Request) then) =
-      _$AuthPart2RequestCopyWithImpl<$Res, AuthEmailPart2Request>;
+abstract class $AuthEmailPart2RequestCopyWith<$Res> {
+  factory $AuthEmailPart2RequestCopyWith(AuthEmailPart2Request value,
+          $Res Function(AuthEmailPart2Request) then) =
+      _$AuthEmailPart2RequestCopyWithImpl<$Res, AuthEmailPart2Request>;
   @useResult
   $Res call({String email, String code});
 }
 
 /// @nodoc
-class _$AuthPart2RequestCopyWithImpl<$Res, $Val extends AuthEmailPart2Request>
-    implements $AuthPart2RequestCopyWith<$Res> {
-  _$AuthPart2RequestCopyWithImpl(this._value, this._then);
+class _$AuthEmailPart2RequestCopyWithImpl<$Res,
+        $Val extends AuthEmailPart2Request>
+    implements $AuthEmailPart2RequestCopyWith<$Res> {
+  _$AuthEmailPart2RequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -69,7 +71,7 @@ class _$AuthPart2RequestCopyWithImpl<$Res, $Val extends AuthEmailPart2Request>
 
 /// @nodoc
 abstract class _$$_AuthPart2RequestCopyWith<$Res>
-    implements $AuthPart2RequestCopyWith<$Res> {
+    implements $AuthEmailPart2RequestCopyWith<$Res> {
   factory _$$_AuthPart2RequestCopyWith(
           _$_AuthPart2Request value, $Res Function(_$_AuthPart2Request) then) =
       __$$_AuthPart2RequestCopyWithImpl<$Res>;
@@ -80,7 +82,7 @@ abstract class _$$_AuthPart2RequestCopyWith<$Res>
 
 /// @nodoc
 class __$$_AuthPart2RequestCopyWithImpl<$Res>
-    extends _$AuthPart2RequestCopyWithImpl<$Res, _$_AuthPart2Request>
+    extends _$AuthEmailPart2RequestCopyWithImpl<$Res, _$_AuthPart2Request>
     implements _$$_AuthPart2RequestCopyWith<$Res> {
   __$$_AuthPart2RequestCopyWithImpl(
       _$_AuthPart2Request _value, $Res Function(_$_AuthPart2Request) _then)
@@ -120,7 +122,7 @@ class _$_AuthPart2Request implements _AuthPart2Request {
 
   @override
   String toString() {
-    return 'AuthPart2Request(email: $email, code: $code)';
+    return 'AuthEmailPart2Request(email: $email, code: $code)';
   }
 
   @override

@@ -5,14 +5,14 @@ part 'profile.freezed.dart';
 part 'profile.g.dart';
 
 @freezed
-class Product with _$Product{
-  const factory Product({
-    required String name,
-    required String picture,
-    required String description,
-    required String badges,
-  }) = _Product;
+class Profile with _$Profile{
+  const factory Profile({
+    required String firstName,
+    required String secondName,
+    required String birthDate,
+    required String email,
+  }) = _Profile;
 
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
+  factory Profile.fromJson(Map<String, dynamic> json) =>
+      _$ProfileFromJson(json);
 }

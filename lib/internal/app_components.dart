@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:farm_app/data/interseptor.dart';
 import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/data/repository/token_ropository.dart';
+import 'package:farm_app/data/service/catalog_service.dart';
+import 'package:farm_app/data/service/profile_service.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const timeout = Duration(seconds: 30);
@@ -16,6 +18,8 @@ class AppComponents {
   final Dio dio = Dio();
   final TokenRepository tokenRepository = TokenRepository();
   late final AuthService authService = AuthService(dio);
+  late final ProfileService profileService = ProfileService(dio);
+  late final CatalogService catalogService = CatalogService(dio);
 
   Future<void> init() async {
     dio.options

@@ -67,23 +67,23 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    CatalogRoute.name: (routeData) {
-      final args = routeData.argsAs<CatalogRouteArgs>(
-          orElse: () => const CatalogRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CatalogPageWidget(
-          key: args.key,
-          wmFactory: args.wmFactory,
-        ),
-      );
-    },
     AuthRoute.name: (routeData) {
       final args =
           routeData.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AuthPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    CatalogRoute.name: (routeData) {
+      final args = routeData.argsAs<CatalogRouteArgs>(
+          orElse: () => const CatalogRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CatalogPageWidget(
           key: args.key,
           wmFactory: args.wmFactory,
         ),
@@ -266,6 +266,46 @@ class ProfileRouteArgs {
 }
 
 /// generated route for
+/// [AuthPageWidget]
+class AuthRoute extends PageRouteInfo<AuthRouteArgs> {
+  AuthRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultAuthPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AuthRoute.name,
+          args: AuthRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static const PageInfo<AuthRouteArgs> page = PageInfo<AuthRouteArgs>(name);
+}
+
+class AuthRouteArgs {
+  const AuthRouteArgs({
+    this.key,
+    this.wmFactory = defaultAuthPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'AuthRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [CatalogPageWidget]
 class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
   CatalogRoute({
@@ -303,46 +343,6 @@ class CatalogRouteArgs {
   @override
   String toString() {
     return 'CatalogRouteArgs{key: $key, wmFactory: $wmFactory}';
-  }
-}
-
-/// generated route for
-/// [AuthPageWidget]
-class AuthRoute extends PageRouteInfo<AuthRouteArgs> {
-  AuthRoute({
-    Key? key,
-    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-            BuildContext)
-        wmFactory = defaultAuthPageWidgetModelFactory,
-    List<PageRouteInfo>? children,
-  }) : super(
-          AuthRoute.name,
-          args: AuthRouteArgs(
-            key: key,
-            wmFactory: wmFactory,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'AuthRoute';
-
-  static const PageInfo<AuthRouteArgs> page = PageInfo<AuthRouteArgs>(name);
-}
-
-class AuthRouteArgs {
-  const AuthRouteArgs({
-    this.key,
-    this.wmFactory = defaultAuthPageWidgetModelFactory,
-  });
-
-  final Key? key;
-
-  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-      BuildContext) wmFactory;
-
-  @override
-  String toString() {
-    return 'AuthRouteArgs{key: $key, wmFactory: $wmFactory}';
   }
 }
 

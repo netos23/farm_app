@@ -13,34 +13,9 @@ import 'package:farm_app/domain/entity/catalog/product_detail_response.dart';
 import 'package:farm_app/domain/entity/catalog/sort_types_request.dart';
 import 'package:farm_app/domain/entity/catalog/sort_types_response.dart';
 
-abstract class CatalogRepository {
-  Future<CatalogCategoriesResponse> getCategories({
-    required CatalogCategoriesRequest request,
-  });
 
-  Future<ProductDetailResponse> getProductDetail({
-    required ProductDetailRequest request,
-  });
-
-  Future<CatalogProductsResponse> getProducts({
-    required CatalogProductsRequest request,
-  });
-
-  Future<SortTypesResponse> getSortTypes({
-    required SortTypesRequest request,
-  });
-
-  Future<FiltersResponse> getFilters({
-    required FiltersRequest request,
-  });
-
-  Future<AutocompleteResponse> getCatalogAutocomplete({
-    required AutocompleteRequest request,
-  });
-}
-
-class CatalogRepositoryImpl implements CatalogRepository {
-  CatalogRepositoryImpl(this._catalogService);
+class CatalogRepository {
+  CatalogRepository(this._catalogService);
 
   final CatalogService _catalogService;
 

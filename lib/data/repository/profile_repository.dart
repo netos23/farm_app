@@ -5,18 +5,8 @@ import 'package:farm_app/domain/entity/profile/profile_delete_response.dart';
 import 'package:farm_app/domain/entity/profile/profile_update_request.dart';
 import 'package:farm_app/domain/entity/profile/profile_update_response.dart';
 
-abstract class ProfileRepository {
-  Future<ProfileUpdateResponse> update({
-    required ProfileUpdateRequest request,
-  });
-
-  Future<ProfileDeleteResponse> delete({
-    required ProfileDeleteRequest request,
-  });
-}
-
-class ProfileRepositoryImpl implements ProfileRepository {
-  ProfileRepositoryImpl(this._profileService);
+class ProfileRepository{
+  ProfileRepository(this._profileService);
 
   final ProfileService _profileService;
 
