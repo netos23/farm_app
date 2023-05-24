@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part1_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part1_response.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_response.dart';
 import 'package:farm_app/domain/entity/auth/auth_register_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_register_response.dart';
-import 'package:farm_app/domain/service/auth_service.dart';
 
 abstract class AuthRepository {
   Future<AuthEmailPart1Response> emailPart1({
@@ -22,13 +22,8 @@ abstract class AuthRepository {
 }
 
 class AuthRepositoryImpl implements AuthRepository {
-  AuthRepositoryImpl(Dio dio) {
-    _authService = AuthService(
-      dio,
-    );
-  }
-
-  late AuthService _authService;
+  AuthRepositoryImpl(this._authService);
+  final AuthService _authService;
 
   @override
   Future<AuthEmailPart1Response> emailPart1({

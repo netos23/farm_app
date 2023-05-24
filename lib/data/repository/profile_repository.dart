@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:farm_app/data/service/profile_service.dart';
 import 'package:farm_app/domain/entity/profile/profile_delete_request.dart';
 import 'package:farm_app/domain/entity/profile/profile_delete_response.dart';
 import 'package:farm_app/domain/entity/profile/profile_update_request.dart';
 import 'package:farm_app/domain/entity/profile/profile_update_response.dart';
-import 'package:farm_app/domain/service/profile_service.dart';
 
 abstract class ProfileRepository {
   Future<ProfileUpdateResponse> update({
@@ -16,13 +16,9 @@ abstract class ProfileRepository {
 }
 
 class ProfileRepositoryImpl implements ProfileRepository {
-  ProfileRepositoryImpl(Dio dio) {
-    _profileService = ProfileService(
-      dio,
-    );
-  }
+  ProfileRepositoryImpl(this._profileService);
 
-  late ProfileService _profileService;
+  final ProfileService _profileService;
 
   @override
   Future<ProfileDeleteResponse> delete({

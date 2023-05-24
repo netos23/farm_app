@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:farm_app/data/service/catalog_service.dart';
 import 'package:farm_app/domain/entity/catalog/autocomplete_request.dart';
 import 'package:farm_app/domain/entity/catalog/autocomplete_response.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_categories_request.dart';
@@ -11,7 +12,6 @@ import 'package:farm_app/domain/entity/catalog/product_detail_request.dart';
 import 'package:farm_app/domain/entity/catalog/product_detail_response.dart';
 import 'package:farm_app/domain/entity/catalog/sort_types_request.dart';
 import 'package:farm_app/domain/entity/catalog/sort_types_response.dart';
-import 'package:farm_app/domain/service/catalog_service.dart';
 
 abstract class CatalogRepository {
   Future<CatalogCategoriesResponse> getCategories({
@@ -40,13 +40,9 @@ abstract class CatalogRepository {
 }
 
 class CatalogRepositoryImpl implements CatalogRepository {
-  CatalogRepositoryImpl(Dio dio) {
-    _catalogService = CatalogService(
-      dio,
-    );
-  }
+  CatalogRepositoryImpl(this._catalogService);
 
-  late CatalogService _catalogService;
+  final CatalogService _catalogService;
 
   @override
   Future<AutocompleteResponse> getCatalogAutocomplete({

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:farm_app/domain/token_ropository.dart';
+import 'package:farm_app/data/repository/token_ropository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Interceptor for working with JWT tokens, updating and saving them.
