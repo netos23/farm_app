@@ -31,8 +31,9 @@ class AuthRepositoryImpl implements AuthRepository {
   late AuthService _authService;
 
   @override
-  Future<AuthEmailPart1Response> emailPart1(
-      {required AuthEmailPart1Request request}) async {
+  Future<AuthEmailPart1Response> emailPart1({
+    required AuthEmailPart1Request request,
+  }) async {
     try {
       final result = await _authService.authEmailPart1(
         request: request,
@@ -46,8 +47,9 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<AuthEmailPart2Response> emailPart2(
-      {required AuthEmailPart2Request request}) async {
+  Future<AuthEmailPart2Response> emailPart2({
+    required AuthEmailPart2Request request,
+  }) async {
     try {
       final result = await _authService.authEmailPart2(
         request: request,
