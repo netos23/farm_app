@@ -9,10 +9,7 @@ part 'badge.g.dart';
 class Badge with _$Badge{
   const factory Badge({
     required int id,
-    String? textColor,
-    String? text,
-    String? bgColor,
-    String? picture,
+    String? title,
   }) = _Badge;
 
   factory Badge.fromJson(Map<String, dynamic> json) =>

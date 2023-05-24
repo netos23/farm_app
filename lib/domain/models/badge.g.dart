@@ -8,16 +8,10 @@ part of 'badge.dart';
 
 _$_Badge _$$_BadgeFromJson(Map<String, dynamic> json) => _$_Badge(
       id: json['id'] as int,
-      textColor: json['textColor'] as String?,
-      text: json['text'] as String?,
-      bgColor: json['bgColor'] as String?,
-      picture: json['picture'] as String?,
+      title: json['title'] as String?,
     );
 
 Map<String, dynamic> _$$_BadgeToJson(_$_Badge instance) => <String, dynamic>{
       'id': instance.id,
-      'textColor': instance.textColor,
-      'text': instance.text,
-      'bgColor': instance.bgColor,
-      'picture': instance.picture,
+      'title': instance.title,
     };

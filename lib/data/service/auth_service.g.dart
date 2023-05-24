@@ -63,27 +63,69 @@ class _AuthService implements AuthService {
   }
 
   @override
-  Future<AuthRegisterResponse> authRegister(
-      {required AuthRegisterRequest request}) async {
+  Future<Profile> patchUser({required Profile request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = request;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<AuthRegisterResponse>(Options(
-      method: 'POST',
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Profile>(Options(
+      method: 'PATCH',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/auth/register/',
+              '/auth/user/',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = AuthRegisterResponse.fromJson(_result.data!);
+    final value = Profile.fromJson(_result.data!);
     return value;
+  }
+
+  @override
+  Future<Profile> getUser() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Profile>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/auth/user/',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Profile.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<void> deleteUser() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/auth/user/',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

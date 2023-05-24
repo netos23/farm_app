@@ -1,16 +1,18 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'profile.freezed.dart';
+
 part 'profile.g.dart';
 
 @freezed
-class Profile with _$Profile{
+class Profile with _$Profile {
   const factory Profile({
-    required String firstName,
-    required String secondName,
-    required String birthDate,
     required String email,
+    String? firstName,
+    String? secondName,
+    String? birthDate,
+    int? gender,
+    int? phone,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

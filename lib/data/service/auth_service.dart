@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:farm_app/domain/models/profile.dart';
 import 'package:farm_app/domain/url/auth_url.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part1_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_response.dart';
-import 'package:farm_app/domain/entity/auth/auth_register_request.dart';
-import 'package:farm_app/domain/entity/auth/auth_register_response.dart';
 import 'package:retrofit/http.dart';
 
 part 'auth_service.g.dart';
@@ -25,9 +24,14 @@ abstract class AuthService {
     @Body() required AuthEmailPart2Request request,
   });
 
-  @POST(AuthUrl.authRegister)
-  Future<AuthRegisterResponse> authRegister({
-    @Body() required AuthRegisterRequest request,
+  @PATCH(AuthUrl.authUser)
+  Future<Profile> patchUser({
+    @Body() required Profile request,
   });
 
+  @GET(AuthUrl.authUser)
+  Future<Profile> getUser();
+
+  @DELETE(AuthUrl.authUser)
+  Future<void> deleteUser();
 }

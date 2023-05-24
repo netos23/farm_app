@@ -21,10 +21,7 @@ Badge _$BadgeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Badge {
   int get id => throw _privateConstructorUsedError;
-  String? get textColor => throw _privateConstructorUsedError;
-  String? get text => throw _privateConstructorUsedError;
-  String? get bgColor => throw _privateConstructorUsedError;
-  String? get picture => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,12 +33,7 @@ abstract class $BadgeCopyWith<$Res> {
   factory $BadgeCopyWith(Badge value, $Res Function(Badge) then) =
       _$BadgeCopyWithImpl<$Res, Badge>;
   @useResult
-  $Res call(
-      {int id,
-      String? textColor,
-      String? text,
-      String? bgColor,
-      String? picture});
+  $Res call({int id, String? title});
 }
 
 /// @nodoc
@@ -58,31 +50,16 @@ class _$BadgeCopyWithImpl<$Res, $Val extends Badge>
   @override
   $Res call({
     Object? id = null,
-    Object? textColor = freezed,
-    Object? text = freezed,
-    Object? bgColor = freezed,
-    Object? picture = freezed,
+    Object? title = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      text: freezed == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bgColor: freezed == bgColor
-          ? _value.bgColor
-          : bgColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      picture: freezed == picture
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -94,12 +71,7 @@ abstract class _$$_BadgeCopyWith<$Res> implements $BadgeCopyWith<$Res> {
       __$$_BadgeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String? textColor,
-      String? text,
-      String? bgColor,
-      String? picture});
+  $Res call({int id, String? title});
 }
 
 /// @nodoc
@@ -112,31 +84,16 @@ class __$$_BadgeCopyWithImpl<$Res> extends _$BadgeCopyWithImpl<$Res, _$_Badge>
   @override
   $Res call({
     Object? id = null,
-    Object? textColor = freezed,
-    Object? text = freezed,
-    Object? bgColor = freezed,
-    Object? picture = freezed,
+    Object? title = freezed,
   }) {
     return _then(_$_Badge(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      textColor: freezed == textColor
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      text: freezed == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bgColor: freezed == bgColor
-          ? _value.bgColor
-          : bgColor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      picture: freezed == picture
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -145,12 +102,7 @@ class __$$_BadgeCopyWithImpl<$Res> extends _$BadgeCopyWithImpl<$Res, _$_Badge>
 /// @nodoc
 @JsonSerializable()
 class _$_Badge implements _Badge {
-  const _$_Badge(
-      {required this.id,
-      this.textColor,
-      this.text,
-      this.bgColor,
-      this.picture});
+  const _$_Badge({required this.id, this.title});
 
   factory _$_Badge.fromJson(Map<String, dynamic> json) =>
       _$$_BadgeFromJson(json);
@@ -158,17 +110,11 @@ class _$_Badge implements _Badge {
   @override
   final int id;
   @override
-  final String? textColor;
-  @override
-  final String? text;
-  @override
-  final String? bgColor;
-  @override
-  final String? picture;
+  final String? title;
 
   @override
   String toString() {
-    return 'Badge(id: $id, textColor: $textColor, text: $text, bgColor: $bgColor, picture: $picture)';
+    return 'Badge(id: $id, title: $title)';
   }
 
   @override
@@ -177,17 +123,12 @@ class _$_Badge implements _Badge {
         (other.runtimeType == runtimeType &&
             other is _$_Badge &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.text, text) || other.text == text) &&
-            (identical(other.bgColor, bgColor) || other.bgColor == bgColor) &&
-            (identical(other.picture, picture) || other.picture == picture));
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, textColor, text, bgColor, picture);
+  int get hashCode => Object.hash(runtimeType, id, title);
 
   @JsonKey(ignore: true)
   @override
@@ -204,25 +145,14 @@ class _$_Badge implements _Badge {
 }
 
 abstract class _Badge implements Badge {
-  const factory _Badge(
-      {required final int id,
-      final String? textColor,
-      final String? text,
-      final String? bgColor,
-      final String? picture}) = _$_Badge;
+  const factory _Badge({required final int id, final String? title}) = _$_Badge;
 
   factory _Badge.fromJson(Map<String, dynamic> json) = _$_Badge.fromJson;
 
   @override
   int get id;
   @override
-  String? get textColor;
-  @override
-  String? get text;
-  @override
-  String? get bgColor;
-  @override
-  String? get picture;
+  String? get title;
   @override
   @JsonKey(ignore: true)
   _$$_BadgeCopyWith<_$_Badge> get copyWith =>

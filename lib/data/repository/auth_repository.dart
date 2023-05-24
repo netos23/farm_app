@@ -3,10 +3,9 @@ import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part1_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_response.dart';
-import 'package:farm_app/domain/entity/auth/auth_register_request.dart';
-import 'package:farm_app/domain/entity/auth/auth_register_response.dart';
+import 'package:farm_app/domain/models/profile.dart';
 
-class AuthRepository{
+class AuthRepository {
   AuthRepository(
     this._authService,
   );
@@ -45,13 +44,33 @@ class AuthRepository{
   }
 
   @override
-  Future<AuthRegisterResponse> register(
-      {required AuthRegisterRequest request}) async {
+  Future<Profile> getUser() async {
     try {
-      final result = await _authService.authRegister(
-        request: request,
-      );
+      final result = await _authService.getUser();
       return result;
+    } on DioError catch (error) {
+      throw Exception(
+        error.response?.data['message'],
+      );
+    }
+  }
+
+  @override
+  Future<Profile> patchUser({required Profile request}) async {
+    try {
+      final result = await _authService.patchUser(request: request);
+      return result;
+    } on DioError catch (error) {
+      throw Exception(
+        error.response?.data['message'],
+      );
+    }
+  }
+
+  @override
+  Future<void> deleteUser() async {
+    try {
+      await _authService.deleteUser();
     } on DioError catch (error) {
       throw Exception(
         error.response?.data['message'],
