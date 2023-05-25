@@ -25,7 +25,7 @@ mixin _$Profile {
   String? get secondName => throw _privateConstructorUsedError;
   String? get birthDate => throw _privateConstructorUsedError;
   int? get gender => throw _privateConstructorUsedError;
-  int? get phone => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ abstract class $ProfileCopyWith<$Res> {
       String? secondName,
       String? birthDate,
       int? gender,
-      int? phone});
+      String? phone});
 }
 
 /// @nodoc
@@ -90,7 +90,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
     ) as $Val);
   }
 }
@@ -108,7 +108,7 @@ abstract class _$$_ProfileCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       String? secondName,
       String? birthDate,
       int? gender,
-      int? phone});
+      String? phone});
 }
 
 /// @nodoc
@@ -152,7 +152,7 @@ class __$$_ProfileCopyWithImpl<$Res>
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
     ));
   }
 }
@@ -182,7 +182,7 @@ class _$_Profile implements _Profile {
   @override
   final int? gender;
   @override
-  final int? phone;
+  final String? phone;
 
   @override
   String toString() {
@@ -231,7 +231,7 @@ abstract class _Profile implements Profile {
       final String? secondName,
       final String? birthDate,
       final int? gender,
-      final int? phone}) = _$_Profile;
+      final String? phone}) = _$_Profile;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$_Profile.fromJson;
 
@@ -246,7 +246,7 @@ abstract class _Profile implements Profile {
   @override
   int? get gender;
   @override
-  int? get phone;
+  String? get phone;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileCopyWith<_$_Profile> get copyWith =>

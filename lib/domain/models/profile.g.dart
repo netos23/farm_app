@@ -12,7 +12,7 @@ _$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
       secondName: json['secondName'] as String?,
       birthDate: json['birthDate'] as String?,
       gender: json['gender'] as int?,
-      phone: json['phone'] as int?,
+      phone: json['phone'] as String?,
     );
 
 Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) =>

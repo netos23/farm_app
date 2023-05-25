@@ -34,7 +34,7 @@ class _CatalogService implements CatalogService {
     )
             .compose(
               _dio.options,
-              '/catalog/categories/',
+              '/catalog/categories',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -59,7 +59,7 @@ class _CatalogService implements CatalogService {
     )
             .compose(
               _dio.options,
-              '/catalog/product/',
+              '/catalog/product',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -109,7 +109,7 @@ class _CatalogService implements CatalogService {
     )
             .compose(
               _dio.options,
-              '/catalog/sort_types/',
+              '/catalog/sort_types',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -133,7 +133,7 @@ class _CatalogService implements CatalogService {
     )
             .compose(
               _dio.options,
-              '/catalog/filters/',
+              '/catalog/filters',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -158,7 +158,7 @@ class _CatalogService implements CatalogService {
     )
             .compose(
               _dio.options,
-              '/catalog/autocomplete/',
+              '/catalog/autocomplete',
               queryParameters: queryParameters,
               data: _data,
             )

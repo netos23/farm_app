@@ -79,7 +79,7 @@ class _AuthService implements AuthService {
     )
             .compose(
               _dio.options,
-              '/auth/user/',
+              '/auth/user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -102,7 +102,7 @@ class _AuthService implements AuthService {
     )
             .compose(
               _dio.options,
-              '/auth/user/',
+              '/auth/user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -124,7 +124,28 @@ class _AuthService implements AuthService {
     )
         .compose(
           _dio.options,
-          '/auth/user/',
+          '/auth/user',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+  }
+
+  @override
+  Future<void> register({required Profile profile}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(profile.toJson());
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/auth/register',
           queryParameters: queryParameters,
           data: _data,
         )

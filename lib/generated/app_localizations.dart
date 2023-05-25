@@ -2145,24 +2145,6 @@ abstract class AppLocalizations {
   /// **'Discount'**
   String get descDiscount;
 
-  /// No description provided for @descDiscount.
-  ///
-  /// In en, this message translates to:
-  /// **'Discount'**
-  String get userIsAlreadyExists;
-
-  /// No description provided for @descDiscount.
-  ///
-  /// In en, this message translates to:
-  /// **'Discount'**
-  String get userIsNotRegistered;
-
- /// No description provided for @descDiscount.
-  ///
-  /// In en, this message translates to:
-  /// **'Discount'**
-  String get registration;
-
   /// No description provided for @authRequired.
   ///
   /// In en, this message translates to:

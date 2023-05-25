@@ -10,9 +10,7 @@ import 'package:retrofit/http.dart';
 
 part 'auth_service.g.dart';
 
-@RestApi(
-  parser: Parser.DartJsonMapper
-)
+@RestApi()
 abstract class AuthService {
   factory AuthService(Dio dio, {String baseUrl}) = _AuthService;
 

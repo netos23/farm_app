@@ -65,6 +65,7 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: RegisterPageWidget(
+          email: args.email,
           key: args.key,
           wmFactory: args.wmFactory,
         ),
@@ -291,14 +292,16 @@ class CatalogRouteArgs {
 /// [RegisterPageWidget]
 class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
   RegisterRoute({
+    String? email,
     Key? key,
     WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
             BuildContext)
         wmFactory = defaultRegisterPageWidgetModelFactory,
-    List<PageRouteInfo>? children,  String? email,
+    List<PageRouteInfo>? children,
   }) : super(
           RegisterRoute.name,
           args: RegisterRouteArgs(
+            email: email,
             key: key,
             wmFactory: wmFactory,
           ),
@@ -313,9 +316,12 @@ class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
 
 class RegisterRouteArgs {
   const RegisterRouteArgs({
+    this.email,
     this.key,
     this.wmFactory = defaultRegisterPageWidgetModelFactory,
   });
+
+  final String? email;
 
   final Key? key;
 
@@ -324,7 +330,7 @@ class RegisterRouteArgs {
 
   @override
   String toString() {
-    return 'RegisterRouteArgs{key: $key, wmFactory: $wmFactory}';
+    return 'RegisterRouteArgs{email: $email, key: $key, wmFactory: $wmFactory}';
   }
 }
 
