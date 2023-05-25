@@ -31,6 +31,33 @@ class AppRouter extends _$AppRouter {
               ],
             ),
             AutoRoute(
+              page: FavoritesTab.page,
+              children: [
+                AutoRoute(
+                  page: ProfileRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
+              page: ShowCaseTab.page,
+              children: [
+                AutoRoute(
+                  page: CatalogRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
+              page: BasketTab.page,
+              children: [
+                AutoRoute(
+                  page: ProfileRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
               page: UserProfileTab.page,
               children: [
                 AutoRoute(

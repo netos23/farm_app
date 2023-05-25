@@ -1,5 +1,7 @@
+import 'package:farm_app/generated/app_localizations.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +15,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeMode = context.watch<ValueNotifier<ThemeMode>>();
+
 
     return MaterialApp.router(
       theme: ThemeData(
@@ -32,9 +35,11 @@ class App extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
-        colorScheme: hightColorScheme,
+        colorScheme: darkColorScheme,
         textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
       ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       themeMode: themeMode.value,
       routerConfig: _appRouter.config(),
     );
