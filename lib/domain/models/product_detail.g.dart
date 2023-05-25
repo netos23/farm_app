@@ -14,6 +14,8 @@ _$_ProductDetail _$$_ProductDetailFromJson(Map<String, dynamic> json) =>
       badges: (json['badges'] as List<dynamic>)
           .map((e) => Badge.fromJson(e as Map<String, dynamic>))
           .toList(),
+      available: json['available'] as bool,
+      cityFias: json['cityFias'] as String?,
     );
 
 Map<String, dynamic> _$$_ProductDetailToJson(_$_ProductDetail instance) =>
@@ -22,4 +24,6 @@ Map<String, dynamic> _$$_ProductDetailToJson(_$_ProductDetail instance) =>
       'picture': instance.picture,
       'description': instance.description,
       'badges': instance.badges,
+      'available': instance.available,
+      'cityFias': instance.cityFias,
     };

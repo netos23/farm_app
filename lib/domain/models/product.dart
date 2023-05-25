@@ -12,6 +12,8 @@ class Product with _$Product {
     required String picture,
     required String description,
     required List<Badge> badges,
+    required bool available,
+    String? cityFias,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>

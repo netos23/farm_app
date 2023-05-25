@@ -24,6 +24,8 @@ mixin _$Product {
   String get picture => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<Badge> get badges => throw _privateConstructorUsedError;
+  bool get available => throw _privateConstructorUsedError;
+  String? get cityFias => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,12 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {String name, String picture, String description, List<Badge> badges});
+      {String name,
+      String picture,
+      String description,
+      List<Badge> badges,
+      bool available,
+      String? cityFias});
 }
 
 /// @nodoc
@@ -56,6 +63,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? picture = null,
     Object? description = null,
     Object? badges = null,
+    Object? available = null,
+    Object? cityFias = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -74,6 +83,14 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.badges
           : badges // ignore: cast_nullable_to_non_nullable
               as List<Badge>,
+      available: null == available
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cityFias: freezed == cityFias
+          ? _value.cityFias
+          : cityFias // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +103,12 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name, String picture, String description, List<Badge> badges});
+      {String name,
+      String picture,
+      String description,
+      List<Badge> badges,
+      bool available,
+      String? cityFias});
 }
 
 /// @nodoc
@@ -103,6 +125,8 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? picture = null,
     Object? description = null,
     Object? badges = null,
+    Object? available = null,
+    Object? cityFias = freezed,
   }) {
     return _then(_$_Product(
       name: null == name
@@ -121,6 +145,14 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value._badges
           : badges // ignore: cast_nullable_to_non_nullable
               as List<Badge>,
+      available: null == available
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cityFias: freezed == cityFias
+          ? _value.cityFias
+          : cityFias // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -132,7 +164,9 @@ class _$_Product implements _Product {
       {required this.name,
       required this.picture,
       required this.description,
-      required final List<Badge> badges})
+      required final List<Badge> badges,
+      required this.available,
+      this.cityFias})
       : _badges = badges;
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
@@ -153,8 +187,13 @@ class _$_Product implements _Product {
   }
 
   @override
+  final bool available;
+  @override
+  final String? cityFias;
+
+  @override
   String toString() {
-    return 'Product(name: $name, picture: $picture, description: $description, badges: $badges)';
+    return 'Product(name: $name, picture: $picture, description: $description, badges: $badges, available: $available, cityFias: $cityFias)';
   }
 
   @override
@@ -166,13 +205,17 @@ class _$_Product implements _Product {
             (identical(other.picture, picture) || other.picture == picture) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._badges, _badges));
+            const DeepCollectionEquality().equals(other._badges, _badges) &&
+            (identical(other.available, available) ||
+                other.available == available) &&
+            (identical(other.cityFias, cityFias) ||
+                other.cityFias == cityFias));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, picture, description,
-      const DeepCollectionEquality().hash(_badges));
+      const DeepCollectionEquality().hash(_badges), available, cityFias);
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +236,9 @@ abstract class _Product implements Product {
       {required final String name,
       required final String picture,
       required final String description,
-      required final List<Badge> badges}) = _$_Product;
+      required final List<Badge> badges,
+      required final bool available,
+      final String? cityFias}) = _$_Product;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
@@ -205,6 +250,10 @@ abstract class _Product implements Product {
   String get description;
   @override
   List<Badge> get badges;
+  @override
+  bool get available;
+  @override
+  String? get cityFias;
   @override
   @JsonKey(ignore: true)
   _$$_ProductCopyWith<_$_Product> get copyWith =>

@@ -4,6 +4,7 @@ import 'auth_code_page_model.dart';
 import 'auth_code_page_widget.dart';
 
 abstract class IAuthCodePageWidgetModel extends IWidgetModel {
+  TextEditingController get codeController;
 }
 
 AuthCodePageWidgetModel defaultAuthCodePageWidgetModelFactory(BuildContext context) {
@@ -15,5 +16,9 @@ AuthCodePageWidgetModel defaultAuthCodePageWidgetModelFactory(BuildContext conte
 class AuthCodePageWidgetModel extends WidgetModel<AuthCodePageWidget, AuthCodePageModel>
     implements IAuthCodePageWidgetModel {
 
+  @override
+  TextEditingController codeController = TextEditingController();
+
   AuthCodePageWidgetModel(AuthCodePageModel model) : super(model);
+
 }

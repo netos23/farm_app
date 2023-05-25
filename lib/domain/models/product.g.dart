@@ -13,6 +13,8 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
       badges: (json['badges'] as List<dynamic>)
           .map((e) => Badge.fromJson(e as Map<String, dynamic>))
           .toList(),
+      available: json['available'] as bool,
+      cityFias: json['cityFias'] as String?,
     );
 
 Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
@@ -21,4 +23,6 @@ Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
       'picture': instance.picture,
       'description': instance.description,
       'badges': instance.badges,
+      'available': instance.available,
+      'cityFias': instance.cityFias,
     };
