@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:farm_app/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,8 @@ abstract interface class IThemeProvider {
   ColorScheme get colorScheme;
 
   AppLocalizations get localizations;
+
+  StackRouter get router;
 }
 
 mixin ThemeProvider {
@@ -21,4 +24,7 @@ mixin ThemeProvider {
   TextTheme get textTheme => theme.textTheme;
 
   ColorScheme get colorScheme => theme.colorScheme;
+
+  StackRouter get router => context.router;
+
 }

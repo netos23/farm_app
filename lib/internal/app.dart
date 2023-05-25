@@ -16,12 +16,23 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeMode = context.watch<ValueNotifier<ThemeMode>>();
 
-
     return MaterialApp.router(
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: lightColorScheme,
         textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: darkColorScheme,
+        textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: GoogleFonts.aboreto(
+            fontSize: 22,
+          ),
+        ),
+        inputDecorationTheme:
+        InputDecorationTheme()
       ),
       highContrastTheme: ThemeData(
         useMaterial3: true,
@@ -31,11 +42,6 @@ class App extends StatelessWidget {
       highContrastDarkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: hightColorScheme,
-        textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: darkColorScheme,
         textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,

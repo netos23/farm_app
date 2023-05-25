@@ -1,24 +1,46 @@
 import 'package:elementary/elementary.dart';
+import 'package:farm_app/data/repository/auth_repository.dart';
+import 'package:farm_app/domain/entity/auth/auth_email_part2_request.dart';
+import 'package:farm_app/internal/app_components.dart';
+import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
 import 'auth_code_page_model.dart';
 import 'auth_code_page_widget.dart';
 
-abstract class IAuthCodePageWidgetModel extends IWidgetModel {
+abstract class IAuthCodePageWidgetModel extends IWidgetModel
+    implements IThemeProvider {
   TextEditingController get codeController;
+
+  AuthRepository get authRepository;
+
+  Future<void> confirmCode();
+
 }
 
-AuthCodePageWidgetModel defaultAuthCodePageWidgetModelFactory(BuildContext context) {
+AuthCodePageWidgetModel defaultAuthCodePageWidgetModelFactory(
+    BuildContext context) {
   return AuthCodePageWidgetModel(AuthCodePageModel());
 }
 
-// TODO: cover with documentation
-/// Default widget model for AuthCodePageWidget
-class AuthCodePageWidgetModel extends WidgetModel<AuthCodePageWidget, AuthCodePageModel>
+class AuthCodePageWidgetModel
+    extends WidgetModel<AuthCodePageWidget, AuthCodePageModel>
+    with ThemeProvider
     implements IAuthCodePageWidgetModel {
-
   @override
   TextEditingController codeController = TextEditingController();
 
+  @override
+  AuthRepository authRepository = AuthRepository(
+    AppComponents().authService,
+  );
+
+
+  @override
+  Future<void> confirmCode() async {
+    await authRepository.emailPart2(
+      request: AuthEmailPart2Request(email: widget.email, code: codeController.text),
+    );
+  }
   AuthCodePageWidgetModel(AuthCodePageModel model) : super(model);
 
 }

@@ -10,7 +10,9 @@ import 'package:retrofit/http.dart';
 
 part 'auth_service.g.dart';
 
-@RestApi()
+@RestApi(
+  parser: Parser.DartJsonMapper
+)
 abstract class AuthService {
   factory AuthService(Dio dio, {String baseUrl}) = _AuthService;
 
@@ -34,4 +36,8 @@ abstract class AuthService {
 
   @DELETE(AuthUrl.authUser)
   Future<void> deleteUser();
+
+  @POST(AuthUrl.authRegister)
+  Future<void> register({
+    @Body() required Profile profile});
 }

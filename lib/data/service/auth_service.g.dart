@@ -32,7 +32,7 @@ class _AuthService implements AuthService {
     )
         .compose(
           _dio.options,
-          '/auth/email/part1/',
+          '/auth/email/part1',
           queryParameters: queryParameters,
           data: _data,
         )

@@ -1040,4 +1040,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authRequired => 'To use the profile, you need to log in or register.';
+
+  @override
+  String get userIsAlreadyExists => 'User with the same name already exists';
+
+  @override
+  String get userIsNotRegistered => 'This account does not exist';
+
+  @override
+  String get registration => 'Registration';
 }

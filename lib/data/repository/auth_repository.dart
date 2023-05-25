@@ -21,9 +21,13 @@ class AuthRepository {
         request: request,
       );
     } on DioError catch (error) {
-      throw Exception(
+      if (error.response?.statusCode == 452 || error.response?.statusCode == 403){
+        rethrow;
+      } else {
+        throw Exception(
         error.response?.data['message'],
       );
+      }
     }
   }
 
@@ -71,6 +75,17 @@ class AuthRepository {
   Future<void> deleteUser() async {
     try {
       await _authService.deleteUser();
+    } on DioError catch (error) {
+      throw Exception(
+        error.response?.data['message'],
+      );
+    }
+  }
+
+  @override
+  Future<void> register({required Profile profile}) async {
+    try {
+      await _authService.register(profile: profile);
     } on DioError catch (error) {
       throw Exception(
         error.response?.data['message'],

@@ -1040,4 +1040,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get authRequired => 'Чтобы воспользоваться профилем, Вам необходимо войти или зарегистрироваться.';
+
+  @override
+  String get userIsAlreadyExists => 'Пользователь с таким именем уже существует';
+
+  @override
+  String get registration => 'Регистрация';
+
+  @override
+  // TODO: implement userIsNotRegistered
+  String get userIsNotRegistered => 'Данный пользователь не был зарегистрирован';
 }
