@@ -99,6 +99,14 @@ class _WebPage extends StatelessWidget {
                   ),
                 ),
                 NavigationRailDestination(
+                  label: Text('Календарь'),
+                  icon: Icon(Icons.event_outlined),
+                ),
+                NavigationRailDestination(
+                  label: Text('Рейтинг'),
+                  icon: Icon(Icons.star_outline),
+                ),
+                NavigationRailDestination(
                   label: Text('Профиль'),
                   icon: Icon(Icons.person_outline),
                 ),
