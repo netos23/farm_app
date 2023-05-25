@@ -46,11 +46,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "virtualFitting": "Make in",
-  "@virtualFitting": {
-    "type": "text",
-    "placeholders": {}
-  },
   "technology": "technology",
   "@technology": {
     "type": "text",
@@ -68,11 +63,6 @@
   },
   "error": "Error",
   "@error": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "wantGoToSite": "Do you want to go to fittin.ru?",
-  "@wantGoToSite": {
     "type": "text",
     "placeholders": {}
   },
@@ -523,11 +513,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "collectionOnlineShoes": "Collection of shoes with online fitting",
-  "@collectionOnlineShoes": {
-    "type": "text",
-    "placeholders": {}
-  },
   "findPerfectMath": "Find your perfect match",
   "@findPerfectMath": {
     "type": "text",
@@ -868,11 +853,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "writeToFittin": "Write to Fittin",
-  "@writeToFittin": {
-    "type": "text",
-    "placeholders": {}
-  },
   "writeToTechSupport": "Write to technical support",
   "@writeToTechSupport": {
     "type": "text",
@@ -880,11 +860,6 @@
   },
   "legalInfo": "Legal information",
   "@legalInfo": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "legalInfoData": "OOO “FITTIN” \nOGRN: 1153668053736 \nKPP: 366201001 \nOKPO: 42607354",
-  "@legalInfoData": {
     "type": "text",
     "placeholders": {}
   },
@@ -993,11 +968,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "prefitting": "Prefitting",
-  "@prefitting": {
-    "type": "text",
-    "placeholders": {}
-  },
   "aboutService": "Choosing the size, our service will tell you how suitable the option you have chosen and how the shoes will fit the foot.",
   "@aboutService": {
     "type": "text",
@@ -1015,11 +985,6 @@
   },
   "differentSizes": "Each user has the parameters of each leg may differ, so the sensations in one and the same size may be different.",
   "@differentSizes": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "aboutShopping": "With the help of our service, the user will be able to completely switch to buying shoes online, replacing long trips to the store, with a comfortable online fitting at home.",
-  "@aboutShopping": {
     "type": "text",
     "placeholders": {}
   },
@@ -1077,26 +1042,6 @@
   },
   "tryOnOnline": "try on online",
   "@tryOnOnline": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittin": "Fittin",
-  "@fittin": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittinOnline": "Try it online",
-  "@fittinOnline": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittinShoesOnline": "Try on shoes online",
-  "@fittinShoesOnline": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittinShoesOnlineDescription": "scan your feet and try on shoes online in your smartphone",
-  "@fittinShoesOnlineDescription": {
     "type": "text",
     "placeholders": {}
   },
@@ -1277,11 +1222,6 @@
   },
   "testAccount": "Test account",
   "@testAccount": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittingNotAvailable": "Online fitting for this size will be available soon.",
-  "@fittingNotAvailable": {
     "type": "text",
     "placeholders": {}
   },
@@ -1729,6 +1669,21 @@
   },
   "authRequired": "To use the profile, you need to log in or register.",
   "@authRequired": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "registration": "Registration",
+  "@registration": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "userIsAlreadyExists": "User with the same name already exists",
+  "@userIsAlreadyExists": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "userIsNotRegistered": "This account does not exist.",
+  "@userIsNotRegistered": {
     "type": "text",
     "placeholders": {}
   }

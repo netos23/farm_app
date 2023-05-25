@@ -46,11 +46,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "virtualFitting": "Сделано в",
-  "@virtualFitting": {
-    "type": "text",
-    "placeholders": {}
-  },
   "technology": "технология",
   "@technology": {
     "type": "text",
@@ -178,11 +173,6 @@
   },
   "man": "Мужчина",
   "@man": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "wantGoToSite": "Хотите перейти на fittin.ru?",
-  "@wantGoToSite": {
     "type": "text",
     "placeholders": {}
   },
@@ -658,11 +648,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "noModelCatalog": "Чтобы сделать online примерку в каталоге Fittin, отсканируйте ноги",
-  "@noModelCatalog": {
-    "type": "text",
-    "placeholders": {}
-  },
   "wantScan": "Хочу сделать сканирование!",
   "@wantScan": {
     "type": "text",
@@ -868,11 +853,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "writeToFittin": "Написать в Fittin",
-  "@writeToFittin": {
-    "type": "text",
-    "placeholders": {}
-  },
   "writeToTechSupport": "Написать в техподдержку",
   "@writeToTechSupport": {
     "type": "text",
@@ -988,11 +968,6 @@
     "type": "text",
     "placeholders": {}
   },
-  "prefitting": "Предпримерка",
-  "@prefitting": {
-    "type": "text",
-    "placeholders": {}
-  },
   "aboutService": "Выбирая размер, наш сервис подскажет насколько  подходит выбранный Вами вариант и как обувь будет прилегать к ноге.",
   "@aboutService": {
     "type": "text",
@@ -1067,26 +1042,6 @@
   },
   "tryOnOnline": "примеряйте online",
   "@tryOnOnline": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittin": "Fittin",
-  "@fittin": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittinOnline": "Примерить онлайн",
-  "@fittinOnline": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittinShoesOnline": "Примерить обувь онлайн",
-  "@fittinShoesOnline": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittinShoesOnlineDescription": "Отсканируй ноги и примерь обувь online в своем смартфоне",
-  "@fittinShoesOnlineDescription": {
     "type": "text",
     "placeholders": {}
   },
@@ -1257,11 +1212,6 @@
   },
   "serverVersion": "Версия сервера",
   "@serverVersion": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "fittingNotAvailable": "Online примерка для этого размера скоро будет доступна.",
-  "@fittingNotAvailable": {
     "type": "text",
     "placeholders": {}
   },
@@ -1714,6 +1664,21 @@
   },
   "authRequired": "Чтобы воспользоваться профилем, Вам необходимо войти или зарегистрироваться.",
   "@authRequired": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "registration": "Регистрация",
+  "@registration": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "userIsAlreadyExists": "Пользователь с таким именем уже существует",
+  "@userIsAlreadyExists": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "userIsNotRegistered": "Данный пользователь не был зарегистрирован",
+  "@userIsNotRegistered": {
     "type": "text",
     "placeholders": {}
   }
