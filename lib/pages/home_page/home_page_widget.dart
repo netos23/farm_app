@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/router/app_router.dart';
@@ -75,6 +77,8 @@ class _WebPage extends StatelessWidget {
       builder: (context, child) {
         const tabs = [
           CatalogTab(),
+          ShowCaseTab(),
+          BasketTab(),
           UserProfileTab(),
         ];
 
@@ -88,40 +92,62 @@ class _WebPage extends StatelessWidget {
         if (activeIndex == -1) {
           activeIndex = 0;
         }
-        return Row(
-          children: [
-            NavigationRail(
-              destinations: const [
-                NavigationRailDestination(
-                  label: Text('Соревнования'),
-                  icon: Icon(
-                    Icons.emoji_events_outlined,
-                  ),
+        return LayoutBuilder(builder: (context, constrains) {
+          BoxConstraints bounds;
+
+          final width = constrains.maxWidth;
+          if (width <= 700) {
+            bounds = constrains;
+          } else {
+            bounds = constrains.copyWith(
+              minWidth: 0,
+              maxWidth: max(width * 0.7, 700),
+            );
+          }
+
+          return ColoredBox(
+            color: Theme.of(context).colorScheme.background,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: bounds,
+                child: Row(
+                  children: [
+                    NavigationRail(
+                      destinations: const [
+                        NavigationRailDestination(
+                          label: Text('Соревнования'),
+                          icon: Icon(
+                            Icons.emoji_events_outlined,
+                          ),
+                        ),
+                        NavigationRailDestination(
+                          label: Text('Календарь'),
+                          icon: Icon(Icons.event_outlined),
+                        ),
+                        NavigationRailDestination(
+                          label: Text('Рейтинг'),
+                          icon: Icon(Icons.star_outline),
+                        ),
+                        NavigationRailDestination(
+                          label: Text('Профиль'),
+                          icon: Icon(Icons.person_outline),
+                        ),
+                      ],
+                      selectedIndex: activeIndex,
+                      onDestinationSelected: (index) {
+                        // use navigate instead of push so you won't have
+                        // many useless route stacks
+                        context.navigateTo(tabs[index]);
+                      },
+                    ),
+                    // child is the rendered route stack
+                    Expanded(child: child)
+                  ],
                 ),
-                NavigationRailDestination(
-                  label: Text('Календарь'),
-                  icon: Icon(Icons.event_outlined),
-                ),
-                NavigationRailDestination(
-                  label: Text('Рейтинг'),
-                  icon: Icon(Icons.star_outline),
-                ),
-                NavigationRailDestination(
-                  label: Text('Профиль'),
-                  icon: Icon(Icons.person_outline),
-                ),
-              ],
-              selectedIndex: activeIndex,
-              onDestinationSelected: (index) {
-                // use navigate instead of push so you won't have
-                // many useless route stacks
-                context.navigateTo(tabs[index]);
-              },
+              ),
             ),
-            // child is the rendered route stack
-            Expanded(child: child)
-          ],
-        );
+          );
+        });
       },
     );
   }

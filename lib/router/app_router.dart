@@ -44,7 +44,7 @@ class AppRouter extends _$AppRouter {
               page: ShowCaseTab.page,
               children: [
                 AutoRoute(
-                  page: CatalogRoute.page,
+                  page: ShowCaseRoute.page,
                   initial: true,
                 ),
               ],

@@ -16,16 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 
 ShowCaseBanner _$ShowCaseBannerFromJson(Map<String, dynamic> json) {
   switch (json['type']) {
-    case 'image':
-      return Image.fromJson(json);
-    case 'button':
-      return Button.fromJson(json);
-    case 'title':
-      return Title.fromJson(json);
-    case 'markdown':
-      return Markdown.fromJson(json);
-    case 'slider':
-      return Slider.fromJson(json);
+    case 'imageBanner':
+      return ImageBanner.fromJson(json);
+    case 'buttonBanner':
+      return ButtonBanner.fromJson(json);
+    case 'titleBanner':
+      return TitleBanner.fromJson(json);
+    case 'markdownBanner':
+      return MarkdownBanner.fromJson(json);
+    case 'sliderBanner':
+      return SliderBanner.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'type', 'ShowCaseBanner',
@@ -37,57 +37,57 @@ ShowCaseBanner _$ShowCaseBannerFromJson(Map<String, dynamic> json) {
 mixin _$ShowCaseBanner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) image,
-    required TResult Function(String text, String? link) button,
-    required TResult Function(String text) title,
-    required TResult Function(String text) markdown,
-    required TResult Function(List<SliderItem> images) slider,
+    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(String text, String? link) buttonBanner,
+    required TResult Function(String text) titleBanner,
+    required TResult Function(String text) markdownBanner,
+    required TResult Function(List<SliderItem> images) sliderBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? image,
-    TResult? Function(String text, String? link)? button,
-    TResult? Function(String text)? title,
-    TResult? Function(String text)? markdown,
-    TResult? Function(List<SliderItem> images)? slider,
+    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(String text, String? link)? buttonBanner,
+    TResult? Function(String text)? titleBanner,
+    TResult? Function(String text)? markdownBanner,
+    TResult? Function(List<SliderItem> images)? sliderBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? image,
-    TResult Function(String text, String? link)? button,
-    TResult Function(String text)? title,
-    TResult Function(String text)? markdown,
-    TResult Function(List<SliderItem> images)? slider,
+    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(String text, String? link)? buttonBanner,
+    TResult Function(String text)? titleBanner,
+    TResult Function(String text)? markdownBanner,
+    TResult Function(List<SliderItem> images)? sliderBanner,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Image value) image,
-    required TResult Function(Button value) button,
-    required TResult Function(Title value) title,
-    required TResult Function(Markdown value) markdown,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ImageBanner value) imageBanner,
+    required TResult Function(ButtonBanner value) buttonBanner,
+    required TResult Function(TitleBanner value) titleBanner,
+    required TResult Function(MarkdownBanner value) markdownBanner,
+    required TResult Function(SliderBanner value) sliderBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Image value)? image,
-    TResult? Function(Button value)? button,
-    TResult? Function(Title value)? title,
-    TResult? Function(Markdown value)? markdown,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ImageBanner value)? imageBanner,
+    TResult? Function(ButtonBanner value)? buttonBanner,
+    TResult? Function(TitleBanner value)? titleBanner,
+    TResult? Function(MarkdownBanner value)? markdownBanner,
+    TResult? Function(SliderBanner value)? sliderBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Image value)? image,
-    TResult Function(Button value)? button,
-    TResult Function(Title value)? title,
-    TResult Function(Markdown value)? markdown,
-    TResult Function(Slider value)? slider,
+    TResult Function(ImageBanner value)? imageBanner,
+    TResult Function(ButtonBanner value)? buttonBanner,
+    TResult Function(TitleBanner value)? titleBanner,
+    TResult Function(MarkdownBanner value)? markdownBanner,
+    TResult Function(SliderBanner value)? sliderBanner,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,18 +113,20 @@ class _$ShowCaseBannerCopyWithImpl<$Res, $Val extends ShowCaseBanner>
 }
 
 /// @nodoc
-abstract class _$$ImageCopyWith<$Res> {
-  factory _$$ImageCopyWith(_$Image value, $Res Function(_$Image) then) =
-      __$$ImageCopyWithImpl<$Res>;
+abstract class _$$ImageBannerCopyWith<$Res> {
+  factory _$$ImageBannerCopyWith(
+          _$ImageBanner value, $Res Function(_$ImageBanner) then) =
+      __$$ImageBannerCopyWithImpl<$Res>;
   @useResult
   $Res call({String imageUrl, String? link});
 }
 
 /// @nodoc
-class __$$ImageCopyWithImpl<$Res>
-    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Image>
-    implements _$$ImageCopyWith<$Res> {
-  __$$ImageCopyWithImpl(_$Image _value, $Res Function(_$Image) _then)
+class __$$ImageBannerCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$ImageBanner>
+    implements _$$ImageBannerCopyWith<$Res> {
+  __$$ImageBannerCopyWithImpl(
+      _$ImageBanner _value, $Res Function(_$ImageBanner) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +135,7 @@ class __$$ImageCopyWithImpl<$Res>
     Object? imageUrl = null,
     Object? link = freezed,
   }) {
-    return _then(_$Image(
+    return _then(_$ImageBanner(
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -148,11 +150,12 @@ class __$$ImageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Image implements Image {
-  const _$Image({required this.imageUrl, this.link, final String? $type})
-      : $type = $type ?? 'image';
+class _$ImageBanner implements ImageBanner {
+  const _$ImageBanner({required this.imageUrl, this.link, final String? $type})
+      : $type = $type ?? 'imageBanner';
 
-  factory _$Image.fromJson(Map<String, dynamic> json) => _$$ImageFromJson(json);
+  factory _$ImageBanner.fromJson(Map<String, dynamic> json) =>
+      _$$ImageBannerFromJson(json);
 
   @override
   final String imageUrl;
@@ -164,14 +167,14 @@ class _$Image implements Image {
 
   @override
   String toString() {
-    return 'ShowCaseBanner.image(imageUrl: $imageUrl, link: $link)';
+    return 'ShowCaseBanner.imageBanner(imageUrl: $imageUrl, link: $link)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Image &&
+            other is _$ImageBanner &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.link, link) || other.link == link));
@@ -184,45 +187,45 @@ class _$Image implements Image {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImageCopyWith<_$Image> get copyWith =>
-      __$$ImageCopyWithImpl<_$Image>(this, _$identity);
+  _$$ImageBannerCopyWith<_$ImageBanner> get copyWith =>
+      __$$ImageBannerCopyWithImpl<_$ImageBanner>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) image,
-    required TResult Function(String text, String? link) button,
-    required TResult Function(String text) title,
-    required TResult Function(String text) markdown,
-    required TResult Function(List<SliderItem> images) slider,
+    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(String text, String? link) buttonBanner,
+    required TResult Function(String text) titleBanner,
+    required TResult Function(String text) markdownBanner,
+    required TResult Function(List<SliderItem> images) sliderBanner,
   }) {
-    return image(imageUrl, link);
+    return imageBanner(imageUrl, link);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? image,
-    TResult? Function(String text, String? link)? button,
-    TResult? Function(String text)? title,
-    TResult? Function(String text)? markdown,
-    TResult? Function(List<SliderItem> images)? slider,
+    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(String text, String? link)? buttonBanner,
+    TResult? Function(String text)? titleBanner,
+    TResult? Function(String text)? markdownBanner,
+    TResult? Function(List<SliderItem> images)? sliderBanner,
   }) {
-    return image?.call(imageUrl, link);
+    return imageBanner?.call(imageUrl, link);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? image,
-    TResult Function(String text, String? link)? button,
-    TResult Function(String text)? title,
-    TResult Function(String text)? markdown,
-    TResult Function(List<SliderItem> images)? slider,
+    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(String text, String? link)? buttonBanner,
+    TResult Function(String text)? titleBanner,
+    TResult Function(String text)? markdownBanner,
+    TResult Function(List<SliderItem> images)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (image != null) {
-      return image(imageUrl, link);
+    if (imageBanner != null) {
+      return imageBanner(imageUrl, link);
     }
     return orElse();
   }
@@ -230,76 +233,80 @@ class _$Image implements Image {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Image value) image,
-    required TResult Function(Button value) button,
-    required TResult Function(Title value) title,
-    required TResult Function(Markdown value) markdown,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ImageBanner value) imageBanner,
+    required TResult Function(ButtonBanner value) buttonBanner,
+    required TResult Function(TitleBanner value) titleBanner,
+    required TResult Function(MarkdownBanner value) markdownBanner,
+    required TResult Function(SliderBanner value) sliderBanner,
   }) {
-    return image(this);
+    return imageBanner(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Image value)? image,
-    TResult? Function(Button value)? button,
-    TResult? Function(Title value)? title,
-    TResult? Function(Markdown value)? markdown,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ImageBanner value)? imageBanner,
+    TResult? Function(ButtonBanner value)? buttonBanner,
+    TResult? Function(TitleBanner value)? titleBanner,
+    TResult? Function(MarkdownBanner value)? markdownBanner,
+    TResult? Function(SliderBanner value)? sliderBanner,
   }) {
-    return image?.call(this);
+    return imageBanner?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Image value)? image,
-    TResult Function(Button value)? button,
-    TResult Function(Title value)? title,
-    TResult Function(Markdown value)? markdown,
-    TResult Function(Slider value)? slider,
+    TResult Function(ImageBanner value)? imageBanner,
+    TResult Function(ButtonBanner value)? buttonBanner,
+    TResult Function(TitleBanner value)? titleBanner,
+    TResult Function(MarkdownBanner value)? markdownBanner,
+    TResult Function(SliderBanner value)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (image != null) {
-      return image(this);
+    if (imageBanner != null) {
+      return imageBanner(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ImageToJson(
+    return _$$ImageBannerToJson(
       this,
     );
   }
 }
 
-abstract class Image implements ShowCaseBanner {
-  const factory Image({required final String imageUrl, final String? link}) =
-      _$Image;
+abstract class ImageBanner implements ShowCaseBanner {
+  const factory ImageBanner(
+      {required final String imageUrl, final String? link}) = _$ImageBanner;
 
-  factory Image.fromJson(Map<String, dynamic> json) = _$Image.fromJson;
+  factory ImageBanner.fromJson(Map<String, dynamic> json) =
+      _$ImageBanner.fromJson;
 
   String get imageUrl;
   String? get link;
   @JsonKey(ignore: true)
-  _$$ImageCopyWith<_$Image> get copyWith => throw _privateConstructorUsedError;
+  _$$ImageBannerCopyWith<_$ImageBanner> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ButtonCopyWith<$Res> {
-  factory _$$ButtonCopyWith(_$Button value, $Res Function(_$Button) then) =
-      __$$ButtonCopyWithImpl<$Res>;
+abstract class _$$ButtonBannerCopyWith<$Res> {
+  factory _$$ButtonBannerCopyWith(
+          _$ButtonBanner value, $Res Function(_$ButtonBanner) then) =
+      __$$ButtonBannerCopyWithImpl<$Res>;
   @useResult
   $Res call({String text, String? link});
 }
 
 /// @nodoc
-class __$$ButtonCopyWithImpl<$Res>
-    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Button>
-    implements _$$ButtonCopyWith<$Res> {
-  __$$ButtonCopyWithImpl(_$Button _value, $Res Function(_$Button) _then)
+class __$$ButtonBannerCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$ButtonBanner>
+    implements _$$ButtonBannerCopyWith<$Res> {
+  __$$ButtonBannerCopyWithImpl(
+      _$ButtonBanner _value, $Res Function(_$ButtonBanner) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -308,7 +315,7 @@ class __$$ButtonCopyWithImpl<$Res>
     Object? text = null,
     Object? link = freezed,
   }) {
-    return _then(_$Button(
+    return _then(_$ButtonBanner(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -323,12 +330,12 @@ class __$$ButtonCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Button implements Button {
-  const _$Button({required this.text, this.link, final String? $type})
-      : $type = $type ?? 'button';
+class _$ButtonBanner implements ButtonBanner {
+  const _$ButtonBanner({required this.text, this.link, final String? $type})
+      : $type = $type ?? 'buttonBanner';
 
-  factory _$Button.fromJson(Map<String, dynamic> json) =>
-      _$$ButtonFromJson(json);
+  factory _$ButtonBanner.fromJson(Map<String, dynamic> json) =>
+      _$$ButtonBannerFromJson(json);
 
   @override
   final String text;
@@ -340,14 +347,14 @@ class _$Button implements Button {
 
   @override
   String toString() {
-    return 'ShowCaseBanner.button(text: $text, link: $link)';
+    return 'ShowCaseBanner.buttonBanner(text: $text, link: $link)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Button &&
+            other is _$ButtonBanner &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.link, link) || other.link == link));
   }
@@ -359,45 +366,45 @@ class _$Button implements Button {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ButtonCopyWith<_$Button> get copyWith =>
-      __$$ButtonCopyWithImpl<_$Button>(this, _$identity);
+  _$$ButtonBannerCopyWith<_$ButtonBanner> get copyWith =>
+      __$$ButtonBannerCopyWithImpl<_$ButtonBanner>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) image,
-    required TResult Function(String text, String? link) button,
-    required TResult Function(String text) title,
-    required TResult Function(String text) markdown,
-    required TResult Function(List<SliderItem> images) slider,
+    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(String text, String? link) buttonBanner,
+    required TResult Function(String text) titleBanner,
+    required TResult Function(String text) markdownBanner,
+    required TResult Function(List<SliderItem> images) sliderBanner,
   }) {
-    return button(text, link);
+    return buttonBanner(text, link);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? image,
-    TResult? Function(String text, String? link)? button,
-    TResult? Function(String text)? title,
-    TResult? Function(String text)? markdown,
-    TResult? Function(List<SliderItem> images)? slider,
+    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(String text, String? link)? buttonBanner,
+    TResult? Function(String text)? titleBanner,
+    TResult? Function(String text)? markdownBanner,
+    TResult? Function(List<SliderItem> images)? sliderBanner,
   }) {
-    return button?.call(text, link);
+    return buttonBanner?.call(text, link);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? image,
-    TResult Function(String text, String? link)? button,
-    TResult Function(String text)? title,
-    TResult Function(String text)? markdown,
-    TResult Function(List<SliderItem> images)? slider,
+    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(String text, String? link)? buttonBanner,
+    TResult Function(String text)? titleBanner,
+    TResult Function(String text)? markdownBanner,
+    TResult Function(List<SliderItem> images)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (button != null) {
-      return button(text, link);
+    if (buttonBanner != null) {
+      return buttonBanner(text, link);
     }
     return orElse();
   }
@@ -405,77 +412,80 @@ class _$Button implements Button {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Image value) image,
-    required TResult Function(Button value) button,
-    required TResult Function(Title value) title,
-    required TResult Function(Markdown value) markdown,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ImageBanner value) imageBanner,
+    required TResult Function(ButtonBanner value) buttonBanner,
+    required TResult Function(TitleBanner value) titleBanner,
+    required TResult Function(MarkdownBanner value) markdownBanner,
+    required TResult Function(SliderBanner value) sliderBanner,
   }) {
-    return button(this);
+    return buttonBanner(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Image value)? image,
-    TResult? Function(Button value)? button,
-    TResult? Function(Title value)? title,
-    TResult? Function(Markdown value)? markdown,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ImageBanner value)? imageBanner,
+    TResult? Function(ButtonBanner value)? buttonBanner,
+    TResult? Function(TitleBanner value)? titleBanner,
+    TResult? Function(MarkdownBanner value)? markdownBanner,
+    TResult? Function(SliderBanner value)? sliderBanner,
   }) {
-    return button?.call(this);
+    return buttonBanner?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Image value)? image,
-    TResult Function(Button value)? button,
-    TResult Function(Title value)? title,
-    TResult Function(Markdown value)? markdown,
-    TResult Function(Slider value)? slider,
+    TResult Function(ImageBanner value)? imageBanner,
+    TResult Function(ButtonBanner value)? buttonBanner,
+    TResult Function(TitleBanner value)? titleBanner,
+    TResult Function(MarkdownBanner value)? markdownBanner,
+    TResult Function(SliderBanner value)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (button != null) {
-      return button(this);
+    if (buttonBanner != null) {
+      return buttonBanner(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ButtonToJson(
+    return _$$ButtonBannerToJson(
       this,
     );
   }
 }
 
-abstract class Button implements ShowCaseBanner {
-  const factory Button({required final String text, final String? link}) =
-      _$Button;
+abstract class ButtonBanner implements ShowCaseBanner {
+  const factory ButtonBanner({required final String text, final String? link}) =
+      _$ButtonBanner;
 
-  factory Button.fromJson(Map<String, dynamic> json) = _$Button.fromJson;
+  factory ButtonBanner.fromJson(Map<String, dynamic> json) =
+      _$ButtonBanner.fromJson;
 
   String get text;
   String? get link;
   @JsonKey(ignore: true)
-  _$$ButtonCopyWith<_$Button> get copyWith =>
+  _$$ButtonBannerCopyWith<_$ButtonBanner> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TitleCopyWith<$Res> {
-  factory _$$TitleCopyWith(_$Title value, $Res Function(_$Title) then) =
-      __$$TitleCopyWithImpl<$Res>;
+abstract class _$$TitleBannerCopyWith<$Res> {
+  factory _$$TitleBannerCopyWith(
+          _$TitleBanner value, $Res Function(_$TitleBanner) then) =
+      __$$TitleBannerCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
 }
 
 /// @nodoc
-class __$$TitleCopyWithImpl<$Res>
-    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Title>
-    implements _$$TitleCopyWith<$Res> {
-  __$$TitleCopyWithImpl(_$Title _value, $Res Function(_$Title) _then)
+class __$$TitleBannerCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$TitleBanner>
+    implements _$$TitleBannerCopyWith<$Res> {
+  __$$TitleBannerCopyWithImpl(
+      _$TitleBanner _value, $Res Function(_$TitleBanner) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +493,7 @@ class __$$TitleCopyWithImpl<$Res>
   $Res call({
     Object? text = null,
   }) {
-    return _then(_$Title(
+    return _then(_$TitleBanner(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -494,11 +504,12 @@ class __$$TitleCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Title implements Title {
-  const _$Title({required this.text, final String? $type})
-      : $type = $type ?? 'title';
+class _$TitleBanner implements TitleBanner {
+  const _$TitleBanner({required this.text, final String? $type})
+      : $type = $type ?? 'titleBanner';
 
-  factory _$Title.fromJson(Map<String, dynamic> json) => _$$TitleFromJson(json);
+  factory _$TitleBanner.fromJson(Map<String, dynamic> json) =>
+      _$$TitleBannerFromJson(json);
 
   @override
   final String text;
@@ -508,14 +519,14 @@ class _$Title implements Title {
 
   @override
   String toString() {
-    return 'ShowCaseBanner.title(text: $text)';
+    return 'ShowCaseBanner.titleBanner(text: $text)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Title &&
+            other is _$TitleBanner &&
             (identical(other.text, text) || other.text == text));
   }
 
@@ -526,45 +537,45 @@ class _$Title implements Title {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TitleCopyWith<_$Title> get copyWith =>
-      __$$TitleCopyWithImpl<_$Title>(this, _$identity);
+  _$$TitleBannerCopyWith<_$TitleBanner> get copyWith =>
+      __$$TitleBannerCopyWithImpl<_$TitleBanner>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) image,
-    required TResult Function(String text, String? link) button,
-    required TResult Function(String text) title,
-    required TResult Function(String text) markdown,
-    required TResult Function(List<SliderItem> images) slider,
+    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(String text, String? link) buttonBanner,
+    required TResult Function(String text) titleBanner,
+    required TResult Function(String text) markdownBanner,
+    required TResult Function(List<SliderItem> images) sliderBanner,
   }) {
-    return title(text);
+    return titleBanner(text);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? image,
-    TResult? Function(String text, String? link)? button,
-    TResult? Function(String text)? title,
-    TResult? Function(String text)? markdown,
-    TResult? Function(List<SliderItem> images)? slider,
+    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(String text, String? link)? buttonBanner,
+    TResult? Function(String text)? titleBanner,
+    TResult? Function(String text)? markdownBanner,
+    TResult? Function(List<SliderItem> images)? sliderBanner,
   }) {
-    return title?.call(text);
+    return titleBanner?.call(text);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? image,
-    TResult Function(String text, String? link)? button,
-    TResult Function(String text)? title,
-    TResult Function(String text)? markdown,
-    TResult Function(List<SliderItem> images)? slider,
+    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(String text, String? link)? buttonBanner,
+    TResult Function(String text)? titleBanner,
+    TResult Function(String text)? markdownBanner,
+    TResult Function(List<SliderItem> images)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (title != null) {
-      return title(text);
+    if (titleBanner != null) {
+      return titleBanner(text);
     }
     return orElse();
   }
@@ -572,75 +583,78 @@ class _$Title implements Title {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Image value) image,
-    required TResult Function(Button value) button,
-    required TResult Function(Title value) title,
-    required TResult Function(Markdown value) markdown,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ImageBanner value) imageBanner,
+    required TResult Function(ButtonBanner value) buttonBanner,
+    required TResult Function(TitleBanner value) titleBanner,
+    required TResult Function(MarkdownBanner value) markdownBanner,
+    required TResult Function(SliderBanner value) sliderBanner,
   }) {
-    return title(this);
+    return titleBanner(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Image value)? image,
-    TResult? Function(Button value)? button,
-    TResult? Function(Title value)? title,
-    TResult? Function(Markdown value)? markdown,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ImageBanner value)? imageBanner,
+    TResult? Function(ButtonBanner value)? buttonBanner,
+    TResult? Function(TitleBanner value)? titleBanner,
+    TResult? Function(MarkdownBanner value)? markdownBanner,
+    TResult? Function(SliderBanner value)? sliderBanner,
   }) {
-    return title?.call(this);
+    return titleBanner?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Image value)? image,
-    TResult Function(Button value)? button,
-    TResult Function(Title value)? title,
-    TResult Function(Markdown value)? markdown,
-    TResult Function(Slider value)? slider,
+    TResult Function(ImageBanner value)? imageBanner,
+    TResult Function(ButtonBanner value)? buttonBanner,
+    TResult Function(TitleBanner value)? titleBanner,
+    TResult Function(MarkdownBanner value)? markdownBanner,
+    TResult Function(SliderBanner value)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (title != null) {
-      return title(this);
+    if (titleBanner != null) {
+      return titleBanner(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TitleToJson(
+    return _$$TitleBannerToJson(
       this,
     );
   }
 }
 
-abstract class Title implements ShowCaseBanner {
-  const factory Title({required final String text}) = _$Title;
+abstract class TitleBanner implements ShowCaseBanner {
+  const factory TitleBanner({required final String text}) = _$TitleBanner;
 
-  factory Title.fromJson(Map<String, dynamic> json) = _$Title.fromJson;
+  factory TitleBanner.fromJson(Map<String, dynamic> json) =
+      _$TitleBanner.fromJson;
 
   String get text;
   @JsonKey(ignore: true)
-  _$$TitleCopyWith<_$Title> get copyWith => throw _privateConstructorUsedError;
+  _$$TitleBannerCopyWith<_$TitleBanner> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$MarkdownCopyWith<$Res> {
-  factory _$$MarkdownCopyWith(
-          _$Markdown value, $Res Function(_$Markdown) then) =
-      __$$MarkdownCopyWithImpl<$Res>;
+abstract class _$$MarkdownBannerCopyWith<$Res> {
+  factory _$$MarkdownBannerCopyWith(
+          _$MarkdownBanner value, $Res Function(_$MarkdownBanner) then) =
+      __$$MarkdownBannerCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
 }
 
 /// @nodoc
-class __$$MarkdownCopyWithImpl<$Res>
-    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Markdown>
-    implements _$$MarkdownCopyWith<$Res> {
-  __$$MarkdownCopyWithImpl(_$Markdown _value, $Res Function(_$Markdown) _then)
+class __$$MarkdownBannerCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$MarkdownBanner>
+    implements _$$MarkdownBannerCopyWith<$Res> {
+  __$$MarkdownBannerCopyWithImpl(
+      _$MarkdownBanner _value, $Res Function(_$MarkdownBanner) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -648,7 +662,7 @@ class __$$MarkdownCopyWithImpl<$Res>
   $Res call({
     Object? text = null,
   }) {
-    return _then(_$Markdown(
+    return _then(_$MarkdownBanner(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -659,12 +673,12 @@ class __$$MarkdownCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Markdown implements Markdown {
-  const _$Markdown({required this.text, final String? $type})
-      : $type = $type ?? 'markdown';
+class _$MarkdownBanner implements MarkdownBanner {
+  const _$MarkdownBanner({required this.text, final String? $type})
+      : $type = $type ?? 'markdownBanner';
 
-  factory _$Markdown.fromJson(Map<String, dynamic> json) =>
-      _$$MarkdownFromJson(json);
+  factory _$MarkdownBanner.fromJson(Map<String, dynamic> json) =>
+      _$$MarkdownBannerFromJson(json);
 
   @override
   final String text;
@@ -674,14 +688,14 @@ class _$Markdown implements Markdown {
 
   @override
   String toString() {
-    return 'ShowCaseBanner.markdown(text: $text)';
+    return 'ShowCaseBanner.markdownBanner(text: $text)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Markdown &&
+            other is _$MarkdownBanner &&
             (identical(other.text, text) || other.text == text));
   }
 
@@ -692,45 +706,45 @@ class _$Markdown implements Markdown {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MarkdownCopyWith<_$Markdown> get copyWith =>
-      __$$MarkdownCopyWithImpl<_$Markdown>(this, _$identity);
+  _$$MarkdownBannerCopyWith<_$MarkdownBanner> get copyWith =>
+      __$$MarkdownBannerCopyWithImpl<_$MarkdownBanner>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) image,
-    required TResult Function(String text, String? link) button,
-    required TResult Function(String text) title,
-    required TResult Function(String text) markdown,
-    required TResult Function(List<SliderItem> images) slider,
+    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(String text, String? link) buttonBanner,
+    required TResult Function(String text) titleBanner,
+    required TResult Function(String text) markdownBanner,
+    required TResult Function(List<SliderItem> images) sliderBanner,
   }) {
-    return markdown(text);
+    return markdownBanner(text);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? image,
-    TResult? Function(String text, String? link)? button,
-    TResult? Function(String text)? title,
-    TResult? Function(String text)? markdown,
-    TResult? Function(List<SliderItem> images)? slider,
+    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(String text, String? link)? buttonBanner,
+    TResult? Function(String text)? titleBanner,
+    TResult? Function(String text)? markdownBanner,
+    TResult? Function(List<SliderItem> images)? sliderBanner,
   }) {
-    return markdown?.call(text);
+    return markdownBanner?.call(text);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? image,
-    TResult Function(String text, String? link)? button,
-    TResult Function(String text)? title,
-    TResult Function(String text)? markdown,
-    TResult Function(List<SliderItem> images)? slider,
+    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(String text, String? link)? buttonBanner,
+    TResult Function(String text)? titleBanner,
+    TResult Function(String text)? markdownBanner,
+    TResult Function(List<SliderItem> images)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (markdown != null) {
-      return markdown(text);
+    if (markdownBanner != null) {
+      return markdownBanner(text);
     }
     return orElse();
   }
@@ -738,75 +752,78 @@ class _$Markdown implements Markdown {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Image value) image,
-    required TResult Function(Button value) button,
-    required TResult Function(Title value) title,
-    required TResult Function(Markdown value) markdown,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ImageBanner value) imageBanner,
+    required TResult Function(ButtonBanner value) buttonBanner,
+    required TResult Function(TitleBanner value) titleBanner,
+    required TResult Function(MarkdownBanner value) markdownBanner,
+    required TResult Function(SliderBanner value) sliderBanner,
   }) {
-    return markdown(this);
+    return markdownBanner(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Image value)? image,
-    TResult? Function(Button value)? button,
-    TResult? Function(Title value)? title,
-    TResult? Function(Markdown value)? markdown,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ImageBanner value)? imageBanner,
+    TResult? Function(ButtonBanner value)? buttonBanner,
+    TResult? Function(TitleBanner value)? titleBanner,
+    TResult? Function(MarkdownBanner value)? markdownBanner,
+    TResult? Function(SliderBanner value)? sliderBanner,
   }) {
-    return markdown?.call(this);
+    return markdownBanner?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Image value)? image,
-    TResult Function(Button value)? button,
-    TResult Function(Title value)? title,
-    TResult Function(Markdown value)? markdown,
-    TResult Function(Slider value)? slider,
+    TResult Function(ImageBanner value)? imageBanner,
+    TResult Function(ButtonBanner value)? buttonBanner,
+    TResult Function(TitleBanner value)? titleBanner,
+    TResult Function(MarkdownBanner value)? markdownBanner,
+    TResult Function(SliderBanner value)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (markdown != null) {
-      return markdown(this);
+    if (markdownBanner != null) {
+      return markdownBanner(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MarkdownToJson(
+    return _$$MarkdownBannerToJson(
       this,
     );
   }
 }
 
-abstract class Markdown implements ShowCaseBanner {
-  const factory Markdown({required final String text}) = _$Markdown;
+abstract class MarkdownBanner implements ShowCaseBanner {
+  const factory MarkdownBanner({required final String text}) = _$MarkdownBanner;
 
-  factory Markdown.fromJson(Map<String, dynamic> json) = _$Markdown.fromJson;
+  factory MarkdownBanner.fromJson(Map<String, dynamic> json) =
+      _$MarkdownBanner.fromJson;
 
   String get text;
   @JsonKey(ignore: true)
-  _$$MarkdownCopyWith<_$Markdown> get copyWith =>
+  _$$MarkdownBannerCopyWith<_$MarkdownBanner> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SliderCopyWith<$Res> {
-  factory _$$SliderCopyWith(_$Slider value, $Res Function(_$Slider) then) =
-      __$$SliderCopyWithImpl<$Res>;
+abstract class _$$SliderBannerCopyWith<$Res> {
+  factory _$$SliderBannerCopyWith(
+          _$SliderBanner value, $Res Function(_$SliderBanner) then) =
+      __$$SliderBannerCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SliderItem> images});
 }
 
 /// @nodoc
-class __$$SliderCopyWithImpl<$Res>
-    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Slider>
-    implements _$$SliderCopyWith<$Res> {
-  __$$SliderCopyWithImpl(_$Slider _value, $Res Function(_$Slider) _then)
+class __$$SliderBannerCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$SliderBanner>
+    implements _$$SliderBannerCopyWith<$Res> {
+  __$$SliderBannerCopyWithImpl(
+      _$SliderBanner _value, $Res Function(_$SliderBanner) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -814,7 +831,7 @@ class __$$SliderCopyWithImpl<$Res>
   $Res call({
     Object? images = null,
   }) {
-    return _then(_$Slider(
+    return _then(_$SliderBanner(
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -825,13 +842,14 @@ class __$$SliderCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Slider implements Slider {
-  const _$Slider({required final List<SliderItem> images, final String? $type})
+class _$SliderBanner implements SliderBanner {
+  const _$SliderBanner(
+      {required final List<SliderItem> images, final String? $type})
       : _images = images,
-        $type = $type ?? 'slider';
+        $type = $type ?? 'sliderBanner';
 
-  factory _$Slider.fromJson(Map<String, dynamic> json) =>
-      _$$SliderFromJson(json);
+  factory _$SliderBanner.fromJson(Map<String, dynamic> json) =>
+      _$$SliderBannerFromJson(json);
 
   final List<SliderItem> _images;
   @override
@@ -846,14 +864,14 @@ class _$Slider implements Slider {
 
   @override
   String toString() {
-    return 'ShowCaseBanner.slider(images: $images)';
+    return 'ShowCaseBanner.sliderBanner(images: $images)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Slider &&
+            other is _$SliderBanner &&
             const DeepCollectionEquality().equals(other._images, _images));
   }
 
@@ -865,45 +883,45 @@ class _$Slider implements Slider {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SliderCopyWith<_$Slider> get copyWith =>
-      __$$SliderCopyWithImpl<_$Slider>(this, _$identity);
+  _$$SliderBannerCopyWith<_$SliderBanner> get copyWith =>
+      __$$SliderBannerCopyWithImpl<_$SliderBanner>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) image,
-    required TResult Function(String text, String? link) button,
-    required TResult Function(String text) title,
-    required TResult Function(String text) markdown,
-    required TResult Function(List<SliderItem> images) slider,
+    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(String text, String? link) buttonBanner,
+    required TResult Function(String text) titleBanner,
+    required TResult Function(String text) markdownBanner,
+    required TResult Function(List<SliderItem> images) sliderBanner,
   }) {
-    return slider(images);
+    return sliderBanner(images);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? image,
-    TResult? Function(String text, String? link)? button,
-    TResult? Function(String text)? title,
-    TResult? Function(String text)? markdown,
-    TResult? Function(List<SliderItem> images)? slider,
+    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(String text, String? link)? buttonBanner,
+    TResult? Function(String text)? titleBanner,
+    TResult? Function(String text)? markdownBanner,
+    TResult? Function(List<SliderItem> images)? sliderBanner,
   }) {
-    return slider?.call(images);
+    return sliderBanner?.call(images);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? image,
-    TResult Function(String text, String? link)? button,
-    TResult Function(String text)? title,
-    TResult Function(String text)? markdown,
-    TResult Function(List<SliderItem> images)? slider,
+    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(String text, String? link)? buttonBanner,
+    TResult Function(String text)? titleBanner,
+    TResult Function(String text)? markdownBanner,
+    TResult Function(List<SliderItem> images)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (slider != null) {
-      return slider(images);
+    if (sliderBanner != null) {
+      return sliderBanner(images);
     }
     return orElse();
   }
@@ -911,59 +929,61 @@ class _$Slider implements Slider {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Image value) image,
-    required TResult Function(Button value) button,
-    required TResult Function(Title value) title,
-    required TResult Function(Markdown value) markdown,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ImageBanner value) imageBanner,
+    required TResult Function(ButtonBanner value) buttonBanner,
+    required TResult Function(TitleBanner value) titleBanner,
+    required TResult Function(MarkdownBanner value) markdownBanner,
+    required TResult Function(SliderBanner value) sliderBanner,
   }) {
-    return slider(this);
+    return sliderBanner(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Image value)? image,
-    TResult? Function(Button value)? button,
-    TResult? Function(Title value)? title,
-    TResult? Function(Markdown value)? markdown,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ImageBanner value)? imageBanner,
+    TResult? Function(ButtonBanner value)? buttonBanner,
+    TResult? Function(TitleBanner value)? titleBanner,
+    TResult? Function(MarkdownBanner value)? markdownBanner,
+    TResult? Function(SliderBanner value)? sliderBanner,
   }) {
-    return slider?.call(this);
+    return sliderBanner?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Image value)? image,
-    TResult Function(Button value)? button,
-    TResult Function(Title value)? title,
-    TResult Function(Markdown value)? markdown,
-    TResult Function(Slider value)? slider,
+    TResult Function(ImageBanner value)? imageBanner,
+    TResult Function(ButtonBanner value)? buttonBanner,
+    TResult Function(TitleBanner value)? titleBanner,
+    TResult Function(MarkdownBanner value)? markdownBanner,
+    TResult Function(SliderBanner value)? sliderBanner,
     required TResult orElse(),
   }) {
-    if (slider != null) {
-      return slider(this);
+    if (sliderBanner != null) {
+      return sliderBanner(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SliderToJson(
+    return _$$SliderBannerToJson(
       this,
     );
   }
 }
 
-abstract class Slider implements ShowCaseBanner {
-  const factory Slider({required final List<SliderItem> images}) = _$Slider;
+abstract class SliderBanner implements ShowCaseBanner {
+  const factory SliderBanner({required final List<SliderItem> images}) =
+      _$SliderBanner;
 
-  factory Slider.fromJson(Map<String, dynamic> json) = _$Slider.fromJson;
+  factory SliderBanner.fromJson(Map<String, dynamic> json) =
+      _$SliderBanner.fromJson;
 
   List<SliderItem> get images;
   @JsonKey(ignore: true)
-  _$$SliderCopyWith<_$Slider> get copyWith =>
+  _$$SliderBannerCopyWith<_$SliderBanner> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

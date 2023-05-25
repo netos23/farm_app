@@ -11,27 +11,27 @@ part 'banner.g.dart';
 )
 sealed class ShowCaseBanner with _$ShowCaseBanner {
 
-  const factory ShowCaseBanner.image({
+  const factory ShowCaseBanner.imageBanner({
     required String imageUrl,
     String? link,
-  }) = Image;
+  }) = ImageBanner;
 
-  const factory ShowCaseBanner.button({
+  const factory ShowCaseBanner.buttonBanner({
     required String text,
     String? link,
-  }) = Button;
+  }) = ButtonBanner;
 
-  const factory ShowCaseBanner.title({
+  const factory ShowCaseBanner.titleBanner({
     required String text,
-  }) = Title;
+  }) = TitleBanner;
 
-  const factory ShowCaseBanner.markdown({
+  const factory ShowCaseBanner.markdownBanner({
     required String text,
-  }) = Markdown;
+  }) = MarkdownBanner;
 
-  const factory ShowCaseBanner.slider({
+  const factory ShowCaseBanner.sliderBanner({
     required List<SliderItem> images,
-  }) = Slider;
+  }) = SliderBanner;
 
   factory ShowCaseBanner.fromJson(Map<String, dynamic> json) => _$ShowCaseBannerFromJson(json);
 }

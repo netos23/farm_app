@@ -6,59 +6,68 @@ part of 'banner.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$Image _$$ImageFromJson(Map<String, dynamic> json) => _$Image(
+_$ImageBanner _$$ImageBannerFromJson(Map<String, dynamic> json) =>
+    _$ImageBanner(
       imageUrl: json['imageUrl'] as String,
       link: json['link'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$ImageToJson(_$Image instance) => <String, dynamic>{
+Map<String, dynamic> _$$ImageBannerToJson(_$ImageBanner instance) =>
+    <String, dynamic>{
       'imageUrl': instance.imageUrl,
       'link': instance.link,
       'type': instance.$type,
     };
 
-_$Button _$$ButtonFromJson(Map<String, dynamic> json) => _$Button(
+_$ButtonBanner _$$ButtonBannerFromJson(Map<String, dynamic> json) =>
+    _$ButtonBanner(
       text: json['text'] as String,
       link: json['link'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$ButtonToJson(_$Button instance) => <String, dynamic>{
+Map<String, dynamic> _$$ButtonBannerToJson(_$ButtonBanner instance) =>
+    <String, dynamic>{
       'text': instance.text,
       'link': instance.link,
       'type': instance.$type,
     };
 
-_$Title _$$TitleFromJson(Map<String, dynamic> json) => _$Title(
+_$TitleBanner _$$TitleBannerFromJson(Map<String, dynamic> json) =>
+    _$TitleBanner(
       text: json['text'] as String,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$TitleToJson(_$Title instance) => <String, dynamic>{
-      'text': instance.text,
-      'type': instance.$type,
-    };
-
-_$Markdown _$$MarkdownFromJson(Map<String, dynamic> json) => _$Markdown(
-      text: json['text'] as String,
-      $type: json['type'] as String?,
-    );
-
-Map<String, dynamic> _$$MarkdownToJson(_$Markdown instance) =>
+Map<String, dynamic> _$$TitleBannerToJson(_$TitleBanner instance) =>
     <String, dynamic>{
       'text': instance.text,
       'type': instance.$type,
     };
 
-_$Slider _$$SliderFromJson(Map<String, dynamic> json) => _$Slider(
+_$MarkdownBanner _$$MarkdownBannerFromJson(Map<String, dynamic> json) =>
+    _$MarkdownBanner(
+      text: json['text'] as String,
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$MarkdownBannerToJson(_$MarkdownBanner instance) =>
+    <String, dynamic>{
+      'text': instance.text,
+      'type': instance.$type,
+    };
+
+_$SliderBanner _$$SliderBannerFromJson(Map<String, dynamic> json) =>
+    _$SliderBanner(
       images: (json['images'] as List<dynamic>)
           .map((e) => SliderItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$SliderToJson(_$Slider instance) => <String, dynamic>{
+Map<String, dynamic> _$$SliderBannerToJson(_$SliderBanner instance) =>
+    <String, dynamic>{
       'images': instance.images,
       'type': instance.$type,
     };
