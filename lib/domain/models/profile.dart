@@ -12,7 +12,7 @@ class Profile with _$Profile {
     String? secondName,
     String? birthDate,
     int? gender,
-    int? phone,
+    String? phone,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

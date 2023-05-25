@@ -82,12 +82,12 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AuthCodeRoute.name: (routeData) {
-      final args = routeData.argsAs<AuthCodeRouteArgs>(
-          orElse: () => const AuthCodeRouteArgs());
+      final args = routeData.argsAs<AuthCodeRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AuthCodePageWidget(
           key: args.key,
+          email: args.email,
           wmFactory: args.wmFactory,
         ),
       );
@@ -295,7 +295,7 @@ class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
     WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
             BuildContext)
         wmFactory = defaultRegisterPageWidgetModelFactory,
-    List<PageRouteInfo>? children,
+    List<PageRouteInfo>? children,  String? email,
   }) : super(
           RegisterRoute.name,
           args: RegisterRouteArgs(
@@ -374,6 +374,7 @@ class ShowCaseRouteArgs {
 class AuthCodeRoute extends PageRouteInfo<AuthCodeRouteArgs> {
   AuthCodeRoute({
     Key? key,
+    required String email,
     WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
             BuildContext)
         wmFactory = defaultAuthCodePageWidgetModelFactory,
@@ -382,6 +383,7 @@ class AuthCodeRoute extends PageRouteInfo<AuthCodeRouteArgs> {
           AuthCodeRoute.name,
           args: AuthCodeRouteArgs(
             key: key,
+            email: email,
             wmFactory: wmFactory,
           ),
           initialChildren: children,
@@ -396,17 +398,20 @@ class AuthCodeRoute extends PageRouteInfo<AuthCodeRouteArgs> {
 class AuthCodeRouteArgs {
   const AuthCodeRouteArgs({
     this.key,
+    required this.email,
     this.wmFactory = defaultAuthCodePageWidgetModelFactory,
   });
 
   final Key? key;
+
+  final String email;
 
   final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
       BuildContext) wmFactory;
 
   @override
   String toString() {
-    return 'AuthCodeRouteArgs{key: $key, wmFactory: $wmFactory}';
+    return 'AuthCodeRouteArgs{key: $key, email: $email, wmFactory: $wmFactory}';
   }
 }
 

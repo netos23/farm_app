@@ -23,7 +23,7 @@ class AppComponents {
 
   Future<void> init() async {
     dio.options
-      ..baseUrl = 'https://690a-94-25-60-188.ngrok-free.app/'
+      ..baseUrl = 'http://85.193.85.188:8000/'
       ..connectTimeout = timeout
       ..receiveTimeout = timeout
       ..sendTimeout = timeout;
