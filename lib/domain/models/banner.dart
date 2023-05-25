@@ -9,31 +9,31 @@ part 'banner.g.dart';
   toJson: true,
   unionKey: "type",
 )
-sealed class Banner with _$Banner {
+sealed class ShowCaseBanner with _$ShowCaseBanner {
 
-  const factory Banner.image({
+  const factory ShowCaseBanner.image({
     required String imageUrl,
     String? link,
   }) = Image;
 
-  const factory Banner.button({
+  const factory ShowCaseBanner.button({
     required String text,
     String? link,
   }) = Button;
 
-  const factory Banner.title({
+  const factory ShowCaseBanner.title({
     required String text,
   }) = Title;
 
-  const factory Banner.markdown({
+  const factory ShowCaseBanner.markdown({
     required String text,
   }) = Markdown;
 
-  const factory Banner.slider({
+  const factory ShowCaseBanner.slider({
     required List<SliderItem> images,
   }) = Slider;
 
-  factory Banner.fromJson(Map<String, dynamic> json) => _$BannerFromJson(json);
+  factory ShowCaseBanner.fromJson(Map<String, dynamic> json) => _$ShowCaseBannerFromJson(json);
 }
 
 

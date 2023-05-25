@@ -6,6 +6,7 @@ import 'package:farm_app/pages/catalog_page/catalog_page.dart';
 import 'package:farm_app/pages/home_page/home_page.dart';
 import 'package:farm_app/pages/profile_page/proffile_page.dart';
 import 'package:farm_app/pages/register_page/register_page.dart';
+import 'package:farm_app/pages/show_case_page/show_case_page.dart';
 import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';

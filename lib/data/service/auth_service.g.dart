@@ -23,7 +23,8 @@ class _AuthService implements AuthService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
@@ -44,7 +45,8 @@ class _AuthService implements AuthService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AuthEmailPart2Response>(Options(
       method: 'POST',
@@ -67,7 +69,8 @@ class _AuthService implements AuthService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<Profile>(Options(
       method: 'PATCH',

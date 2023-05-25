@@ -70,6 +70,17 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ShowCaseRoute.name: (routeData) {
+      final args = routeData.argsAs<ShowCaseRouteArgs>(
+          orElse: () => const ShowCaseRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ShowCasePageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
     AuthCodeRoute.name: (routeData) {
       final args = routeData.argsAs<AuthCodeRouteArgs>(
           orElse: () => const AuthCodeRouteArgs());
@@ -314,6 +325,47 @@ class RegisterRouteArgs {
   @override
   String toString() {
     return 'RegisterRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [ShowCasePageWidget]
+class ShowCaseRoute extends PageRouteInfo<ShowCaseRouteArgs> {
+  ShowCaseRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultShowCasePageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ShowCaseRoute.name,
+          args: ShowCaseRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ShowCaseRoute';
+
+  static const PageInfo<ShowCaseRouteArgs> page =
+      PageInfo<ShowCaseRouteArgs>(name);
+}
+
+class ShowCaseRouteArgs {
+  const ShowCaseRouteArgs({
+    this.key,
+    this.wmFactory = defaultShowCasePageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'ShowCaseRouteArgs{key: $key, wmFactory: $wmFactory}';
   }
 }
 

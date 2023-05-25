@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Banner _$BannerFromJson(Map<String, dynamic> json) {
+ShowCaseBanner _$ShowCaseBannerFromJson(Map<String, dynamic> json) {
   switch (json['type']) {
     case 'image':
       return Image.fromJson(json);
@@ -28,13 +28,13 @@ Banner _$BannerFromJson(Map<String, dynamic> json) {
       return Slider.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json, 'type', 'Banner', 'Invalid union type "${json['type']}"!');
+      throw CheckedFromJsonException(json, 'type', 'ShowCaseBanner',
+          'Invalid union type "${json['type']}"!');
   }
 }
 
 /// @nodoc
-mixin _$Banner {
+mixin _$ShowCaseBanner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String imageUrl, String? link) image,
@@ -95,15 +95,16 @@ mixin _$Banner {
 }
 
 /// @nodoc
-abstract class $BannerCopyWith<$Res> {
-  factory $BannerCopyWith(Banner value, $Res Function(Banner) then) =
-      _$BannerCopyWithImpl<$Res, Banner>;
+abstract class $ShowCaseBannerCopyWith<$Res> {
+  factory $ShowCaseBannerCopyWith(
+          ShowCaseBanner value, $Res Function(ShowCaseBanner) then) =
+      _$ShowCaseBannerCopyWithImpl<$Res, ShowCaseBanner>;
 }
 
 /// @nodoc
-class _$BannerCopyWithImpl<$Res, $Val extends Banner>
-    implements $BannerCopyWith<$Res> {
-  _$BannerCopyWithImpl(this._value, this._then);
+class _$ShowCaseBannerCopyWithImpl<$Res, $Val extends ShowCaseBanner>
+    implements $ShowCaseBannerCopyWith<$Res> {
+  _$ShowCaseBannerCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -120,7 +121,8 @@ abstract class _$$ImageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ImageCopyWithImpl<$Res> extends _$BannerCopyWithImpl<$Res, _$Image>
+class __$$ImageCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Image>
     implements _$$ImageCopyWith<$Res> {
   __$$ImageCopyWithImpl(_$Image _value, $Res Function(_$Image) _then)
       : super(_value, _then);
@@ -162,7 +164,7 @@ class _$Image implements Image {
 
   @override
   String toString() {
-    return 'Banner.image(imageUrl: $imageUrl, link: $link)';
+    return 'ShowCaseBanner.image(imageUrl: $imageUrl, link: $link)';
   }
 
   @override
@@ -273,7 +275,7 @@ class _$Image implements Image {
   }
 }
 
-abstract class Image implements Banner {
+abstract class Image implements ShowCaseBanner {
   const factory Image({required final String imageUrl, final String? link}) =
       _$Image;
 
@@ -294,7 +296,8 @@ abstract class _$$ButtonCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ButtonCopyWithImpl<$Res> extends _$BannerCopyWithImpl<$Res, _$Button>
+class __$$ButtonCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Button>
     implements _$$ButtonCopyWith<$Res> {
   __$$ButtonCopyWithImpl(_$Button _value, $Res Function(_$Button) _then)
       : super(_value, _then);
@@ -337,7 +340,7 @@ class _$Button implements Button {
 
   @override
   String toString() {
-    return 'Banner.button(text: $text, link: $link)';
+    return 'ShowCaseBanner.button(text: $text, link: $link)';
   }
 
   @override
@@ -447,7 +450,7 @@ class _$Button implements Button {
   }
 }
 
-abstract class Button implements Banner {
+abstract class Button implements ShowCaseBanner {
   const factory Button({required final String text, final String? link}) =
       _$Button;
 
@@ -469,7 +472,8 @@ abstract class _$$TitleCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$TitleCopyWithImpl<$Res> extends _$BannerCopyWithImpl<$Res, _$Title>
+class __$$TitleCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Title>
     implements _$$TitleCopyWith<$Res> {
   __$$TitleCopyWithImpl(_$Title _value, $Res Function(_$Title) _then)
       : super(_value, _then);
@@ -504,7 +508,7 @@ class _$Title implements Title {
 
   @override
   String toString() {
-    return 'Banner.title(text: $text)';
+    return 'ShowCaseBanner.title(text: $text)';
   }
 
   @override
@@ -613,7 +617,7 @@ class _$Title implements Title {
   }
 }
 
-abstract class Title implements Banner {
+abstract class Title implements ShowCaseBanner {
   const factory Title({required final String text}) = _$Title;
 
   factory Title.fromJson(Map<String, dynamic> json) = _$Title.fromJson;
@@ -634,7 +638,7 @@ abstract class _$$MarkdownCopyWith<$Res> {
 
 /// @nodoc
 class __$$MarkdownCopyWithImpl<$Res>
-    extends _$BannerCopyWithImpl<$Res, _$Markdown>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Markdown>
     implements _$$MarkdownCopyWith<$Res> {
   __$$MarkdownCopyWithImpl(_$Markdown _value, $Res Function(_$Markdown) _then)
       : super(_value, _then);
@@ -670,7 +674,7 @@ class _$Markdown implements Markdown {
 
   @override
   String toString() {
-    return 'Banner.markdown(text: $text)';
+    return 'ShowCaseBanner.markdown(text: $text)';
   }
 
   @override
@@ -779,7 +783,7 @@ class _$Markdown implements Markdown {
   }
 }
 
-abstract class Markdown implements Banner {
+abstract class Markdown implements ShowCaseBanner {
   const factory Markdown({required final String text}) = _$Markdown;
 
   factory Markdown.fromJson(Map<String, dynamic> json) = _$Markdown.fromJson;
@@ -799,7 +803,8 @@ abstract class _$$SliderCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SliderCopyWithImpl<$Res> extends _$BannerCopyWithImpl<$Res, _$Slider>
+class __$$SliderCopyWithImpl<$Res>
+    extends _$ShowCaseBannerCopyWithImpl<$Res, _$Slider>
     implements _$$SliderCopyWith<$Res> {
   __$$SliderCopyWithImpl(_$Slider _value, $Res Function(_$Slider) _then)
       : super(_value, _then);
@@ -841,7 +846,7 @@ class _$Slider implements Slider {
 
   @override
   String toString() {
-    return 'Banner.slider(images: $images)';
+    return 'ShowCaseBanner.slider(images: $images)';
   }
 
   @override
@@ -951,7 +956,7 @@ class _$Slider implements Slider {
   }
 }
 
-abstract class Slider implements Banner {
+abstract class Slider implements ShowCaseBanner {
   const factory Slider({required final List<SliderItem> images}) = _$Slider;
 
   factory Slider.fromJson(Map<String, dynamic> json) = _$Slider.fromJson;

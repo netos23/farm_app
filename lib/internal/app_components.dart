@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:farm_app/data/interseptor.dart';
 import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/data/repository/token_ropository.dart';
+import 'package:farm_app/data/service/banner_service.dart';
 import 'package:farm_app/data/service/catalog_service.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -17,6 +18,7 @@ class AppComponents {
   final Dio dio = Dio();
   final TokenRepository tokenRepository = TokenRepository();
   late final AuthService authService = AuthService(dio);
+  late final BannerService bannerService = BannerService(dio);
   late final CatalogService catalogService = CatalogService(dio);
 
   Future<void> init() async {

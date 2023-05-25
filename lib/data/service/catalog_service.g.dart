@@ -24,7 +24,8 @@ class _CatalogService implements CatalogService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<CatalogCategoriesResponse>(Options(
       method: 'GET',
@@ -48,7 +49,8 @@ class _CatalogService implements CatalogService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ProductDetailResponse>(Options(
       method: 'POST',
@@ -72,7 +74,8 @@ class _CatalogService implements CatalogService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<CatalogProductsResponse>(Options(
       method: 'POST',
@@ -96,7 +99,8 @@ class _CatalogService implements CatalogService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<SortTypesResponse>(Options(
       method: 'GET',
@@ -119,7 +123,8 @@ class _CatalogService implements CatalogService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<FiltersResponse>(Options(
       method: 'POST',
@@ -143,7 +148,8 @@ class _CatalogService implements CatalogService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AutocompleteResponse>(Options(
       method: 'POST',
