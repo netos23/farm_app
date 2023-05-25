@@ -30,33 +30,36 @@ class _MobilePage extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         CatalogTab(),
+        ShowCaseTab(),
+        BasketTab(),
+        FavoritesTab(),
         UserProfileTab(),
       ],
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButtonBuilder: (_, tabsRouter) {
-        return Container(
-          height: 50,
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          clipBehavior: Clip.hardEdge,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          child: NavigationBar(
-            selectedIndex: tabsRouter.activeIndex,
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            onDestinationSelected: tabsRouter.setActiveIndex,
-            destinations: const [
-              NavigationDestination(
-                label: 'Соревнования',
-                icon: Icon(
-                  Icons.emoji_events_outlined,
-                ),
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return NavigationBar(
+          selectedIndex: tabsRouter.activeIndex,
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+          onDestinationSelected: tabsRouter.setActiveIndex,
+          destinations: const [
+            NavigationDestination(
+              label: 'Соревнования',
+              icon: Icon(
+                Icons.emoji_events_outlined,
               ),
-              NavigationDestination(
-                label: 'Профиль',
-                icon: Icon(Icons.person_outline),
-              ),
-            ],
-          ),
+            ),
+            NavigationDestination(
+              label: 'Календарь',
+              icon: Icon(Icons.event_outlined),
+            ),
+            NavigationDestination(
+              label: 'Рейтинг',
+              icon: Icon(Icons.star_outline),
+            ),
+            NavigationDestination(
+              label: 'Профиль',
+              icon: Icon(Icons.person_outline),
+            ),
+          ],
         );
       },
     );
