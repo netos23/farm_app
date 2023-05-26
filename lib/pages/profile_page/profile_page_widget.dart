@@ -34,6 +34,7 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
             ],
           ),
           body: StreamBuilder<Profile?>(
+            initialData: wm.profileUseCase.profile.valueOrNull,
             stream: wm.profileUseCase.profile.stream,
             builder: (context, profileSnapshot) {
               final isLogin = profileSnapshot.hasData &&
@@ -101,7 +102,9 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                             }
                           },
                           child: Center(
-                            child: !isLogin ? Text(localizations.login) : Text(localizations.exit),
+                            child: !isLogin
+                                ? Text(localizations.login)
+                                : Text(localizations.exit),
                           ),
                         ),
                       ),

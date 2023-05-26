@@ -25,6 +25,8 @@ class ProfileUseCase implements LifecycleComponent{
   void _listenTokenStatus(){
     if(profile.valueOrNull != null && !repository.auth){
       profile.add(null);
+    }else{
+      loadProfile();
     }
   }
 

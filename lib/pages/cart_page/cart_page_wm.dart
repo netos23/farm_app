@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/repository/dadata_repository.dart';
@@ -48,21 +50,25 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
 
   CartPageWidgetModel(CartPageModel model) : super(model);
 
+  StreamSubscription? sub;
+
   @override
   void initWidgetModel() {
     super.initWidgetModel();
     getCity();
     loadCart();
-    cartUseCase.cart.stream.listen((event) {
+    sub = cartUseCase.cart.stream.listen((event) {
       cartState.content(event);
     });
   }
 
   @override
   void dispose() {
-    super.dispose();
+    sub?.cancel();
     cartState.dispose();
     geoState.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -100,6 +106,4 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
 
   @override
   final geoState = EntityStateNotifier();
-
-
 }

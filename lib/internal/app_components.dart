@@ -40,6 +40,7 @@ class AppComponents {
   );
 
   Future<void> init() async {
+
     dio.options
       ..baseUrl = 'https://farm.fbtw.ru/'
       ..connectTimeout = timeout
@@ -55,5 +56,8 @@ class AppComponents {
         dio: dio,
       ),
     );
+
+    profileUseCase.init();
+    cartUseCase.init();
   }
 }

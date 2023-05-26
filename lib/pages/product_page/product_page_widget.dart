@@ -210,8 +210,7 @@ class _BsketButton extends StatelessWidget {
             onPressed: () {
               if (!profileUseCase.repository.auth) {
                 showModalBottomSheet(
-                  context: context,
-                  useRootNavigator: true,
+                  context: context.router.root.navigatorKey.currentContext!,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(25),
@@ -287,9 +286,6 @@ class _BsketButton extends StatelessWidget {
     );
   }
 }
-
-
-
 
 class _ProductPriview extends StatelessWidget {
   const _ProductPriview({

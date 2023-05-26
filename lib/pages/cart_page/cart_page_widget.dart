@@ -80,22 +80,8 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
             );
           }
 
-          return GridView.builder(
+          return ListView.builder(
             itemCount: products.length,
-            gridDelegate: kIsWeb
-                ? const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 300,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: 12.5 / 18,
-                  )
-                : const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: 11.5 / 18,
-                  ),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
               return ProductCard(
                 product: products[index].product,

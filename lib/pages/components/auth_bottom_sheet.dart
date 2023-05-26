@@ -34,6 +34,7 @@ class AuthBottomSheet extends StatelessWidget {
           Expanded(
             child: FilledButton(
               onPressed: () {
+                context.router.root.pop();
                 context.router.navigate(AuthRoute());
               },
               child: Center(
