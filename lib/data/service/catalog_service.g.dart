@@ -19,27 +19,29 @@ class _CatalogService implements CatalogService {
   String? baseUrl;
 
   @override
-  Future<CatalogCategoriesResponse> getCategories(
+  Future<List<Category>> getCategories(
       {required CatalogCategoriesRequest request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CatalogCategoriesResponse>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Category>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/catalog/categories',
+              '/catalog/categories/',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CatalogCategoriesResponse.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => Category.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -69,10 +71,17 @@ class _CatalogService implements CatalogService {
   }
 
   @override
-  Future<CatalogProductsResponse> getProducts(
-      {required CatalogProductsRequest request}) async {
+  Future<CatalogProductsResponse> getProducts({
+    int? page,
+    int? size,
+    required CatalogProductsRequest request,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
@@ -84,7 +93,7 @@ class _CatalogService implements CatalogService {
     )
             .compose(
               _dio.options,
-              '/catalog/products',
+              '/catalog/products/',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -94,27 +103,32 @@ class _CatalogService implements CatalogService {
   }
 
   @override
-  Future<SortTypesResponse> getSortTypes(
-      {required SortTypesRequest request}) async {
+  Future<ProductDetail> getProduct({
+    int? productId,
+    String? cityFias,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'product_id': productId,
+      r'city_fias': cityFias,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(request.toJson());
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<SortTypesResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<ProductDetail>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/catalog/sort_types',
+              '/catalog/product/',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = SortTypesResponse.fromJson(_result.data!);
+    final value = ProductDetail.fromJson(_result.data!);
     return value;
   }
 

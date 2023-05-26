@@ -26,6 +26,25 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ProductRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<ProductRouteArgs>(
+          orElse: () => ProductRouteArgs(
+                heroTag: queryParams.optString('heroTag'),
+                productId: pathParams.getInt('productId'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProductPageWidget(
+          key: args.key,
+          heroTag: args.heroTag,
+          product: args.product,
+          productId: args.productId,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
     HomeRoute.name: (routeData) {
       final args =
           routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
@@ -49,12 +68,43 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CatalogRoute.name: (routeData) {
+      final queryParams = routeData.queryParams;
       final args = routeData.argsAs<CatalogRouteArgs>(
-          orElse: () => const CatalogRouteArgs());
+          orElse: () => CatalogRouteArgs(
+                title: queryParams.optString('title'),
+                categotyId: queryParams.optInt('categotyId'),
+                productIds: queryParams.get(
+                  'productIds',
+                  const [],
+                ),
+                search: queryParams.optString('search'),
+              ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: CatalogPageWidget(
           key: args.key,
+          title: args.title,
+          categotyId: args.categotyId,
+          productIds: args.productIds,
+          search: args.search,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    CategoryRoute.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<CategoryRouteArgs>(
+          orElse: () => CategoryRouteArgs(
+                title: queryParams.optString('title'),
+                categoryId: queryParams.optInt('categoryId'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CategoryPageWidget(
+          key: args.key,
+          category: args.category,
+          title: args.title,
+          categoryId: args.categoryId,
           wmFactory: args.wmFactory,
         ),
       );
@@ -89,6 +139,28 @@ abstract class _$AppRouter extends RootStackRouter {
         child: AuthCodePageWidget(
           key: args.key,
           email: args.email,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    CartRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<CartRouteArgs>(orElse: () => const CartRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CartPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    FarmShowcaseRoute.name: (routeData) {
+      final args = routeData.argsAs<FarmShowcaseRouteArgs>(
+          orElse: () => const FarmShowcaseRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: FarmShowcasePageWidget(
+          key: args.key,
           wmFactory: args.wmFactory,
         ),
       );
@@ -164,6 +236,64 @@ class ProfileRouteArgs {
   @override
   String toString() {
     return 'ProfileRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [ProductPageWidget]
+class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
+  ProductRoute({
+    Key? key,
+    String? heroTag,
+    Product? product,
+    required int productId,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultProductPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductRoute.name,
+          args: ProductRouteArgs(
+            key: key,
+            heroTag: heroTag,
+            product: product,
+            productId: productId,
+            wmFactory: wmFactory,
+          ),
+          rawPathParams: {'productId': productId},
+          rawQueryParams: {'heroTag': heroTag},
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductRoute';
+
+  static const PageInfo<ProductRouteArgs> page =
+      PageInfo<ProductRouteArgs>(name);
+}
+
+class ProductRouteArgs {
+  const ProductRouteArgs({
+    this.key,
+    this.heroTag,
+    this.product,
+    required this.productId,
+    this.wmFactory = defaultProductPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final String? heroTag;
+
+  final Product? product;
+
+  final int productId;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'ProductRouteArgs{key: $key, heroTag: $heroTag, product: $product, productId: $productId, wmFactory: $wmFactory}';
   }
 }
 
@@ -252,6 +382,10 @@ class AuthRouteArgs {
 class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
   CatalogRoute({
     Key? key,
+    String? title,
+    int? categotyId,
+    List<int> productIds = const [],
+    String? search,
     WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
             BuildContext)
         wmFactory = defaultCatalogPageWidgetModelFactory,
@@ -260,8 +394,18 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
           CatalogRoute.name,
           args: CatalogRouteArgs(
             key: key,
+            title: title,
+            categotyId: categotyId,
+            productIds: productIds,
+            search: search,
             wmFactory: wmFactory,
           ),
+          rawQueryParams: {
+            'title': title,
+            'categotyId': categotyId,
+            'productIds': productIds,
+            'search': search,
+          },
           initialChildren: children,
         );
 
@@ -274,17 +418,89 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
 class CatalogRouteArgs {
   const CatalogRouteArgs({
     this.key,
+    this.title,
+    this.categotyId,
+    this.productIds = const [],
+    this.search,
     this.wmFactory = defaultCatalogPageWidgetModelFactory,
   });
 
   final Key? key;
+
+  final String? title;
+
+  final int? categotyId;
+
+  final List<int> productIds;
+
+  final String? search;
 
   final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
       BuildContext) wmFactory;
 
   @override
   String toString() {
-    return 'CatalogRouteArgs{key: $key, wmFactory: $wmFactory}';
+    return 'CatalogRouteArgs{key: $key, title: $title, categotyId: $categotyId, productIds: $productIds, search: $search, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [CategoryPageWidget]
+class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
+  CategoryRoute({
+    Key? key,
+    Category? category,
+    String? title,
+    int? categoryId,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultCategoryPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CategoryRoute.name,
+          args: CategoryRouteArgs(
+            key: key,
+            category: category,
+            title: title,
+            categoryId: categoryId,
+            wmFactory: wmFactory,
+          ),
+          rawQueryParams: {
+            'title': title,
+            'categoryId': categoryId,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoryRoute';
+
+  static const PageInfo<CategoryRouteArgs> page =
+      PageInfo<CategoryRouteArgs>(name);
+}
+
+class CategoryRouteArgs {
+  const CategoryRouteArgs({
+    this.key,
+    this.category,
+    this.title,
+    this.categoryId,
+    this.wmFactory = defaultCategoryPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final Category? category;
+
+  final String? title;
+
+  final int? categoryId;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'CategoryRouteArgs{key: $key, category: $category, title: $title, categoryId: $categoryId, wmFactory: $wmFactory}';
   }
 }
 
@@ -418,6 +634,87 @@ class AuthCodeRouteArgs {
   @override
   String toString() {
     return 'AuthCodeRouteArgs{key: $key, email: $email, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [CartPageWidget]
+class CartRoute extends PageRouteInfo<CartRouteArgs> {
+  CartRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultCartPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CartRoute.name,
+          args: CartRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CartRoute';
+
+  static const PageInfo<CartRouteArgs> page = PageInfo<CartRouteArgs>(name);
+}
+
+class CartRouteArgs {
+  const CartRouteArgs({
+    this.key,
+    this.wmFactory = defaultCartPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'CartRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [FarmShowcasePageWidget]
+class FarmShowcaseRoute extends PageRouteInfo<FarmShowcaseRouteArgs> {
+  FarmShowcaseRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultFarmShowcasePageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FarmShowcaseRoute.name,
+          args: FarmShowcaseRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'FarmShowcaseRoute';
+
+  static const PageInfo<FarmShowcaseRouteArgs> page =
+      PageInfo<FarmShowcaseRouteArgs>(name);
+}
+
+class FarmShowcaseRouteArgs {
+  const FarmShowcaseRouteArgs({
+    this.key,
+    this.wmFactory = defaultFarmShowcasePageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'FarmShowcaseRouteArgs{key: $key, wmFactory: $wmFactory}';
   }
 }
 

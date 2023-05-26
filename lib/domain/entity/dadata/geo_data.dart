@@ -14,8 +14,8 @@ class GeoData with _$GeoData {
     @JsonKey(name: 'city_fias') required String cityFias,
     required String name,
     required String fullName,
-    required double lat,
-    required double lon,
+    required String lat,
+    required String lon,
   }) = _GeoData;
 
   factory GeoData.fromJson(Map<String, dynamic> json) =>

@@ -5,6 +5,7 @@ import 'package:farm_app/pages/components/product_card.dart';
 import 'package:farm_app/pages/components/search_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import '../../generated/app_localizations.dart';
 import 'catalog_page_wm.dart';
 
@@ -14,23 +15,38 @@ import 'catalog_page_wm.dart';
 class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
   const CatalogPageWidget({
     Key? key,
-    this.title = 'Продукты',
+    @queryParam this.title,
+    @queryParam this.categotyId,
+    @queryParam this.productIds = const [],
+    @queryParam this.search,
     WidgetModelFactory wmFactory = defaultCatalogPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
-  final String title;
+  final String? title;
+  final int? categotyId;
+  final List<int> productIds;
+  final String? search;
 
   @override
   Widget build(ICatalogPageWidgetModel wm) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: kIsWeb,
-        title: Text(title),
-        bottom: SearchRow(
-          controller: wm.searchController,
-          onSort: wm.openSort,
-          height: 40,
-          active: true,
+        // automaticallyImplyLeading: !kIsWeb,
+        title: Text(title ?? wm.localizations.catalog),
+        centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(40),
+          child: EntityStateNotifierBuilder(
+            listenableEntityState: wm.sortState,
+            builder: (context, data) {
+              return SearchRow(
+                controller: wm.searchController,
+                onSort: wm.openSort,
+                height: 40,
+                active: data != null,
+              );
+            },
+          ),
         ),
       ),
       body: EntityStateNotifierBuilder(
@@ -75,18 +91,26 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
                     maxCrossAxisExtent: 300,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
-                    childAspectRatio: 12.5 / 18,
+                    childAspectRatio: 12.99 / 18,
                   )
                 : const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
-                    childAspectRatio:  11.5 / 18,
+                    childAspectRatio: 11 / 18,
                   ),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
+              final tag = const Uuid().v4();
               return ProductCard(
                 product: products[index],
+                favourite: index.isOdd,
+                onFavoutiteTap: () {},
+                onTap: () => wm.openProduct(
+                  product: products[index],
+                  tag: tag,
+                ),
+                tag: tag,
               );
             },
           );

@@ -21,7 +21,9 @@ CatalogProductsResponse _$CatalogProductsResponseFromJson(
 
 /// @nodoc
 mixin _$CatalogProductsResponse {
-  String get name => throw _privateConstructorUsedError;
+  List<Product> get results => throw _privateConstructorUsedError;
+  int get count => throw _privateConstructorUsedError;
+  String? get next => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,7 @@ abstract class $CatalogProductsResponseCopyWith<$Res> {
           $Res Function(CatalogProductsResponse) then) =
       _$CatalogProductsResponseCopyWithImpl<$Res, CatalogProductsResponse>;
   @useResult
-  $Res call({String name});
+  $Res call({List<Product> results, int count, String? next});
 }
 
 /// @nodoc
@@ -52,13 +54,23 @@ class _$CatalogProductsResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? results = null,
+    Object? count = null,
+    Object? next = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      results: null == results
+          ? _value.results
+          : results // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      next: freezed == next
+          ? _value.next
+          : next // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -71,7 +83,7 @@ abstract class _$$_CatalogProductsResponseCopyWith<$Res>
       __$$_CatalogProductsResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call({List<Product> results, int count, String? next});
 }
 
 /// @nodoc
@@ -86,32 +98,55 @@ class __$$_CatalogProductsResponseCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? results = null,
+    Object? count = null,
+    Object? next = freezed,
   }) {
     return _then(_$_CatalogProductsResponse(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      results: null == results
+          ? _value._results
+          : results // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      next: freezed == next
+          ? _value.next
+          : next // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable()
 class _$_CatalogProductsResponse implements _CatalogProductsResponse {
-  _$_CatalogProductsResponse({required this.name});
+  _$_CatalogProductsResponse(
+      {required final List<Product> results,
+      required this.count,
+      required this.next})
+      : _results = results;
 
   factory _$_CatalogProductsResponse.fromJson(Map<String, dynamic> json) =>
       _$$_CatalogProductsResponseFromJson(json);
 
+  final List<Product> _results;
   @override
-  final String name;
+  List<Product> get results {
+    if (_results is EqualUnmodifiableListView) return _results;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_results);
+  }
+
+  @override
+  final int count;
+  @override
+  final String? next;
 
   @override
   String toString() {
-    return 'CatalogProductsResponse(name: $name)';
+    return 'CatalogProductsResponse(results: $results, count: $count, next: $next)';
   }
 
   @override
@@ -119,12 +154,15 @@ class _$_CatalogProductsResponse implements _CatalogProductsResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CatalogProductsResponse &&
-            (identical(other.name, name) || other.name == name));
+            const DeepCollectionEquality().equals(other._results, _results) &&
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.next, next) || other.next == next));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_results), count, next);
 
   @JsonKey(ignore: true)
   @override
@@ -143,14 +181,20 @@ class _$_CatalogProductsResponse implements _CatalogProductsResponse {
 }
 
 abstract class _CatalogProductsResponse implements CatalogProductsResponse {
-  factory _CatalogProductsResponse({required final String name}) =
-      _$_CatalogProductsResponse;
+  factory _CatalogProductsResponse(
+      {required final List<Product> results,
+      required final int count,
+      required final String? next}) = _$_CatalogProductsResponse;
 
   factory _CatalogProductsResponse.fromJson(Map<String, dynamic> json) =
       _$_CatalogProductsResponse.fromJson;
 
   @override
-  String get name;
+  List<Product> get results;
+  @override
+  int get count;
+  @override
+  String? get next;
   @override
   @JsonKey(ignore: true)
   _$$_CatalogProductsResponseCopyWith<_$_CatalogProductsResponse>

@@ -1,11 +1,15 @@
 import 'package:dadata_suggestions/dadata_suggestions.dart';
 import 'package:dio/dio.dart';
 import 'package:farm_app/data/interseptor.dart';
+import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/data/repository/dadata_repository.dart';
 import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/data/repository/token_ropository.dart';
 import 'package:farm_app/data/service/banner_service.dart';
+import 'package:farm_app/data/service/cart_service.dart';
 import 'package:farm_app/data/service/catalog_service.dart';
+import 'package:farm_app/domain/use_case/cart_use_case.dart';
+import 'package:farm_app/domain/use_case/profile_use_case.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const timeout = Duration(seconds: 30);
@@ -17,14 +21,20 @@ class AppComponents {
 
   AppComponents._internal();
 
-  final tokenDaData = '603bb84c98131f6cc1c0a20dd1a34f349307b08';
+  final tokenDaData = '6cbb9f2ecf9886a6f52e1bfb7c78ef3e8e05a9ed';
   final Dio dio = Dio();
   final TokenRepository tokenRepository = TokenRepository();
   late final AuthService authService = AuthService(dio);
+  late final CartService _cartService = CartService(dio);
   late final BannerService bannerService = BannerService(dio);
   late final CatalogService catalogService = CatalogService(dio);
   late final GeolocationDadataRepository dadataRepository =
-      GeolocationDadataRepository(DadataSuggestions(tokenDaData));
+      GeolocationDadataRepository(
+    DadataSuggestions(tokenDaData),
+  );
+  late final ProfileUseCase profileUseCase =
+      ProfileUseCase(tokenRepository, AuthRepository(authService));
+  late final CartUseCase cartUseCase = CartUseCase(_cartService);
 
   Future<void> init() async {
     dio.options

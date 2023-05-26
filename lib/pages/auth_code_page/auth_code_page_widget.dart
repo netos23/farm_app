@@ -58,6 +58,7 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 54,
+        centerTitle: true,
         title: Text(
           localizations.enter,
         ),
@@ -65,6 +66,7 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Pinput(

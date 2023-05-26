@@ -31,11 +31,14 @@ class ProfileUseCase implements LifecycleComponent{
 
   Future<void> logout() async {
     await repository.deleteTokens();
+    profile.add(null);
   }
 
   Future<void> deleteAccount() async {
     await authRepository.deleteUser();
     await repository.deleteTokens();
+    profile.add(null);
+
   }
 
   Future<void> loadProfile() async {

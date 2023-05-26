@@ -83,12 +83,12 @@ Map<String, dynamic> _$$SliderBannerToJson(_$SliderBanner instance) =>
 
 _$_SliderItem _$$_SliderItemFromJson(Map<String, dynamic> json) =>
     _$_SliderItem(
-      imageUrl: json['imageUrl'] as String,
+      url: json['url'] as String,
       link: json['link'] as String?,
     );
 
 Map<String, dynamic> _$$_SliderItemToJson(_$_SliderItem instance) =>
     <String, dynamic>{
-      'imageUrl': instance.imageUrl,
+      'url': instance.url,
       'link': instance.link,
     };

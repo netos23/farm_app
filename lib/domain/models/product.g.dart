@@ -7,31 +7,32 @@ part of 'product.dart';
 // **************************************************************************
 
 _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
-      name: json['name'] as String,
+      id: json['id'] as int,
       picture: json['picture'] as String,
-      description: json['description'] as String,
       badges: (json['badges'] as List<dynamic>)
           .map((e) => Badge.fromJson(e as Map<String, dynamic>))
           .toList(),
-      available: json['available'] as bool,
-      cityFias: json['cityFias'] as String?,
+      price: Decimal.fromJson(json['price'] as String),
+      oldPrice: json['old_price'] == null
+          ? null
+          : Decimal.fromJson(json['old_price'] as String),
+      name: json['name'] as String,
+      article: json['article'] as String?,
+      rating: (json['rating'] as num?)?.toDouble(),
+      reviewsCount: json['reviews_count'] as int?,
+      cityFias: json['city_fias'] as String?,
     );
 
-Map<String, dynamic> _$$_ProductToJson(_$_Product instance) {
-  final val = <String, dynamic>{
-    'name': instance.name,
-    'picture': instance.picture,
-    'description': instance.description,
-    'badges': instance.badges.map((e) => e.toJson()).toList(),
-    'available': instance.available,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('cityFias', instance.cityFias);
-  return val;
-}
+Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'picture': instance.picture,
+      'badges': instance.badges,
+      'price': instance.price,
+      'old_price': instance.oldPrice,
+      'name': instance.name,
+      'article': instance.article,
+      'rating': instance.rating,
+      'reviews_count': instance.reviewsCount,
+      'city_fias': instance.cityFias,
+    };

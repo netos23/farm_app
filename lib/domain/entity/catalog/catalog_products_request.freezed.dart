@@ -21,10 +21,16 @@ CatalogProductsRequest _$CatalogProductsRequestFromJson(
 
 /// @nodoc
 mixin _$CatalogProductsRequest {
-  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'city_fias', includeIfNull: false)
+  String? get cityFias => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sort_by', includeIfNull: false)
   String? get sortBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'search', includeIfNull: false)
   String? get search => throw _privateConstructorUsedError;
-  int? get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category_ids', includeIfNull: false)
+  List<int>? get categoryIds => throw _privateConstructorUsedError;
+  @JsonKey(name: 'product_ids', includeIfNull: false)
+  List<int>? get productIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +44,17 @@ abstract class $CatalogProductsRequestCopyWith<$Res> {
           $Res Function(CatalogProductsRequest) then) =
       _$CatalogProductsRequestCopyWithImpl<$Res, CatalogProductsRequest>;
   @useResult
-  $Res call({String? name, String? sortBy, String? search, int? categoryId});
+  $Res call(
+      {@JsonKey(name: 'city_fias', includeIfNull: false)
+          String? cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false)
+          String? sortBy,
+      @JsonKey(name: 'search', includeIfNull: false)
+          String? search,
+      @JsonKey(name: 'category_ids', includeIfNull: false)
+          List<int>? categoryIds,
+      @JsonKey(name: 'product_ids', includeIfNull: false)
+          List<int>? productIds});
 }
 
 /// @nodoc
@@ -55,15 +71,16 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? cityFias = freezed,
     Object? sortBy = freezed,
     Object? search = freezed,
-    Object? categoryId = freezed,
+    Object? categoryIds = freezed,
+    Object? productIds = freezed,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      cityFias: freezed == cityFias
+          ? _value.cityFias
+          : cityFias // ignore: cast_nullable_to_non_nullable
               as String?,
       sortBy: freezed == sortBy
           ? _value.sortBy
@@ -73,10 +90,14 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
               as String?,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      categoryIds: freezed == categoryIds
+          ? _value.categoryIds
+          : categoryIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      productIds: freezed == productIds
+          ? _value.productIds
+          : productIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ) as $Val);
   }
 }
@@ -89,7 +110,17 @@ abstract class _$$_CatalogProductsRequestCopyWith<$Res>
       __$$_CatalogProductsRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name, String? sortBy, String? search, int? categoryId});
+  $Res call(
+      {@JsonKey(name: 'city_fias', includeIfNull: false)
+          String? cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false)
+          String? sortBy,
+      @JsonKey(name: 'search', includeIfNull: false)
+          String? search,
+      @JsonKey(name: 'category_ids', includeIfNull: false)
+          List<int>? categoryIds,
+      @JsonKey(name: 'product_ids', includeIfNull: false)
+          List<int>? productIds});
 }
 
 /// @nodoc
@@ -104,15 +135,16 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? cityFias = freezed,
     Object? sortBy = freezed,
     Object? search = freezed,
-    Object? categoryId = freezed,
+    Object? categoryIds = freezed,
+    Object? productIds = freezed,
   }) {
     return _then(_$_CatalogProductsRequest(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      cityFias: freezed == cityFias
+          ? _value.cityFias
+          : cityFias // ignore: cast_nullable_to_non_nullable
               as String?,
       sortBy: freezed == sortBy
           ? _value.sortBy
@@ -122,36 +154,72 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
               as String?,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      categoryIds: freezed == categoryIds
+          ? _value._categoryIds
+          : categoryIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      productIds: freezed == productIds
+          ? _value._productIds
+          : productIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable()
 class _$_CatalogProductsRequest implements _CatalogProductsRequest {
   _$_CatalogProductsRequest(
-      {this.name, this.sortBy, this.search, this.categoryId});
+      {@JsonKey(name: 'city_fias', includeIfNull: false)
+          this.cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false)
+          this.sortBy,
+      @JsonKey(name: 'search', includeIfNull: false)
+          this.search,
+      @JsonKey(name: 'category_ids', includeIfNull: false)
+          final List<int>? categoryIds,
+      @JsonKey(name: 'product_ids', includeIfNull: false)
+          final List<int>? productIds})
+      : _categoryIds = categoryIds,
+        _productIds = productIds;
 
   factory _$_CatalogProductsRequest.fromJson(Map<String, dynamic> json) =>
       _$$_CatalogProductsRequestFromJson(json);
 
   @override
-  final String? name;
+  @JsonKey(name: 'city_fias', includeIfNull: false)
+  final String? cityFias;
   @override
+  @JsonKey(name: 'sort_by', includeIfNull: false)
   final String? sortBy;
   @override
+  @JsonKey(name: 'search', includeIfNull: false)
   final String? search;
+  final List<int>? _categoryIds;
   @override
-  final int? categoryId;
+  @JsonKey(name: 'category_ids', includeIfNull: false)
+  List<int>? get categoryIds {
+    final value = _categoryIds;
+    if (value == null) return null;
+    if (_categoryIds is EqualUnmodifiableListView) return _categoryIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<int>? _productIds;
+  @override
+  @JsonKey(name: 'product_ids', includeIfNull: false)
+  List<int>? get productIds {
+    final value = _productIds;
+    if (value == null) return null;
+    if (_productIds is EqualUnmodifiableListView) return _productIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'CatalogProductsRequest(name: $name, sortBy: $sortBy, search: $search, categoryId: $categoryId)';
+    return 'CatalogProductsRequest(cityFias: $cityFias, sortBy: $sortBy, search: $search, categoryIds: $categoryIds, productIds: $productIds)';
   }
 
   @override
@@ -159,17 +227,25 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CatalogProductsRequest &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.cityFias, cityFias) ||
+                other.cityFias == cityFias) &&
             (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
             (identical(other.search, search) || other.search == search) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId));
+            const DeepCollectionEquality()
+                .equals(other._categoryIds, _categoryIds) &&
+            const DeepCollectionEquality()
+                .equals(other._productIds, _productIds));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, sortBy, search, categoryId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      cityFias,
+      sortBy,
+      search,
+      const DeepCollectionEquality().hash(_categoryIds),
+      const DeepCollectionEquality().hash(_productIds));
 
   @JsonKey(ignore: true)
   @override
@@ -188,22 +264,35 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
 
 abstract class _CatalogProductsRequest implements CatalogProductsRequest {
   factory _CatalogProductsRequest(
-      {final String? name,
-      final String? sortBy,
-      final String? search,
-      final int? categoryId}) = _$_CatalogProductsRequest;
+      {@JsonKey(name: 'city_fias', includeIfNull: false)
+          final String? cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false)
+          final String? sortBy,
+      @JsonKey(name: 'search', includeIfNull: false)
+          final String? search,
+      @JsonKey(name: 'category_ids', includeIfNull: false)
+          final List<int>? categoryIds,
+      @JsonKey(name: 'product_ids', includeIfNull: false)
+          final List<int>? productIds}) = _$_CatalogProductsRequest;
 
   factory _CatalogProductsRequest.fromJson(Map<String, dynamic> json) =
       _$_CatalogProductsRequest.fromJson;
 
   @override
-  String? get name;
+  @JsonKey(name: 'city_fias', includeIfNull: false)
+  String? get cityFias;
   @override
+  @JsonKey(name: 'sort_by', includeIfNull: false)
   String? get sortBy;
   @override
+  @JsonKey(name: 'search', includeIfNull: false)
   String? get search;
   @override
-  int? get categoryId;
+  @JsonKey(name: 'category_ids', includeIfNull: false)
+  List<int>? get categoryIds;
+  @override
+  @JsonKey(name: 'product_ids', includeIfNull: false)
+  List<int>? get productIds;
   @override
   @JsonKey(ignore: true)
   _$$_CatalogProductsRequestCopyWith<_$_CatalogProductsRequest> get copyWith =>

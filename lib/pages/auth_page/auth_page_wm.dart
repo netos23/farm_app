@@ -40,7 +40,10 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
   @override
   Future<void> sendCode({required String email}) async {
     await authRepository.emailPart1(
-      request: AuthEmailPart1Request(email: email, digits: 4),
+      request: AuthEmailPart1Request(
+        email: email,
+        digits: 4,
+      ),
     );
   }
 
@@ -63,14 +66,13 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
       if (error.response?.statusCode == 451) {
         router.push(RegisterRoute(email: emailController.text));
         context.showSnackBar(localizations.userIsNotRegistered);
-
         return;
       }
 
       throw Exception(
         error.response?.data['message'],
       );
-    } catch(e){
+    } catch (e) {
       logger.wtf(e);
     }
   }

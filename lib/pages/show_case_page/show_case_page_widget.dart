@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/domain/models/banner.dart';
 import 'package:farm_app/generated/app_localizations.dart';
+import 'package:farm_app/pages/components/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -24,12 +25,8 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
         child: EntityStateNotifierBuilder(
           listenableEntityState: wm.bannersState,
           loadingBuilder: (context, data) {
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                return Container(
-                  decoration: const BoxDecoration(),
-                );
-              },
+            return const Center(
+              child: LoadingIndicator(),
             );
           },
           builder: (context, bannersData) {
@@ -41,36 +38,39 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
               );
             }
 
-            return ListView.builder(
-              itemCount: banners.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5.0,
-                  ),
-                  child: banners[index].when(
-                    imageBanner: (imageUrl, link) => _ImageBannerWidget(
-                      image: imageUrl,
-                      link: link,
+            return RefreshIndicator.adaptive(
+              onRefresh: wm.loadBanners,
+              child: ListView.builder(
+                itemCount: banners.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5.0,
                     ),
-                    buttonBanner: (text, link) => _ButtonBannerWidget(
-                      text: text,
-                      link: link,
-                      onPressed: wm.openLink,
+                    child: banners[index].when(
+                      imageBanner: (imageUrl, link) => _ImageBannerWidget(
+                        image: imageUrl,
+                        link: link,
+                      ),
+                      buttonBanner: (text, link) => _ButtonBannerWidget(
+                        text: text,
+                        link: link,
+                        onPressed: wm.openLink,
+                      ),
+                      titleBanner: (text) => _TitleBannerWidget(
+                        text: text,
+                      ),
+                      markdownBanner: (text) => _MarkdownBannerWidget(
+                        text: text,
+                        onTap: wm.openLink,
+                      ),
+                      sliderBanner: (items) => _SliderBannerWidget(
+                        items: items,
+                      ),
                     ),
-                    titleBanner: (text) => _TitleBannerWidget(
-                      text: text,
-                    ),
-                    markdownBanner: (text) => _MarkdownBannerWidget(
-                      text: text,
-                      onTap: wm.openLink,
-                    ),
-                    sliderBanner: (items) => _SliderBannerWidget(
-                      items: items,
-                    ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             );
           },
         ),
@@ -103,6 +103,17 @@ class _ImageBannerWidget extends StatelessWidget {
           child: CachedNetworkImage(
             fit: BoxFit.fill,
             imageUrl: image,
+            progressIndicatorBuilder: (_,__,___){
+              return const Center(
+                child: LoadingIndicator(),
+              );
+            },
+            errorWidget: (_, __, ___) {
+              return Image.asset(
+                'assets/images/products.png',
+                fit: BoxFit.fill,
+              );
+            },
           ),
         ),
       ),
@@ -239,7 +250,18 @@ class _SliderBannerWidgetState extends State<_SliderBannerWidget> {
                   borderRadius: BorderRadius.circular(15),
                   child: CachedNetworkImage(
                     fit: BoxFit.fill,
-                    imageUrl: item.imageUrl,
+                    imageUrl: item.url,
+                    progressIndicatorBuilder: (_,__,___){
+                      return const Center(
+                        child: LoadingIndicator(),
+                      );
+                    },
+                    errorWidget: (_, __, ___) {
+                      return Image.asset(
+                        'assets/images/products.png',
+                        fit: BoxFit.fill,
+                      );
+                    },
                   ),
                 ),
               );

@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
-import 'package:farm_app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'auth_page_wm.dart';
 
@@ -23,6 +22,7 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           localizations.enter,
         ),
@@ -30,21 +30,39 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextField(
-              textAlign: TextAlign.center,
-              controller: wm.emailController,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    localizations.email,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onBackground,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
+                TextField(
+                  textAlign: TextAlign.center,
+                  controller: wm.emailController,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onBackground,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 50,
               child: FilledButton(
                 style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(Size.fromHeight(50))
-                ),
+                    fixedSize:
+                        const MaterialStatePropertyAll(Size.fromHeight(50))),
                 onPressed: wm.onSendCode,
-                child: Text(
-                    localizations.getTheCode
-                ),
+                child: Text(localizations.getTheCode),
               ),
             ),
           ],

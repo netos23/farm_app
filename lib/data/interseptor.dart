@@ -37,8 +37,8 @@ class JWTInterceptor extends QueuedInterceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
     if (response.requestOptions.path == '/auth/email/part2') {
       repository.saveTokens(
-        accessToken: response.data['data']['access_token'],
-        refreshToken: response.data['data']['refresh_token'],
+        accessToken: response.data['access_token'],
+        refreshToken: response.data['refresh_token'],
       );
     }
 
@@ -79,8 +79,8 @@ class JWTInterceptor extends QueuedInterceptor {
 
       if (response.statusCode == 201 || response.statusCode == 200) {
         repository.saveTokens(
-          accessToken: response.data['data']['access_token'],
-          refreshToken: response.data['data']['refresh_token'],
+          accessToken: response.data['access_token'],
+          refreshToken: response.data['refresh_token'],
         );
       }
     }catch(e){

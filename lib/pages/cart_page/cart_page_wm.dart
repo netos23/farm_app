@@ -1,0 +1,96 @@
+import 'package:elementary/elementary.dart';
+import 'package:farm_app/data/repository/dadata_repository.dart';
+import 'package:farm_app/data/service/cart_service.dart';
+import 'package:farm_app/domain/entity/cart/calc_cart.dart';
+import 'package:farm_app/domain/entity/cart/calculated_cart.dart';
+import 'package:farm_app/domain/entity/cart/cart_product.dart';
+import 'package:farm_app/domain/entity/dadata/geo_data.dart';
+import 'package:farm_app/domain/models/product.dart';
+import 'package:farm_app/domain/use_case/cart_use_case.dart';
+import 'package:farm_app/internal/app_components.dart';
+import 'package:farm_app/util/wm_extensions.dart';
+import 'package:flutter/material.dart';
+import 'cart_page_model.dart';
+import 'cart_page_widget.dart';
+
+abstract class ICartPageWidgetModel extends IWidgetModel
+    implements IThemeProvider {
+  EntityStateNotifier<CalcCart?> get cartState;
+
+  EntityStateNotifier<GeoData> get geoState;
+
+  GeolocationDadataRepository get geolocationDadataRepository;
+
+  CartUseCase get cartUseCase;
+
+  void openSort();
+
+  void openProduct({required Product product, required String tag});
+}
+
+CartPageWidgetModel defaultCartPageWidgetModelFactory(BuildContext context) {
+  return CartPageWidgetModel(CartPageModel());
+}
+
+class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
+    with ThemeProvider
+    implements ICartPageWidgetModel {
+  @override
+  final cartState = EntityStateNotifier();
+
+  @override
+  final cartUseCase = AppComponents().cartUseCase;
+
+  @override
+  final geolocationDadataRepository = AppComponents().dadataRepository;
+
+  CartPageWidgetModel(CartPageModel model) : super(model);
+
+  @override
+  void initWidgetModel() {
+    super.initWidgetModel();
+    getCity();
+    loadCart();
+    cartUseCase.cart.stream.listen((event) {
+      cartState.content(event);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    cartState.dispose();
+    geoState.dispose();
+  }
+
+  @override
+  void openSort() {}
+
+  @override
+  void openProduct({required Product product, required String tag}) {
+    // TODO: implement openProduct
+  }
+
+  Future<void> loadCart() async {
+    final fias = geoState.value?.data?.cityFias ?? '';
+    if (fias.isNotEmpty) {
+      await cartUseCase.loadCart(
+        request: CalculatedCart(cityFias: fias),
+      );
+    } else {
+      await cartUseCase.loadCart(
+        request: CalculatedCart(),
+      );
+    }
+  }
+
+  Future<void> getCity() async {
+    final geoData = await geolocationDadataRepository.getGeolocationByIp();
+    geoState.content(geoData);
+  }
+
+  @override
+  final geoState = EntityStateNotifier();
+
+
+}

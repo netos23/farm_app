@@ -46,8 +46,8 @@ class GeolocationDadataRepository {
           cityFias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',
           name: 'Москва',
           fullName: 'г. Москва',
-          lat: 13.0,
-          lon: 13.0,
+          lat: '13',
+          lon: '13',
         );
       }
       return _mapIpResponseFromCityDto(result);

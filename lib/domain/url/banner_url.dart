@@ -1,4 +1,4 @@
 abstract class BannerUrl {
-  static const String banners = '/banners';
+  static const String banners = '/banners/';
 
 }

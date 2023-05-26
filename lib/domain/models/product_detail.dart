@@ -1,23 +1,31 @@
-
+import 'package:decimal/decimal.dart';
 import 'package:farm_app/domain/models/badge.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_detail.freezed.dart';
+
 part 'product_detail.g.dart';
 
 @freezed
-class ProductDetail with _$ProductDetail{
+class ProductDetail with _$ProductDetail {
   @JsonSerializable(
     explicitToJson: true,
     includeIfNull: false,
   )
   const factory ProductDetail({
-    required String name,
-    required String picture,
-    required String description,
+    required int id,
+    required Decimal price,
     required List<Badge> badges,
-    required bool available,
-    @JsonKey(name: 'city_fias')String? cityFias,
+    required String name,
+    String? brand,
+    String? picture,
+    String? article,
+    String? description,
+    bool? available,
+    Decimal? rating,
+    @JsonKey(name: 'old_price') Decimal? oldPrice,
+    @JsonKey(name: 'reviews_count') int? reviewsCount,
+    @JsonKey(name: 'city_fias') String? cityFias,
   }) = _ProductDetail;
 
   factory ProductDetail.fromJson(Map<String, dynamic> json) =>

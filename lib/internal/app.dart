@@ -21,14 +21,21 @@ class App extends StatelessWidget {
         useMaterial3: true,
         colorScheme: lightColorScheme,
         textTheme: GoogleFonts.montserratTextTheme(),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: GoogleFonts.aboreto(
+            fontSize: 22,
+            color: lightColorScheme.onBackground,
+          ),
+        ),
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: darkColorScheme,
         textTheme: GoogleFonts.montserratTextTheme(),
         appBarTheme: AppBarTheme(
-          titleTextStyle: GoogleFonts.aboreto(
+          titleTextStyle: GoogleFonts.montserrat(
             fontSize: 22,
+            color: darkColorScheme.onBackground,
           ),
         ),
         inputDecorationTheme: const InputDecorationTheme(),

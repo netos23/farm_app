@@ -9,10 +9,15 @@ part of 'catalog_products_request.dart';
 _$_CatalogProductsRequest _$$_CatalogProductsRequestFromJson(
         Map<String, dynamic> json) =>
     _$_CatalogProductsRequest(
-      name: json['name'] as String?,
-      sortBy: json['sortBy'] as String?,
+      cityFias: json['city_fias'] as String?,
+      sortBy: json['sort_by'] as String?,
       search: json['search'] as String?,
-      categoryId: json['categoryId'] as int?,
+      categoryIds: (json['category_ids'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList(),
+      productIds: (json['product_ids'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_CatalogProductsRequestToJson(
@@ -25,9 +30,10 @@ Map<String, dynamic> _$$_CatalogProductsRequestToJson(
     }
   }
 
-  writeNotNull('name', instance.name);
-  writeNotNull('sortBy', instance.sortBy);
+  writeNotNull('city_fias', instance.cityFias);
+  writeNotNull('sort_by', instance.sortBy);
   writeNotNull('search', instance.search);
-  writeNotNull('categoryId', instance.categoryId);
+  writeNotNull('category_ids', instance.categoryIds);
+  writeNotNull('product_ids', instance.productIds);
   return val;
 }

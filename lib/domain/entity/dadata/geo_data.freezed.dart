@@ -24,8 +24,8 @@ mixin _$GeoData {
   String get cityFias => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  double get lon => throw _privateConstructorUsedError;
+  String get lat => throw _privateConstructorUsedError;
+  String get lon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,8 +41,8 @@ abstract class $GeoDataCopyWith<$Res> {
       {@JsonKey(name: 'city_fias') String cityFias,
       String name,
       String fullName,
-      double lat,
-      double lon});
+      String lat,
+      String lon});
 }
 
 /// @nodoc
@@ -80,11 +80,11 @@ class _$GeoDataCopyWithImpl<$Res, $Val extends GeoData>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lon: null == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
     ) as $Val);
   }
 }
@@ -100,8 +100,8 @@ abstract class _$$_GeoDataCopyWith<$Res> implements $GeoDataCopyWith<$Res> {
       {@JsonKey(name: 'city_fias') String cityFias,
       String name,
       String fullName,
-      double lat,
-      double lon});
+      String lat,
+      String lon});
 }
 
 /// @nodoc
@@ -136,11 +136,11 @@ class __$$_GeoDataCopyWithImpl<$Res>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lon: null == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
     ));
   }
 }
@@ -167,9 +167,9 @@ class _$_GeoData implements _GeoData {
   @override
   final String fullName;
   @override
-  final double lat;
+  final String lat;
   @override
-  final double lon;
+  final String lon;
 
   @override
   String toString() {
@@ -214,8 +214,8 @@ abstract class _GeoData implements GeoData {
       {@JsonKey(name: 'city_fias') required final String cityFias,
       required final String name,
       required final String fullName,
-      required final double lat,
-      required final double lon}) = _$_GeoData;
+      required final String lat,
+      required final String lon}) = _$_GeoData;
 
   factory _GeoData.fromJson(Map<String, dynamic> json) = _$_GeoData.fromJson;
 
@@ -227,9 +227,9 @@ abstract class _GeoData implements GeoData {
   @override
   String get fullName;
   @override
-  double get lat;
+  String get lat;
   @override
-  double get lon;
+  String get lon;
   @override
   @JsonKey(ignore: true)
   _$$_GeoDataCopyWith<_$_GeoData> get copyWith =>

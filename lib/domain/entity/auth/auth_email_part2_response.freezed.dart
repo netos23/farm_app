@@ -21,7 +21,9 @@ AuthEmailPart2Response _$AuthEmailPart2ResponseFromJson(
 
 /// @nodoc
 mixin _$AuthEmailPart2Response {
+  @JsonKey(name: "refresh_token")
   String get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(name: "access_token")
   String get accessToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +38,9 @@ abstract class $AuthEmailPart2ResponseCopyWith<$Res> {
           $Res Function(AuthEmailPart2Response) then) =
       _$AuthEmailPart2ResponseCopyWithImpl<$Res, AuthEmailPart2Response>;
   @useResult
-  $Res call({String refreshToken, String accessToken});
+  $Res call(
+      {@JsonKey(name: "refresh_token") String refreshToken,
+      @JsonKey(name: "access_token") String accessToken});
 }
 
 /// @nodoc
@@ -77,7 +81,9 @@ abstract class _$$_AuthEmailPart2ResponseCopyWith<$Res>
       __$$_AuthEmailPart2ResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String refreshToken, String accessToken});
+  $Res call(
+      {@JsonKey(name: "refresh_token") String refreshToken,
+      @JsonKey(name: "access_token") String accessToken});
 }
 
 /// @nodoc
@@ -113,14 +119,17 @@ class __$$_AuthEmailPart2ResponseCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_AuthEmailPart2Response implements _AuthEmailPart2Response {
   const _$_AuthEmailPart2Response(
-      {required this.refreshToken, required this.accessToken});
+      {@JsonKey(name: "refresh_token") required this.refreshToken,
+      @JsonKey(name: "access_token") required this.accessToken});
 
   factory _$_AuthEmailPart2Response.fromJson(Map<String, dynamic> json) =>
       _$$_AuthEmailPart2ResponseFromJson(json);
 
   @override
+  @JsonKey(name: "refresh_token")
   final String refreshToken;
   @override
+  @JsonKey(name: "access_token")
   final String accessToken;
 
   @override
@@ -160,15 +169,18 @@ class _$_AuthEmailPart2Response implements _AuthEmailPart2Response {
 
 abstract class _AuthEmailPart2Response implements AuthEmailPart2Response {
   const factory _AuthEmailPart2Response(
-      {required final String refreshToken,
-      required final String accessToken}) = _$_AuthEmailPart2Response;
+          {@JsonKey(name: "refresh_token") required final String refreshToken,
+          @JsonKey(name: "access_token") required final String accessToken}) =
+      _$_AuthEmailPart2Response;
 
   factory _AuthEmailPart2Response.fromJson(Map<String, dynamic> json) =
       _$_AuthEmailPart2Response.fromJson;
 
   @override
+  @JsonKey(name: "refresh_token")
   String get refreshToken;
   @override
+  @JsonKey(name: "access_token")
   String get accessToken;
   @override
   @JsonKey(ignore: true)

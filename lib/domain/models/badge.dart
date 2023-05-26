@@ -14,6 +14,7 @@ class Badge with _$Badge{
   const factory Badge({
     required int id,
     String? title,
+    @JsonKey(name: 'bg_color') String? bgColor,
   }) = _Badge;
 
   factory Badge.fromJson(Map<String, dynamic> json) =>

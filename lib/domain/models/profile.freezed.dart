@@ -27,7 +27,11 @@ mixin _$Profile {
   String? get secondName => throw _privateConstructorUsedError;
   @JsonKey(name: 'birth_date')
   String? get birthDate => throw _privateConstructorUsedError;
-  int? get gender => throw _privateConstructorUsedError;
+  @JsonKey(name: 'gender')
+  String? get gender => throw _privateConstructorUsedError;
+  @JsonKey(name: 'role')
+  String? get role => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phone')
   String? get phone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,8 +49,9 @@ abstract class $ProfileCopyWith<$Res> {
       @JsonKey(name: 'first_name') String? firstName,
       @JsonKey(name: 'second_name') String? secondName,
       @JsonKey(name: 'birth_date') String? birthDate,
-      int? gender,
-      String? phone});
+      @JsonKey(name: 'gender') String? gender,
+      @JsonKey(name: 'role') String? role,
+      @JsonKey(name: 'phone') String? phone});
 }
 
 /// @nodoc
@@ -67,6 +72,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? secondName = freezed,
     Object? birthDate = freezed,
     Object? gender = freezed,
+    Object? role = freezed,
     Object? phone = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,7 +95,11 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -110,8 +120,9 @@ abstract class _$$_ProfileCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       @JsonKey(name: 'first_name') String? firstName,
       @JsonKey(name: 'second_name') String? secondName,
       @JsonKey(name: 'birth_date') String? birthDate,
-      int? gender,
-      String? phone});
+      @JsonKey(name: 'gender') String? gender,
+      @JsonKey(name: 'role') String? role,
+      @JsonKey(name: 'phone') String? phone});
 }
 
 /// @nodoc
@@ -129,6 +140,7 @@ class __$$_ProfileCopyWithImpl<$Res>
     Object? secondName = freezed,
     Object? birthDate = freezed,
     Object? gender = freezed,
+    Object? role = freezed,
     Object? phone = freezed,
   }) {
     return _then(_$_Profile(
@@ -151,7 +163,11 @@ class __$$_ProfileCopyWithImpl<$Res>
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -169,8 +185,9 @@ class _$_Profile implements _Profile {
       @JsonKey(name: 'first_name') this.firstName,
       @JsonKey(name: 'second_name') this.secondName,
       @JsonKey(name: 'birth_date') this.birthDate,
-      this.gender,
-      this.phone});
+      @JsonKey(name: 'gender') this.gender,
+      @JsonKey(name: 'role') this.role,
+      @JsonKey(name: 'phone') this.phone});
 
   factory _$_Profile.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileFromJson(json);
@@ -187,13 +204,18 @@ class _$_Profile implements _Profile {
   @JsonKey(name: 'birth_date')
   final String? birthDate;
   @override
-  final int? gender;
+  @JsonKey(name: 'gender')
+  final String? gender;
   @override
+  @JsonKey(name: 'role')
+  final String? role;
+  @override
+  @JsonKey(name: 'phone')
   final String? phone;
 
   @override
   String toString() {
-    return 'Profile(email: $email, firstName: $firstName, secondName: $secondName, birthDate: $birthDate, gender: $gender, phone: $phone)';
+    return 'Profile(email: $email, firstName: $firstName, secondName: $secondName, birthDate: $birthDate, gender: $gender, role: $role, phone: $phone)';
   }
 
   @override
@@ -209,13 +231,14 @@ class _$_Profile implements _Profile {
             (identical(other.birthDate, birthDate) ||
                 other.birthDate == birthDate) &&
             (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.phone, phone) || other.phone == phone));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, firstName, secondName, birthDate, gender, phone);
+  int get hashCode => Object.hash(runtimeType, email, firstName, secondName,
+      birthDate, gender, role, phone);
 
   @JsonKey(ignore: true)
   @override
@@ -237,8 +260,9 @@ abstract class _Profile implements Profile {
       @JsonKey(name: 'first_name') final String? firstName,
       @JsonKey(name: 'second_name') final String? secondName,
       @JsonKey(name: 'birth_date') final String? birthDate,
-      final int? gender,
-      final String? phone}) = _$_Profile;
+      @JsonKey(name: 'gender') final String? gender,
+      @JsonKey(name: 'role') final String? role,
+      @JsonKey(name: 'phone') final String? phone}) = _$_Profile;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$_Profile.fromJson;
 
@@ -254,8 +278,13 @@ abstract class _Profile implements Profile {
   @JsonKey(name: 'birth_date')
   String? get birthDate;
   @override
-  int? get gender;
+  @JsonKey(name: 'gender')
+  String? get gender;
   @override
+  @JsonKey(name: 'role')
+  String? get role;
+  @override
+  @JsonKey(name: 'phone')
   String? get phone;
   @override
   @JsonKey(ignore: true)

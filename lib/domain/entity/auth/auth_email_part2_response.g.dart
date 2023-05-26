@@ -9,13 +9,13 @@ part of 'auth_email_part2_response.dart';
 _$_AuthEmailPart2Response _$$_AuthEmailPart2ResponseFromJson(
         Map<String, dynamic> json) =>
     _$_AuthEmailPart2Response(
-      refreshToken: json['refreshToken'] as String,
-      accessToken: json['accessToken'] as String,
+      refreshToken: json['refresh_token'] as String,
+      accessToken: json['access_token'] as String,
     );
 
 Map<String, dynamic> _$$_AuthEmailPart2ResponseToJson(
         _$_AuthEmailPart2Response instance) =>
     <String, dynamic>{
-      'refreshToken': instance.refreshToken,
-      'accessToken': instance.accessToken,
+      'refresh_token': instance.refreshToken,
+      'access_token': instance.accessToken,
     };

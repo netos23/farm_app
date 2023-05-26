@@ -30,71 +30,116 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(localizations.nameAndSurname,),
-              ),
-              TextField(
-                textAlign: TextAlign.center,
-                controller: wm.firstNameController,
-              ),
-              TextField(
-                textAlign: TextAlign.center,
-                controller: wm.secondNameController,
-              ),
-              const SizedBox(height: 8,),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Padding(
+        child: Column(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(localizations.nameAndSurname,),
+                  child: Text(
+                    localizations.nameAndSurname,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onBackground,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ),
-              ),
-              TextField(
-                textAlign: TextAlign.center,
-                controller: wm.emailController,
-              ),
-              const SizedBox(height: 8,),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(localizations.birthday),
+                TextField(
+                  textAlign: TextAlign.center,
+                  controller: wm.firstNameController,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onBackground,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-              TextField(
-                textAlign: TextAlign.center,
-                controller: wm.bitrhdayController,
-              ),
-              const SizedBox(height: 8,),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(localizations.phone),
-              ),
-              TextField(
-                textAlign: TextAlign.center,
-                controller: wm.phoneNumber,
-              ),
-            ],
-          ),
-          const SizedBox(height: 16,),
-          SizedBox(
-            height: 50,
-            child: FilledButton(
-              style: theme.filledButtonTheme.style?.copyWith(
-                  fixedSize: const MaterialStatePropertyAll(Size.fromHeight(50))
-              ),
-              onPressed: wm.onRegister,
-              child: Text(
-                  localizations.getTheCode
+                TextField(
+                  textAlign: TextAlign.center,
+                  controller: wm.secondNameController,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onBackground,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    localizations.nameAndSurname,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onBackground,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
+                TextField(
+                  textAlign: TextAlign.center,
+                  controller: wm.emailController,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onBackground,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    localizations.birthday,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onBackground,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
+                TextField(
+                  textAlign: TextAlign.center,
+                  controller: wm.bitrhdayController,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onBackground,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    localizations.phone,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onBackground,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
+                TextField(
+                  textAlign: TextAlign.center,
+                  controller: wm.phoneNumber,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onBackground,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            SizedBox(
+              height: 50,
+              child: FilledButton(
+                style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize:
+                        const MaterialStatePropertyAll(Size.fromHeight(50))),
+                onPressed: wm.onRegister,
+                child: Text(localizations.getTheCode),
               ),
             ),
-          ),
-        ],
+          ],
         ),
       ),
     );

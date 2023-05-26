@@ -1030,7 +1030,7 @@ SliderItem _$SliderItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SliderItem {
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
   String? get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1045,7 +1045,7 @@ abstract class $SliderItemCopyWith<$Res> {
           SliderItem value, $Res Function(SliderItem) then) =
       _$SliderItemCopyWithImpl<$Res, SliderItem>;
   @useResult
-  $Res call({String imageUrl, String? link});
+  $Res call({String url, String? link});
 }
 
 /// @nodoc
@@ -1061,13 +1061,13 @@ class _$SliderItemCopyWithImpl<$Res, $Val extends SliderItem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = null,
+    Object? url = null,
     Object? link = freezed,
   }) {
     return _then(_value.copyWith(
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       link: freezed == link
           ? _value.link
@@ -1085,7 +1085,7 @@ abstract class _$$_SliderItemCopyWith<$Res>
       __$$_SliderItemCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String imageUrl, String? link});
+  $Res call({String url, String? link});
 }
 
 /// @nodoc
@@ -1099,13 +1099,13 @@ class __$$_SliderItemCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = null,
+    Object? url = null,
     Object? link = freezed,
   }) {
     return _then(_$_SliderItem(
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       link: freezed == link
           ? _value.link
@@ -1118,19 +1118,19 @@ class __$$_SliderItemCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SliderItem implements _SliderItem {
-  const _$_SliderItem({required this.imageUrl, this.link});
+  const _$_SliderItem({required this.url, this.link});
 
   factory _$_SliderItem.fromJson(Map<String, dynamic> json) =>
       _$$_SliderItemFromJson(json);
 
   @override
-  final String imageUrl;
+  final String url;
   @override
   final String? link;
 
   @override
   String toString() {
-    return 'SliderItem(imageUrl: $imageUrl, link: $link)';
+    return 'SliderItem(url: $url, link: $link)';
   }
 
   @override
@@ -1138,14 +1138,13 @@ class _$_SliderItem implements _SliderItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SliderItem &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.link, link) || other.link == link));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl, link);
+  int get hashCode => Object.hash(runtimeType, url, link);
 
   @JsonKey(ignore: true)
   @override
@@ -1162,14 +1161,14 @@ class _$_SliderItem implements _SliderItem {
 }
 
 abstract class _SliderItem implements SliderItem {
-  const factory _SliderItem(
-      {required final String imageUrl, final String? link}) = _$_SliderItem;
+  const factory _SliderItem({required final String url, final String? link}) =
+      _$_SliderItem;
 
   factory _SliderItem.fromJson(Map<String, dynamic> json) =
       _$_SliderItem.fromJson;
 
   @override
-  String get imageUrl;
+  String get url;
   @override
   String? get link;
   @override

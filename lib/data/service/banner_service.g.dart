@@ -32,7 +32,7 @@ class _BannerService implements BannerService {
     )
             .compose(
               _dio.options,
-              '/banners',
+              '/banners/',
               queryParameters: queryParameters,
               data: _data,
             )

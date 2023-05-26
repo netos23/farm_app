@@ -15,8 +15,9 @@ class Profile with _$Profile {
     @JsonKey(name: 'first_name') String? firstName,
     @JsonKey(name: 'second_name') String? secondName,
     @JsonKey(name: 'birth_date') String? birthDate,
-    int? gender,
-    String? phone,
+    @JsonKey(name: 'gender') String? gender,
+    @JsonKey(name: 'role') String? role,
+    @JsonKey(name: 'phone') String? phone,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

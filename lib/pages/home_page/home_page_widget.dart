@@ -36,7 +36,6 @@ class _MobilePage extends StatelessWidget {
         ShowCaseTab(),
         CatalogTab(),
         BasketTab(),
-        FavoritesTab(),
         UserProfileTab(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -56,11 +55,11 @@ class _MobilePage extends StatelessWidget {
               icon: const Icon(Icons.apps_rounded),
             ),
             NavigationDestination(
-              label: 'Рейтинг',
-              icon: Icon(Icons.star_outline),
+              label: localizations.basket,
+              icon: Icon(Icons.shopping_cart_outlined),
             ),
             NavigationDestination(
-              label: 'Профиль',
+              label: localizations.profile,
               icon: Icon(Icons.person_outline),
             ),
           ],
@@ -129,12 +128,12 @@ class _WebPage extends StatelessWidget {
                           icon: const Icon(Icons.apps_rounded),
                         ),
                         NavigationRailDestination(
-                          label: Text('Рейтинг'),
-                          icon: Icon(Icons.star_outline),
+                          label: Text(localizations.basket),
+                          icon: const Icon(Icons.shopping_cart_outlined),
                         ),
                         NavigationRailDestination(
-                          label: Text('Профиль'),
-                          icon: Icon(Icons.person_outline),
+                          label: Text(localizations.profile),
+                          icon: const Icon(Icons.person_outline),
                         ),
                       ],
                       selectedIndex: activeIndex,

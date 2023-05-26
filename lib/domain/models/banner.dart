@@ -44,7 +44,7 @@ sealed class ShowCaseBanner with _$ShowCaseBanner {
 @freezed
 class SliderItem with _$SliderItem {
     const factory SliderItem({
-      required String imageUrl,
+      required String url,
       String? link,
   }) = _SliderItem;
 
