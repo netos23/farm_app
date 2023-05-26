@@ -32,6 +32,7 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
         child: Column(
           children: [
             TextField(
+              textAlign: TextAlign.center,
               controller: wm.emailController,
             ),
             SizedBox(

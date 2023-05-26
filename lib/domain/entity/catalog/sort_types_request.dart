@@ -6,6 +6,10 @@ part 'sort_types_request.g.dart';
 
 @freezed
 class SortTypesRequest with _$SortTypesRequest {
+    @JsonSerializable(
+        explicitToJson: true,
+        includeIfNull: false,
+    )
     factory SortTypesRequest({
         required List<SortType> sorts,
     }) = _SortTypesRequest;

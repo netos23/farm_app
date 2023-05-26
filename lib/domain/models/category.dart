@@ -5,6 +5,10 @@ part 'category.g.dart';
 
 @freezed
 class Category with _$Category {
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
     factory Category({
       required int id,
       required String name,

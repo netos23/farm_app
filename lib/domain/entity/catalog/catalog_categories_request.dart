@@ -5,6 +5,10 @@ part 'catalog_categories_request.g.dart';
 
 @freezed
 class CatalogCategoriesRequest with _$CatalogCategoriesRequest {
+    @JsonSerializable(
+        explicitToJson: true,
+        includeIfNull: false,
+    )
     factory CatalogCategoriesRequest({
         int? id,
     }) = _CatalogCategoriesRequest;

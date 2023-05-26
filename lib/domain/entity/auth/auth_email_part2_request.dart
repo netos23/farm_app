@@ -5,6 +5,10 @@ part 'auth_email_part2_request.g.dart';
 
 @freezed
 class AuthEmailPart2Request with _$AuthEmailPart2Request{
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory AuthEmailPart2Request({
     required String email,
     required String code,
