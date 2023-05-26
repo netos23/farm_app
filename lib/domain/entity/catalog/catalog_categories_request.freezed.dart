@@ -99,7 +99,8 @@ class __$$_CatalogCategoriesRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_CatalogCategoriesRequest implements _CatalogCategoriesRequest {
   _$_CatalogCategoriesRequest({this.id});
 

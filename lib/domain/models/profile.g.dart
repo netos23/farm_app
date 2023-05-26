@@ -8,19 +8,28 @@ part of 'profile.dart';
 
 _$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
       email: json['email'] as String,
-      firstName: json['firstName'] as String?,
-      secondName: json['secondName'] as String?,
-      birthDate: json['birthDate'] as String?,
+      firstName: json['first_name'] as String?,
+      secondName: json['second_name'] as String?,
+      birthDate: json['birth_date'] as String?,
       gender: json['gender'] as int?,
       phone: json['phone'] as String?,
     );
 
-Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'firstName': instance.firstName,
-      'secondName': instance.secondName,
-      'birthDate': instance.birthDate,
-      'gender': instance.gender,
-      'phone': instance.phone,
-    };
+Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) {
+  final val = <String, dynamic>{
+    'email': instance.email,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('first_name', instance.firstName);
+  writeNotNull('second_name', instance.secondName);
+  writeNotNull('birth_date', instance.birthDate);
+  writeNotNull('gender', instance.gender);
+  writeNotNull('phone', instance.phone);
+  return val;
+}

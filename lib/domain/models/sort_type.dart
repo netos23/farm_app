@@ -5,6 +5,10 @@ part 'sort_type.g.dart';
 
 @freezed
 class SortType with _$SortType {
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
     factory SortType({
       String? id,
       String? name

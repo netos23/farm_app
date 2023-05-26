@@ -115,7 +115,8 @@ class __$$_CategoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_Category implements _Category {
   _$_Category({required this.id, required this.name, required this.picture});
 

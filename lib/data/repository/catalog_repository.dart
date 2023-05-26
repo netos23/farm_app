@@ -6,8 +6,6 @@ import 'package:farm_app/domain/entity/catalog/catalog_categories_request.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_categories_response.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_products_request.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_products_response.dart';
-import 'package:farm_app/domain/entity/catalog/filters_request.dart';
-import 'package:farm_app/domain/entity/catalog/filters_response.dart';
 import 'package:farm_app/domain/entity/catalog/product_detail_request.dart';
 import 'package:farm_app/domain/entity/catalog/product_detail_response.dart';
 import 'package:farm_app/domain/entity/catalog/sort_types_request.dart';
@@ -41,22 +39,6 @@ class CatalogRepository {
   }) async {
     try {
       final result = await _catalogService.getCategories(
-        request: request,
-      );
-      return result;
-    } on DioError catch (error) {
-      throw Exception(
-        error.response?.data['message'],
-      );
-    }
-  }
-
-  @override
-  Future<FiltersResponse> getFilters({
-    required FiltersRequest request,
-  }) async {
-    try {
-      final result = await _catalogService.getFilters(
         request: request,
       );
       return result;

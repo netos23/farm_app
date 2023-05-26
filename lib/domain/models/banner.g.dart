@@ -8,17 +8,26 @@ part of 'banner.dart';
 
 _$ImageBanner _$$ImageBannerFromJson(Map<String, dynamic> json) =>
     _$ImageBanner(
-      imageUrl: json['imageUrl'] as String,
+      imageUrl: json['image_url'] as String,
       link: json['link'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$ImageBannerToJson(_$ImageBanner instance) =>
-    <String, dynamic>{
-      'imageUrl': instance.imageUrl,
-      'link': instance.link,
-      'type': instance.$type,
-    };
+Map<String, dynamic> _$$ImageBannerToJson(_$ImageBanner instance) {
+  final val = <String, dynamic>{
+    'image_url': instance.imageUrl,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('link', instance.link);
+  val['type'] = instance.$type;
+  return val;
+}
 
 _$ButtonBanner _$$ButtonBannerFromJson(Map<String, dynamic> json) =>
     _$ButtonBanner(

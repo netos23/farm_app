@@ -5,6 +5,10 @@ part 'autocomplete_request.g.dart';
 
 @freezed
 class AutocompleteRequest with _$AutocompleteRequest {
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
     factory AutocompleteRequest({
       required String searchRequest,
     }) = _AutocompleteRequest;

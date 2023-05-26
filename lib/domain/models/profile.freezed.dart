@@ -21,8 +21,11 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Profile {
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'first_name')
   String? get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'second_name')
   String? get secondName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'birth_date')
   String? get birthDate => throw _privateConstructorUsedError;
   int? get gender => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
@@ -39,9 +42,9 @@ abstract class $ProfileCopyWith<$Res> {
   @useResult
   $Res call(
       {String email,
-      String? firstName,
-      String? secondName,
-      String? birthDate,
+      @JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'second_name') String? secondName,
+      @JsonKey(name: 'birth_date') String? birthDate,
       int? gender,
       String? phone});
 }
@@ -104,9 +107,9 @@ abstract class _$$_ProfileCopyWith<$Res> implements $ProfileCopyWith<$Res> {
   @useResult
   $Res call(
       {String email,
-      String? firstName,
-      String? secondName,
-      String? birthDate,
+      @JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'second_name') String? secondName,
+      @JsonKey(name: 'birth_date') String? birthDate,
       int? gender,
       String? phone});
 }
@@ -158,13 +161,14 @@ class __$$_ProfileCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_Profile implements _Profile {
   const _$_Profile(
       {required this.email,
-      this.firstName,
-      this.secondName,
-      this.birthDate,
+      @JsonKey(name: 'first_name') this.firstName,
+      @JsonKey(name: 'second_name') this.secondName,
+      @JsonKey(name: 'birth_date') this.birthDate,
       this.gender,
       this.phone});
 
@@ -174,10 +178,13 @@ class _$_Profile implements _Profile {
   @override
   final String email;
   @override
+  @JsonKey(name: 'first_name')
   final String? firstName;
   @override
+  @JsonKey(name: 'second_name')
   final String? secondName;
   @override
+  @JsonKey(name: 'birth_date')
   final String? birthDate;
   @override
   final int? gender;
@@ -227,9 +234,9 @@ class _$_Profile implements _Profile {
 abstract class _Profile implements Profile {
   const factory _Profile(
       {required final String email,
-      final String? firstName,
-      final String? secondName,
-      final String? birthDate,
+      @JsonKey(name: 'first_name') final String? firstName,
+      @JsonKey(name: 'second_name') final String? secondName,
+      @JsonKey(name: 'birth_date') final String? birthDate,
       final int? gender,
       final String? phone}) = _$_Profile;
 
@@ -238,10 +245,13 @@ abstract class _Profile implements Profile {
   @override
   String get email;
   @override
+  @JsonKey(name: 'first_name')
   String? get firstName;
   @override
+  @JsonKey(name: 'second_name')
   String? get secondName;
   @override
+  @JsonKey(name: 'birth_date')
   String? get birthDate;
   @override
   int? get gender;

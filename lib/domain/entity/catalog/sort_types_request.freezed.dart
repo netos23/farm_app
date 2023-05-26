@@ -95,7 +95,8 @@ class __$$_SortTypesRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_SortTypesRequest implements _SortTypesRequest {
   _$_SortTypesRequest({required final List<SortType> sorts}) : _sorts = sorts;
 

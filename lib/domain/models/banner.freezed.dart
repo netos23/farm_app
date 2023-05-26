@@ -37,7 +37,9 @@ ShowCaseBanner _$ShowCaseBannerFromJson(Map<String, dynamic> json) {
 mixin _$ShowCaseBanner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)
+        imageBanner,
     required TResult Function(String text, String? link) buttonBanner,
     required TResult Function(String text) titleBanner,
     required TResult Function(String text) markdownBanner,
@@ -46,7 +48,9 @@ mixin _$ShowCaseBanner {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult? Function(String text, String? link)? buttonBanner,
     TResult? Function(String text)? titleBanner,
     TResult? Function(String text)? markdownBanner,
@@ -55,7 +59,8 @@ mixin _$ShowCaseBanner {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(@JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult Function(String text, String? link)? buttonBanner,
     TResult Function(String text)? titleBanner,
     TResult Function(String text)? markdownBanner,
@@ -118,7 +123,7 @@ abstract class _$$ImageBannerCopyWith<$Res> {
           _$ImageBanner value, $Res Function(_$ImageBanner) then) =
       __$$ImageBannerCopyWithImpl<$Res>;
   @useResult
-  $Res call({String imageUrl, String? link});
+  $Res call({@JsonKey(name: 'image_url') String imageUrl, String? link});
 }
 
 /// @nodoc
@@ -149,15 +154,20 @@ class __$$ImageBannerCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$ImageBanner implements ImageBanner {
-  const _$ImageBanner({required this.imageUrl, this.link, final String? $type})
+  const _$ImageBanner(
+      {@JsonKey(name: 'image_url') required this.imageUrl,
+      this.link,
+      final String? $type})
       : $type = $type ?? 'imageBanner';
 
   factory _$ImageBanner.fromJson(Map<String, dynamic> json) =>
       _$$ImageBannerFromJson(json);
 
   @override
+  @JsonKey(name: 'image_url')
   final String imageUrl;
   @override
   final String? link;
@@ -193,7 +203,9 @@ class _$ImageBanner implements ImageBanner {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)
+        imageBanner,
     required TResult Function(String text, String? link) buttonBanner,
     required TResult Function(String text) titleBanner,
     required TResult Function(String text) markdownBanner,
@@ -205,7 +217,9 @@ class _$ImageBanner implements ImageBanner {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult? Function(String text, String? link)? buttonBanner,
     TResult? Function(String text)? titleBanner,
     TResult? Function(String text)? markdownBanner,
@@ -217,7 +231,8 @@ class _$ImageBanner implements ImageBanner {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(@JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult Function(String text, String? link)? buttonBanner,
     TResult Function(String text)? titleBanner,
     TResult Function(String text)? markdownBanner,
@@ -280,11 +295,13 @@ class _$ImageBanner implements ImageBanner {
 
 abstract class ImageBanner implements ShowCaseBanner {
   const factory ImageBanner(
-      {required final String imageUrl, final String? link}) = _$ImageBanner;
+      {@JsonKey(name: 'image_url') required final String imageUrl,
+      final String? link}) = _$ImageBanner;
 
   factory ImageBanner.fromJson(Map<String, dynamic> json) =
       _$ImageBanner.fromJson;
 
+  @JsonKey(name: 'image_url')
   String get imageUrl;
   String? get link;
   @JsonKey(ignore: true)
@@ -372,7 +389,9 @@ class _$ButtonBanner implements ButtonBanner {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)
+        imageBanner,
     required TResult Function(String text, String? link) buttonBanner,
     required TResult Function(String text) titleBanner,
     required TResult Function(String text) markdownBanner,
@@ -384,7 +403,9 @@ class _$ButtonBanner implements ButtonBanner {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult? Function(String text, String? link)? buttonBanner,
     TResult? Function(String text)? titleBanner,
     TResult? Function(String text)? markdownBanner,
@@ -396,7 +417,8 @@ class _$ButtonBanner implements ButtonBanner {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(@JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult Function(String text, String? link)? buttonBanner,
     TResult Function(String text)? titleBanner,
     TResult Function(String text)? markdownBanner,
@@ -543,7 +565,9 @@ class _$TitleBanner implements TitleBanner {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)
+        imageBanner,
     required TResult Function(String text, String? link) buttonBanner,
     required TResult Function(String text) titleBanner,
     required TResult Function(String text) markdownBanner,
@@ -555,7 +579,9 @@ class _$TitleBanner implements TitleBanner {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult? Function(String text, String? link)? buttonBanner,
     TResult? Function(String text)? titleBanner,
     TResult? Function(String text)? markdownBanner,
@@ -567,7 +593,8 @@ class _$TitleBanner implements TitleBanner {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(@JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult Function(String text, String? link)? buttonBanner,
     TResult Function(String text)? titleBanner,
     TResult Function(String text)? markdownBanner,
@@ -712,7 +739,9 @@ class _$MarkdownBanner implements MarkdownBanner {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)
+        imageBanner,
     required TResult Function(String text, String? link) buttonBanner,
     required TResult Function(String text) titleBanner,
     required TResult Function(String text) markdownBanner,
@@ -724,7 +753,9 @@ class _$MarkdownBanner implements MarkdownBanner {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult? Function(String text, String? link)? buttonBanner,
     TResult? Function(String text)? titleBanner,
     TResult? Function(String text)? markdownBanner,
@@ -736,7 +767,8 @@ class _$MarkdownBanner implements MarkdownBanner {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(@JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult Function(String text, String? link)? buttonBanner,
     TResult Function(String text)? titleBanner,
     TResult Function(String text)? markdownBanner,
@@ -889,7 +921,9 @@ class _$SliderBanner implements SliderBanner {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageUrl, String? link) imageBanner,
+    required TResult Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)
+        imageBanner,
     required TResult Function(String text, String? link) buttonBanner,
     required TResult Function(String text) titleBanner,
     required TResult Function(String text) markdownBanner,
@@ -901,7 +935,9 @@ class _$SliderBanner implements SliderBanner {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String imageUrl, String? link)? imageBanner,
+    TResult? Function(
+            @JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult? Function(String text, String? link)? buttonBanner,
     TResult? Function(String text)? titleBanner,
     TResult? Function(String text)? markdownBanner,
@@ -913,7 +949,8 @@ class _$SliderBanner implements SliderBanner {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, String? link)? imageBanner,
+    TResult Function(@JsonKey(name: 'image_url') String imageUrl, String? link)?
+        imageBanner,
     TResult Function(String text, String? link)? buttonBanner,
     TResult Function(String text)? titleBanner,
     TResult Function(String text)? markdownBanner,

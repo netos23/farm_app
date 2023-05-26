@@ -11,7 +11,17 @@ _$_Badge _$$_BadgeFromJson(Map<String, dynamic> json) => _$_Badge(
       title: json['title'] as String?,
     );
 
-Map<String, dynamic> _$$_BadgeToJson(_$_Badge instance) => <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-    };
+Map<String, dynamic> _$$_BadgeToJson(_$_Badge instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('title', instance.title);
+  return val;
+}

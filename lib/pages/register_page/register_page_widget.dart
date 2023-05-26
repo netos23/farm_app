@@ -30,36 +30,71 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            TextField(
-              controller: wm.firstNameController,
-            ),
-            TextField(
-              controller: wm.secondNameController,
-            ),
-            TextField(
-              controller: wm.emailController,
-            ),
-            TextField(
-              controller: wm.bitrhdayController,
-            ),
-            TextField(
-              controller: wm.phoneNumber,
-            ),
-            SizedBox(
-              height: 50,
-              child: FilledButton(
-                style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(Size.fromHeight(50))
-                ),
-                onPressed: wm.onRegister,
-                child: Text(
-                    localizations.getTheCode
+        child: Column(children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(localizations.nameAndSurname,),
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                controller: wm.firstNameController,
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                controller: wm.secondNameController,
+              ),
+              const SizedBox(height: 8,),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(localizations.nameAndSurname,),
                 ),
               ),
+              TextField(
+                textAlign: TextAlign.center,
+                controller: wm.emailController,
+              ),
+              const SizedBox(height: 8,),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(localizations.birthday),
+                ),
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                controller: wm.bitrhdayController,
+              ),
+              const SizedBox(height: 8,),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(localizations.phone),
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                controller: wm.phoneNumber,
+              ),
+            ],
+          ),
+          const SizedBox(height: 16,),
+          SizedBox(
+            height: 50,
+            child: FilledButton(
+              style: theme.filledButtonTheme.style?.copyWith(
+                  fixedSize: const MaterialStatePropertyAll(Size.fromHeight(50))
+              ),
+              onPressed: wm.onRegister,
+              child: Text(
+                  localizations.getTheCode
+              ),
             ),
-          ],
+          ),
+        ],
         ),
       ),
     );

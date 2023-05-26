@@ -108,7 +108,8 @@ class __$$_AuthPart2RequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_AuthPart2Request implements _AuthPart2Request {
   const _$_AuthPart2Request({required this.email, required this.code});
 

@@ -5,6 +5,10 @@ part 'sort_types_response.g.dart';
 
 @freezed
 class SortTypesResponse with _$SortTypesResponse {
+    @JsonSerializable(
+        explicitToJson: true,
+        includeIfNull: false,
+    )
     factory SortTypesResponse({
         required String name,
     }) = _SortTypesResponse;

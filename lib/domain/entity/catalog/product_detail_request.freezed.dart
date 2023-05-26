@@ -96,7 +96,8 @@ class __$$_ProductDetailRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_ProductDetailRequest implements _ProductDetailRequest {
   _$_ProductDetailRequest({required this.name});
 

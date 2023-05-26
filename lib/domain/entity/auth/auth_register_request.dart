@@ -7,6 +7,10 @@ part 'auth_register_request.g.dart';
 
 @freezed
 class AuthRegisterRequest with _$AuthRegisterRequest{
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory AuthRegisterRequest({
     required String name,
   }) = _AuthRegisterRequest;

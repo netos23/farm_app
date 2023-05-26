@@ -13,7 +13,15 @@ _$_CatalogCategoriesRequest _$$_CatalogCategoriesRequestFromJson(
     );
 
 Map<String, dynamic> _$$_CatalogCategoriesRequestToJson(
-        _$_CatalogCategoriesRequest instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-    };
+    _$_CatalogCategoriesRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  return val;
+}

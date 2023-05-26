@@ -95,7 +95,8 @@ class __$$_SortTypesResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_SortTypesResponse implements _SortTypesResponse {
   _$_SortTypesResponse({required this.name});
 

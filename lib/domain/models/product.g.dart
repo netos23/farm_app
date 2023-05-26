@@ -17,12 +17,21 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
       cityFias: json['cityFias'] as String?,
     );
 
-Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'picture': instance.picture,
-      'description': instance.description,
-      'badges': instance.badges,
-      'available': instance.available,
-      'cityFias': instance.cityFias,
-    };
+Map<String, dynamic> _$$_ProductToJson(_$_Product instance) {
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'picture': instance.picture,
+    'description': instance.description,
+    'badges': instance.badges.map((e) => e.toJson()).toList(),
+    'available': instance.available,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cityFias', instance.cityFias);
+  return val;
+}
