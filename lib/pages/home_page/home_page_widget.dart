@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
+import 'package:farm_app/generated/app_localizations.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,11 @@ class _MobilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     return AutoTabsScaffold(
       routes: const [
-        CatalogTab(),
         ShowCaseTab(),
+        CatalogTab(),
         BasketTab(),
         FavoritesTab(),
         UserProfileTab(),
@@ -42,16 +44,16 @@ class _MobilePage extends StatelessWidget {
           selectedIndex: tabsRouter.activeIndex,
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           onDestinationSelected: tabsRouter.setActiveIndex,
-          destinations: const [
+          destinations:  [
             NavigationDestination(
-              label: 'Соревнования',
-              icon: Icon(
-                Icons.emoji_events_outlined,
+              label: localizations.blog,
+              icon: const Icon(
+                Icons.home_outlined,
               ),
             ),
             NavigationDestination(
-              label: 'Календарь',
-              icon: Icon(Icons.event_outlined),
+              label: localizations.catalog,
+              icon: const Icon(Icons.apps_rounded),
             ),
             NavigationDestination(
               label: 'Рейтинг',
@@ -73,11 +75,12 @@ class _WebPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     return AutoRouter(
       builder: (context, child) {
         const tabs = [
-          CatalogTab(),
           ShowCaseTab(),
+          CatalogTab(),
           BasketTab(),
           UserProfileTab(),
         ];
@@ -113,16 +116,17 @@ class _WebPage extends StatelessWidget {
                 child: Row(
                   children: [
                     NavigationRail(
-                      destinations: const [
+                      labelType: NavigationRailLabelType.selected,
+                      destinations:  [
                         NavigationRailDestination(
-                          label: Text('Соревнования'),
-                          icon: Icon(
-                            Icons.emoji_events_outlined,
+                          label: Text(localizations.blog),
+                          icon: const Icon(
+                            Icons.home_outlined,
                           ),
                         ),
                         NavigationRailDestination(
-                          label: Text('Календарь'),
-                          icon: Icon(Icons.event_outlined),
+                          label: Text(localizations.catalog),
+                          icon: const Icon(Icons.apps_rounded),
                         ),
                         NavigationRailDestination(
                           label: Text('Рейтинг'),

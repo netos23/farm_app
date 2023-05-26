@@ -1013,4 +1013,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get userIsNotRegistered => 'Данный пользователь не был зарегистрирован';
+
+  @override
+  String get blog => 'Блог';
 }

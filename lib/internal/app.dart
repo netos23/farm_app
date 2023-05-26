@@ -20,19 +20,18 @@ class App extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: lightColorScheme,
-        textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
+        textTheme: GoogleFonts.montserratTextTheme(),
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: darkColorScheme,
-        textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
+        textTheme: GoogleFonts.montserratTextTheme(),
         appBarTheme: AppBarTheme(
           titleTextStyle: GoogleFonts.aboreto(
             fontSize: 22,
           ),
         ),
-        inputDecorationTheme:
-        InputDecorationTheme()
+        inputDecorationTheme: const InputDecorationTheme(),
       ),
       highContrastTheme: ThemeData(
         useMaterial3: true,

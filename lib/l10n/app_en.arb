@@ -1686,5 +1686,10 @@
   "@userIsNotRegistered": {
     "type": "text",
     "placeholders": {}
+  },
+  "blog": "Blog",
+  "@blog": {
+    "type": "text",
+    "placeholders": {}
   }
 }

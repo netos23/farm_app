@@ -1013,4 +1013,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get userIsNotRegistered => 'This account does not exist.';
+
+  @override
+  String get blog => 'Blog';
 }

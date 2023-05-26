@@ -1681,5 +1681,11 @@
   "@userIsNotRegistered": {
     "type": "text",
     "placeholders": {}
+  },
+
+  "blog": "Блог",
+  "@blog": {
+    "type": "text",
+    "placeholders": {}
   }
 }
