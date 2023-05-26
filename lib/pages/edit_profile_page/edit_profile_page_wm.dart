@@ -8,10 +8,10 @@ import 'package:farm_app/util/snack_bar_util.dart';
 import 'package:farm_app/util/value_stream_wrapper.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
-import 'register_page_model.dart';
-import 'register_page_widget.dart';
+import 'edit_profile_page_model.dart';
+import 'edit_profile_page_widget.dart';
 
-abstract class IRegisterPageWidgetModel extends IWidgetModel
+abstract class IEditProfilePageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   ValueStreamWrapper<bool> get isFarmer;
 
@@ -29,21 +29,21 @@ abstract class IRegisterPageWidgetModel extends IWidgetModel
 
   TextEditingController get phoneNumber;
 
-  onRegister();
+  onEditProfile();
 }
 
-RegisterPageWidgetModel defaultRegisterPageWidgetModelFactory(
+EditProfilePageWidgetModel defaultEditProfilePageWidgetModelFactory(
     BuildContext context) {
-  return RegisterPageWidgetModel(RegisterPageModel());
+  return EditProfilePageWidgetModel(EditProfilePageModel());
 }
 
 // TODO: cover with documentation
-/// Default widget model for RegisterPageWidget
-class RegisterPageWidgetModel
-    extends WidgetModel<RegisterPageWidget, RegisterPageModel>
+/// Default widget model for EditProfilePageWidget
+class EditProfilePageWidgetModel
+    extends WidgetModel<EditProfilePageWidget, EditProfilePageModel>
     with ThemeProvider
-    implements IRegisterPageWidgetModel {
-  RegisterPageWidgetModel(RegisterPageModel model) : super(model);
+    implements IEditProfilePageWidgetModel {
+  EditProfilePageWidgetModel(EditProfilePageModel model) : super(model);
 
   @override
   AuthRepository authRepository = AuthRepository(AppComponents().authService);
@@ -70,7 +70,7 @@ class RegisterPageWidgetModel
   }
 
   @override
-  Future<void> onRegister() async {
+  Future<void> onEditProfile() async {
     final request = Profile(
       email: emailController.text,
       firstName: firstNameController.text,

@@ -14,6 +14,7 @@ _$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
       gender: json['gender'] as String?,
       role: json['role'] as String?,
       phone: json['phone'] as String?,
+      brand: json['brand'] as String?,
     );
 
 Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) {
@@ -33,5 +34,6 @@ Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) {
   writeNotNull('gender', instance.gender);
   writeNotNull('role', instance.role);
   writeNotNull('phone', instance.phone);
+  writeNotNull('brand', instance.brand);
   return val;
 }

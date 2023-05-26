@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/domain/models/category.dart';
 import 'package:farm_app/domain/models/product.dart';
+
 import 'package:farm_app/pages/auth_code_page/auth_code_page.dart';
 import 'package:farm_app/pages/auth_page/auth_page.dart';
 import 'package:farm_app/pages/cart_page/cart_page.dart';
@@ -15,6 +16,7 @@ import 'package:farm_app/pages/register_page/register_page.dart';
 import 'package:farm_app/pages/show_case_page/show_case_page.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/edit_profile_page/edit_profile_page.dart';
 import '../pages/farm_show_case_page/farmer_showcase_page.dart';
 
 part 'app_router.gr.dart';
@@ -95,6 +97,9 @@ class AppRouter extends _$AppRouter {
                 ),
                 AutoRoute(
                   page: FarmShowcaseRoute.page,
+                ),
+                AutoRoute(
+                  page: EditProfileRoute.page,
                 ),
               ],
             ),

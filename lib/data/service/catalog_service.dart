@@ -7,7 +7,6 @@ import 'package:farm_app/domain/url/catalog_url.dart';
 import 'package:farm_app/domain/entity/catalog/autocomplete_request.dart';
 import 'package:farm_app/domain/entity/catalog/autocomplete_response.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_categories_request.dart';
-import 'package:farm_app/domain/entity/catalog/catalog_categories_response.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_products_request.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_products_response.dart';
 import 'package:farm_app/domain/entity/catalog/product_detail_request.dart';

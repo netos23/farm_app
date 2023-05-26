@@ -1,6 +1,5 @@
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/repository/auth_repository.dart';
-import 'package:farm_app/data/repository/token_ropository.dart';
 import 'package:farm_app/domain/use_case/profile_use_case.dart';
 import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
@@ -16,6 +15,8 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   ProfileUseCase get profileUseCase;
 
   void onFarmShowCaseTap();
+
+  void onEditProfileTap();
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -53,5 +54,9 @@ class ProfilePageWidgetModel
   @override
   void onFarmShowCaseTap() {
     router.push(FarmShowcaseRoute());
+  }
+  @override
+  void onEditProfileTap() {
+    router.push(EditProfileRoute());
   }
 }
