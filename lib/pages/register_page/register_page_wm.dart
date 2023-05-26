@@ -12,7 +12,8 @@ import 'package:flutter/material.dart';
 import 'register_page_model.dart';
 import 'register_page_widget.dart';
 
-abstract class IRegisterPageWidgetModel extends IWidgetModel implements IThemeProvider{
+abstract class IRegisterPageWidgetModel extends IWidgetModel
+    implements IThemeProvider {
   AuthRepository get authRepository;
 
   TextEditingController get firstNameController;
@@ -28,22 +29,22 @@ abstract class IRegisterPageWidgetModel extends IWidgetModel implements IThemePr
   onRegister();
 }
 
-RegisterPageWidgetModel defaultRegisterPageWidgetModelFactory(BuildContext context) {
+RegisterPageWidgetModel defaultRegisterPageWidgetModelFactory(
+    BuildContext context) {
   return RegisterPageWidgetModel(RegisterPageModel());
 }
 
 // TODO: cover with documentation
 /// Default widget model for RegisterPageWidget
-class RegisterPageWidgetModel extends WidgetModel<RegisterPageWidget, RegisterPageModel>
+class RegisterPageWidgetModel
+    extends WidgetModel<RegisterPageWidget, RegisterPageModel>
     with ThemeProvider
     implements IRegisterPageWidgetModel {
-  
-
   RegisterPageWidgetModel(RegisterPageModel model) : super(model);
- 
+
   @override
   AuthRepository authRepository = AuthRepository(AppComponents().authService);
-  
+
   @override
   final bitrhdayController = TextEditingController();
 
@@ -59,7 +60,6 @@ class RegisterPageWidgetModel extends WidgetModel<RegisterPageWidget, RegisterPa
   @override
   final secondNameController = TextEditingController();
 
-
   @override
   void initWidgetModel() {
     emailController.text = widget.email ?? '';
@@ -68,23 +68,29 @@ class RegisterPageWidgetModel extends WidgetModel<RegisterPageWidget, RegisterPa
 
   @override
   Future<void> onRegister() async {
-
-    final request = Profile(email: emailController.text, firstName: firstNameController.text, secondName: secondNameController.text, phone: phoneNumber.text,);
+    final request = Profile(
+      email: emailController.text,
+      firstName: firstNameController.text,
+      secondName: secondNameController.text,
+      phone: phoneNumber.text,
+      birthDate: bitrhdayController.text,
+      gender: 0,
+    );
 
     try {
       await authRepository.register(profile: request);
-      await authRepository.emailPart1(request: AuthEmailPart1Request(email: request.email, digits: 4));
+      await authRepository.emailPart1(
+          request: AuthEmailPart1Request(email: request.email, digits: 4));
       router.push(
-        ProfileRoute(),
+        AuthCodeRoute(email: request.email),
       );
     } on DioError catch (error) {
-      if (error.response?.statusCode == 451){
+      if (error.response?.statusCode == 451) {
         router.push(RegisterRoute(email: emailController.text));
         context.showSnackBar(localizations.userIsNotRegistered);
         return;
       }
-      if (error.response?.statusCode == 403){
-        router.push(RegisterRoute(email: ''));
+      if (error.response?.statusCode == 403) {
         context.showSnackBar(localizations.userIsAlreadyExists);
         return;
       }

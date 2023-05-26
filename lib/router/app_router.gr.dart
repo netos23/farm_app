@@ -135,6 +135,7 @@ class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
             BuildContext)
         wmFactory = defaultProfilePageWidgetModelFactory,
     List<PageRouteInfo>? children,
+    Profile? profile,
   }) : super(
           ProfileRoute.name,
           args: ProfileRouteArgs(

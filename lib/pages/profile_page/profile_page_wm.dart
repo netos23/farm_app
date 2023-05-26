@@ -25,6 +25,7 @@ class ProfilePageWidgetModel extends WidgetModel<ProfilePageWidget, ProfilePageM
 
   @override
   void initWidgetModel() {
+
     authRepository.getUser();
     super.initWidgetModel();
   }

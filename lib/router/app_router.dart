@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
+import 'package:farm_app/domain/models/profile.dart';
 import 'package:farm_app/pages/auth_code_page/auth_code_page.dart';
 import 'package:farm_app/pages/auth_page/auth_page.dart';
 import 'package:farm_app/pages/catalog_page/catalog_page.dart';
