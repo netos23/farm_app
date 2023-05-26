@@ -29,7 +29,7 @@ mixin _$ProductDetail {
   String? get article => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   bool? get available => throw _privateConstructorUsedError;
-  Decimal? get rating => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'old_price')
   Decimal? get oldPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviews_count')
@@ -59,7 +59,7 @@ abstract class $ProductDetailCopyWith<$Res> {
       String? article,
       String? description,
       bool? available,
-      Decimal? rating,
+      double? rating,
       @JsonKey(name: 'old_price') Decimal? oldPrice,
       @JsonKey(name: 'reviews_count') int? reviewsCount,
       @JsonKey(name: 'city_fias') String? cityFias});
@@ -132,7 +132,7 @@ class _$ProductDetailCopyWithImpl<$Res, $Val extends ProductDetail>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
@@ -167,7 +167,7 @@ abstract class _$$_ProductDetailCopyWith<$Res>
       String? article,
       String? description,
       bool? available,
-      Decimal? rating,
+      double? rating,
       @JsonKey(name: 'old_price') Decimal? oldPrice,
       @JsonKey(name: 'reviews_count') int? reviewsCount,
       @JsonKey(name: 'city_fias') String? cityFias});
@@ -238,7 +238,7 @@ class __$$_ProductDetailCopyWithImpl<$Res>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
@@ -303,7 +303,7 @@ class _$_ProductDetail implements _ProductDetail {
   @override
   final bool? available;
   @override
-  final Decimal? rating;
+  final double? rating;
   @override
   @JsonKey(name: 'old_price')
   final Decimal? oldPrice;
@@ -387,7 +387,7 @@ abstract class _ProductDetail implements ProductDetail {
       final String? article,
       final String? description,
       final bool? available,
-      final Decimal? rating,
+      final double? rating,
       @JsonKey(name: 'old_price') final Decimal? oldPrice,
       @JsonKey(name: 'reviews_count') final int? reviewsCount,
       @JsonKey(name: 'city_fias') final String? cityFias}) = _$_ProductDetail;
@@ -414,7 +414,7 @@ abstract class _ProductDetail implements ProductDetail {
   @override
   bool? get available;
   @override
-  Decimal? get rating;
+  double? get rating;
   @override
   @JsonKey(name: 'old_price')
   Decimal? get oldPrice;

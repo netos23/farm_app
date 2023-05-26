@@ -22,7 +22,7 @@ class ProductDetail with _$ProductDetail {
     String? article,
     String? description,
     bool? available,
-    Decimal? rating,
+    double? rating,
     @JsonKey(name: 'old_price') Decimal? oldPrice,
     @JsonKey(name: 'reviews_count') int? reviewsCount,
     @JsonKey(name: 'city_fias') String? cityFias,
