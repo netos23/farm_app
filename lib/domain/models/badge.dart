@@ -7,6 +7,10 @@ part 'badge.g.dart';
 
 @freezed
 class Badge with _$Badge{
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory Badge({
     required int id,
     String? title,

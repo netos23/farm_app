@@ -6,6 +6,10 @@ part 'auth_email_part2_response.freezed.dart';
 
 @freezed
 class AuthEmailPart2Response with _$AuthEmailPart2Response{
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory AuthEmailPart2Response({
     required String refreshToken,
     required String accessToken,

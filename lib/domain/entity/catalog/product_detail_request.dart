@@ -5,6 +5,10 @@ part 'product_detail_request.g.dart';
 
 @freezed
 class ProductDetailRequest with _$ProductDetailRequest {
+    @JsonSerializable(
+        explicitToJson: true,
+        includeIfNull: false,
+    )
     factory ProductDetailRequest({
         required String name,
     }) = _ProductDetailRequest;

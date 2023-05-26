@@ -6,6 +6,10 @@ part 'auth_register_response.g.dart';
 
 @freezed
 class AuthRegisterResponse with _$AuthRegisterResponse{
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory AuthRegisterResponse({
     required String name,
   }) = _AuthRegisterResponse;

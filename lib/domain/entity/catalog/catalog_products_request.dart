@@ -5,6 +5,10 @@ part 'catalog_products_request.g.dart';
 
 @freezed
 class CatalogProductsRequest with _$CatalogProductsRequest {
+    @JsonSerializable(
+        explicitToJson: true,
+        includeIfNull: false,
+    )
     factory CatalogProductsRequest({
         String? name,
         String? sortBy,

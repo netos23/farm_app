@@ -6,6 +6,10 @@ part 'profile.g.dart';
 
 @freezed
 class Profile with _$Profile {
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory Profile({
     required String email,
     String? firstName,

@@ -7,6 +7,10 @@ part 'product_detail.g.dart';
 
 @freezed
 class ProductDetail with _$ProductDetail{
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory ProductDetail({
     required String name,
     required String picture,

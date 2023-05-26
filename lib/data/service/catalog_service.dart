@@ -9,7 +9,6 @@ import 'package:farm_app/domain/entity/catalog/catalog_categories_response.dart'
 import 'package:farm_app/domain/entity/catalog/catalog_products_request.dart';
 import 'package:farm_app/domain/entity/catalog/catalog_products_response.dart';
 import 'package:farm_app/domain/entity/catalog/filters_request.dart';
-import 'package:farm_app/domain/entity/catalog/filters_response.dart';
 import 'package:farm_app/domain/entity/catalog/product_detail_request.dart';
 import 'package:farm_app/domain/entity/catalog/product_detail_response.dart';
 import 'package:farm_app/domain/entity/catalog/sort_types_request.dart';
@@ -43,10 +42,6 @@ abstract class CatalogService {
     @Body() required SortTypesRequest request,
   });
 
-  @POST(CatalogUrl.catalogFilters)
-  Future<FiltersResponse> getFilters({
-    @Body() required FiltersRequest request,
-  });
 
   @POST(CatalogUrl.catalogAutocomplete)
   Future<AutocompleteResponse> getCatalogAutocomplete({

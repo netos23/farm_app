@@ -7,6 +7,10 @@ part 'product.g.dart';
 
 @freezed
 class Product with _$Product {
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory Product({
     required String name,
     required String picture,

@@ -6,6 +6,10 @@ part 'catalog_categories_response.g.dart';
 
 @freezed
 class CatalogCategoriesResponse with _$CatalogCategoriesResponse{
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory CatalogCategoriesResponse({
     required String name,
   }) = _CatalogCategoriesResponse;
