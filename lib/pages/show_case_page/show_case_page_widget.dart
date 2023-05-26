@@ -23,7 +23,7 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
       body: SafeArea(
         child: EntityStateNotifierBuilder(
           listenableEntityState: wm.bannersState,
-          loadingBuilder: (context, data){
+          loadingBuilder: (context, data) {
             return ListView.builder(
               itemBuilder: (context, index) {
                 return Container(
@@ -63,6 +63,7 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
                     ),
                     markdownBanner: (text) => _MarkdownBannerWidget(
                       text: text,
+                      onTap: wm.openLink,
                     ),
                     sliderBanner: (items) => _SliderBannerWidget(
                       items: items,
@@ -168,27 +169,32 @@ class _MarkdownBannerWidget extends StatelessWidget {
   const _MarkdownBannerWidget({
     Key? key,
     required this.text,
+    this.onTap,
   }) : super(key: key);
 
   final String text;
+  final ValueChanged<String>? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Markdown(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-        ),
-        styleSheet: MarkdownStyleSheet.fromTheme(
-          Theme.of(context),
-        ),
-        styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
-        shrinkWrap: true,
-        softLineBreak: true,
-        selectable: true,
-        physics: const NeverScrollableScrollPhysics(),
-        data: text,
+    return Markdown(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
       ),
+      styleSheet: fromTheme(
+        Theme.of(context),
+      ),
+      onTapLink: (text, href, title) {
+        if (href != null) {
+          onTap?.call(href);
+        }
+      },
+      styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
+      shrinkWrap: true,
+      softLineBreak: true,
+      selectable: true,
+      physics: const NeverScrollableScrollPhysics(),
+      data: text,
     );
   }
 }
@@ -262,4 +268,92 @@ class _SliderBannerWidgetState extends State<_SliderBannerWidget> {
       ],
     );
   }
+}
+
+MarkdownStyleSheet fromTheme(ThemeData theme) {
+  assert(theme.textTheme.bodyMedium?.fontSize != null);
+  final colorScheme = theme.colorScheme;
+  return MarkdownStyleSheet(
+    a: const TextStyle(color: Colors.blue),
+    p: theme.textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    pPadding: EdgeInsets.zero,
+    code: theme.textTheme.bodyMedium!.copyWith(
+      backgroundColor: theme.cardTheme.color ?? theme.cardColor,
+      fontFamily: 'monospace',
+      fontSize: theme.textTheme.bodyMedium!.fontSize! * 0.85,
+    ),
+    h1: theme.textTheme.headlineSmall?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    h1Padding: EdgeInsets.zero,
+    h2: theme.textTheme.titleLarge?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    h2Padding: EdgeInsets.zero,
+    h3: theme.textTheme.titleMedium?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    h3Padding: EdgeInsets.zero,
+    h4: theme.textTheme.bodyLarge?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    h4Padding: EdgeInsets.zero,
+    h5: theme.textTheme.bodyLarge?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    h5Padding: EdgeInsets.zero,
+    h6: theme.textTheme.bodyLarge?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    h6Padding: EdgeInsets.zero,
+    em: const TextStyle(fontStyle: FontStyle.italic),
+    strong: const TextStyle(fontWeight: FontWeight.bold),
+    del: const TextStyle(decoration: TextDecoration.lineThrough),
+    blockquote: theme.textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    img: theme.textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    checkbox: theme.textTheme.bodyMedium!.copyWith(
+      color: theme.primaryColor,
+    ),
+    blockSpacing: 8.0,
+    listIndent: 24.0,
+    listBullet: theme.textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    listBulletPadding: const EdgeInsets.only(right: 4),
+    tableHead: const TextStyle(fontWeight: FontWeight.w600),
+    tableBody: theme.textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onBackground,
+    ),
+    tableHeadAlign: TextAlign.center,
+    tableBorder: TableBorder.all(
+      color: theme.dividerColor,
+    ),
+    tableColumnWidth: const FlexColumnWidth(),
+    tableCellsPadding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+    tableCellsDecoration: const BoxDecoration(),
+    blockquotePadding: const EdgeInsets.all(8.0),
+    blockquoteDecoration: BoxDecoration(
+      color: Colors.blue.shade100,
+      borderRadius: BorderRadius.circular(2.0),
+    ),
+    codeblockPadding: const EdgeInsets.all(8.0),
+    codeblockDecoration: BoxDecoration(
+      color: theme.cardTheme.color ?? theme.cardColor,
+      borderRadius: BorderRadius.circular(2.0),
+    ),
+    horizontalRuleDecoration: BoxDecoration(
+      border: Border(
+        top: BorderSide(
+          width: 5.0,
+          color: theme.dividerColor,
+        ),
+      ),
+    ),
+  );
 }

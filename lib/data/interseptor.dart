@@ -36,7 +36,7 @@ class JWTInterceptor extends QueuedInterceptor {
   /// Save tokens received after authorization.
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
-    if (response.requestOptions.path == '/auth/v1/phone/part2') {
+    if (response.requestOptions.path == '/auth/email/part2') {
       repository.saveTokens(
         accessToken: response.data['data']['access_token'],
         refreshToken: response.data['data']['refresh_token'],
@@ -52,7 +52,7 @@ class JWTInterceptor extends QueuedInterceptor {
     // todo(netos23): fix it
     if ((error.response?.statusCode == 403 ||
             error.response?.statusCode == 401) &&
-        error.requestOptions.path != '/auth/v1/phone/part1') {
+        error.requestOptions.path != '/auth/email/part1') {
 
       await _refresh();
       if(repository.auth) {
@@ -65,9 +65,14 @@ class JWTInterceptor extends QueuedInterceptor {
 
   /// Make a request to update the JWT token and save it to cache.
   Future<void> _refresh() async {
+    if(_refreshToken == null){
+      return;
+    }
+
+
     try {
       final response = await _dio.post(
-        '/auth/v1/token/refresh',
+        '/auth/token/refresh',
         data: {
           'refresh_token': _refreshToken,
         },
@@ -99,18 +104,4 @@ class JWTInterceptor extends QueuedInterceptor {
     );
   }
 
-/*
-  Future<void> _getFreeToken({bool isInit = false}) async {
-    final response = await _dio.post('/auth/v1/token/free',
-        data: {'user_uuid': UuidManager.cachedUuid},
-        options: Options(
-          headers: {
-            'Authorization': 'Basic YXBwOmZpdHRpbmFwcA==',
-          },
-        ));
-
-    if (isInit) {
-      await _saveTokens(response, isFreeToken: true);
-    }
-  }*/
 }

@@ -12,26 +12,16 @@ class AuthRepository {
 
   final AuthService _authService;
 
-  @override
+
   Future<void> emailPart1({
     required AuthEmailPart1Request request,
   }) async {
-    try {
-      await _authService.authEmailPart1(
-        request: request,
-      );
-    } on DioError catch (error) {
-      if (error.response?.statusCode == 452 || error.response?.statusCode == 403){
-        rethrow;
-      } else {
-        throw Exception(
-        error.response?.data['message'],
-      );
-      }
-    }
+    await _authService.authEmailPart1(
+      request: request,
+    );
   }
 
-  @override
+
   Future<AuthEmailPart2Response> emailPart2({
     required AuthEmailPart2Request request,
   }) async {

@@ -11,10 +11,7 @@ abstract class IAuthCodePageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   TextEditingController get codeController;
 
-  AuthRepository get authRepository;
-
   Future<void> confirmCode();
-
 }
 
 AuthCodePageWidgetModel defaultAuthCodePageWidgetModelFactory(
@@ -29,18 +26,19 @@ class AuthCodePageWidgetModel
   @override
   TextEditingController codeController = TextEditingController();
 
-  @override
-  AuthRepository authRepository = AuthRepository(
+  final authRepository = AuthRepository(
     AppComponents().authService,
   );
-
 
   @override
   Future<void> confirmCode() async {
     await authRepository.emailPart2(
-      request: AuthEmailPart2Request(email: widget.email, code: codeController.text),
+      request: AuthEmailPart2Request(
+        email: widget.email,
+        code: codeController.text,
+      ),
     );
   }
-  AuthCodePageWidgetModel(AuthCodePageModel model) : super(model);
 
+  AuthCodePageWidgetModel(AuthCodePageModel model) : super(model);
 }

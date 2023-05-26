@@ -147,12 +147,6 @@ abstract class AppLocalizations {
   /// **'Name is required'**
   String get nameIsRequired;
 
-  /// No description provided for @virtualFitting.
-  ///
-  /// In en, this message translates to:
-  /// **'Make in'**
-  String get virtualFitting;
-
   /// No description provided for @technology.
   ///
   /// In en, this message translates to:
@@ -176,12 +170,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error'**
   String get error;
-
-  /// No description provided for @wantGoToSite.
-  ///
-  /// In en, this message translates to:
-  /// **'Do you want to go to fittin.ru?'**
-  String get wantGoToSite;
 
   /// No description provided for @wantGoToSiteNo.
   ///
@@ -687,12 +675,6 @@ abstract class AppLocalizations {
   /// **'Click if you want to edit'**
   String get clickIfYouWantToEdit;
 
-  /// No description provided for @collectionOnlineShoes.
-  ///
-  /// In en, this message translates to:
-  /// **'Collection of shoes with online fitting'**
-  String get collectionOnlineShoes;
-
   /// No description provided for @findPerfectMath.
   ///
   /// In en, this message translates to:
@@ -1101,12 +1083,6 @@ abstract class AppLocalizations {
   /// **'Main Office'**
   String get mainOffice;
 
-  /// No description provided for @writeToFittin.
-  ///
-  /// In en, this message translates to:
-  /// **'Write to Fittin'**
-  String get writeToFittin;
-
   /// No description provided for @writeToTechSupport.
   ///
   /// In en, this message translates to:
@@ -1118,12 +1094,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Legal information'**
   String get legalInfo;
-
-  /// No description provided for @legalInfoData.
-  ///
-  /// In en, this message translates to:
-  /// **'OOO “FITTIN” \nOGRN: 1153668053736 \nKPP: 366201001 \nOKPO: 42607354'**
-  String get legalInfoData;
 
   /// No description provided for @loyaltyProgram.
   ///
@@ -1251,12 +1221,6 @@ abstract class AppLocalizations {
   /// **'In our service, we calculate the degree of fit of the shoe to the foot and, based on machine learning algorithms, we display the gradations of sensations of your particular foot in the selected shoe model.'**
   String get perfectFootSize;
 
-  /// No description provided for @prefitting.
-  ///
-  /// In en, this message translates to:
-  /// **'Prefitting'**
-  String get prefitting;
-
   /// No description provided for @aboutService.
   ///
   /// In en, this message translates to:
@@ -1280,12 +1244,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Each user has the parameters of each leg may differ, so the sensations in one and the same size may be different.'**
   String get differentSizes;
-
-  /// No description provided for @aboutShopping.
-  ///
-  /// In en, this message translates to:
-  /// **'With the help of our service, the user will be able to completely switch to buying shoes online, replacing long trips to the store, with a comfortable online fitting at home.'**
-  String get aboutShopping;
 
   /// No description provided for @availableInOneProductShop.
   ///
@@ -1352,30 +1310,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'try on online'**
   String get tryOnOnline;
-
-  /// No description provided for @fittin.
-  ///
-  /// In en, this message translates to:
-  /// **'Fittin'**
-  String get fittin;
-
-  /// No description provided for @fittinOnline.
-  ///
-  /// In en, this message translates to:
-  /// **'Try it online'**
-  String get fittinOnline;
-
-  /// No description provided for @fittinShoesOnline.
-  ///
-  /// In en, this message translates to:
-  /// **'Try on shoes online'**
-  String get fittinShoesOnline;
-
-  /// No description provided for @fittinShoesOnlineDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'scan your feet and try on shoes online in your smartphone'**
-  String get fittinShoesOnlineDescription;
 
   /// No description provided for @doScan.
   ///
@@ -1592,12 +1526,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Test account'**
   String get testAccount;
-
-  /// No description provided for @fittingNotAvailable.
-  ///
-  /// In en, this message translates to:
-  /// **'Online fitting for this size will be available soon.'**
-  String get fittingNotAvailable;
 
   /// No description provided for @smsCodeInsert.
   ///
@@ -2150,6 +2078,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'To use the profile, you need to log in or register.'**
   String get authRequired;
+
+  /// No description provided for @registration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration'**
+  String get registration;
+
+  /// No description provided for @userIsAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'User with the same name already exists'**
+  String get userIsAlreadyExists;
+
+  /// No description provided for @userIsNotRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'This account does not exist.'**
+  String get userIsNotRegistered;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

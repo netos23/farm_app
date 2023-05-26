@@ -78,7 +78,7 @@ class RegisterPageWidgetModel extends WidgetModel<RegisterPageWidget, RegisterPa
         ProfileRoute(),
       );
     } on DioError catch (error) {
-      if (error.response?.statusCode == 452){
+      if (error.response?.statusCode == 451){
         router.push(RegisterRoute(email: emailController.text));
         context.showSnackBar(localizations.userIsNotRegistered);
         return;

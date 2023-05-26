@@ -32,9 +32,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nameIsRequired => 'Name is required';
 
   @override
-  String get virtualFitting => 'Make in';
-
-  @override
   String get technology => 'technology';
 
   @override
@@ -45,9 +42,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'Error';
-
-  @override
-  String get wantGoToSite => 'Do you want to go to fittin.ru?';
 
   @override
   String get wantGoToSiteNo => 'No';
@@ -308,9 +302,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clickIfYouWantToEdit => 'Click if you want to edit';
 
   @override
-  String get collectionOnlineShoes => 'Collection of shoes with online fitting';
-
-  @override
   String get findPerfectMath => 'Find your perfect match';
 
   @override
@@ -515,16 +506,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mainOffice => 'Main Office';
 
   @override
-  String get writeToFittin => 'Write to Fittin';
-
-  @override
   String get writeToTechSupport => 'Write to technical support';
 
   @override
   String get legalInfo => 'Legal information';
-
-  @override
-  String get legalInfoData => 'OOO “FITTIN” \nOGRN: 1153668053736 \nKPP: 366201001 \nOKPO: 42607354';
 
   @override
   String get loyaltyProgram => 'Loyalty program';
@@ -590,9 +575,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get perfectFootSize => 'In our service, we calculate the degree of fit of the shoe to the foot and, based on machine learning algorithms, we display the gradations of sensations of your particular foot in the selected shoe model.';
 
   @override
-  String get prefitting => 'Prefitting';
-
-  @override
   String get aboutService => 'Choosing the size, our service will tell you how suitable the option you have chosen and how the shoes will fit the foot.';
 
   @override
@@ -603,9 +585,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get differentSizes => 'Each user has the parameters of each leg may differ, so the sensations in one and the same size may be different.';
-
-  @override
-  String get aboutShopping => 'With the help of our service, the user will be able to completely switch to buying shoes online, replacing long trips to the store, with a comfortable online fitting at home.';
 
   @override
   String get availableInOneProductShop => 'Available in 1 shop';
@@ -641,18 +620,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tryOnOnline => 'try on online';
-
-  @override
-  String get fittin => 'Fittin';
-
-  @override
-  String get fittinOnline => 'Try it online';
-
-  @override
-  String get fittinShoesOnline => 'Try on shoes online';
-
-  @override
-  String get fittinShoesOnlineDescription => 'scan your feet and try on shoes online in your smartphone';
 
   @override
   String get doScan => 'Scan';
@@ -761,9 +728,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get testAccount => 'Test account';
-
-  @override
-  String get fittingNotAvailable => 'Online fitting for this size will be available soon.';
 
   @override
   String get smsCodeInsert => 'Code insert automaticly.';
@@ -1040,4 +1004,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authRequired => 'To use the profile, you need to log in or register.';
+
+  @override
+  String get registration => 'Registration';
+
+  @override
+  String get userIsAlreadyExists => 'User with the same name already exists';
+
+  @override
+  String get userIsNotRegistered => 'This account does not exist.';
 }

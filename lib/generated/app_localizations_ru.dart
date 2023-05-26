@@ -32,9 +32,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get nameIsRequired => 'Необходимо указать имя';
 
   @override
-  String get virtualFitting => 'Сделано в';
-
-  @override
   String get technology => 'технология';
 
   @override
@@ -45,9 +42,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get error => 'Ошибка';
-
-  @override
-  String get wantGoToSite => 'Хотите перейти на fittin.ru?';
 
   @override
   String get wantGoToSiteNo => 'Нет';
@@ -308,9 +302,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get clickIfYouWantToEdit => 'Нажмите, чтобы изменить';
 
   @override
-  String get collectionOnlineShoes => 'Коллекция обуви с онлайн примеркой';
-
-  @override
   String get findPerfectMath => 'Найди свою идеальную пару';
 
   @override
@@ -386,7 +377,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get unauthCatalog => 'Online примерка будет доступна после сканирования ног и регистрации';
 
   @override
-  String get noModelCatalog => 'Чтобы сделать online примерку в каталоге Fittin, отсканируйте ноги';
+  String get noModelCatalog => 'Scan your legs';
 
   @override
   String get wantScan => 'Хочу сделать сканирование!';
@@ -515,16 +506,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mainOffice => 'Главный офис';
 
   @override
-  String get writeToFittin => 'Написать в Fittin';
-
-  @override
   String get writeToTechSupport => 'Написать в техподдержку';
 
   @override
   String get legalInfo => 'Юридическая финормация';
-
-  @override
-  String get legalInfoData => 'ООО “ФИТТИН” \nОГРН: 1153668053736 \nКПП: 366201001 \nОКПО: 42607354';
 
   @override
   String get loyaltyProgram => 'Программа лояльности';
@@ -590,9 +575,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get perfectFootSize => 'В нашем сервисе мы рассчитываем степень прилегания обуви к ноге и на основании алгоритмов машинного обучения выводим градации ощущений именно Вашей ноги в выбранной модели обуви.';
 
   @override
-  String get prefitting => 'Предпримерка';
-
-  @override
   String get aboutService => 'Выбирая размер, наш сервис подскажет насколько  подходит выбранный Вами вариант и как обувь будет прилегать к ноге.';
 
   @override
@@ -603,9 +585,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get differentSizes => 'У каждого пользователя параметры каждой ноги может отличаться, поэтому ощущения в одном и том же размере могут быть разными.';
-
-  @override
-  String get aboutShopping => 'С помощью нашего сервиса пользователь сможет полностью перейти на покупки обуви онлайн, заменив долгие походы в магазин, на комфортную онлайн примерку дома.';
 
   @override
   String get availableInOneProductShop => 'Доступно в 1 мамркетплейсе';
@@ -641,18 +620,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get tryOnOnline => 'примеряйте online';
-
-  @override
-  String get fittin => 'Fittin';
-
-  @override
-  String get fittinOnline => 'Примерить онлайн';
-
-  @override
-  String get fittinShoesOnline => 'Примерить обувь онлайн';
-
-  @override
-  String get fittinShoesOnlineDescription => 'Отсканируй ноги и примерь обувь online в своем смартфоне';
 
   @override
   String get doScan => 'Сканировать';
@@ -761,9 +728,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get testAccount => 'Test account';
-
-  @override
-  String get fittingNotAvailable => 'Online примерка для этого размера скоро будет доступна.';
 
   @override
   String get smsCodeInsert => 'Код был вставлен автоматически.';
@@ -1040,4 +1004,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get authRequired => 'Чтобы воспользоваться профилем, Вам необходимо войти или зарегистрироваться.';
+
+  @override
+  String get registration => 'Регистрация';
+
+  @override
+  String get userIsAlreadyExists => 'Пользователь с таким именем уже существует';
+
+  @override
+  String get userIsNotRegistered => 'Данный пользователь не был зарегистрирован';
 }
