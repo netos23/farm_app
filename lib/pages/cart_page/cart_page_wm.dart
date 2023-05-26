@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/repository/dadata_repository.dart';
 import 'package:farm_app/data/service/cart_service.dart';
@@ -8,6 +9,7 @@ import 'package:farm_app/domain/entity/dadata/geo_data.dart';
 import 'package:farm_app/domain/models/product.dart';
 import 'package:farm_app/domain/use_case/cart_use_case.dart';
 import 'package:farm_app/internal/app_components.dart';
+import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
 import 'cart_page_model.dart';
@@ -25,7 +27,7 @@ abstract class ICartPageWidgetModel extends IWidgetModel
 
   void openSort();
 
-  void openProduct({required Product product, required String tag});
+  void openProduct({required Product product});
 }
 
 CartPageWidgetModel defaultCartPageWidgetModelFactory(BuildContext context) {
@@ -64,11 +66,18 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
   }
 
   @override
-  void openSort() {}
+  void openSort() {
+    // todo implents
+  }
 
   @override
-  void openProduct({required Product product, required String tag}) {
-    // TODO: implement openProduct
+  void openProduct({required Product product}) {
+    context.router.navigate(
+      ProductRoute(
+        productId: product.id,
+        product: product,
+      ),
+    );
   }
 
   Future<void> loadCart() async {

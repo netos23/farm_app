@@ -67,14 +67,14 @@ class _CartService implements CartService {
   }
 
   @override
-  Future<CartUpdate> putCart({required CartUpdate request}) async {
+  Future<CalcCart> putCart({required CartUpdate request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CartUpdate>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<CalcCart>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
@@ -86,19 +86,19 @@ class _CartService implements CartService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CartUpdate.fromJson(_result.data!);
+    final value = CalcCart.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<CartUpdate> deleteCart({required CartUpdate request}) async {
+  Future<CalcCart> deleteCart({required CartUpdate request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CartUpdate>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<CalcCart>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -110,7 +110,7 @@ class _CartService implements CartService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CartUpdate.fromJson(_result.data!);
+    final value = CalcCart.fromJson(_result.data!);
     return value;
   }
 

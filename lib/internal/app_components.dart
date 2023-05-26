@@ -34,7 +34,10 @@ class AppComponents {
   );
   late final ProfileUseCase profileUseCase =
       ProfileUseCase(tokenRepository, AuthRepository(authService));
-  late final CartUseCase cartUseCase = CartUseCase(_cartService);
+  late final CartUseCase cartUseCase = CartUseCase(
+    _cartService,
+    profileUseCase,
+  );
 
   Future<void> init() async {
     dio.options

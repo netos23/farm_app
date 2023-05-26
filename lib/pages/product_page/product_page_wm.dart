@@ -16,7 +16,6 @@ abstract class IProductPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   EntityStateNotifier<ProductDetail> get productState;
 
-  void addToCart(ProductDetail product);
 }
 
 ProductPageWidgetModel defaultProductPageWidgetModelFactory(
@@ -71,12 +70,4 @@ class ProductPageWidgetModel
     super.dispose();
   }
 
-  @override
-  void addToCart(ProductDetail product) {
-    cartUseCase.postCart(
-      request: CartUpdate(
-        productId: product.id,
-      ),
-    );
-  }
 }

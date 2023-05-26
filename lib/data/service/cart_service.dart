@@ -24,12 +24,12 @@ abstract class CartService {
   });
 
   @PUT(CartUrl.cartCart)
-  Future<CartUpdate> putCart({
+  Future<CalcCart> putCart({
     @Body() required CartUpdate request,
   });
 
   @DELETE(CartUrl.cartCart)
-  Future<CartUpdate> deleteCart({
+  Future<CalcCart> deleteCart({
     @Body() required CartUpdate request,
   });
 }

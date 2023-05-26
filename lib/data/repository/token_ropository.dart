@@ -31,7 +31,6 @@ class TokenRepository extends ChangeNotifier{
       _refreshToken = storage.getString('refreshToken');
     }
     notifyListeners();
-    _accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3NTUzODczLCJpYXQiOjE2ODQ5NjE4NzMsImp0aSI6ImE0NmZiNDBlMzdmZTRlMzJiZjhlZGQxZjY2ZmQyNGEwIiwidXNlcl9pZCI6MiwidXNlcl91dWlkIjpudWxsLCJpc192ZXJpZmllZCI6dHJ1ZX0.SGzZCzGopLxa7_8f3D7eBEuUIsgcU0PKqgflqmg4wR0';
   }
 
   Future<void> deleteTokens() async {

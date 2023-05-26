@@ -5,7 +5,6 @@ import 'package:farm_app/pages/components/product_card.dart';
 import 'package:farm_app/pages/components/search_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 import '../../generated/app_localizations.dart';
 import 'catalog_page_wm.dart';
 
@@ -101,16 +100,13 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
                   ),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
-              final tag = const Uuid().v4();
               return ProductCard(
                 product: products[index],
                 favourite: index.isOdd,
                 onFavoutiteTap: () {},
                 onTap: () => wm.openProduct(
                   product: products[index],
-                  tag: tag,
                 ),
-                tag: tag,
               );
             },
           );

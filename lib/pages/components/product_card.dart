@@ -14,14 +14,12 @@ class ProductCard extends StatelessWidget {
     this.onTap,
     this.favourite = true,
     this.onFavoutiteTap,
-    required this.tag,
   }) : super(key: key);
 
   final bool favourite;
   final Product product;
   final VoidCallback? onTap;
   final VoidCallback? onFavoutiteTap;
-  final String tag;
 
   @override
   Widget build(BuildContext context) {
@@ -40,23 +38,20 @@ class ProductCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: GestureDetector(
                     onTap: onTap,
-                    child: Hero(
-                      tag: tag,
-                      child: CachedNetworkImage(
-                        fit: BoxFit.fill,
-                        imageUrl: product.picture,
-                        progressIndicatorBuilder: (_,__,___){
-                          return const Center(
-                            child: LoadingIndicator(),
-                          );
-                        },
-                        errorWidget: (_, __, ___) {
-                          return Image.asset(
-                            'assets/images/products.png',
-                            fit: BoxFit.fill,
-                          );
-                        },
-                      ),
+                    child: CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      imageUrl: product.picture,
+                      progressIndicatorBuilder: (_,__,___){
+                        return const Center(
+                          child: LoadingIndicator(),
+                        );
+                      },
+                      errorWidget: (_, __, ___) {
+                        return Image.asset(
+                          'assets/images/products.png',
+                          fit: BoxFit.fill,
+                        );
+                      },
                     ),
                   ),
                 ),

@@ -8,10 +8,12 @@ class FavouriteButton extends StatefulWidget {
     required this.favourite,
     this.onTap,
     required this.productId,
+    this.size = 15,
   }) : super(key: key);
   final bool favourite;
   final int productId;
   final VoidCallback? onTap;
+  final double size;
 
   @override
   State<FavouriteButton> createState() => _FavouriteButtonState();
@@ -50,10 +52,9 @@ class _FavouriteButtonState extends State<FavouriteButton> {
       },
       icon: Icon(
         _favourite ? Icons.favorite : Icons.heart_broken_outlined,
-        size: 15,
-        color: _favourite
-            ? theme.colorScheme.error
-            : theme.colorScheme.onSurface,
+        size: widget.size,
+        color:
+            _favourite ? theme.colorScheme.error : theme.colorScheme.onSurface,
       ),
     );
   }

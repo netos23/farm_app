@@ -3,6 +3,7 @@ import 'package:elementary/elementary.dart';
 import 'package:farm_app/pages/components/loading_indicator.dart';
 import 'package:farm_app/pages/components/product_card.dart';
 import 'package:farm_app/pages/components/search_widget.dart';
+import 'package:farm_app/router/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../generated/app_localizations.dart';
@@ -36,25 +37,44 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
           final localizations = AppLocalizations.of(context);
           final products = data?.products ?? [];
 
-          if (products.isEmpty) {
+          final logIn = wm.cartUseCase.profileUseCase.repository.auth;
+          var router = context.router;
+          if (!logIn || products.isEmpty) {
             return Center(
               child: Column(
                 children: [
                   Expanded(
-                    flex: 4,
+                    flex: logIn ? 4 : 5,
                     child: Image.asset(
                       'assets/images/products.png',
                     ),
                   ),
                   Flexible(
                     child: Text(
-                      localizations.emptyBasket,
+                      logIn
+                          ? localizations.emptyBasket
+                          : 'Что бы заказать товар, '
+                              'Вам необходимо авторизоваться',
                       textAlign: TextAlign.center,
                       style: wm.textTheme.bodyLarge?.copyWith(
                         color: wm.colorScheme.onBackground,
                       ),
                     ),
                   ),
+                  if (!logIn)
+                    Expanded(
+                      child: Center(
+                        child: FilledButton(
+                          onPressed: () async {
+                            await router.pop();
+                            await router.navigate(AuthRoute());
+                          },
+                          child: Text(
+                            localizations.login,
+                          ),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             );
@@ -73,18 +93,15 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                     crossAxisCount: 2,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
-                    childAspectRatio:  11.5 / 18,
+                    childAspectRatio: 11.5 / 18,
                   ),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
-
               return ProductCard(
                 product: products[index].product,
                 onTap: () => wm.openProduct(
-                   product: products[index].product,
-                  tag: ''
+                  product: products[index].product,
                 ),
-                tag: '',
               );
             },
           );

@@ -27,7 +27,7 @@ abstract class ICatalogPageWidgetModel extends IWidgetModel
 
   void openSort();
 
-  void openProduct({required Product product, required String tag});
+  void openProduct({required Product product});
 }
 
 CatalogPageWidgetModel defaultCatalogPageWidgetModelFactory(
@@ -141,7 +141,6 @@ class CatalogPageWidgetModel
           topLeft: Radius.circular(25),
         ),
       ),
-      useRootNavigator: true,
       builder: _buildContent,
     );
   }
@@ -192,13 +191,11 @@ class CatalogPageWidgetModel
   @override
   void openProduct({
     required Product product,
-    required String tag,
   }) {
     context.router.navigate(
       ProductRoute(
         productId: product.id,
         product: product,
-        heroTag: tag,
       ),
     );
   }
