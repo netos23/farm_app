@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:dio/dio.dart';
 import 'package:dadata_suggestions/dadata_suggestions.dart';
 import 'package:farm_app/domain/entity/dadata/geo_data.dart';
@@ -44,7 +42,7 @@ class GeolocationDadataRepository {
         AddressSuggestionRequest(ip: ip),
       );
       if (result?.location == null || (result!.location!.value ?? '').isEmpty) {
-        return GeoData(
+        return const GeoData(
           cityFias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',
           name: 'Москва',
           fullName: 'г. Москва',

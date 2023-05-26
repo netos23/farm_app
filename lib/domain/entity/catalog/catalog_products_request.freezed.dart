@@ -131,7 +131,8 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_CatalogProductsRequest implements _CatalogProductsRequest {
   _$_CatalogProductsRequest(
       {this.name, this.sortBy, this.search, this.categoryId});

@@ -17,7 +17,7 @@ class ProductDetail with _$ProductDetail{
     required String description,
     required List<Badge> badges,
     required bool available,
-    String? cityFias,
+    @JsonKey(name: 'city_fias')String? cityFias,
   }) = _ProductDetail;
 
   factory ProductDetail.fromJson(Map<String, dynamic> json) =>

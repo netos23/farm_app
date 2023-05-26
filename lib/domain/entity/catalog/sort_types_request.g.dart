@@ -15,5 +15,5 @@ _$_SortTypesRequest _$$_SortTypesRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_SortTypesRequestToJson(_$_SortTypesRequest instance) =>
     <String, dynamic>{
-      'sorts': instance.sorts,
+      'sorts': instance.sorts.map((e) => e.toJson()).toList(),
     };

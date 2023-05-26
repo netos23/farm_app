@@ -25,6 +25,7 @@ mixin _$ProductDetail {
   String get description => throw _privateConstructorUsedError;
   List<Badge> get badges => throw _privateConstructorUsedError;
   bool get available => throw _privateConstructorUsedError;
+  @JsonKey(name: 'city_fias')
   String? get cityFias => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,7 @@ abstract class $ProductDetailCopyWith<$Res> {
       String description,
       List<Badge> badges,
       bool available,
-      String? cityFias});
+      @JsonKey(name: 'city_fias') String? cityFias});
 }
 
 /// @nodoc
@@ -111,7 +112,7 @@ abstract class _$$_ProductDetailCopyWith<$Res>
       String description,
       List<Badge> badges,
       bool available,
-      String? cityFias});
+      @JsonKey(name: 'city_fias') String? cityFias});
 }
 
 /// @nodoc
@@ -162,7 +163,8 @@ class __$$_ProductDetailCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_ProductDetail implements _ProductDetail {
   const _$_ProductDetail(
       {required this.name,
@@ -170,7 +172,7 @@ class _$_ProductDetail implements _ProductDetail {
       required this.description,
       required final List<Badge> badges,
       required this.available,
-      this.cityFias})
+      @JsonKey(name: 'city_fias') this.cityFias})
       : _badges = badges;
 
   factory _$_ProductDetail.fromJson(Map<String, dynamic> json) =>
@@ -193,6 +195,7 @@ class _$_ProductDetail implements _ProductDetail {
   @override
   final bool available;
   @override
+  @JsonKey(name: 'city_fias')
   final String? cityFias;
 
   @override
@@ -242,7 +245,7 @@ abstract class _ProductDetail implements ProductDetail {
       required final String description,
       required final List<Badge> badges,
       required final bool available,
-      final String? cityFias}) = _$_ProductDetail;
+      @JsonKey(name: 'city_fias') final String? cityFias}) = _$_ProductDetail;
 
   factory _ProductDetail.fromJson(Map<String, dynamic> json) =
       _$_ProductDetail.fromJson;
@@ -258,6 +261,7 @@ abstract class _ProductDetail implements ProductDetail {
   @override
   bool get available;
   @override
+  @JsonKey(name: 'city_fias')
   String? get cityFias;
   @override
   @JsonKey(ignore: true)

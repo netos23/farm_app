@@ -96,7 +96,8 @@ class __$$_AutocompleteResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_AutocompleteResponse implements _AutocompleteResponse {
   _$_AutocompleteResponse({required final List<String> suggestions})
       : _suggestions = suggestions;

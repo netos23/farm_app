@@ -16,10 +16,18 @@ _$_CatalogProductsRequest _$$_CatalogProductsRequestFromJson(
     );
 
 Map<String, dynamic> _$$_CatalogProductsRequestToJson(
-        _$_CatalogProductsRequest instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'sortBy': instance.sortBy,
-      'search': instance.search,
-      'categoryId': instance.categoryId,
-    };
+    _$_CatalogProductsRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('sortBy', instance.sortBy);
+  writeNotNull('search', instance.search);
+  writeNotNull('categoryId', instance.categoryId);
+  return val;
+}

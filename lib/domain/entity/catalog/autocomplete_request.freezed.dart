@@ -95,7 +95,8 @@ class __$$_AutocompleteRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_AutocompleteRequest implements _AutocompleteRequest {
   _$_AutocompleteRequest({required this.searchRequest});
 

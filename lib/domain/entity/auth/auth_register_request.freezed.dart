@@ -95,7 +95,8 @@ class __$$_AuthRegisterRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_AuthRegisterRequest implements _AuthRegisterRequest {
   const _$_AuthRegisterRequest({required this.name});
 

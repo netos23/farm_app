@@ -109,7 +109,8 @@ class __$$_AuthEmailPart2ResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_AuthEmailPart2Response implements _AuthEmailPart2Response {
   const _$_AuthEmailPart2Response(
       {required this.refreshToken, required this.accessToken});

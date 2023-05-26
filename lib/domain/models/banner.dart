@@ -15,7 +15,7 @@ sealed class ShowCaseBanner with _$ShowCaseBanner {
     includeIfNull: false,
   )
   const factory ShowCaseBanner.imageBanner({
-    required String imageUrl,
+    @JsonKey(name: 'image_url') required String imageUrl,
     String? link,
   }) = ImageBanner;
 

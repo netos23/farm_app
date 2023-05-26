@@ -104,7 +104,8 @@ class __$$_SortTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_SortType implements _SortType {
   _$_SortType({this.id, this.name});
 

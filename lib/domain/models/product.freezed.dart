@@ -158,7 +158,8 @@ class __$$_ProductCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_Product implements _Product {
   const _$_Product(
       {required this.name,

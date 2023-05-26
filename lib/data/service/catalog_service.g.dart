@@ -119,30 +119,6 @@ class _CatalogService implements CatalogService {
   }
 
   @override
-  Future<FiltersResponse> getFilters({required FiltersRequest request}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(request.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<FiltersResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/catalog/filters',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = FiltersResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<AutocompleteResponse> getCatalogAutocomplete(
       {required AutocompleteRequest request}) async {
     const _extra = <String, dynamic>{};

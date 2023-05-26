@@ -12,9 +12,9 @@ class Profile with _$Profile {
   )
   const factory Profile({
     required String email,
-    String? firstName,
-    String? secondName,
-    String? birthDate,
+    @JsonKey(name: 'first_name') String? firstName,
+    @JsonKey(name: 'second_name') String? secondName,
+    @JsonKey(name: 'birth_date') String? birthDate,
     int? gender,
     String? phone,
   }) = _Profile;

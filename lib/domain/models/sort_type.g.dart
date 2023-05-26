@@ -11,8 +11,16 @@ _$_SortType _$$_SortTypeFromJson(Map<String, dynamic> json) => _$_SortType(
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$_SortTypeToJson(_$_SortType instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-    };
+Map<String, dynamic> _$$_SortTypeToJson(_$_SortType instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('name', instance.name);
+  return val;
+}

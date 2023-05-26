@@ -15,15 +15,24 @@ _$_ProductDetail _$$_ProductDetailFromJson(Map<String, dynamic> json) =>
           .map((e) => Badge.fromJson(e as Map<String, dynamic>))
           .toList(),
       available: json['available'] as bool,
-      cityFias: json['cityFias'] as String?,
+      cityFias: json['city_fias'] as String?,
     );
 
-Map<String, dynamic> _$$_ProductDetailToJson(_$_ProductDetail instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'picture': instance.picture,
-      'description': instance.description,
-      'badges': instance.badges,
-      'available': instance.available,
-      'cityFias': instance.cityFias,
-    };
+Map<String, dynamic> _$$_ProductDetailToJson(_$_ProductDetail instance) {
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'picture': instance.picture,
+    'description': instance.description,
+    'badges': instance.badges.map((e) => e.toJson()).toList(),
+    'available': instance.available,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('city_fias', instance.cityFias);
+  return val;
+}
