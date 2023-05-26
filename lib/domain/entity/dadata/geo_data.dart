@@ -5,6 +5,10 @@ part 'geo_data.g.dart';
 
 @freezed
 class GeoData with _$GeoData {
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
     factory GeoData({
       final double lat,
       final double lon,
