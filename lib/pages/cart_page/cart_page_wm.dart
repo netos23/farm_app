@@ -21,6 +21,8 @@ abstract class ICartPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   EntityStateNotifier<CalcCart?> get cartState;
 
+  EntityStateNotifier<Set<int>> get disabledCart;
+
   EntityStateNotifier<GeoData> get geoState;
 
   GeolocationDadataRepository get geolocationDadataRepository;
@@ -30,6 +32,10 @@ abstract class ICartPageWidgetModel extends IWidgetModel
   void openSort();
 
   void openProduct({required Product product});
+
+  void onSelect(CartProduct product, bool? value);
+
+  void order();
 }
 
 CartPageWidgetModel defaultCartPageWidgetModelFactory(BuildContext context) {
@@ -46,6 +52,9 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
   final cartUseCase = AppComponents().cartUseCase;
 
   @override
+  final disabledCart = EntityStateNotifier();
+
+  @override
   final geolocationDadataRepository = AppComponents().dadataRepository;
 
   CartPageWidgetModel(CartPageModel model) : super(model);
@@ -59,6 +68,16 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
     loadCart();
     sub = cartUseCase.cart.stream.listen((event) {
       cartState.content(event);
+      final off = disabledCart.value?.data ?? {};
+
+      final products = event?.products ?? [];
+      off.removeWhere(
+        (id) => !products.any(
+          (p) => p.product.id == id,
+        ),
+      );
+
+      disabledCart.content(Set.of(off));
     });
   }
 
@@ -106,4 +125,25 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
 
   @override
   final geoState = EntityStateNotifier();
+
+  @override
+  void onSelect(CartProduct product, bool? value) {
+    final ch = value ?? false;
+    final off = disabledCart.value?.data ?? {};
+
+    if (!ch) {
+      off.add(product.product.id);
+    } else {
+      off.remove(product.product.id);
+    }
+
+    disabledCart.content(Set.of(off));
+  }
+
+  @override
+  void order() {
+    context.router.navigate(
+      OrderRoute(),
+    );
+  }
 }

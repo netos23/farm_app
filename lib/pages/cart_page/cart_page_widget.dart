@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
+import 'package:farm_app/pages/components/basket_card.dart';
 import 'package:farm_app/pages/components/loading_indicator.dart';
 import 'package:farm_app/pages/components/product_card.dart';
 import 'package:farm_app/pages/components/search_widget.dart';
@@ -80,18 +81,42 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
             );
           }
 
-          return ListView.builder(
-            itemCount: products.length,
-            itemBuilder: (context, index) {
-              return ProductCard(
-                product: products[index].product,
-                onTap: () => wm.openProduct(
-                  product: products[index].product,
-                ),
+          return EntityStateNotifierBuilder(
+            listenableEntityState: wm.disabledCart,
+            builder: (context, data) {
+              final off = data ?? {};
+              return ListView.builder(
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  return BasketCard(
+                    cartProduct: products[index],
+                    onTap: () => wm.openProduct(
+                      product: products[index].product,
+                    ),
+                    onSelect: (value) => wm.onSelect(products[index], value),
+                    checked: !off.contains(products[index].product.id),
+                  );
+                },
               );
             },
           );
         },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+        ),
+        child: ElevatedButton(
+          onPressed: wm.order,
+          child: SizedBox(
+            width: double.infinity,
+            child: Text(
+              wm.localizations.order,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
       ),
     );
   }

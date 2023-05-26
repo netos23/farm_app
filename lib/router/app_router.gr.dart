@@ -195,6 +195,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserProfileTabPage(),
       );
     },
+    OrderRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderRouteArgs>(
+          orElse: () => const OrderRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
   };
 }
 
@@ -786,4 +797,44 @@ class UserProfileTab extends PageRouteInfo<void> {
   static const String name = 'UserProfileTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrderPageWidget]
+class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
+  OrderRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultOrderPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderRoute.name,
+          args: OrderRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderRoute';
+
+  static const PageInfo<OrderRouteArgs> page = PageInfo<OrderRouteArgs>(name);
+}
+
+class OrderRouteArgs {
+  const OrderRouteArgs({
+    this.key,
+    this.wmFactory = defaultOrderPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'OrderRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
 }

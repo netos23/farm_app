@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/domain/models/category.dart';
 import 'package:farm_app/domain/models/product.dart';
-import 'package:farm_app/domain/models/profile.dart';
 import 'package:farm_app/pages/auth_code_page/auth_code_page.dart';
 import 'package:farm_app/pages/auth_page/auth_page.dart';
 import 'package:farm_app/pages/cart_page/cart_page.dart';
 import 'package:farm_app/pages/catalog_page/catalog_page.dart';
 import 'package:farm_app/pages/category_page/category_page.dart';
 import 'package:farm_app/pages/home_page/home_page.dart';
+import 'package:farm_app/pages/order_page/order_page.dart';
 import 'package:farm_app/pages/product_page/product_page.dart';
 import 'package:farm_app/pages/profile_page/profile_page.dart';
 import 'package:farm_app/pages/register_page/register_page.dart';
@@ -16,7 +16,6 @@ import 'package:farm_app/pages/show_case_page/show_case_page.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/farm_show_case_page/farmer_showcase_page.dart';
-import '../pages/farm_show_case_page/farmer_showcase_page_widget.dart';
 
 part 'app_router.gr.dart';
 
@@ -27,6 +26,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AuthRoute.page),
         AutoRoute(page: AuthCodeRoute.page),
         AutoRoute(page: RegisterRoute.page),
+        AutoRoute(page: OrderRoute.page),
         AutoRoute(
           page: HomeRoute.page,
           initial: true,
