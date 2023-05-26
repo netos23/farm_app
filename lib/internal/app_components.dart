@@ -1,5 +1,7 @@
+import 'package:dadata_suggestions/dadata_suggestions.dart';
 import 'package:dio/dio.dart';
 import 'package:farm_app/data/interseptor.dart';
+import 'package:farm_app/data/repository/dadata_repository.dart';
 import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/data/repository/token_ropository.dart';
 import 'package:farm_app/data/service/banner_service.dart';
@@ -15,11 +17,14 @@ class AppComponents {
 
   AppComponents._internal();
 
+  final tokenDaData = '603bb84c98131f6cc1c0a20dd1a34f349307b08';
   final Dio dio = Dio();
   final TokenRepository tokenRepository = TokenRepository();
   late final AuthService authService = AuthService(dio);
   late final BannerService bannerService = BannerService(dio);
   late final CatalogService catalogService = CatalogService(dio);
+  late final GeolocationDadataRepository dadataRepository =
+      GeolocationDadataRepository(DadataSuggestions(tokenDaData));
 
   Future<void> init() async {
     dio.options
