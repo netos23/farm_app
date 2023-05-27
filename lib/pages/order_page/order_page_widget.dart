@@ -209,7 +209,7 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                                           color: theme.colorScheme.onBackground,
                                         ),
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       IconButton(
                                         onPressed: wm.changeDay,
                                         icon: const Icon(

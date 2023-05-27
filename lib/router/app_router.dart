@@ -115,6 +115,9 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   page: EditProfileRoute.page,
                 ),
+                AutoRoute(
+                  page: SubscriptionRoute.page,
+                ),
               ],
             ),
           ],
