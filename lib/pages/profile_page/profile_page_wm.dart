@@ -293,6 +293,8 @@ class ProfilePageWidgetModel
       router.push(const OrderHistoryRoute());
     });
   }
+
+  @override
   void registerBrand() {
     router.push(RegisterBrandRoute());
   }

@@ -9,6 +9,7 @@ import 'package:farm_app/domain/entity/cart/calculated_cart.dart';
 import 'package:farm_app/domain/entity/cart/cart_product.dart';
 import 'package:farm_app/domain/entity/dadata/geo_data.dart';
 import 'package:farm_app/domain/models/product.dart';
+import 'package:farm_app/domain/models/product_with_count.dart';
 import 'package:farm_app/domain/use_case/cart_use_case.dart';
 import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
@@ -153,9 +154,26 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
     await profile.loadProfile();
     orderState.value = true;
 
+    final off = disabledCart.value?.data ?? {};
+    final cartOffer = cartUseCase.cart.valueOrNull?.products ?? [];
+
     if (isMounted) {
       router.navigate(
-        OrderRoute(),
+        OrderRoute(
+          productIds: cartOffer
+              .where(
+                (e) => !off.any(
+                  (id) => e.product.id == id,
+                ),
+              )
+              .map(
+                (e) => ProductWithCount(
+                  productId: e.product.id,
+                  count: e.count,
+                ),
+              )
+              .toList(),
+        ),
       );
     }
   }
