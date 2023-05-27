@@ -32,18 +32,20 @@ abstract class IFarmProductRegistrationPageWidgetModel extends IWidgetModel
   onFarmProductRegistration();
 }
 
-FarmProductRegistrationPageWidgetModel defaultFarmProductRegistrationPageWidgetModelFactory(
-    BuildContext context) {
-  return FarmProductRegistrationPageWidgetModel(FarmProductRegistrationPageModel());
+FarmProductRegistrationPageWidgetModel
+    defaultFarmProductRegistrationPageWidgetModelFactory(BuildContext context) {
+  return FarmProductRegistrationPageWidgetModel(
+      FarmProductRegistrationPageModel());
 }
 
 // TODO: cover with documentation
 /// Default widget model for FarmProductRegistrationPageWidget
-class FarmProductRegistrationPageWidgetModel
-    extends WidgetModel<FarmProductRegistrationPageWidget, FarmProductRegistrationPageModel>
+class FarmProductRegistrationPageWidgetModel extends WidgetModel<
+        FarmProductRegistrationPageWidget, FarmProductRegistrationPageModel>
     with ThemeProvider
     implements IFarmProductRegistrationPageWidgetModel {
-  FarmProductRegistrationPageWidgetModel(FarmProductRegistrationPageModel model) : super(model);
+  FarmProductRegistrationPageWidgetModel(FarmProductRegistrationPageModel model)
+      : super(model);
 
   @override
   AuthRepository authRepository = AuthRepository(AppComponents().authService);

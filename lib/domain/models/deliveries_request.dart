@@ -6,24 +6,23 @@ part 'deliveries_request.g.dart';
 
 @freezed
 class DeliveriesRequest with _$DeliveriesRequest {
-    factory DeliveriesRequest({
-      @JsonKey(name: 'city_fias', includeIfNull: true)String? cityFias,
-      required List<ProductWithCount> products,
-}) = _DeliveriesRequest;
+  factory DeliveriesRequest({
+    @JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
+    required List<ProductWithCount> products,
+  }) = _DeliveriesRequest;
 
-    factory DeliveriesRequest.fromJson(Map<String, dynamic> json) => _$DeliveriesRequestFromJson(json);
+  factory DeliveriesRequest.fromJson(Map<String, dynamic> json) =>
+      _$DeliveriesRequestFromJson(json);
 }
-
-
 
 @freezed
 class PaymentsRequest with _$PaymentsRequest {
-    factory PaymentsRequest({
-      @JsonKey(name: 'city_fias', includeIfNull: true)String? cityFias,
-      required List<ProductWithCount> products,
-      required String deliveryId,
-}) = _PaymentsRequest;
+  factory PaymentsRequest({
+    @JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
+    required List<ProductWithCount> products,
+    required String deliveryId,
+  }) = _PaymentsRequest;
 
-    factory PaymentsRequest.fromJson(Map<String, dynamic> json) => _$PaymentsRequestFromJson(json);
+  factory PaymentsRequest.fromJson(Map<String, dynamic> json) =>
+      _$PaymentsRequestFromJson(json);
 }
-

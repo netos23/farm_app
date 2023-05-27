@@ -8,16 +8,16 @@ part 'subscription.g.dart';
 
 @freezed
 class Subscription with _$Subscription {
-    factory Subscription({
-      required int id,
-      required Product product,
-      required String created_at,
-      required int repeated_days,
-      required int count,
-      required Decimal total_price,
-      required Order order,
+  factory Subscription({
+    required int id,
+    required Product product,
+    required String created_at,
+    required int repeated_days,
+    required int count,
+    required Decimal total_price,
+    required Order order,
+  }) = _Subscription;
 
-}) = _Subscription;
-
-    factory Subscription.fromJson(Map<String, dynamic> json) => _$SubscriptionFromJson(json);
+  factory Subscription.fromJson(Map<String, dynamic> json) =>
+      _$SubscriptionFromJson(json);
 }

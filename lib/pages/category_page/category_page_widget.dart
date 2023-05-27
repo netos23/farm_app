@@ -63,9 +63,7 @@ class CategoryPageWidget extends ElementaryWidget<ICategoryPageWidgetModel> {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text(
-              title ?? category?.name ?? localizations.catalog
-            ),
+            title: Text(title ?? category?.name ?? localizations.catalog),
             centerTitle: true,
           ),
           body: GridView.builder(

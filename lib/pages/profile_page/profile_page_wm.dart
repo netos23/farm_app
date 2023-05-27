@@ -57,7 +57,8 @@ class ProfilePageWidgetModel
       profileUseCase.profile.valueOrNull != null &&
       (profileUseCase.profile.value!.brand ?? '').isNotEmpty;
 
-  final telegramLink = 'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
+  final telegramLink =
+      'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
 
   @override
   void initWidgetModel() {
@@ -179,7 +180,8 @@ class ProfilePageWidgetModel
 
   @override
   void linkToTelegram() {
-    launchUrlString(profileUseCase.profile.value?.tgChatStartLink ?? '', mode: LaunchMode.externalApplication);
+    launchUrlString(profileUseCase.profile.value?.tgChatStartLink ?? '',
+        mode: LaunchMode.externalApplication);
   }
 
   @override
@@ -284,7 +286,8 @@ class ProfilePageWidgetModel
                     ),
                   ),
                   onPressed: () {
-                    profileUseCase.registerBrand(brandController.text, addressController.text);
+                    profileUseCase.registerBrand(
+                        brandController.text, addressController.text);
                     context.popRoute();
                   },
                   child: const Center(
@@ -293,7 +296,6 @@ class ProfilePageWidgetModel
                 ),
               ),
             ),
-
             Center(
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),

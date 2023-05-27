@@ -13,7 +13,6 @@ class AuthRepository {
 
   final AuthService _authService;
 
-
   Future<void> emailPart1({
     required AuthEmailPart1Request request,
   }) async {
@@ -21,7 +20,6 @@ class AuthRepository {
       request: request,
     );
   }
-
 
   Future<AuthEmailPart2Response> emailPart2({
     required AuthEmailPart2Request request,
@@ -94,5 +92,4 @@ class AuthRepository {
       );
     }
   }
-
 }

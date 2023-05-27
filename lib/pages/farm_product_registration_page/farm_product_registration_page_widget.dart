@@ -7,11 +7,13 @@ import 'farm_product_registration_page_wm.dart';
 // TODO: cover with documentation
 /// Main widget for FarmProductRegistrationPage module
 @RoutePage()
-class FarmProductRegistrationPageWidget extends ElementaryWidget<IFarmProductRegistrationPageWidgetModel> {
+class FarmProductRegistrationPageWidget
+    extends ElementaryWidget<IFarmProductRegistrationPageWidgetModel> {
   const FarmProductRegistrationPageWidget({
     this.email,
     Key? key,
-    WidgetModelFactory wmFactory = defaultFarmProductRegistrationPageWidgetModelFactory,
+    WidgetModelFactory wmFactory =
+        defaultFarmProductRegistrationPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
   final String? email;
@@ -168,15 +170,17 @@ class FarmProductRegistrationPageWidget extends ElementaryWidget<IFarmProductReg
             StreamBuilder<bool>(
                 stream: wm.isFarmer.stream,
                 initialData: false,
-                builder: (context, isFarmerSnapshot){
-                  final isFarmValue = isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
-              return _FarmerCheckbox(
-                value: isFarmValue,
-                onChanged: () {
-                  wm.isFarmer.add(!isFarmValue);
-                }, text: 'Зарегистрироваться как фермер',
-              );
-            }),
+                builder: (context, isFarmerSnapshot) {
+                  final isFarmValue =
+                      isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
+                  return _FarmerCheckbox(
+                    value: isFarmValue,
+                    onChanged: () {
+                      wm.isFarmer.add(!isFarmValue);
+                    },
+                    text: 'Зарегистрироваться как фермер',
+                  );
+                }),
             const SizedBox(
               height: 16,
             ),
@@ -249,7 +253,6 @@ class _FarmerCheckbox extends StatelessWidget {
     );
   }
 }
-
 
 class _GenderCheckbox extends StatelessWidget {
   const _GenderCheckbox({

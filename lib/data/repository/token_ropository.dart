@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class TokenRepository extends ChangeNotifier{
+class TokenRepository extends ChangeNotifier {
   TokenRepository({
     bool useCaching = true,
   }) : _useCaching = useCaching;
 
-
   bool get auth => _refreshToken != null;
-
 
   String? get accessToken => _accessToken;
 
@@ -42,7 +40,6 @@ class TokenRepository extends ChangeNotifier{
     final storage = await SharedPreferences.getInstance();
     await storage.remove('accessToken');
     await storage.remove('refreshToken');
-
   }
 
   void saveTokens({

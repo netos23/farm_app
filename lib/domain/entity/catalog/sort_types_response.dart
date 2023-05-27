@@ -5,13 +5,14 @@ part 'sort_types_response.g.dart';
 
 @freezed
 class SortTypesResponse with _$SortTypesResponse {
-    @JsonSerializable(
-        explicitToJson: true,
-        includeIfNull: false,
-    )
-    factory SortTypesResponse({
-        required String name,
-    }) = _SortTypesResponse;
+  @JsonSerializable(
+    explicitToJson: true,
+    includeIfNull: false,
+  )
+  factory SortTypesResponse({
+    required String name,
+  }) = _SortTypesResponse;
 
-    factory SortTypesResponse.fromJson(Map<String, dynamic> json) => _$SortTypesResponseFromJson(json);
+  factory SortTypesResponse.fromJson(Map<String, dynamic> json) =>
+      _$SortTypesResponseFromJson(json);
 }

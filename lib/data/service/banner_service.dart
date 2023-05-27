@@ -13,5 +13,4 @@ abstract class BannerService {
 
   @GET(BannerUrl.banners)
   Future<List<ShowCaseBanner>> getBanners();
-
 }

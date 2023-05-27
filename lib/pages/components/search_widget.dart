@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SearchWidget extends StatelessWidget {
@@ -11,7 +10,6 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     const border = OutlineInputBorder(
       borderSide: BorderSide(
         width: 0,
@@ -37,7 +35,7 @@ class SearchWidget extends StatelessWidget {
           border: border,
           // fillColor: fill,
           filled: true,
-          prefixIcon:  Icon(
+          prefixIcon: Icon(
             Icons.search,
             // color: textColor,
           ),

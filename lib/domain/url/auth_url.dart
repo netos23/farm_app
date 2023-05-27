@@ -4,5 +4,4 @@ abstract class AuthUrl {
   static const String authUser = '/auth/user';
   static const String authRegister = '/auth/register';
   static const String authFarmRegister = '/auth/farm_register';
-
 }

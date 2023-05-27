@@ -5,7 +5,7 @@ import 'package:farm_app/domain/models/register_brand_request.dart';
 import 'package:farm_app/util/lifecycle_component.dart';
 import 'package:farm_app/util/value_stream_wrapper.dart';
 
-class ProfileUseCase implements LifecycleComponent{
+class ProfileUseCase implements LifecycleComponent {
   final TokenRepository repository;
   final AuthRepository authRepository;
   final ValueStreamWrapper<Profile?> profile = ValueStreamWrapper();
@@ -23,10 +23,10 @@ class ProfileUseCase implements LifecycleComponent{
     repository.addListener(_listenTokenStatus);
   }
 
-  void _listenTokenStatus(){
-    if(profile.valueOrNull != null && !repository.auth){
+  void _listenTokenStatus() {
+    if (profile.valueOrNull != null && !repository.auth) {
       profile.add(null);
-    }else{
+    } else {
       loadProfile();
     }
   }
@@ -40,7 +40,6 @@ class ProfileUseCase implements LifecycleComponent{
     await authRepository.deleteUser();
     await repository.deleteTokens();
     profile.add(null);
-
   }
 
   Future<void> loadProfile() async {
@@ -54,8 +53,7 @@ class ProfileUseCase implements LifecycleComponent{
   }
 
   Future<void> registerBrand(String text, String text2) async {
-    final result = await  authRepository.registerBrand(request: RegisterBrandRequest(brand: text, address: text2));
+    final result = await authRepository.registerBrand(
+        request: RegisterBrandRequest(brand: text, address: text2));
   }
-
-
 }
