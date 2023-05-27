@@ -8,4 +8,5 @@ abstract class CatalogUrl {
   static const String catalogAutocomplete = '/catalog/autocomplete';
   static const String deliveries = '/deliveries/deliveries/';
   static const String payments = '/payments/';
+  static const String orderCreate = '/order/order/';
 }

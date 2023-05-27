@@ -175,6 +175,84 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                           );
                         },
                       ),
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 15.0),
+                              child: Text(
+                                'День доставки',
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  color: theme.colorScheme.onBackground,
+                                ),
+                              ),
+                            ),
+                            EntityStateNotifierBuilder(
+                              listenableEntityState: wm.dateState,
+                              builder: (context, data) {
+                                return GestureDetector(
+                                  onTap: wm.changeDay,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      IconButton(
+                                        onPressed: wm.changeDay,
+                                        icon: const Icon(
+                                          Icons.calendar_month_outlined,
+                                        ),
+                                      ),
+                                      Text(
+                                        DateFormat.yMd().format(data!),
+                                        style: theme.textTheme.headlineSmall
+                                            ?.copyWith(
+                                          color: theme.colorScheme.onBackground,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            EntityStateNotifierBuilder(
+                              listenableEntityState: wm.deliveriesState,
+                              builder: (context, data) {
+                                final delivery = data?.$2;
+
+                                return Visibility(
+                                  visible: delivery != null &&
+                                      delivery.type == 'delivery',
+                                  child: TextField(
+                                    controller: wm.addressController,
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                      color: theme.colorScheme.onBackground,
+                                    ),
+                                    decoration: InputDecoration(
+                                      focusedBorder: border,
+                                      focusedErrorBorder: border,
+                                      disabledBorder: border,
+                                      enabledBorder: border,
+                                      border: border,
+                                      prefixIcon: Icon(
+                                        Icons.location_on_outlined,
+                                        color: theme.colorScheme.primary,
+                                      ),
+                                      contentPadding: EdgeInsets.zero,
+                                      hintText: 'Аддрес доставки',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        ),
+                      ),
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -222,33 +300,35 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                           [
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(vertical: 15.0),
+                                  const EdgeInsets.symmetric(vertical: 10.0),
                               child: Text(
-                                'День доставки',
+                                'Подписка на заказ',
                                 style: theme.textTheme.headlineSmall?.copyWith(
                                   color: theme.colorScheme.onBackground,
                                 ),
                               ),
                             ),
                             EntityStateNotifierBuilder(
-                              listenableEntityState: wm.dateState,
+                              listenableEntityState: wm.repeatState,
                               builder: (context, data) {
                                 return GestureDetector(
-                                  onTap: wm.changeDay,
+                                  onTap: wm.changeRepeat,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
+                                      Text(
+                                        data == null
+                                            ? 'Не оформлять'
+                                            : 'Повторять каждые $data дня',
+                                        style:
+                                            theme.textTheme.bodyLarge?.copyWith(
+                                          color: theme.colorScheme.onBackground,
+                                        ),
+                                      ),
                                       IconButton(
                                         onPressed: wm.changeDay,
                                         icon: const Icon(
-                                          Icons.calendar_month_outlined,
-                                        ),
-                                      ),
-                                      Text(
-                                        DateFormat.yMd().format(data!),
-                                        style: theme.textTheme.headlineSmall
-                                            ?.copyWith(
-                                          color: theme.colorScheme.onBackground,
+                                          Icons.settings,
                                         ),
                                       ),
                                     ],
@@ -258,28 +338,6 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                             ),
                             const SizedBox(
                               height: 20,
-                            ),
-                            TextField(
-                              controller: wm.addressController,
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                color: theme.colorScheme.onBackground,
-                              ),
-                              decoration: InputDecoration(
-                                focusedBorder: border,
-                                focusedErrorBorder: border,
-                                disabledBorder: border,
-                                enabledBorder: border,
-                                border: border,
-                                prefixIcon: Icon(
-                                  Icons.location_on_outlined,
-                                  color: theme.colorScheme.primary,
-                                ),
-                                contentPadding: EdgeInsets.zero,
-                                hintText: 'Аддрес доставки',
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
                             ),
                             TextField(
                               controller: wm.commentController,
@@ -301,7 +359,16 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                               ),
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 20,
+                            ),
+                            FilledButton(
+                              onPressed: wm.makeOrder,
+                              child: Text(
+                                localizations.ordering,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 40,
                             ),
                           ],
                         ),

@@ -13,6 +13,8 @@ import 'order_page_widget.dart';
 abstract class IOrderPageWidgetModel extends IWidgetModel {
   EntityStateNotifier<DateTime> get dateState;
 
+  EntityStateNotifier<int?> get repeatState;
+
   EntityStateNotifier<(List<Delivery>, Delivery?)> get deliveriesState;
 
   EntityStateNotifier<(List<Payment>, Payment?)> get paymentsState;
@@ -32,6 +34,10 @@ abstract class IOrderPageWidgetModel extends IWidgetModel {
   void selectPayment(Payment payment);
 
   void changeDay();
+
+  void changeRepeat();
+
+  void makeOrder();
 }
 
 OrderPageWidgetModel defaultOrderPageWidgetModelFactory(BuildContext context) {
@@ -52,6 +58,8 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
 
   final CatalogService catalogService;
 
+  @override
+  final repeatState = EntityStateNotifier();
   @override
   final dateState = EntityStateNotifier();
   @override
@@ -84,6 +92,7 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
     loadDeliveries();
     deliveriesState.addListener(loadPayments);
     dateState.content(DateTime.now());
+    repeatState.content(null);
   }
 
   Future<void> loadDeliveries() async {
@@ -119,6 +128,7 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
   @override
   void dispose() {
     deliveriesState.removeListener(loadPayments);
+    repeatState.dispose();
     addressController.dispose();
     commentController.dispose();
     dateState.dispose();
@@ -146,6 +156,14 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
 
   @override
   void changeDay() {
-    // TODO: implement changeDay
+
+  }
+
+  @override
+  void changeRepeat() {
+  }
+
+  @override
+  void makeOrder() {
   }
 }

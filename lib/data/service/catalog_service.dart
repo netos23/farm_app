@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:farm_app/domain/models/category.dart';
 import 'package:farm_app/domain/models/deliveries_request.dart';
 import 'package:farm_app/domain/models/delivery.dart';
+import 'package:farm_app/domain/models/order.dart';
+import 'package:farm_app/domain/models/order_request.dart';
 import 'package:farm_app/domain/models/product_detail.dart';
 import 'package:farm_app/domain/url/catalog_url.dart';
 import 'package:farm_app/domain/entity/catalog/autocomplete_request.dart';
@@ -60,6 +62,12 @@ abstract class CatalogService {
   @POST(CatalogUrl.payments)
   Future<List<Payment>> getPayments({
     @Body() required PaymentsRequest request,
+  });
+
+
+  @POST(CatalogUrl.orderCreate)
+  Future<Order> postOrder({
+    @Body() required OrderRequest request,
   });
 
 }
