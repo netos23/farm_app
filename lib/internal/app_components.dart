@@ -3,13 +3,14 @@ import 'package:dio/dio.dart';
 import 'package:farm_app/data/interseptor.dart';
 import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/data/repository/dadata_repository.dart';
-import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/data/repository/token_ropository.dart';
+import 'package:farm_app/data/service/auth_service.dart';
 import 'package:farm_app/data/service/banner_service.dart';
 import 'package:farm_app/data/service/cart_service.dart';
 import 'package:farm_app/data/service/catalog_service.dart';
 import 'package:farm_app/domain/use_case/cart_use_case.dart';
 import 'package:farm_app/domain/use_case/profile_use_case.dart';
+import 'package:farm_app/feature/order_history/api/order_history_service.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const timeout = Duration(seconds: 30);
@@ -28,6 +29,7 @@ class AppComponents {
   late final CartService _cartService = CartService(dio);
   late final BannerService bannerService = BannerService(dio);
   late final CatalogService catalogService = CatalogService(dio);
+  late final OrderHistoryService orderHistoryService = OrderHistoryService(dio);
   late final GeolocationDadataRepository dadataRepository =
       GeolocationDadataRepository(
     DadataSuggestions(tokenDaData),

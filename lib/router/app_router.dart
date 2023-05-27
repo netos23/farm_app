@@ -7,6 +7,7 @@ import 'package:farm_app/domain/models/order.dart';
 import 'package:farm_app/domain/models/product.dart';
 import 'package:farm_app/domain/models/product_with_count.dart';
 import 'package:farm_app/domain/models/profile.dart';
+import 'package:farm_app/feature/order_history/ui/order_history_page_scope.dart';
 import 'package:farm_app/pages/auth_code_page/auth_code_page.dart';
 import 'package:farm_app/pages/auth_page/auth_page.dart';
 import 'package:farm_app/pages/cart_page/cart_page.dart';
@@ -117,6 +118,9 @@ class AppRouter extends _$AppRouter {
                 ),
                 AutoRoute(
                   page: SubscriptionRoute.page,
+                ),
+                AutoRoute(
+                  page: OrderHistoryRoute.page,
                 ),
               ],
             ),

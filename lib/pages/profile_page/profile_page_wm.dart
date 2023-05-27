@@ -32,6 +32,8 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   TextEditingController get brandController;
 
   TextEditingController get addressController;
+
+  void onOrderHistoryTap();
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -389,4 +391,11 @@ class ProfilePageWidgetModel
 
   @override
   final brandController = TextEditingController();
+
+  @override
+  void onOrderHistoryTap() {
+    onUnauthorisedTap(() {
+      router.push(const OrderHistoryRoute());
+    });
+  }
 }
