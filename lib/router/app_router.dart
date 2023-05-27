@@ -19,6 +19,8 @@ import 'package:farm_app/pages/order_page/order_page.dart';
 import 'package:farm_app/pages/order_result_page/order_result_page.dart';
 import 'package:farm_app/pages/product_page/product_page.dart';
 import 'package:farm_app/pages/profile_page/profile_page.dart';
+import 'package:farm_app/pages/register_brand_page/register_brand_page_widget.dart';
+import 'package:farm_app/pages/register_brand_page/register_brand_page_wm.dart';
 import 'package:farm_app/pages/register_page/register_page.dart';
 import 'package:farm_app/pages/show_case_page/show_case_page.dart';
 import 'package:farm_app/pages/subscription_page/subscription_page.dart';
@@ -115,6 +117,9 @@ class AppRouter extends _$AppRouter {
                 ),
                 AutoRoute(
                   page: EditProfileRoute.page,
+                ),
+                AutoRoute(
+                  page: RegisterBrandRoute.page,
                 ),
                 AutoRoute(
                   page: SubscriptionRoute.page,
