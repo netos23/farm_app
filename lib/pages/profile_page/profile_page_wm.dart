@@ -204,7 +204,7 @@ class ProfilePageWidgetModel
   void onEditProfileTap() {
     onUnauthorisedTap(() {
       onClientTap(() {
-        router.push(EditProfileRoute());
+        router.push(EditProfileRoute(profile: profileUseCase.profile.value));
       });
     });
   }
