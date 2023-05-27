@@ -54,7 +54,7 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                           onTap: wm.onEditProfileTap,
                         ),
                         ProfileCard(
-                          title: wm.localizations.basket,
+                          title: 'Subscription',
                           image: 'assets/images/basket_t.png',
                           onTap: wm.onBasketTap,
                         ),
@@ -79,6 +79,34 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                         textAlign: TextAlign.center,
                         style: textTheme.bodyLarge?.copyWith(
                           color: colorTheme.onBackground,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: isLogin,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      height: 57,
+                      child: Card(
+                        child: InkWell(
+                          onTap: wm.linkToTelegram,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/telegram_icon.png',
+                                width: 21,
+                                height: 21,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                child: Text('Получать уведомления в Телеграм',  style: theme.textTheme.bodyMedium?.copyWith(
+                                    color: theme.colorScheme.onSurface,
+                                    overflow: TextOverflow.ellipsis),),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

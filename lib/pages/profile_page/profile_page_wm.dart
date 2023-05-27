@@ -7,6 +7,7 @@ import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'profile_page_model.dart';
 import 'profile_page_widget.dart';
 
@@ -23,6 +24,10 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   void onBasketTap();
 
   void onCalendarTap();
+
+  void linkToTelegram();
+
+
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -47,6 +52,8 @@ class ProfilePageWidgetModel
   bool get isClientUser =>
       profileUseCase.profile.valueOrNull != null &&
       (profileUseCase.profile.value!.brand ?? '').isNotEmpty;
+
+  final telegramLink = 'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
 
   @override
   void initWidgetModel() {
@@ -165,6 +172,11 @@ class ProfilePageWidgetModel
   }
 
   @override
+  void linkToTelegram() {
+    launchUrlString(profileUseCase.profile.value?.tgChatStartLink ?? '', mode: LaunchMode.externalApplication);
+  }
+
+  @override
   void onClientTap(void Function() onTap) {
     if (isClientUser) {
       showModalBottomSheet(
@@ -193,7 +205,7 @@ class ProfilePageWidgetModel
 
   @override
   void onBasketTap() {
-    router.navigate(const BasketTab());
+    router.navigate(SubscriptionRoute());
   }
 
   Widget _buildUnauthorisedContent(BuildContext context) {
