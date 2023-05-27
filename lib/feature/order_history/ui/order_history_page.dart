@@ -77,7 +77,7 @@ class OrderHistoryPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Image.network(
-                                      '',
+                                      item.picture,
                                       height: 60,
                                       width: 60,
                                       fit: BoxFit.contain,
