@@ -66,6 +66,7 @@ class OrderHistoryPage extends StatelessWidget {
                           ),
                           ListView.separated(
                             physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
                             itemBuilder: (context, index) {
                               final item = order.items[index];
 

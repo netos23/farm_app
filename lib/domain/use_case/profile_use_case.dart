@@ -56,4 +56,3 @@ class ProfileUseCase implements LifecycleComponent {
     await authRepository.registerBrand(request: request);
   }
 }
-
