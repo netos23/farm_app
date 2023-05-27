@@ -219,8 +219,7 @@ class ProfilePageWidgetModel
   }
 
   @override
-  void registerBrand() {
-  }
+  void registerBrand() {}
 
   Widget _buildRegisterBrandContent(BuildContext context) {
     return Column(

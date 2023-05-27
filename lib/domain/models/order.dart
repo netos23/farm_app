@@ -41,6 +41,7 @@ class OrderItem with _$OrderItem {
     int? id,
     required int count,
     required String picture,
+    required String name,
     required Decimal price,
     int? discount,
     int? order,

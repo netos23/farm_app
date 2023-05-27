@@ -53,7 +53,6 @@ class ProfileUseCase implements LifecycleComponent {
   }
 
   Future<void> registerBrand(RegisterBrandRequest request) async {
-    await authRepository.registerBrand(
-        request: request);
+    await authRepository.registerBrand(request: request);
   }
 }
