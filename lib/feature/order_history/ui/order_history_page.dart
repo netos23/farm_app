@@ -124,7 +124,7 @@ class OrderHistoryPage extends StatelessWidget {
                                   );
                                 },
                                 separatorBuilder: (_, __) => const SizedBox(
-                                  height: 10,
+                                  width: 15,
                                 ),
                                 itemCount: order.items.length,
                               ),
