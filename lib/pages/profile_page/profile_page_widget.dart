@@ -40,7 +40,10 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
               final isLogin = profileSnapshot.hasData &&
                   profileSnapshot.data!.email.isNotEmpty;
               final profile = profileSnapshot.data;
-
+              final isFarmer = profileSnapshot.hasData &&
+                  profileSnapshot.data!.role == 'farmer';
+              final hasNotBrand =
+                  profileSnapshot.data?.brand == null ||  (profileSnapshot.data?.brand ?? '').isEmpty;
               final userImage = getUserImage(gender: profile?.gender);
               return Column(
                 children: [
@@ -110,6 +113,28 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                         ),
                       ),
                     ),
+                  ),Visibility(
+                    visible: isFarmer && hasNotBrand,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      height: 57,
+                      child: Card(
+                        child: InkWell(
+                          onTap: wm.registerBrand,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                child: Text('Зарегистрировать свой бренд',  style: theme.textTheme.bodyMedium?.copyWith(
+                                    color: theme.colorScheme.onSurface,
+                                    overflow: TextOverflow.ellipsis),),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   Flexible(
                     child: Center(
@@ -148,10 +173,10 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
   }
 
   String getUserImage({String? gender}) {
-    if (gender == 'unknown' || gender == 'male') {
-      return 'assets/images/man.png';
-    } else {
+    if (gender == 'unknown' || gender == 'female') {
       return 'assets/images/girl.png';
+    } else {
+      return 'assets/images/man.png';
     }
   }
 }

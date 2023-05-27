@@ -27,7 +27,11 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
 
   void linkToTelegram();
 
+  void registerBrand();
 
+  TextEditingController get brandController;
+
+  TextEditingController get addressController;
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -64,6 +68,8 @@ class ProfilePageWidgetModel
   @override
   void dispose() {
     super.dispose();
+    brandController.dispose();
+    addressController.dispose();
     profileUseCase.dispose();
   }
 
@@ -208,6 +214,112 @@ class ProfilePageWidgetModel
     router.navigate(SubscriptionRoute());
   }
 
+  @override
+  void registerBrand() {
+    showModalBottomSheet(
+      context: router.root.navigatorKey.currentContext!,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(25),
+          topLeft: Radius.circular(25),
+        ),
+      ),
+      builder: _buildRegisterBrandContent,
+    );
+  }
+
+  Widget _buildRegisterBrandContent(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
+          child: Text(
+            'Название вашего бренда',
+            maxLines: 6,
+            style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis),
+          ),
+        ),
+        TextField(
+          textAlign: TextAlign.center,
+          controller: brandController,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onBackground,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
+          child: Text(
+            'Название вашего бренда',
+            maxLines: 6,
+            style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis),
+          ),
+        ),
+        TextField(
+          textAlign: TextAlign.center,
+          controller: addressController,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onBackground,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        Column(
+          children: [
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    profileUseCase.registerBrand(brandController.text, addressController.text);
+                    context.popRoute();
+                  },
+                  child: const Center(
+                    child: Text('Зарегистрировать'),
+                  ),
+                ),
+              ),
+            ),
+
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                margin: const EdgeInsets.symmetric(vertical: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.popRoute();
+                  },
+                  child: const Center(
+                    child: Text('Позже'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   Widget _buildUnauthorisedContent(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -269,4 +381,10 @@ class ProfilePageWidgetModel
       ],
     );
   }
+
+  @override
+  final addressController = TextEditingController();
+
+  @override
+  final brandController = TextEditingController();
 }
