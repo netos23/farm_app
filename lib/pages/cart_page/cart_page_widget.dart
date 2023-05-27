@@ -130,7 +130,6 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Card(
-
                         margin: const EdgeInsets.symmetric(
                           vertical: 10,
                         ),
@@ -139,11 +138,16 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('К оплате'),
+                              Text(
+                                'К оплате',
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: theme.colorScheme.onBackground,
+                                ),
+                              ),
                               RichText(
                                 text: TextSpan(
-                                  text:
-                                      (data?.price ?? Decimal.zero).formatMoney(),
+                                  text: (data?.price ?? Decimal.zero)
+                                      .formatMoney(),
                                   style: theme.textTheme.bodyMedium?.copyWith(
                                     color: theme.colorScheme.onBackground,
                                   ),
@@ -154,10 +158,11 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                                     if (oldPrice != null)
                                       TextSpan(
                                         text: oldPrice.formatMoney(),
-                                        style:
-                                            theme.textTheme.bodyMedium?.copyWith(
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(
                                           color: theme.colorScheme.onBackground,
-                                          decoration: TextDecoration.lineThrough,
+                                          decoration:
+                                              TextDecoration.lineThrough,
                                         ),
                                       ),
                                   ],

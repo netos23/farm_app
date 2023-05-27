@@ -12,6 +12,7 @@ class Delivery with _$Delivery {
     required String description,
     required String type,
     required String icon,
+    String? farm_address,
   }) = _Delivery;
 
   factory Delivery.fromJson(Map<String, dynamic> json) =>

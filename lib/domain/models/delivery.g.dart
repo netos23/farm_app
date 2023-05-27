@@ -12,6 +12,7 @@ _$_Delivery _$$_DeliveryFromJson(Map<String, dynamic> json) => _$_Delivery(
       description: json['description'] as String,
       type: json['type'] as String,
       icon: json['icon'] as String,
+      farm_address: json['farm_address'] as String?,
     );
 
 Map<String, dynamic> _$$_DeliveryToJson(_$_Delivery instance) =>
@@ -21,6 +22,7 @@ Map<String, dynamic> _$$_DeliveryToJson(_$_Delivery instance) =>
       'description': instance.description,
       'type': instance.type,
       'icon': instance.icon,
+      'farm_address': instance.farm_address,
     };
 
 _$_Payment _$$_PaymentFromJson(Map<String, dynamic> json) => _$_Payment(

@@ -12,6 +12,7 @@ import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/internal/logger.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/snack_bar_util.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:intl/intl.dart';
@@ -166,10 +167,73 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
   }
 
   @override
-  void changeDay() {}
+  Future<void> changeDay() async {
+    final date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(const Duration(days: 7)),
+    );
+
+    if (date != null) {
+      dateState.content(date);
+    }
+  }
 
   @override
-  void changeRepeat() {}
+  Future<void> changeRepeat() async {
+    showModalBottomSheet(
+      context: context.router.root.navigatorKey.currentContext!,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(25),
+          topLeft: Radius.circular(25),
+        ),
+      ),
+      builder: (context) {
+        final date = repeatState.value?.data ?? 0;
+        return Column(
+          children: [
+             Flexible(
+               flex: 2,
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  'С какой пеиодичностью оформлять заказ?',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: CupertinoPicker.builder(
+                magnification: 1.22,
+                squeeze: 1.2,
+                useMagnifier: true,
+                itemExtent: 32,
+                childCount: 30,
+                // This sets the initial item.
+                scrollController: FixedExtentScrollController(
+                  initialItem: date,
+                ),
+                // This is called when selected item is changed.
+                onSelectedItemChanged: (int selectedItem) {
+                  repeatState.content(selectedItem == 0 ?  null : selectedItem);
+                },
+                itemBuilder: (context, index) {
+                  return Text(index.toString());
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+
+  }
 
   @override
   Future<void> makeOrder() async {
@@ -206,14 +270,13 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
 
         await context.router.push(
           WebViewerRoute(
-            title: 'Оплата',
-            url: resp.data['url'],
-            onPageFinished: (url){
-              if(url.contains('success') || url.contains('failed')){
-                 context.router.pop();
-              }
-            }
-          ),
+              title: 'Оплата',
+              url: resp.data['url'],
+              onPageFinished: (url) {
+                if (url.contains('success') || url.contains('failed')) {
+                  context.router.pop();
+                }
+              }),
         );
       }
 
