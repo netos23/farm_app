@@ -89,16 +89,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get checkCart => 'ORDER VERIFICATION';
 
   @override
-  String get weSentCodeViaSms => 'We have sent you a code via SMS. Enter it in the box below.';
+  String get weSentCodeViaSms =>
+      'We have sent you a code via SMS. Enter it in the box below.';
 
   @override
   String get checkEmail => 'Check your email';
 
   @override
-  String get weSentCodeViaEmail => 'We have sent you a code via email. Enter it in the box below.';
+  String get weSentCodeViaEmail =>
+      'We have sent you a code via email. Enter it in the box below.';
 
   @override
-  String get weSentCode => 'We have sent you a code via SMS. Enter it in the box below.';
+  String get weSentCode =>
+      'We have sent you a code via SMS. Enter it in the box below.';
 
   @override
   String get resendCode => 'Resend code';
@@ -137,7 +140,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get goToProducts => 'OPEN CATALOG';
 
   @override
-  String get emptyBasket => 'The basket is still empty :(\n Waiting for you to fill it!';
+  String get emptyBasket =>
+      'The basket is still empty :(\n Waiting for you to fill it!';
 
   @override
   String minimalPrice(String moneyMin) {
@@ -164,7 +168,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get choseCityName => 'Enter the name of the city';
 
   @override
-  String get emptyProductsSearch => 'We can\'t find what you\'re looking for :(\nTry changing the request.';
+  String get emptyProductsSearch =>
+      'We can\'t find what you\'re looking for :(\nTry changing the request.';
 
   @override
   String get emptySearch => 'No products were found for your request';
@@ -197,7 +202,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get applyPromoCode => 'APPLY';
 
   @override
-  String get weNeedThisData => 'We need this data in order to give you better sizing guidelines';
+  String get weNeedThisData =>
+      'We need this data in order to give you better sizing guidelines';
 
   @override
   String get models => 'Models';
@@ -221,10 +227,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newNotCrumpledA4Sheet => 'New, not crumpled A4 sheet';
 
   @override
-  String get newUpdateRespect => 'A new version of the STREET BEAT is available';
+  String get newUpdateRespect =>
+      'A new version of the STREET BEAT is available';
 
   @override
-  String get smoothFloorDarkerThanA4Sheet => 'Smooth floor darker than A4 sheet';
+  String get smoothFloorDarkerThanA4Sheet =>
+      'Smooth floor darker than A4 sheet';
 
   @override
   String get blackSocksOrTights => 'Black socks or tights';
@@ -242,16 +250,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get openYourShinToTheKnee => 'Open your shin to the knee';
 
   @override
-  String get placeYourFoot => 'Place your foot in the center of A4 paper along the long side (the foot should not go over the edges of the sheet) and do not move it';
+  String get placeYourFoot =>
+      'Place your foot in the center of A4 paper along the long side (the foot should not go over the edges of the sheet) and do not move it';
 
   @override
   String get forAccurateScanning => 'For accurate scanning';
 
   @override
-  String get freeUpSpace => 'Free up space around A4 sheet (remove foreign objects so that nothing bothers you)';
+  String get freeUpSpace =>
+      'Free up space around A4 sheet (remove foreign objects so that nothing bothers you)';
 
   @override
-  String get doNotMoveYourFoot => 'Do not move your foot on A4 paper while scanning';
+  String get doNotMoveYourFoot =>
+      'Do not move your foot on A4 paper while scanning';
 
   @override
   String get downloadLastVersion => 'Download the latest version';
@@ -260,13 +271,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get downloadUpdate => 'Download update';
 
   @override
-  String get shiftYourBody => 'Shift your body weight onto the foot you are scanning';
+  String get shiftYourBody =>
+      'Shift your body weight onto the foot you are scanning';
 
   @override
   String get scan => 'Scan';
 
   @override
-  String get toScan => 'To scan, you need to photograph the foot from 5 angles, starting from 1';
+  String get toScan =>
+      'To scan, you need to photograph the foot from 5 angles, starting from 1';
 
   @override
   String get startScanning => 'Start scanning';
@@ -281,7 +294,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get footSelection => 'Foot selection';
 
   @override
-  String get chooseTheFoot => 'Choose the foot with which it will be more convenient for you to start';
+  String get chooseTheFoot =>
+      'Choose the foot with which it will be more convenient for you to start';
 
   @override
   String get scanLeftFoot => 'Scan the left foot';
@@ -290,13 +304,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scanRightFoot => 'Scan the right foot';
 
   @override
-  String get scanningWillStart => 'Scanning will start immediately after your choice';
+  String get scanningWillStart =>
+      'Scanning will start immediately after your choice';
 
   @override
-  String get continueWithLeftFoot => 'Put the left foot on a paper, press the button and continue scanning';
+  String get continueWithLeftFoot =>
+      'Put the left foot on a paper, press the button and continue scanning';
 
   @override
-  String get continueWithRightFoot => 'Put the right foot on a paper, press the button and continue scanning';
+  String get continueWithRightFoot =>
+      'Put the right foot on a paper, press the button and continue scanning';
 
   @override
   String get clickIfYouWantToEdit => 'Click if you want to edit';
@@ -347,7 +364,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get processing => 'Processing the photo...';
 
   @override
-  String get makeModels => 'Your foot model is being built and will be ready in less than a minute';
+  String get makeModels =>
+      'Your foot model is being built and will be ready in less than a minute';
 
   @override
   String get infoAbout => 'About developers';
@@ -488,7 +506,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get greatSize => 'Great';
 
   @override
-  String get neuralNetwork => 'Neural network determined: good fit in all zones of both legs';
+  String get neuralNetwork =>
+      'Neural network determined: good fit in all zones of both legs';
 
   @override
   String get favorite => 'To favorite';
@@ -515,10 +534,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loyaltyProgram => 'Loyalty program';
 
   @override
-  String get loyaltyProgramDescription => 'Specify discounts and delivery conditions when confirming the order with the operator';
+  String get loyaltyProgramDescription =>
+      'Specify discounts and delivery conditions when confirming the order with the operator';
 
   @override
-  String get addressInfo => 'Voronezh region, Voronezh city,\nTekstilshchikov street, 5B, \nindex 394026v';
+  String get addressInfo =>
+      'Voronezh region, Voronezh city,\nTekstilshchikov street, 5B, \nindex 394026v';
 
   @override
   String get registerDescriptionShowCase => 'Register to try on shoes online';
@@ -572,19 +593,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get perfect => 'Perfect';
 
   @override
-  String get perfectFootSize => 'In our service, we calculate the degree of fit of the shoe to the foot and, based on machine learning algorithms, we display the gradations of sensations of your particular foot in the selected shoe model.';
+  String get perfectFootSize =>
+      'In our service, we calculate the degree of fit of the shoe to the foot and, based on machine learning algorithms, we display the gradations of sensations of your particular foot in the selected shoe model.';
 
   @override
-  String get aboutService => 'Choosing the size, our service will tell you how suitable the option you have chosen and how the shoes will fit the foot.';
+  String get aboutService =>
+      'Choosing the size, our service will tell you how suitable the option you have chosen and how the shoes will fit the foot.';
 
   @override
-  String get aboutScanningAlgorithm => 'Our algorithm automatically detects two suitable sizes by enclosing them with a green border. The first will fit closer to your leg and the second will hold more loosely.';
+  String get aboutScanningAlgorithm =>
+      'Our algorithm automatically detects two suitable sizes by enclosing them with a green border. The first will fit closer to your leg and the second will hold more loosely.';
 
   @override
-  String get aboutScanningInfo => 'Thanks to our algorithm, you have a unique opportunity to appreciate the sensations Your feet in every shoe size, and make the final choice on your own according to how you prefer to wear shoes, denser or looser.';
+  String get aboutScanningInfo =>
+      'Thanks to our algorithm, you have a unique opportunity to appreciate the sensations Your feet in every shoe size, and make the final choice on your own according to how you prefer to wear shoes, denser or looser.';
 
   @override
-  String get differentSizes => 'Each user has the parameters of each leg may differ, so the sensations in one and the same size may be different.';
+  String get differentSizes =>
+      'Each user has the parameters of each leg may differ, so the sensations in one and the same size may be different.';
 
   @override
   String get availableInOneProductShop => 'Available in 1 shop';
@@ -628,7 +654,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scanAtRespect => 'Scan your feet at STREET BEAT stores';
 
   @override
-  String get scanAtRespectDescription => 'Come and we will find the perfect shoes!';
+  String get scanAtRespectDescription =>
+      'Come and we will find the perfect shoes!';
 
   @override
   String get scaning => 'Scaning';
@@ -637,7 +664,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aboutGoToScan => 'About go to scan';
 
   @override
-  String get turnOnSound => 'Turn on the sound, there are voice prompts in the app';
+  String get turnOnSound =>
+      'Turn on the sound, there are voice prompts in the app';
 
   @override
   String get nothingToShow => 'Nothing to show';
@@ -676,7 +704,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get empty => 'There\'s nothing here yet';
 
   @override
-  String get addToFavorites => 'To add a product to favorites, click on the heart in the product card';
+  String get addToFavorites =>
+      'To add a product to favorites, click on the heart in the product card';
 
   @override
   String get addFavorite => 'Product added to favorites';
@@ -706,7 +735,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scannerLocations => 'Scanner locations';
 
   @override
-  String get emptyProducts => 'We\'re sorry, but we couldn\'t \n find anything for your request';
+  String get emptyProducts =>
+      'We\'re sorry, but we couldn\'t \n find anything for your request';
 
   @override
   String get lookSomethingElse => 'Look for something else';
@@ -739,16 +769,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get howToScanLegs => 'How to scan legs';
 
   @override
-  String get howToScanLegsText1 => 'Shift your body weight and bend the scanned leg at the knee';
+  String get howToScanLegsText1 =>
+      'Shift your body weight and bend the scanned leg at the knee';
 
   @override
-  String get howToScanLegsText2 => 'Combine the frames with a sheet of paper in a circle';
+  String get howToScanLegsText2 =>
+      'Combine the frames with a sheet of paper in a circle';
 
   @override
   String get angleIndicator => 'Angle indicator';
 
   @override
-  String get angleIndicatorText => 'Start scanning from the inside of the foot, as indicated by the flashing indicator.';
+  String get angleIndicatorText =>
+      'Start scanning from the inside of the foot, as indicated by the flashing indicator.';
 
   @override
   String get leftFoot => 'Left foot';
@@ -832,7 +865,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recommendedProducts => 'Recommended products';
 
   @override
-  String get youDontHaveAnyNewNotifications => 'You don\'t have any new notifications';
+  String get youDontHaveAnyNewNotifications =>
+      'You don\'t have any new notifications';
 
   @override
   String get goToTheShowcase => 'Go to the showcase';
@@ -841,13 +875,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customUrl => 'Кастомный url';
 
   @override
-  String get doYouReallyWantToLogOutOfYourProfile => 'Do you really want to log out of your profile?';
+  String get doYouReallyWantToLogOutOfYourProfile =>
+      'Do you really want to log out of your profile?';
 
   @override
   String get exit => 'EXIT';
 
   @override
-  String get doYouReallyWantToDeleteYourAccount => 'Do you really want to delete your account?';
+  String get doYouReallyWantToDeleteYourAccount =>
+      'Do you really want to delete your account?';
 
   @override
   String get delete => 'DELETE';
@@ -886,13 +922,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yourOrderHasBeenConfirmed => 'Your order has been confirmed';
 
   @override
-  String get orderDetailsCanBeFoundInTheProfile => 'Order details can be found in the profile';
+  String get orderDetailsCanBeFoundInTheProfile =>
+      'Order details can be found in the profile';
 
   @override
   String get toOrder => 'To order';
 
   @override
-  String get paymentNotMadePleasePayTheOrder => 'Payment not made, please pay the order';
+  String get paymentNotMadePleasePayTheOrder =>
+      'Payment not made, please pay the order';
 
   @override
   String get pleaseSelectOneOfThem => 'Please select one of them';
@@ -925,7 +963,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectAFacility => 'Select a facility';
 
   @override
-  String get selectTheAddressOfThePickupPoint => 'Select the address of the pickup point';
+  String get selectTheAddressOfThePickupPoint =>
+      'Select the address of the pickup point';
 
   @override
   String get myDetails => 'My details';
@@ -1003,7 +1042,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get descDiscount => 'Discount';
 
   @override
-  String get authRequired => 'To use the profile, you need to log in or register.';
+  String get authRequired =>
+      'To use the profile, you need to log in or register.';
 
   @override
   String get registration => 'Registration';

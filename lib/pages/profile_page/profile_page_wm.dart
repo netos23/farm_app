@@ -30,10 +30,6 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   void linkToTelegram();
 
   void registerBrand();
-
-  TextEditingController get brandController;
-
-  TextEditingController get addressController;
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -215,21 +211,15 @@ class ProfilePageWidgetModel
 
   @override
   void onBasketTap() {
-    router.navigate(SubscriptionRoute());
+    onUnauthorisedTap(() {
+      onClientTap(() {
+        router.navigate(SubscriptionRoute());
+      });
+    });
   }
 
   @override
   void registerBrand() {
-    showModalBottomSheet(
-      context: router.root.navigatorKey.currentContext!,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(25),
-          topLeft: Radius.circular(25),
-        ),
-      ),
-      builder: _buildRegisterBrandContent,
-    );
   }
 
   Widget _buildRegisterBrandContent(BuildContext context) {
@@ -288,9 +278,7 @@ class ProfilePageWidgetModel
                     ),
                   ),
                   onPressed: () {
-                    profileUseCase.registerBrand(
-                        brandController.text, addressController.text);
-                    context.popRoute();
+                    router.push(RegisterBrandRoute());
                   },
                   child: const Center(
                     child: Text('Зарегистрировать'),

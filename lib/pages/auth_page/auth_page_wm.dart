@@ -15,8 +15,6 @@ abstract class IAuthPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   TextEditingController get emailController;
 
-  Future<void> sendCode({required String email});
-
   AuthRepository get authRepository;
 
   Future<void> onSendCode();
@@ -37,16 +35,6 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
     AppComponents().authService,
   );
 
-  @override
-  Future<void> sendCode({required String email}) async {
-    await authRepository.emailPart1(
-      request: AuthEmailPart1Request(
-        email: email,
-        digits: 4,
-      ),
-    );
-  }
-
   AuthPageWidgetModel(AuthPageModel model) : super(model);
 
   @override
@@ -64,8 +52,8 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
       );
     } on DioError catch (error) {
       if (error.response?.statusCode == 451) {
-        router.push(RegisterRoute(email: emailController.text));
         context.showSnackBar(localizations.userIsNotRegistered);
+        router.push(RegisterRoute(email: emailController.text));
         return;
       }
 
