@@ -296,6 +296,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrderHistoryPageScope(),
       );
     },
+    RegisterBrandRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterBrandRouteArgs>(
+          orElse: () => const RegisterBrandRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: RegisterBrandPageWidget(
+          profile: args.profile,
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
   };
 }
 
@@ -1208,4 +1220,50 @@ class OrderHistoryRoute extends PageRouteInfo<void> {
   static const String name = 'OrderHistoryRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RegisterBrandPageWidget]
+class RegisterBrandRoute extends PageRouteInfo<RegisterBrandRouteArgs> {
+  RegisterBrandRoute({
+    Profile? profile,
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultRegisterBrandPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          RegisterBrandRoute.name,
+          args: RegisterBrandRouteArgs(
+            profile: profile,
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterBrandRoute';
+
+  static const PageInfo<RegisterBrandRouteArgs> page =
+      PageInfo<RegisterBrandRouteArgs>(name);
+}
+
+class RegisterBrandRouteArgs {
+  const RegisterBrandRouteArgs({
+    this.profile,
+    this.key,
+    this.wmFactory = defaultRegisterBrandPageWidgetModelFactory,
+  });
+
+  final Profile? profile;
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'RegisterBrandRouteArgs{profile: $profile, key: $key, wmFactory: $wmFactory}';
+  }
 }
