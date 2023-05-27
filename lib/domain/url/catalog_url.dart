@@ -6,4 +6,6 @@ abstract class CatalogUrl {
   static const String catalogSortTypes = '/catalog/sort_types';
   static const String catalogFilters = '/catalog/filters';
   static const String catalogAutocomplete = '/catalog/autocomplete';
+  static const String deliveries = '/deliveries/deliveries/';
+  static const String payments = '/payments/';
 }

@@ -26,6 +26,18 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    OrderRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderRouteArgs>(
+          orElse: () => const OrderRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderPageWidget(
+          key: args.key,
+          productIds: args.productIds,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
     ProductRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final queryParams = routeData.queryParams;
@@ -195,17 +207,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserProfileTabPage(),
       );
     },
-    OrderRoute.name: (routeData) {
-      final args = routeData.argsAs<OrderRouteArgs>(
-          orElse: () => const OrderRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: OrderPageWidget(
-          key: args.key,
-          wmFactory: args.wmFactory,
-        ),
-      );
-    },
   };
 }
 
@@ -247,6 +248,51 @@ class ProfileRouteArgs {
   @override
   String toString() {
     return 'ProfileRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [OrderPageWidget]
+class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
+  OrderRoute({
+    Key? key,
+    List<ProductWithCount> productIds = const [],
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultOrderPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderRoute.name,
+          args: OrderRouteArgs(
+            key: key,
+            productIds: productIds,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderRoute';
+
+  static const PageInfo<OrderRouteArgs> page = PageInfo<OrderRouteArgs>(name);
+}
+
+class OrderRouteArgs {
+  const OrderRouteArgs({
+    this.key,
+    this.productIds = const [],
+    this.wmFactory = defaultOrderPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final List<ProductWithCount> productIds;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'OrderRouteArgs{key: $key, productIds: $productIds, wmFactory: $wmFactory}';
   }
 }
 
@@ -797,44 +843,4 @@ class UserProfileTab extends PageRouteInfo<void> {
   static const String name = 'UserProfileTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [OrderPageWidget]
-class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
-  OrderRoute({
-    Key? key,
-    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-            BuildContext)
-        wmFactory = defaultOrderPageWidgetModelFactory,
-    List<PageRouteInfo>? children,
-  }) : super(
-          OrderRoute.name,
-          args: OrderRouteArgs(
-            key: key,
-            wmFactory: wmFactory,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderRoute';
-
-  static const PageInfo<OrderRouteArgs> page = PageInfo<OrderRouteArgs>(name);
-}
-
-class OrderRouteArgs {
-  const OrderRouteArgs({
-    this.key,
-    this.wmFactory = defaultOrderPageWidgetModelFactory,
-  });
-
-  final Key? key;
-
-  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-      BuildContext) wmFactory;
-
-  @override
-  String toString() {
-    return 'OrderRouteArgs{key: $key, wmFactory: $wmFactory}';
-  }
 }

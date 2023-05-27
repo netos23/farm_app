@@ -21,6 +21,8 @@ abstract class ICartPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   EntityStateNotifier<CalcCart?> get cartState;
 
+  ValueNotifier<bool> get orderState;
+
   EntityStateNotifier<Set<int>> get disabledCart;
 
   EntityStateNotifier<GeoData> get geoState;
@@ -53,6 +55,9 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
 
   @override
   final disabledCart = EntityStateNotifier();
+
+  @override
+  final orderState = ValueNotifier(true);
 
   @override
   final geolocationDadataRepository = AppComponents().dadataRepository;
@@ -141,9 +146,17 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
   }
 
   @override
-  void order() {
-    context.router.navigate(
-      OrderRoute(),
-    );
+  Future<void> order() async {
+    final profile = AppComponents().profileUseCase;
+
+    orderState.value = false;
+    await profile.loadProfile();
+    orderState.value = true;
+
+    if (isMounted) {
+      router.navigate(
+        OrderRoute(),
+      );
+    }
   }
 }

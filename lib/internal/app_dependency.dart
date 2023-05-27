@@ -15,7 +15,7 @@ class AppDependency extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => ValueNotifier(ThemeMode.system),
+          create: (context) => ValueNotifier(ThemeMode.light),
         ),
       ],
       child: app,

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:farm_app/domain/models/category.dart';
+import 'package:farm_app/domain/models/deliveries_request.dart';
+import 'package:farm_app/domain/models/delivery.dart';
 import 'package:farm_app/domain/models/product_detail.dart';
 import 'package:farm_app/domain/url/catalog_url.dart';
 import 'package:farm_app/domain/entity/catalog/autocomplete_request.dart';
@@ -48,6 +50,17 @@ abstract class CatalogService {
   @POST(CatalogUrl.catalogAutocomplete)
   Future<AutocompleteResponse> getCatalogAutocomplete({
     @Body() required AutocompleteRequest request,
+  });
+
+
+  @POST(CatalogUrl.deliveries)
+  Future<List<Delivery>> getDeliveries({
+    @Body() required DeliveriesRequest request,
+  });
+
+  @POST(CatalogUrl.payments)
+  Future<List<Payment>> getPayments({
+    @Body() required PaymentsRequest request,
   });
 
 }

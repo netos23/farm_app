@@ -49,6 +49,7 @@ dependencies:
   intl_utils: ^2.8.2
   flutter_rating_bar: ^4.0.1
   uuid: ^3.0.7
+  flutter_masked_text2: ^0.9.1
 
 dev_dependencies:
   flutter_test:

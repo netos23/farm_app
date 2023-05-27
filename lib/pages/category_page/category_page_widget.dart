@@ -63,17 +63,10 @@ class CategoryPageWidget extends ElementaryWidget<ICategoryPageWidgetModel> {
 
         return Scaffold(
           appBar: AppBar(
-            // automaticallyImplyLeading: !kIsWeb,
             title: Text(
               title ?? category?.name ?? localizations.catalog
             ),
             centerTitle: true,
-            /*bottom: SearchRow(
-              controller: wm.searchController,
-              onSort: wm.openSort,
-              height: 40,
-              active: true,
-            ),*/
           ),
           body: GridView.builder(
             itemCount: subcategories.length,

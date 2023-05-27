@@ -103,20 +103,37 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-        ),
-        child: ElevatedButton(
-          onPressed: wm.order,
-          child: SizedBox(
-            width: double.infinity,
-            child: Text(
-              wm.localizations.order,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
+      floatingActionButton: EntityStateNotifierBuilder(
+        listenableEntityState: wm.cartState,
+        builder: (context, data) {
+          final products = data?.products ?? [];
+
+          return ValueListenableBuilder(
+            valueListenable: wm.orderState,
+            builder: (context, val, _) {
+              return Visibility(
+                visible: products.isNotEmpty,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: val ? wm.order : null,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: val
+                          ? Text(
+                              wm.localizations.order,
+                              textAlign: TextAlign.center,
+                            )
+                          : const LoadingIndicator(),
+                    ),
+                  ),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }

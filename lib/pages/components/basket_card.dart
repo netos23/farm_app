@@ -3,6 +3,7 @@ import 'package:farm_app/domain/entity/cart/cart_product.dart';
 import 'package:farm_app/domain/entity/cart/cart_update.dart';
 import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/pages/components/loading_indicator.dart';
+import 'package:farm_app/util/money_extensions.dart';
 import 'package:flutter/material.dart';
 
 class BasketCard extends StatelessWidget {
@@ -21,7 +22,9 @@ class BasketCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final cartUseCase = AppComponents().cartUseCase;
+    final oldPrice = cartProduct.product.price;
     return ListTile(
       onTap: onTap,
       leading: AspectRatio(
@@ -46,9 +49,32 @@ class BasketCard extends StatelessWidget {
         ),
       ),
       title: Text(
-        cartProduct.product.name,
+        '${cartProduct.product.name} (${cartProduct.count} ед.)',
+        style: theme.textTheme.bodyLarge?.copyWith(
+          color: theme.colorScheme.onBackground,
+        ),
       ),
-      subtitle: Text('${cartProduct.count} ед.'),
+      subtitle: RichText(
+        text: TextSpan(
+          text: cartProduct.product.price.formatMoney(),
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onBackground,
+          ),
+          children: [
+            const TextSpan(
+              text: ' ',
+            ),
+            if (oldPrice != null)
+              TextSpan(
+                text: oldPrice.formatMoney(),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onBackground,
+                  decoration: TextDecoration.lineThrough,
+                ),
+              ),
+          ],
+        ),
+      ),
       trailing: SizedBox(
         width: 150,
         child: Row(

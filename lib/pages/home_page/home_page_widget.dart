@@ -43,7 +43,7 @@ class _MobilePage extends StatelessWidget {
           selectedIndex: tabsRouter.activeIndex,
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           onDestinationSelected: tabsRouter.setActiveIndex,
-          destinations:  [
+          destinations: [
             NavigationDestination(
               label: localizations.blog,
               icon: const Icon(
@@ -56,11 +56,11 @@ class _MobilePage extends StatelessWidget {
             ),
             NavigationDestination(
               label: localizations.basket,
-              icon: Icon(Icons.shopping_cart_outlined),
+              icon: const Icon(Icons.shopping_cart_outlined),
             ),
             NavigationDestination(
               label: localizations.profile,
-              icon: Icon(Icons.person_outline),
+              icon: const Icon(Icons.person_outline),
             ),
           ],
         );
@@ -94,63 +94,65 @@ class _WebPage extends StatelessWidget {
         if (activeIndex == -1) {
           activeIndex = 0;
         }
-        return LayoutBuilder(builder: (context, constrains) {
-          BoxConstraints bounds;
+        return LayoutBuilder(
+          builder: (context, constrains) {
+            BoxConstraints bounds;
 
-          final width = constrains.maxWidth;
-          if (width <= 700) {
-            bounds = constrains;
-          } else {
-            bounds = constrains.copyWith(
-              minWidth: 0,
-              maxWidth: max(width * 0.7, 700),
-            );
-          }
+            final width = constrains.maxWidth;
+            if (width <= 700) {
+              bounds = constrains;
+            } else {
+              bounds = constrains.copyWith(
+                minWidth: 0,
+                maxWidth: max(width * 0.7, 700),
+              );
+            }
 
-          return ColoredBox(
-            color: Theme.of(context).colorScheme.background,
-            child: Center(
-              child: ConstrainedBox(
-                constraints: bounds,
-                child: Row(
-                  children: [
-                    NavigationRail(
-                      labelType: NavigationRailLabelType.selected,
-                      destinations:  [
-                        NavigationRailDestination(
-                          label: Text(localizations.blog),
-                          icon: const Icon(
-                            Icons.home_outlined,
+            return ColoredBox(
+              color: Theme.of(context).colorScheme.background,
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: bounds,
+                  child: Row(
+                    children: [
+                      NavigationRail(
+                        labelType: NavigationRailLabelType.selected,
+                        destinations: [
+                          NavigationRailDestination(
+                            label: Text(localizations.blog),
+                            icon: const Icon(
+                              Icons.home_outlined,
+                            ),
                           ),
-                        ),
-                        NavigationRailDestination(
-                          label: Text(localizations.catalog),
-                          icon: const Icon(Icons.apps_rounded),
-                        ),
-                        NavigationRailDestination(
-                          label: Text(localizations.basket),
-                          icon: const Icon(Icons.shopping_cart_outlined),
-                        ),
-                        NavigationRailDestination(
-                          label: Text(localizations.profile),
-                          icon: const Icon(Icons.person_outline),
-                        ),
-                      ],
-                      selectedIndex: activeIndex,
-                      onDestinationSelected: (index) {
-                        // use navigate instead of push so you won't have
-                        // many useless route stacks
-                        context.navigateTo(tabs[index]);
-                      },
-                    ),
-                    // child is the rendered route stack
-                    Expanded(child: child)
-                  ],
+                          NavigationRailDestination(
+                            label: Text(localizations.catalog),
+                            icon: const Icon(Icons.apps_rounded),
+                          ),
+                          NavigationRailDestination(
+                            label: Text(localizations.basket),
+                            icon: const Icon(Icons.shopping_cart_outlined),
+                          ),
+                          NavigationRailDestination(
+                            label: Text(localizations.profile),
+                            icon: const Icon(Icons.person_outline),
+                          ),
+                        ],
+                        selectedIndex: activeIndex,
+                        onDestinationSelected: (index) {
+                          // use navigate instead of push so you won't have
+                          // many useless route stacks
+                          context.navigateTo(tabs[index]);
+                        },
+                      ),
+                      // child is the rendered route stack
+                      Expanded(child: child)
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        });
+            );
+          },
+        );
       },
     );
   }

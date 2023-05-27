@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/domain/models/category.dart';
 import 'package:farm_app/domain/models/product.dart';
+import 'package:farm_app/domain/models/product_with_count.dart';
 import 'package:farm_app/pages/auth_code_page/auth_code_page.dart';
 import 'package:farm_app/pages/auth_page/auth_page.dart';
 import 'package:farm_app/pages/cart_page/cart_page.dart';

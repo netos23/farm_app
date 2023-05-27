@@ -55,7 +55,8 @@ class CartUseCase implements LifecycleComponent {
     required CartUpdate request,
   }) async {
     _deleteProduct(request);
-    cartService.deleteCart(request: request);
+    final response = await cartService.deleteCart(request: request);
+    cart.add(response);
   }
 
   Future<void> addProductCount({
