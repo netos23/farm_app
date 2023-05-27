@@ -35,6 +35,8 @@ mixin _$Profile {
   String? get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'brand')
   String? get brand => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tg_chat_start_link')
+  String? get tgChatStartLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +56,8 @@ abstract class $ProfileCopyWith<$Res> {
       @JsonKey(name: 'gender') String? gender,
       @JsonKey(name: 'role') String? role,
       @JsonKey(name: 'phone') String? phone,
-      @JsonKey(name: 'brand') String? brand});
+      @JsonKey(name: 'brand') String? brand,
+      @JsonKey(name: 'tg_chat_start_link') String? tgChatStartLink});
 }
 
 /// @nodoc
@@ -78,6 +81,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? role = freezed,
     Object? phone = freezed,
     Object? brand = freezed,
+    Object? tgChatStartLink = freezed,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -112,6 +116,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as String?,
+      tgChatStartLink: freezed == tgChatStartLink
+          ? _value.tgChatStartLink
+          : tgChatStartLink // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -131,7 +139,8 @@ abstract class _$$_ProfileCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       @JsonKey(name: 'gender') String? gender,
       @JsonKey(name: 'role') String? role,
       @JsonKey(name: 'phone') String? phone,
-      @JsonKey(name: 'brand') String? brand});
+      @JsonKey(name: 'brand') String? brand,
+      @JsonKey(name: 'tg_chat_start_link') String? tgChatStartLink});
 }
 
 /// @nodoc
@@ -152,6 +161,7 @@ class __$$_ProfileCopyWithImpl<$Res>
     Object? role = freezed,
     Object? phone = freezed,
     Object? brand = freezed,
+    Object? tgChatStartLink = freezed,
   }) {
     return _then(_$_Profile(
       email: null == email
@@ -186,6 +196,10 @@ class __$$_ProfileCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as String?,
+      tgChatStartLink: freezed == tgChatStartLink
+          ? _value.tgChatStartLink
+          : tgChatStartLink // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -202,7 +216,8 @@ class _$_Profile implements _Profile {
       @JsonKey(name: 'gender') this.gender,
       @JsonKey(name: 'role') this.role,
       @JsonKey(name: 'phone') this.phone,
-      @JsonKey(name: 'brand') this.brand});
+      @JsonKey(name: 'brand') this.brand,
+      @JsonKey(name: 'tg_chat_start_link') this.tgChatStartLink});
 
   factory _$_Profile.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileFromJson(json);
@@ -230,10 +245,13 @@ class _$_Profile implements _Profile {
   @override
   @JsonKey(name: 'brand')
   final String? brand;
+  @override
+  @JsonKey(name: 'tg_chat_start_link')
+  final String? tgChatStartLink;
 
   @override
   String toString() {
-    return 'Profile(email: $email, firstName: $firstName, secondName: $secondName, birthDate: $birthDate, gender: $gender, role: $role, phone: $phone, brand: $brand)';
+    return 'Profile(email: $email, firstName: $firstName, secondName: $secondName, birthDate: $birthDate, gender: $gender, role: $role, phone: $phone, brand: $brand, tgChatStartLink: $tgChatStartLink)';
   }
 
   @override
@@ -251,13 +269,15 @@ class _$_Profile implements _Profile {
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.brand, brand) || other.brand == brand));
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.tgChatStartLink, tgChatStartLink) ||
+                other.tgChatStartLink == tgChatStartLink));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, email, firstName, secondName,
-      birthDate, gender, role, phone, brand);
+      birthDate, gender, role, phone, brand, tgChatStartLink);
 
   @JsonKey(ignore: true)
   @override
@@ -275,14 +295,16 @@ class _$_Profile implements _Profile {
 
 abstract class _Profile implements Profile {
   const factory _Profile(
-      {required final String email,
-      @JsonKey(name: 'first_name') final String? firstName,
-      @JsonKey(name: 'second_name') final String? secondName,
-      @JsonKey(name: 'birth_date') final String? birthDate,
-      @JsonKey(name: 'gender') final String? gender,
-      @JsonKey(name: 'role') final String? role,
-      @JsonKey(name: 'phone') final String? phone,
-      @JsonKey(name: 'brand') final String? brand}) = _$_Profile;
+          {required final String email,
+          @JsonKey(name: 'first_name') final String? firstName,
+          @JsonKey(name: 'second_name') final String? secondName,
+          @JsonKey(name: 'birth_date') final String? birthDate,
+          @JsonKey(name: 'gender') final String? gender,
+          @JsonKey(name: 'role') final String? role,
+          @JsonKey(name: 'phone') final String? phone,
+          @JsonKey(name: 'brand') final String? brand,
+          @JsonKey(name: 'tg_chat_start_link') final String? tgChatStartLink}) =
+      _$_Profile;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$_Profile.fromJson;
 
@@ -309,6 +331,9 @@ abstract class _Profile implements Profile {
   @override
   @JsonKey(name: 'brand')
   String? get brand;
+  @override
+  @JsonKey(name: 'tg_chat_start_link')
+  String? get tgChatStartLink;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileCopyWith<_$_Profile> get copyWith =>

@@ -19,6 +19,7 @@ class Profile with _$Profile {
     @JsonKey(name: 'role') String? role,
     @JsonKey(name: 'phone') String? phone,
     @JsonKey(name: 'brand') String? brand,
+    @JsonKey(name: 'tg_chat_start_link') String? tgChatStartLink,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

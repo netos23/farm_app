@@ -7,7 +7,7 @@ import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher_string.dart';
 import 'profile_page_model.dart';
 import 'profile_page_widget.dart';
 
@@ -26,6 +26,14 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   void onCalendarTap();
 
   void onOrderHistoryTap();
+
+  void linkToTelegram();
+
+  void registerBrand();
+
+  TextEditingController get brandController;
+
+  TextEditingController get addressController;
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -51,6 +59,8 @@ class ProfilePageWidgetModel
       profileUseCase.profile.valueOrNull != null &&
       (profileUseCase.profile.value!.brand ?? '').isNotEmpty;
 
+  final telegramLink = 'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
+
   @override
   void initWidgetModel() {
     super.initWidgetModel();
@@ -60,6 +70,8 @@ class ProfilePageWidgetModel
   @override
   void dispose() {
     super.dispose();
+    brandController.dispose();
+    addressController.dispose();
     profileUseCase.dispose();
   }
 
@@ -168,6 +180,11 @@ class ProfilePageWidgetModel
   }
 
   @override
+  void linkToTelegram() {
+    launchUrlString(profileUseCase.profile.value?.tgChatStartLink ?? '', mode: LaunchMode.externalApplication);
+  }
+
+  @override
   void onClientTap(void Function() onTap) {
     if (isClientUser) {
       showModalBottomSheet(
@@ -189,14 +206,120 @@ class ProfilePageWidgetModel
   void onEditProfileTap() {
     onUnauthorisedTap(() {
       onClientTap(() {
-        router.push(EditProfileRoute());
+        router.push(EditProfileRoute(profile: profileUseCase.profile.value));
       });
     });
   }
 
   @override
   void onBasketTap() {
-    router.navigate(const BasketTab());
+    router.navigate(SubscriptionRoute());
+  }
+
+  @override
+  void registerBrand() {
+    showModalBottomSheet(
+      context: router.root.navigatorKey.currentContext!,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(25),
+          topLeft: Radius.circular(25),
+        ),
+      ),
+      builder: _buildRegisterBrandContent,
+    );
+  }
+
+  Widget _buildRegisterBrandContent(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
+          child: Text(
+            'Название вашего бренда',
+            maxLines: 6,
+            style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis),
+          ),
+        ),
+        TextField(
+          textAlign: TextAlign.center,
+          controller: brandController,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onBackground,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
+          child: Text(
+            'Название вашего бренда',
+            maxLines: 6,
+            style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis),
+          ),
+        ),
+        TextField(
+          textAlign: TextAlign.center,
+          controller: addressController,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onBackground,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        Column(
+          children: [
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    profileUseCase.registerBrand(brandController.text, addressController.text);
+                    context.popRoute();
+                  },
+                  child: const Center(
+                    child: Text('Зарегистрировать'),
+                  ),
+                ),
+              ),
+            ),
+
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                margin: const EdgeInsets.symmetric(vertical: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.popRoute();
+                  },
+                  child: const Center(
+                    child: Text('Позже'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 
   Widget _buildUnauthorisedContent(BuildContext context) {
@@ -260,6 +383,12 @@ class ProfilePageWidgetModel
       ],
     );
   }
+
+  @override
+  final addressController = TextEditingController();
+
+  @override
+  final brandController = TextEditingController();
 
   @override
   void onOrderHistoryTap() {

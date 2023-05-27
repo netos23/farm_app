@@ -133,6 +133,33 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    WebViewerRoute.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<WebViewerRouteArgs>(
+          orElse: () => WebViewerRouteArgs(
+                title: queryParams.getString(
+                  'title',
+                  '',
+                ),
+                url: queryParams.getString(
+                  'url',
+                  '',
+                ),
+                hideAppbar: queryParams.optBool('hideAppbar'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WebViewerPageWidget(
+          key: args.key,
+          title: args.title,
+          url: args.url,
+          onNavigationRequest: args.onNavigationRequest,
+          onPageFinished: args.onPageFinished,
+          onWillPop: args.onWillPop,
+          hideAppbar: args.hideAppbar,
+        ),
+      );
+    },
     ShowCaseRoute.name: (routeData) {
       final args = routeData.argsAs<ShowCaseRouteArgs>(
           orElse: () => const ShowCaseRouteArgs());
@@ -252,10 +279,15 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserProfileTabPage(),
       );
     },
-    OrderHistoryRoute.name: (routeData) {
+    SubscriptionRoute.name: (routeData) {
+      final args = routeData.argsAs<SubscriptionRouteArgs>(
+          orElse: () => const SubscriptionRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OrderHistoryPageScope(),
+        child: SubscriptionPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
       );
     },
   };
@@ -659,6 +691,76 @@ class RegisterRouteArgs {
 }
 
 /// generated route for
+/// [WebViewerPageWidget]
+class WebViewerRoute extends PageRouteInfo<WebViewerRouteArgs> {
+  WebViewerRoute({
+    Key? key,
+    String title = '',
+    String url = '',
+    FutureOr<NavigationDecision> Function(NavigationRequest)?
+        onNavigationRequest,
+    void Function(String)? onPageFinished,
+    void Function()? onWillPop,
+    bool? hideAppbar,
+    List<PageRouteInfo>? children,
+  }) : super(
+          WebViewerRoute.name,
+          args: WebViewerRouteArgs(
+            key: key,
+            title: title,
+            url: url,
+            onNavigationRequest: onNavigationRequest,
+            onPageFinished: onPageFinished,
+            onWillPop: onWillPop,
+            hideAppbar: hideAppbar,
+          ),
+          rawQueryParams: {
+            'title': title,
+            'url': url,
+            'hideAppbar': hideAppbar,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'WebViewerRoute';
+
+  static const PageInfo<WebViewerRouteArgs> page =
+      PageInfo<WebViewerRouteArgs>(name);
+}
+
+class WebViewerRouteArgs {
+  const WebViewerRouteArgs({
+    this.key,
+    this.title = '',
+    this.url = '',
+    this.onNavigationRequest,
+    this.onPageFinished,
+    this.onWillPop,
+    this.hideAppbar,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  final String url;
+
+  final FutureOr<NavigationDecision> Function(NavigationRequest)?
+      onNavigationRequest;
+
+  final void Function(String)? onPageFinished;
+
+  final void Function()? onWillPop;
+
+  final bool? hideAppbar;
+
+  @override
+  String toString() {
+    return 'WebViewerRouteArgs{key: $key, title: $title, url: $url, onNavigationRequest: $onNavigationRequest, onPageFinished: $onPageFinished, onWillPop: $onWillPop, hideAppbar: $hideAppbar}';
+  }
+}
+
+/// generated route for
 /// [ShowCasePageWidget]
 class ShowCaseRoute extends PageRouteInfo<ShowCaseRouteArgs> {
   ShowCaseRoute({
@@ -1048,15 +1150,42 @@ class UserProfileTab extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [OrderHistoryPageScope]
-class OrderHistoryRoute extends PageRouteInfo<void> {
-  const OrderHistoryRoute({List<PageRouteInfo>? children})
-      : super(
-          OrderHistoryRoute.name,
+/// [SubscriptionPageWidget]
+class SubscriptionRoute extends PageRouteInfo<SubscriptionRouteArgs> {
+  SubscriptionRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultSubscriptionPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SubscriptionRoute.name,
+          args: SubscriptionRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
           initialChildren: children,
         );
 
-  static const String name = 'OrderHistoryRoute';
+  static const String name = 'SubscriptionRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SubscriptionRouteArgs> page =
+      PageInfo<SubscriptionRouteArgs>(name);
+}
+
+class SubscriptionRouteArgs {
+  const SubscriptionRouteArgs({
+    this.key,
+    this.wmFactory = defaultSubscriptionPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'SubscriptionRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
 }

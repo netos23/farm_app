@@ -7,6 +7,7 @@ import 'package:farm_app/internal/logger.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/snack_bar_util.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'show_case_page_model.dart';
 import 'show_case_page_widget.dart';
 
@@ -67,11 +68,9 @@ class ShowCasePageWidgetModel
   }
 
   @override
-  void openLink(String value) {
-    final uri = Uri.parse(value);
-
-    context.router.root.pushNamed(
-      uri.path,
-    );
+  Future<void> openLink(String value) async {
+    if(await canLaunchUrlString(value)){
+      launchUrlString(value);
+    }
   }
 }

@@ -209,7 +209,61 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                                           color: theme.colorScheme.onBackground,
                                         ),
                                       ),
+                                      Spacer(),
+                                      IconButton(
+                                        onPressed: wm.changeDay,
+                                        icon: const Icon(
+                                          Icons.settings,
+                                        ),
+                                      ),
                                     ],
+                                  ),
+                                );
+                              },
+                            ),
+                            EntityStateNotifierBuilder(
+                              listenableEntityState: wm.deliveriesState,
+                              builder: (context, data) {
+                                final delivery = data?.$2;
+
+                                return Visibility(
+                                  visible: delivery != null &&
+                                      delivery.type == 'pickup' &&
+                                      delivery.farm_address != null,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0),
+                                    child: Text(
+                                      'Аддрес фермы:',
+                                      style: theme.textTheme.headlineSmall
+                                          ?.copyWith(
+                                        color: theme.colorScheme.onBackground,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            EntityStateNotifierBuilder(
+                              listenableEntityState: wm.deliveriesState,
+                              builder: (context, data) {
+                                final delivery = data?.$2;
+
+                                return Visibility(
+                                  visible: delivery != null &&
+                                      delivery.type == 'pickup' &&
+                                      delivery.farm_address != null,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 5.0),
+                                    child: Text(
+                                      delivery?.farm_address ?? '',
+                                      style: theme.textTheme.bodyLarge
+                                          ?.copyWith(
+                                        color: theme.colorScheme.onBackground,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                    ),
                                   ),
                                 );
                               },
@@ -326,7 +380,7 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                                         ),
                                       ),
                                       IconButton(
-                                        onPressed: wm.changeDay,
+                                        onPressed: wm.changeRepeat,
                                         icon: const Icon(
                                           Icons.settings,
                                         ),

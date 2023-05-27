@@ -25,6 +25,7 @@ mixin _$Delivery {
   String get description => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
+  String? get farm_address => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +39,12 @@ abstract class $DeliveryCopyWith<$Res> {
       _$DeliveryCopyWithImpl<$Res, Delivery>;
   @useResult
   $Res call(
-      {String id, String title, String description, String type, String icon});
+      {String id,
+      String title,
+      String description,
+      String type,
+      String icon,
+      String? farm_address});
 }
 
 /// @nodoc
@@ -59,6 +65,7 @@ class _$DeliveryCopyWithImpl<$Res, $Val extends Delivery>
     Object? description = null,
     Object? type = null,
     Object? icon = null,
+    Object? farm_address = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -81,6 +88,10 @@ class _$DeliveryCopyWithImpl<$Res, $Val extends Delivery>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
+      farm_address: freezed == farm_address
+          ? _value.farm_address
+          : farm_address // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -93,7 +104,12 @@ abstract class _$$_DeliveryCopyWith<$Res> implements $DeliveryCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id, String title, String description, String type, String icon});
+      {String id,
+      String title,
+      String description,
+      String type,
+      String icon,
+      String? farm_address});
 }
 
 /// @nodoc
@@ -112,6 +128,7 @@ class __$$_DeliveryCopyWithImpl<$Res>
     Object? description = null,
     Object? type = null,
     Object? icon = null,
+    Object? farm_address = freezed,
   }) {
     return _then(_$_Delivery(
       id: null == id
@@ -134,6 +151,10 @@ class __$$_DeliveryCopyWithImpl<$Res>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
+      farm_address: freezed == farm_address
+          ? _value.farm_address
+          : farm_address // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -146,7 +167,8 @@ class _$_Delivery implements _Delivery {
       required this.title,
       required this.description,
       required this.type,
-      required this.icon});
+      required this.icon,
+      this.farm_address});
 
   factory _$_Delivery.fromJson(Map<String, dynamic> json) =>
       _$$_DeliveryFromJson(json);
@@ -161,10 +183,12 @@ class _$_Delivery implements _Delivery {
   final String type;
   @override
   final String icon;
+  @override
+  final String? farm_address;
 
   @override
   String toString() {
-    return 'Delivery(id: $id, title: $title, description: $description, type: $type, icon: $icon)';
+    return 'Delivery(id: $id, title: $title, description: $description, type: $type, icon: $icon, farm_address: $farm_address)';
   }
 
   @override
@@ -177,13 +201,15 @@ class _$_Delivery implements _Delivery {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.icon, icon) || other.icon == icon));
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.farm_address, farm_address) ||
+                other.farm_address == farm_address));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, description, type, icon);
+  int get hashCode => Object.hash(
+      runtimeType, id, title, description, type, icon, farm_address);
 
   @JsonKey(ignore: true)
   @override
@@ -205,7 +231,8 @@ abstract class _Delivery implements Delivery {
       required final String title,
       required final String description,
       required final String type,
-      required final String icon}) = _$_Delivery;
+      required final String icon,
+      final String? farm_address}) = _$_Delivery;
 
   factory _Delivery.fromJson(Map<String, dynamic> json) = _$_Delivery.fromJson;
 
@@ -219,6 +246,8 @@ abstract class _Delivery implements Delivery {
   String get type;
   @override
   String get icon;
+  @override
+  String? get farm_address;
   @override
   @JsonKey(ignore: true)
   _$$_DeliveryCopyWith<_$_Delivery> get copyWith =>

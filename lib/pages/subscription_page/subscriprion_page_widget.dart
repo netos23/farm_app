@@ -1,31 +1,29 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:decimal/decimal.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/pages/components/basket_card.dart';
 import 'package:farm_app/pages/components/loading_indicator.dart';
 import 'package:farm_app/pages/components/search_widget.dart';
 import 'package:farm_app/router/app_router.dart';
-import 'package:farm_app/util/money_extensions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../generated/app_localizations.dart';
-import 'cart_page_wm.dart';
+import 'subscription_page_wm.dart';
 
 // TODO: cover with documentation
 /// Main widget for CartPage module
 @RoutePage()
-class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
-  const CartPageWidget({
+class SubscriptionPageWidget extends ElementaryWidget<ISubscriptionPageWidgetModel> {
+  const SubscriptionPageWidget({
     Key? key,
-    WidgetModelFactory wmFactory = defaultCartPageWidgetModelFactory,
+    WidgetModelFactory wmFactory = defaultSubscriptionPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
   @override
-  Widget build(ICartPageWidgetModel wm) {
+  Widget build(ISubscriptionPageWidgetModel wm) {
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: !kIsWeb,
-        title: Text(wm.localizations.basket),
+        title: Text('Subscription'),
         centerTitle: true,
       ),
       body: EntityStateNotifierBuilder(
@@ -89,7 +87,7 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
           }
 
           return EntityStateNotifierBuilder(
-            listenableEntityState: wm.disabledCart,
+            listenableEntityState: wm.disabledSubscription,
             builder: (context, data) {
               final off = data ?? {};
               return ListView.builder(
@@ -114,8 +112,6 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
         listenableEntityState: wm.cartState,
         builder: (context, data) {
           final products = data?.products ?? [];
-          final theme = Theme.of(context);
-          final oldPrice = data?.oldPrice;
 
           return ValueListenableBuilder(
             valueListenable: wm.orderState,
@@ -126,65 +122,17 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Card(
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 10,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'К оплате',
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: theme.colorScheme.onBackground,
-                                ),
-                              ),
-                              RichText(
-                                text: TextSpan(
-                                  text: (data?.price ?? Decimal.zero)
-                                      .formatMoney(),
-                                  style: theme.textTheme.bodyMedium?.copyWith(
-                                    color: theme.colorScheme.onBackground,
-                                  ),
-                                  children: [
-                                    const TextSpan(
-                                      text: ' ',
-                                    ),
-                                    if (oldPrice != null)
-                                      TextSpan(
-                                        text: oldPrice.formatMoney(),
-                                        style: theme.textTheme.bodyMedium
-                                            ?.copyWith(
-                                          color: theme.colorScheme.onBackground,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: val ? wm.order : null,
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: val
-                              ? Text(
-                                  wm.localizations.order,
-                                  textAlign: TextAlign.center,
-                                )
-                              : const LoadingIndicator(),
-                        ),
-                      ),
-                    ],
+                  child: ElevatedButton(
+                    onPressed: val ? wm.order : null,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: val
+                          ? Text(
+                              wm.localizations.order,
+                              textAlign: TextAlign.center,
+                            )
+                          : const LoadingIndicator(),
+                    ),
                   ),
                 ),
               );

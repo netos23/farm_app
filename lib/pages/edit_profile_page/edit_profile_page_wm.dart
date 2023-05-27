@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/domain/models/profile.dart';
+import 'package:farm_app/domain/use_case/profile_use_case.dart';
 import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/snack_bar_util.dart';
@@ -17,7 +18,7 @@ abstract class IEditProfilePageWidgetModel extends IWidgetModel
 
   ValueStreamWrapper<String?> get genderController;
 
-  AuthRepository get authRepository;
+  ProfileUseCase get profileUseCase;
 
   TextEditingController get firstNameController;
 
@@ -44,9 +45,6 @@ class EditProfilePageWidgetModel
     with ThemeProvider
     implements IEditProfilePageWidgetModel {
   EditProfilePageWidgetModel(EditProfilePageModel model) : super(model);
-
-  @override
-  AuthRepository authRepository = AuthRepository(AppComponents().authService);
 
   @override
   final bitrhdayController = TextEditingController();
@@ -86,7 +84,7 @@ class EditProfilePageWidgetModel
         role: isFarmer.value ? 'farmer' : 'client');
 
     try {
-      await authRepository.register(profile: request);
+      await profileUseCase.patchProfile(request);
       router.push(
         AuthCodeRoute(email: request.email),
       );
@@ -113,4 +111,7 @@ class EditProfilePageWidgetModel
 
   @override
   ValueStreamWrapper<bool> isFarmer = ValueStreamWrapper();
+
+  @override
+  ProfileUseCase  profileUseCase = AppComponents().profileUseCase;
 }

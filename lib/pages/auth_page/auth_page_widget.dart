@@ -62,7 +62,9 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
                     fixedSize:
                         const MaterialStatePropertyAll(Size.fromHeight(50))),
                 onPressed: wm.onSendCode,
-                child: Text(localizations.getTheCode),
+                child: Center(
+                  child: Text(localizations.getTheCode),
+                ),
               ),
             ),
           ],

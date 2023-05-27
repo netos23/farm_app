@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:farm_app/domain/models/profile.dart';
+import 'package:farm_app/domain/models/register_brand_request.dart';
 import 'package:farm_app/domain/url/auth_url.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part1_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_request.dart';
@@ -37,4 +38,9 @@ abstract class AuthService {
 
   @POST(AuthUrl.authRegister)
   Future<void> register({@Body() required Profile profile});
+
+  @POST(AuthUrl.authFarmRegister)
+  Future<void> registerBrand({
+    @Body() required RegisterBrandRequest profile,
+  });
 }

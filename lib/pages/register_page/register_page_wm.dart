@@ -98,8 +98,13 @@ class RegisterPageWidgetModel
 
   @override
   void dispose() {
+    phoneNumber.dispose();
+    firstNameController.dispose();
+    secondNameController.dispose();
+    emailController.dispose();
     genderController.dispose();
     isFarmer.dispose();
+    bitrhdayController.dispose();
     super.dispose();
   }
 
