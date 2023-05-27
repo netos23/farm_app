@@ -4,6 +4,7 @@ import 'package:farm_app/domain/entity/auth/auth_email_part1_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_request.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_response.dart';
 import 'package:farm_app/domain/models/profile.dart';
+import 'package:farm_app/domain/models/register_brand_request.dart';
 
 class AuthRepository {
   AuthRepository(
@@ -82,4 +83,16 @@ class AuthRepository {
       );
     }
   }
+
+  @override
+  Future<void> registerBrand({required RegisterBrandRequest request}) async {
+    try {
+      await _authService.registerBrand(profile: request);
+    } on DioError catch (error) {
+      throw Exception(
+        error.response?.data['message'],
+      );
+    }
+  }
+
 }

@@ -1,6 +1,7 @@
 import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/data/repository/token_ropository.dart';
 import 'package:farm_app/domain/models/profile.dart';
+import 'package:farm_app/domain/models/register_brand_request.dart';
 import 'package:farm_app/util/lifecycle_component.dart';
 import 'package:farm_app/util/value_stream_wrapper.dart';
 
@@ -51,6 +52,10 @@ class ProfileUseCase implements LifecycleComponent{
   Future<void> patchProfile(Profile newProfile) async {
     final result = await authRepository.patchUser(request: newProfile);
     profile.add(result);
+  }
+
+  Future<void> registerBrand(String text, String text2) async {
+    final result = await  authRepository.registerBrand(request: RegisterBrandRequest(brand: text, address: text2));
   }
 
 
