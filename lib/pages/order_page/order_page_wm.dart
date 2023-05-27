@@ -166,7 +166,9 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
   }
 
   @override
-  void changeDay() {}
+  void changeDay() {
+
+  }
 
   @override
   void changeRepeat() {}
