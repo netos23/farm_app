@@ -103,7 +103,7 @@ class OrderHistoryPage extends StatelessWidget {
                                         ClipRRect(
                                           borderRadius: const BorderRadius.all(
                                             Radius.circular(
-                                              20,
+                                              10,
                                             ),
                                           ),
                                           child: CachedNetworkImage(
