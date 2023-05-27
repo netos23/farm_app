@@ -65,8 +65,6 @@ class ProfilePageWidgetModel
   @override
   void dispose() {
     super.dispose();
-    brandController.dispose();
-    addressController.dispose();
     profileUseCase.dispose();
   }
 
@@ -94,7 +92,6 @@ class ProfilePageWidgetModel
   }
 
   Widget _buildClientContent(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -216,100 +213,6 @@ class ProfilePageWidgetModel
     });
   }
 
-  @override
-  void registerBrand() {
-  }
-
-  Widget _buildRegisterBrandContent(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-          child: Text(
-            'Название вашего бренда',
-            maxLines: 6,
-            style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-                overflow: TextOverflow.ellipsis),
-          ),
-        ),
-        TextField(
-          textAlign: TextAlign.center,
-          controller: brandController,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onBackground,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-          child: Text(
-            'Название вашего бренда',
-            maxLines: 6,
-            style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-                overflow: TextOverflow.ellipsis),
-          ),
-        ),
-        TextField(
-          textAlign: TextAlign.center,
-          controller: addressController,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onBackground,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        Column(
-          children: [
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    router.push(RegisterBrandRoute());
-                  },
-                  child: const Center(
-                    child: Text('Зарегистрировать'),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                margin: const EdgeInsets.symmetric(vertical: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                  },
-                  child: const Center(
-                    child: Text('Позже'),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
   Widget _buildUnauthorisedContent(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -373,8 +276,7 @@ class ProfilePageWidgetModel
   }
 
   @override
-  final addressController = TextEditingController();
-
-  @override
-  final brandController = TextEditingController();
+  void registerBrand() {
+    router.push(RegisterBrandRoute());
+  }
 }

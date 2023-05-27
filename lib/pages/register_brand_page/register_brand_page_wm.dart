@@ -39,21 +39,17 @@ class RegisterBrandPageWidgetModel
   @override
   final addressController = TextEditingController();
 
-
   @override
   void initWidgetModel() {
     super.initWidgetModel();
     brandController.text = widget.profile?.email ?? '';
     addressController.text = widget.profile?.firstName ?? '';
-
   }
 
   @override
   Future<void> onRegisterBrand() async {
     final request = RegisterBrandRequest(
-      brand: brandController.text,
-      address: addressController.text
-    );
+        brand: brandController.text, address: addressController.text);
 
     try {
       await profileUseCase.registerBrand(request);
@@ -74,9 +70,8 @@ class RegisterBrandPageWidgetModel
     addressController.dispose();
     brandController.dispose();
     super.dispose();
-
   }
 
   @override
-  ProfileUseCase  profileUseCase = AppComponents().profileUseCase;
+  ProfileUseCase profileUseCase = AppComponents().profileUseCase;
 }
