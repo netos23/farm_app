@@ -16,7 +16,8 @@ abstract class ICategoryPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   EntityStateNotifier<List<Category>> get categoryState;
 
-  void openCategory(Category subcategory);}
+  void openCategory(Category subcategory);
+}
 
 CategoryPageWidgetModel defaultCategoryPageWidgetModelFactory(
     BuildContext context) {

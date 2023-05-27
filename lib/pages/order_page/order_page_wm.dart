@@ -194,16 +194,16 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
         final date = repeatState.value?.data ?? 0;
         return Column(
           children: [
-             Flexible(
-               flex: 2,
+            Flexible(
+              flex: 2,
               child: Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Text(
                   'С какой пеиодичностью оформлять заказ?',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
               ),
             ),
@@ -221,7 +221,7 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
                 ),
                 // This is called when selected item is changed.
                 onSelectedItemChanged: (int selectedItem) {
-                  repeatState.content(selectedItem == 0 ?  null : selectedItem);
+                  repeatState.content(selectedItem == 0 ? null : selectedItem);
                 },
                 itemBuilder: (context, index) {
                   return Text(index.toString());
@@ -232,7 +232,6 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
         );
       },
     );
-
   }
 
   @override

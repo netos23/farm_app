@@ -26,5 +26,4 @@ mixin ThemeProvider {
   ColorScheme get colorScheme => theme.colorScheme;
 
   StackRouter get router => context.router;
-
 }

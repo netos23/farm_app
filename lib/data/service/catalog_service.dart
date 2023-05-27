@@ -17,7 +17,6 @@ import 'package:farm_app/domain/entity/catalog/product_detail_request.dart';
 import 'package:farm_app/domain/entity/catalog/product_detail_response.dart';
 import 'package:retrofit/http.dart';
 
-
 part 'catalog_service.g.dart';
 
 @RestApi()
@@ -36,23 +35,21 @@ abstract class CatalogService {
 
   @POST(CatalogUrl.catalogProducts)
   Future<CatalogProductsResponse> getProducts({
-    @Query('page')  int? page,
-    @Query('size')  int? size,
+    @Query('page') int? page,
+    @Query('size') int? size,
     @Body() required CatalogProductsRequest request,
   });
 
-
   @GET(CatalogUrl.catalogProduct)
   Future<ProductDetail> getProduct({
-    @Query('product_id')  int? productId,
-    @Query('city_fias')  String? cityFias,
+    @Query('product_id') int? productId,
+    @Query('city_fias') String? cityFias,
   });
 
   @POST(CatalogUrl.catalogAutocomplete)
   Future<AutocompleteResponse> getCatalogAutocomplete({
     @Body() required AutocompleteRequest request,
   });
-
 
   @POST(CatalogUrl.deliveries)
   Future<List<Delivery>> getDeliveries({
@@ -64,10 +61,8 @@ abstract class CatalogService {
     @Body() required PaymentsRequest request,
   });
 
-
   @POST(CatalogUrl.orderCreate)
   Future<Order> postOrder({
     @Body() required OrderRequest request,
   });
-
 }

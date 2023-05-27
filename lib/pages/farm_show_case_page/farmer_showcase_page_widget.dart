@@ -13,7 +13,8 @@ import 'farmer_showcase_page.dart';
 // TODO: cover with documentation
 /// Main widget for FarmShowcasePage module
 @RoutePage()
-class FarmShowcasePageWidget extends ElementaryWidget<IFarmShowcasePageWidgetModel> {
+class FarmShowcasePageWidget
+    extends ElementaryWidget<IFarmShowcasePageWidgetModel> {
   const FarmShowcasePageWidget({
     Key? key,
     @queryParam this.categotyId,
@@ -49,7 +50,9 @@ class FarmShowcasePageWidget extends ElementaryWidget<IFarmShowcasePageWidgetMod
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {wm.router.push(FarmProductRegistrationRoute()); },
+        onPressed: () {
+          wm.router.push(FarmProductRegistrationRoute());
+        },
         child: const Icon(Icons.add),
       ),
       body: EntityStateNotifierBuilder(
@@ -91,17 +94,17 @@ class FarmShowcasePageWidget extends ElementaryWidget<IFarmShowcasePageWidgetMod
             itemCount: products.length,
             gridDelegate: kIsWeb
                 ? const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 300,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 12.99 / 18,
-            )
+                    maxCrossAxisExtent: 300,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: 12.99 / 18,
+                  )
                 : const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 11 / 18,
-            ),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: 11 / 18,
+                  ),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
               final tag = const Uuid().v4();

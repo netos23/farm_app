@@ -23,7 +23,7 @@ abstract class IFarmShowcasePageWidgetModel extends IWidgetModel
 
   EntityStateNotifier<Profile?> get profileState;
 
-  ProfileUseCase get  profileUseCase;
+  ProfileUseCase get profileUseCase;
 
   EntityStateNotifier<Sort> get sortState;
 
@@ -76,8 +76,8 @@ class FarmShowcasePageWidgetModel
   List<int> get _categoryIds => widget.categotyId == null
       ? []
       : [
-    widget.categotyId!,
-  ];
+          widget.categotyId!,
+        ];
 
   FarmShowcasePageWidgetModel({
     required FarmShowcasePageModel model,
@@ -133,7 +133,7 @@ class FarmShowcasePageWidgetModel
     } catch (e, s) {
       logger.e('FarmShowcase error', e, s);
 
-      if(isMounted) {
+      if (isMounted) {
         context.showSnackBar('Не удалось загрузить продукты');
       }
     }
@@ -178,7 +178,7 @@ class FarmShowcasePageWidgetModel
           ),
         ),
         ...Sort.sorts[localizations.localeName]!.map(
-              (s) => ListTile(
+          (s) => ListTile(
             onTap: () {
               _setSort(s, context);
             },

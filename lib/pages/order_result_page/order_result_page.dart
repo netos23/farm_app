@@ -69,17 +69,14 @@ class OrderResultPageWidget extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Center(
-                            child: FilledButton(
-                              onPressed: () {
-                                context.router.popUntilRoot();
-                              },
-                              child: const Text(
-                                'Продулжить покупки'
-                              ),
-                            ),
-                          )
-                        ),
+                            child: Center(
+                          child: FilledButton(
+                            onPressed: () {
+                              context.router.popUntilRoot();
+                            },
+                            child: const Text('Продулжить покупки'),
+                          ),
+                        )),
                       ],
                     ),
                   ),

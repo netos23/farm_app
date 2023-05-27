@@ -42,8 +42,8 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
               final profile = profileSnapshot.data;
               final isFarmer = profileSnapshot.hasData &&
                   profileSnapshot.data!.role == 'farmer';
-              final hasNotBrand =
-                  profileSnapshot.data?.brand == null ||  (profileSnapshot.data?.brand ?? '').isEmpty;
+              final hasNotBrand = profileSnapshot.data?.brand == null ||
+                  (profileSnapshot.data?.brand ?? '').isEmpty;
               final userImage = getUserImage(gender: profile?.gender);
               return Column(
                 children: [
@@ -62,10 +62,10 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                           onTap: wm.onBasketTap,
                         ),
                         ProfileCard(
-                          title: wm.localizations.showCase,
-                          image: 'assets/images/farmer.png',
-                          onTap: wm.onFarmShowCaseTap,
-                        ),
+                            title: wm.localizations.showCase,
+                            image: 'assets/images/farmer.png',
+                            onTap: wm.onFarmShowCaseTap,
+                            ),
                         ProfileCard(
                           title: 'Calendar',
                           image: 'assets/images/calendar.png',
@@ -103,17 +103,22 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                                 height: 21,
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                child: Text('Получать уведомления в Телеграм',  style: theme.textTheme.bodyMedium?.copyWith(
-                                    color: theme.colorScheme.onSurface,
-                                    overflow: TextOverflow.ellipsis),),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0),
+                                child: Text(
+                                  'Получать уведомления в Телеграм',
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                      color: theme.colorScheme.onSurface,
+                                      overflow: TextOverflow.ellipsis),
+                                ),
                               )
                             ],
                           ),
                         ),
                       ),
                     ),
-                  ),Visibility(
+                  ),
+                  Visibility(
                     visible: isFarmer && hasNotBrand,
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -125,10 +130,14 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                child: Text('Зарегистрировать свой бренд',  style: theme.textTheme.bodyMedium?.copyWith(
-                                    color: theme.colorScheme.onSurface,
-                                    overflow: TextOverflow.ellipsis),),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0),
+                                child: Text(
+                                  'Зарегистрировать свой бренд',
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                      color: theme.colorScheme.onSurface,
+                                      overflow: TextOverflow.ellipsis),
+                                ),
                               )
                             ],
                           ),

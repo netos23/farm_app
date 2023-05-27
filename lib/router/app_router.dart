@@ -120,6 +120,9 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   page: RegisterBrandRoute.page,
                 ),
+                AutoRoute(
+                  page: SubscriptionRoute.page,
+                ),
               ],
             ),
           ],

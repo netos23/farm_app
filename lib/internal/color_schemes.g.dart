@@ -68,7 +68,6 @@ const darkColorScheme = ColorScheme(
   scrim: Color(0xFF000000),
 );
 
-
 const hightColorScheme = ColorScheme(
   brightness: Brightness.dark,
   primary: Color(0xFFD4FF3D),

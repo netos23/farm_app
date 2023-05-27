@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'lifecycle_component.dart';
 
-
 class ValueStreamWrapper<T> implements DisposeLifecycleComponent {
   final StreamController<T> _controller = StreamController.broadcast();
   T? _value;

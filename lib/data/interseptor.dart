@@ -52,9 +52,8 @@ class JWTInterceptor extends QueuedInterceptor {
     if ((error.response?.statusCode == 403 ||
             error.response?.statusCode == 401) &&
         error.requestOptions.path != '/auth/email/part1') {
-
       await _refresh();
-      if(repository.auth) {
+      if (repository.auth) {
         final response = await _retry(error.requestOptions);
         handler.resolve(response);
       }
@@ -64,10 +63,9 @@ class JWTInterceptor extends QueuedInterceptor {
 
   /// Make a request to update the JWT token and save it to cache.
   Future<void> _refresh() async {
-    if(_refreshToken == null){
+    if (_refreshToken == null) {
       return;
     }
-
 
     try {
       final response = await _dio.post(
@@ -83,7 +81,7 @@ class JWTInterceptor extends QueuedInterceptor {
           refreshToken: response.data['refresh_token'],
         );
       }
-    }catch(e){
+    } catch (e) {
       repository.deleteTokens();
     }
   }
@@ -102,5 +100,4 @@ class JWTInterceptor extends QueuedInterceptor {
       options: options,
     );
   }
-
 }

@@ -209,7 +209,7 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                                           color: theme.colorScheme.onBackground,
                                         ),
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       IconButton(
                                         onPressed: wm.changeDay,
                                         icon: const Icon(
@@ -258,8 +258,8 @@ class OrderPageWidget extends ElementaryWidget<IOrderPageWidgetModel> {
                                         vertical: 5.0),
                                     child: Text(
                                       delivery?.farm_address ?? '',
-                                      style: theme.textTheme.bodyLarge
-                                          ?.copyWith(
+                                      style:
+                                          theme.textTheme.bodyLarge?.copyWith(
                                         color: theme.colorScheme.onBackground,
                                         decoration: TextDecoration.underline,
                                       ),
