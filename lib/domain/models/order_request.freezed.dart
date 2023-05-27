@@ -31,9 +31,11 @@ mixin _$OrderRequest {
   String get delivery_date => throw _privateConstructorUsedError;
   String get payment_id => throw _privateConstructorUsedError;
   String get payment_type => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  String? get address => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
-  int get repeated_days => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  int? get repeated_days => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,9 +60,9 @@ abstract class $OrderRequestCopyWith<$Res> {
       String delivery_date,
       String payment_id,
       String payment_type,
-      String address,
+      @JsonKey(includeIfNull: false) String? address,
       String comment,
-      int repeated_days});
+      @JsonKey(includeIfNull: false) int? repeated_days});
 }
 
 /// @nodoc
@@ -86,9 +88,9 @@ class _$OrderRequestCopyWithImpl<$Res, $Val extends OrderRequest>
     Object? delivery_date = null,
     Object? payment_id = null,
     Object? payment_type = null,
-    Object? address = null,
+    Object? address = freezed,
     Object? comment = null,
-    Object? repeated_days = null,
+    Object? repeated_days = freezed,
   }) {
     return _then(_value.copyWith(
       cityFias: freezed == cityFias
@@ -131,18 +133,18 @@ class _$OrderRequestCopyWithImpl<$Res, $Val extends OrderRequest>
           ? _value.payment_type
           : payment_type // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      repeated_days: null == repeated_days
+      repeated_days: freezed == repeated_days
           ? _value.repeated_days
           : repeated_days // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -166,9 +168,9 @@ abstract class _$$_OrderRequestCopyWith<$Res>
       String delivery_date,
       String payment_id,
       String payment_type,
-      String address,
+      @JsonKey(includeIfNull: false) String? address,
       String comment,
-      int repeated_days});
+      @JsonKey(includeIfNull: false) int? repeated_days});
 }
 
 /// @nodoc
@@ -192,9 +194,9 @@ class __$$_OrderRequestCopyWithImpl<$Res>
     Object? delivery_date = null,
     Object? payment_id = null,
     Object? payment_type = null,
-    Object? address = null,
+    Object? address = freezed,
     Object? comment = null,
-    Object? repeated_days = null,
+    Object? repeated_days = freezed,
   }) {
     return _then(_$_OrderRequest(
       cityFias: freezed == cityFias
@@ -237,18 +239,18 @@ class __$$_OrderRequestCopyWithImpl<$Res>
           ? _value.payment_type
           : payment_type // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      repeated_days: null == repeated_days
+      repeated_days: freezed == repeated_days
           ? _value.repeated_days
           : repeated_days // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -267,9 +269,9 @@ class _$_OrderRequest implements _OrderRequest {
       required this.delivery_date,
       required this.payment_id,
       required this.payment_type,
-      required this.address,
+      @JsonKey(includeIfNull: false) this.address,
       required this.comment,
-      required this.repeated_days})
+      @JsonKey(includeIfNull: false) this.repeated_days})
       : _products = products;
 
   factory _$_OrderRequest.fromJson(Map<String, dynamic> json) =>
@@ -303,11 +305,13 @@ class _$_OrderRequest implements _OrderRequest {
   @override
   final String payment_type;
   @override
-  final String address;
+  @JsonKey(includeIfNull: false)
+  final String? address;
   @override
   final String comment;
   @override
-  final int repeated_days;
+  @JsonKey(includeIfNull: false)
+  final int? repeated_days;
 
   @override
   String toString() {
@@ -378,7 +382,8 @@ class _$_OrderRequest implements _OrderRequest {
 
 abstract class _OrderRequest implements OrderRequest {
   factory _OrderRequest(
-      {@JsonKey(name: 'city_fias', includeIfNull: false) final String? cityFias,
+      {@JsonKey(name: 'city_fias', includeIfNull: false)
+          final String? cityFias,
       required final List<ProductWithCount> products,
       required final String user_name,
       required final String user_phone,
@@ -388,9 +393,11 @@ abstract class _OrderRequest implements OrderRequest {
       required final String delivery_date,
       required final String payment_id,
       required final String payment_type,
-      required final String address,
+      @JsonKey(includeIfNull: false)
+          final String? address,
       required final String comment,
-      required final int repeated_days}) = _$_OrderRequest;
+      @JsonKey(includeIfNull: false)
+          final int? repeated_days}) = _$_OrderRequest;
 
   factory _OrderRequest.fromJson(Map<String, dynamic> json) =
       _$_OrderRequest.fromJson;
@@ -417,11 +424,13 @@ abstract class _OrderRequest implements OrderRequest {
   @override
   String get payment_type;
   @override
-  String get address;
+  @JsonKey(includeIfNull: false)
+  String? get address;
   @override
   String get comment;
   @override
-  int get repeated_days;
+  @JsonKey(includeIfNull: false)
+  int? get repeated_days;
   @override
   @JsonKey(ignore: true)
   _$$_OrderRequestCopyWith<_$_OrderRequest> get copyWith =>

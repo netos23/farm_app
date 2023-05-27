@@ -242,6 +242,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserProfileTabPage(),
       );
     },
+    OrderResultRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderResultRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderResultPageWidget(
+          key: args.key,
+          order: args.order,
+        ),
+      );
+    },
   };
 }
 
@@ -991,4 +1001,42 @@ class UserProfileTab extends PageRouteInfo<void> {
   static const String name = 'UserProfileTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrderResultPageWidget]
+class OrderResultRoute extends PageRouteInfo<OrderResultRouteArgs> {
+  OrderResultRoute({
+    Key? key,
+    required Order order,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderResultRoute.name,
+          args: OrderResultRouteArgs(
+            key: key,
+            order: order,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderResultRoute';
+
+  static const PageInfo<OrderResultRouteArgs> page =
+      PageInfo<OrderResultRouteArgs>(name);
+}
+
+class OrderResultRouteArgs {
+  const OrderResultRouteArgs({
+    this.key,
+    required this.order,
+  });
+
+  final Key? key;
+
+  final Order order;
+
+  @override
+  String toString() {
+    return 'OrderResultRouteArgs{key: $key, order: $order}';
+  }
 }

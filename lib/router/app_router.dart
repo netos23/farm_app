@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/domain/models/category.dart';
+import 'package:farm_app/domain/models/order.dart';
 import 'package:farm_app/domain/models/product.dart';
 import 'package:farm_app/domain/models/product_with_count.dart';
 import 'package:farm_app/domain/models/profile.dart';
@@ -12,6 +13,7 @@ import 'package:farm_app/pages/category_page/category_page.dart';
 import 'package:farm_app/pages/farm_product_registration_page/farm_product_registration_page.dart';
 import 'package:farm_app/pages/home_page/home_page.dart';
 import 'package:farm_app/pages/order_page/order_page.dart';
+import 'package:farm_app/pages/order_result_page/order_result_page.dart';
 import 'package:farm_app/pages/product_page/product_page.dart';
 import 'package:farm_app/pages/profile_page/profile_page.dart';
 import 'package:farm_app/pages/register_page/register_page.dart';
@@ -31,6 +33,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AuthCodeRoute.page),
         AutoRoute(page: RegisterRoute.page),
         AutoRoute(page: OrderRoute.page),
+        AutoRoute(page: OrderResultRoute.page),
         AutoRoute(
           page: HomeRoute.page,
           initial: true,

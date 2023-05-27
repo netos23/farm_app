@@ -20,9 +20,9 @@ _$_OrderRequest _$$_OrderRequestFromJson(Map<String, dynamic> json) =>
       delivery_date: json['delivery_date'] as String,
       payment_id: json['payment_id'] as String,
       payment_type: json['payment_type'] as String,
-      address: json['address'] as String,
+      address: json['address'] as String?,
       comment: json['comment'] as String,
-      repeated_days: json['repeated_days'] as int,
+      repeated_days: json['repeated_days'] as int?,
     );
 
 Map<String, dynamic> _$$_OrderRequestToJson(_$_OrderRequest instance) {
@@ -44,8 +44,8 @@ Map<String, dynamic> _$$_OrderRequestToJson(_$_OrderRequest instance) {
   val['delivery_date'] = instance.delivery_date;
   val['payment_id'] = instance.payment_id;
   val['payment_type'] = instance.payment_type;
-  val['address'] = instance.address;
+  writeNotNull('address', instance.address);
   val['comment'] = instance.comment;
-  val['repeated_days'] = instance.repeated_days;
+  writeNotNull('repeated_days', instance.repeated_days);
   return val;
 }
