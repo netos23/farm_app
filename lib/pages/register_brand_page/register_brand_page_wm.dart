@@ -50,10 +50,10 @@ class RegisterBrandPageWidgetModel
   Future<void> onRegisterBrand() async {
     final request = RegisterBrandRequest(
         brand: brandController.text, address: addressController.text);
-
     try {
       await profileUseCase.registerBrand(request);
       router.pop();
+      profileUseCase.loadProfile();
     } on DioError catch (error) {
       if (error.response?.statusCode == 403) {
         context.showSnackBar(localizations.userIsAlreadyExists);
