@@ -25,6 +25,7 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
 
   void onCalendarTap();
 
+
   void linkToTelegram();
 
   void registerBrand();

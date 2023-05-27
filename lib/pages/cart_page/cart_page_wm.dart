@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/repository/dadata_repository.dart';
-import 'package:farm_app/data/service/cart_service.dart';
 import 'package:farm_app/domain/entity/cart/calc_cart.dart';
 import 'package:farm_app/domain/entity/cart/calculated_cart.dart';
 import 'package:farm_app/domain/entity/cart/cart_product.dart';
@@ -15,6 +14,8 @@ import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
+
+import '../../domain/models/product_with_count.dart';
 import 'cart_page_model.dart';
 import 'cart_page_widget.dart';
 
