@@ -244,7 +244,10 @@ class _FarmerCheckbox extends StatelessWidget {
           ),
           Text(
             text,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onBackground,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),
@@ -311,7 +314,10 @@ class _GenderCheckbox extends StatelessWidget {
           ),
           Text(
             gender == 'male' ? 'Муж' : 'Жен',
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onBackground,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

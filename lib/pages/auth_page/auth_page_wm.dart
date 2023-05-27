@@ -52,8 +52,8 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
       );
     } on DioError catch (error) {
       if (error.response?.statusCode == 451) {
-        context.showSnackBar(localizations.userIsNotRegistered);
         router.push(RegisterRoute(email: emailController.text));
+        context.showSnackBar(localizations.userIsNotRegistered);
         return;
       }
 

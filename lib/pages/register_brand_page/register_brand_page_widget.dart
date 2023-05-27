@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/domain/models/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'register_brand_page_wm.dart';
 
 // TODO: cover with documentation
@@ -100,126 +99,6 @@ class RegisterBrandPageWidget
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _FarmerCheckbox extends StatelessWidget {
-  const _FarmerCheckbox({
-    required this.value,
-    required this.onChanged,
-    required this.text,
-    Key? key,
-  }) : super(key: key);
-
-  final bool value;
-  final void Function() onChanged;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return GestureDetector(
-      onTap: onChanged,
-      child: Row(
-        children: [
-          Container(
-            height: 18,
-            width: 18,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: value ? theme.hintColor : theme.focusColor,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.zero,
-            ),
-            child: Center(
-              child: Visibility(
-                visible: value,
-                child: SvgPicture.asset(
-                  'assets/svg/size_done.svg',
-                  height: 12,
-                  width: 12,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 13,
-          ),
-          Text(
-            text,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _GenderCheckbox extends StatelessWidget {
-  const _GenderCheckbox({
-    required this.value,
-    required this.onChanged,
-    required this.gender,
-    Key? key,
-  }) : super(key: key);
-
-  const _GenderCheckbox.male({
-    required this.value,
-    required this.onChanged,
-    Key? key,
-  })  : gender = 'male',
-        super(key: key);
-
-  const _GenderCheckbox.female({
-    required this.value,
-    required this.onChanged,
-    Key? key,
-  })  : gender = 'female',
-        super(key: key);
-
-  final bool value;
-  final void Function() onChanged;
-  final String gender;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return GestureDetector(
-      onTap: onChanged,
-      child: Row(
-        children: [
-          Container(
-            height: 18,
-            width: 18,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: value ? theme.hintColor : theme.focusColor,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.zero,
-            ),
-            child: Center(
-              child: Visibility(
-                visible: value,
-                child: SvgPicture.asset(
-                  'assets/svg/size_done.svg',
-                  height: 12,
-                  width: 12,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 13,
-          ),
-          Text(
-            gender == 'male' ? 'Муж' : 'Жен',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        ],
       ),
     );
   }

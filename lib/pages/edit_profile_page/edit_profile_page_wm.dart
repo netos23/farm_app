@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
-import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/domain/models/profile.dart';
 import 'package:farm_app/domain/use_case/profile_use_case.dart';
 import 'package:farm_app/internal/app_components.dart';
@@ -62,12 +61,19 @@ class EditProfilePageWidgetModel
   final secondNameController = TextEditingController();
 
   @override
+  ValueStreamWrapper<String?> genderController = ValueStreamWrapper();
+
+  @override
+  ValueStreamWrapper<bool> isFarmer = ValueStreamWrapper();
+
+  @override
   void initWidgetModel() {
     super.initWidgetModel();
     emailController.text = widget.profile?.email ?? '';
     firstNameController.text = widget.profile?.firstName ?? '';
     secondNameController.text = widget.profile?.secondName ?? '';
     phoneNumber.text = widget.profile?.phone ?? '';
+    bitrhdayController.text = widget.profile?.birthDate ?? '';
     genderController.add(widget.profile?.gender);
     isFarmer.add(widget.profile?.role == 'farmer');
   }
@@ -105,12 +111,6 @@ class EditProfilePageWidgetModel
     isFarmer.dispose();
     super.dispose();
   }
-
-  @override
-  ValueStreamWrapper<String?> genderController = ValueStreamWrapper();
-
-  @override
-  ValueStreamWrapper<bool> isFarmer = ValueStreamWrapper();
 
   @override
   ProfileUseCase profileUseCase = AppComponents().profileUseCase;
