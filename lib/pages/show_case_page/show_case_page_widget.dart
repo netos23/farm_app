@@ -103,7 +103,7 @@ class _ImageBannerWidget extends StatelessWidget {
           child: CachedNetworkImage(
             fit: BoxFit.fill,
             imageUrl: image,
-            progressIndicatorBuilder: (_,__,___){
+            progressIndicatorBuilder: (_, __, ___) {
               return const Center(
                 child: LoadingIndicator(),
               );
@@ -251,7 +251,7 @@ class _SliderBannerWidgetState extends State<_SliderBannerWidget> {
                   child: CachedNetworkImage(
                     fit: BoxFit.fill,
                     imageUrl: item.url,
-                    progressIndicatorBuilder: (_,__,___){
+                    progressIndicatorBuilder: (_, __, ___) {
                       return const Center(
                         child: LoadingIndicator(),
                       );

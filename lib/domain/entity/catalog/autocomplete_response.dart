@@ -9,9 +9,10 @@ class AutocompleteResponse with _$AutocompleteResponse {
     explicitToJson: true,
     includeIfNull: false,
   )
-    factory AutocompleteResponse({
-      required List<String> suggestions,
-    }) = _AutocompleteResponse;
+  factory AutocompleteResponse({
+    required List<String> suggestions,
+  }) = _AutocompleteResponse;
 
-    factory AutocompleteResponse.fromJson(Map<String, dynamic> json) => _$AutocompleteResponseFromJson(json);
+  factory AutocompleteResponse.fromJson(Map<String, dynamic> json) =>
+      _$AutocompleteResponseFromJson(json);
 }

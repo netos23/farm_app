@@ -15,14 +15,14 @@ import 'product_page_widget.dart';
 abstract class IProductPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   EntityStateNotifier<ProductDetail> get productState;
-
 }
 
 ProductPageWidgetModel defaultProductPageWidgetModelFactory(
     BuildContext context) {
   return ProductPageWidgetModel(
     model: ProductPageModel(),
-    catalogService: AppComponents().catalogService, cartUseCase: AppComponents().cartUseCase,
+    catalogService: AppComponents().catalogService,
+    cartUseCase: AppComponents().cartUseCase,
   );
 }
 
@@ -38,12 +38,10 @@ class ProductPageWidgetModel
     required this.cartUseCase,
   }) : super(model);
 
-
   final CatalogService catalogService;
   final CartUseCase cartUseCase;
   @override
   final productState = EntityStateNotifier();
-
 
   @override
   void initWidgetModel() {
@@ -69,5 +67,4 @@ class ProductPageWidgetModel
     productState.dispose();
     super.dispose();
   }
-
 }

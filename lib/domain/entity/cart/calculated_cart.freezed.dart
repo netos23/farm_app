@@ -165,9 +165,9 @@ class _$_CalculatedCart implements _CalculatedCart {
 abstract class _CalculatedCart implements CalculatedCart {
   factory _CalculatedCart(
       {@JsonKey(name: 'promocode', includeIfNull: false)
-          final String? promocode,
+      final String? promocode,
       @JsonKey(name: 'city_fias', includeIfNull: false)
-          final String? cityFias}) = _$_CalculatedCart;
+      final String? cityFias}) = _$_CalculatedCart;
 
   factory _CalculatedCart.fromJson(Map<String, dynamic> json) =
       _$_CalculatedCart.fromJson;

@@ -183,12 +183,10 @@ class _$_CartUpdate implements _CartUpdate {
 
 abstract class _CartUpdate implements CartUpdate {
   factory _CartUpdate(
-      {@JsonKey(name: 'product_id')
-          required final int productId,
-      @JsonKey(name: 'count', includeIfNull: false)
-          final int? count,
+      {@JsonKey(name: 'product_id') required final int productId,
+      @JsonKey(name: 'count', includeIfNull: false) final int? count,
       @JsonKey(name: 'city_fias', includeIfNull: false)
-          final String? cityFias}) = _$_CartUpdate;
+      final String? cityFias}) = _$_CartUpdate;
 
   factory _CartUpdate.fromJson(Map<String, dynamic> json) =
       _$_CartUpdate.fromJson;

@@ -4,7 +4,7 @@ import 'package:farm_app/domain/models/profile.dart';
 import 'package:farm_app/util/lifecycle_component.dart';
 import 'package:farm_app/util/value_stream_wrapper.dart';
 
-class ProfileUseCase implements LifecycleComponent{
+class ProfileUseCase implements LifecycleComponent {
   final TokenRepository repository;
   final AuthRepository authRepository;
   final ValueStreamWrapper<Profile?> profile = ValueStreamWrapper();
@@ -22,14 +22,13 @@ class ProfileUseCase implements LifecycleComponent{
     repository.addListener(_listenTokenStatus);
   }
 
-  void _listenTokenStatus(){
-    if(profile.valueOrNull != null && !repository.auth){
+  void _listenTokenStatus() {
+    if (profile.valueOrNull != null && !repository.auth) {
       profile.add(null);
-    }else{
+    } else {
       loadProfile();
     }
   }
-
 
   Future<void> logout() async {
     await repository.deleteTokens();
@@ -40,7 +39,6 @@ class ProfileUseCase implements LifecycleComponent{
     await authRepository.deleteUser();
     await repository.deleteTokens();
     profile.add(null);
-
   }
 
   Future<void> loadProfile() async {
@@ -52,6 +50,4 @@ class ProfileUseCase implements LifecycleComponent{
     final result = await authRepository.patchUser(request: newProfile);
     profile.add(result);
   }
-
-
 }

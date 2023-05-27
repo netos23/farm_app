@@ -168,15 +168,17 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
             StreamBuilder<bool>(
                 stream: wm.isFarmer.stream,
                 initialData: false,
-                builder: (context, isFarmerSnapshot){
-                  final isFarmValue = isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
-              return _FarmerCheckbox(
-                value: isFarmValue,
-                onChanged: () {
-                  wm.isFarmer.add(!isFarmValue);
-                }, text: 'Зарегистрироваться как фермер',
-              );
-            }),
+                builder: (context, isFarmerSnapshot) {
+                  final isFarmValue =
+                      isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
+                  return _FarmerCheckbox(
+                    value: isFarmValue,
+                    onChanged: () {
+                      wm.isFarmer.add(!isFarmValue);
+                    },
+                    text: 'Зарегистрироваться как фермер',
+                  );
+                }),
             const SizedBox(
               height: 16,
             ),
@@ -249,7 +251,6 @@ class _FarmerCheckbox extends StatelessWidget {
     );
   }
 }
-
 
 class _GenderCheckbox extends StatelessWidget {
   const _GenderCheckbox({

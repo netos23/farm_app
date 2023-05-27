@@ -15,7 +15,7 @@ abstract class IEditProfilePageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   ValueStreamWrapper<bool> get isFarmer;
 
-  ValueStreamWrapper<String?> get  genderController;
+  ValueStreamWrapper<String?> get genderController;
 
   AuthRepository get authRepository;
 
@@ -77,14 +77,13 @@ class EditProfilePageWidgetModel
   @override
   Future<void> onEditProfile() async {
     final request = Profile(
-      email: emailController.text,
-      firstName: firstNameController.text,
-      secondName: secondNameController.text,
-      phone: phoneNumber.text,
-      birthDate: bitrhdayController.text,
-      gender: genderController.value,
-      role: isFarmer.value ? 'farmer' : 'client'
-    );
+        email: emailController.text,
+        firstName: firstNameController.text,
+        secondName: secondNameController.text,
+        phone: phoneNumber.text,
+        birthDate: bitrhdayController.text,
+        gender: genderController.value,
+        role: isFarmer.value ? 'farmer' : 'client');
 
     try {
       await authRepository.register(profile: request);
@@ -107,7 +106,6 @@ class EditProfilePageWidgetModel
     genderController.dispose();
     isFarmer.dispose();
     super.dispose();
-
   }
 
   @override

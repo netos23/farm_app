@@ -47,18 +47,14 @@ abstract class $CatalogProductsRequestCopyWith<$Res> {
       _$CatalogProductsRequestCopyWithImpl<$Res, CatalogProductsRequest>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'city_fias', includeIfNull: false)
-          String? cityFias,
-      @JsonKey(name: 'sort_by', includeIfNull: false)
-          String? sortBy,
-      @JsonKey(name: 'search', includeIfNull: false)
-          String? search,
-      @JsonKey(name: 'brand', includeIfNull: false)
-          String? brand,
+      {@JsonKey(name: 'city_fias', includeIfNull: false) String? cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false) String? sortBy,
+      @JsonKey(name: 'search', includeIfNull: false) String? search,
+      @JsonKey(name: 'brand', includeIfNull: false) String? brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
-          List<int>? categoryIds,
+      List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
-          List<int>? productIds});
+      List<int>? productIds});
 }
 
 /// @nodoc
@@ -120,18 +116,14 @@ abstract class _$$_CatalogProductsRequestCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'city_fias', includeIfNull: false)
-          String? cityFias,
-      @JsonKey(name: 'sort_by', includeIfNull: false)
-          String? sortBy,
-      @JsonKey(name: 'search', includeIfNull: false)
-          String? search,
-      @JsonKey(name: 'brand', includeIfNull: false)
-          String? brand,
+      {@JsonKey(name: 'city_fias', includeIfNull: false) String? cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false) String? sortBy,
+      @JsonKey(name: 'search', includeIfNull: false) String? search,
+      @JsonKey(name: 'brand', includeIfNull: false) String? brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
-          List<int>? categoryIds,
+      List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
-          List<int>? productIds});
+      List<int>? productIds});
 }
 
 /// @nodoc
@@ -186,18 +178,14 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CatalogProductsRequest implements _CatalogProductsRequest {
   _$_CatalogProductsRequest(
-      {@JsonKey(name: 'city_fias', includeIfNull: false)
-          this.cityFias,
-      @JsonKey(name: 'sort_by', includeIfNull: false)
-          this.sortBy,
-      @JsonKey(name: 'search', includeIfNull: false)
-          this.search,
-      @JsonKey(name: 'brand', includeIfNull: false)
-          this.brand,
+      {@JsonKey(name: 'city_fias', includeIfNull: false) this.cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false) this.sortBy,
+      @JsonKey(name: 'search', includeIfNull: false) this.search,
+      @JsonKey(name: 'brand', includeIfNull: false) this.brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
-          final List<int>? categoryIds,
+      final List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
-          final List<int>? productIds})
+      final List<int>? productIds})
       : _categoryIds = categoryIds,
         _productIds = productIds;
 
@@ -287,18 +275,14 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
 
 abstract class _CatalogProductsRequest implements CatalogProductsRequest {
   factory _CatalogProductsRequest(
-      {@JsonKey(name: 'city_fias', includeIfNull: false)
-          final String? cityFias,
-      @JsonKey(name: 'sort_by', includeIfNull: false)
-          final String? sortBy,
-      @JsonKey(name: 'search', includeIfNull: false)
-          final String? search,
-      @JsonKey(name: 'brand', includeIfNull: false)
-          final String? brand,
+      {@JsonKey(name: 'city_fias', includeIfNull: false) final String? cityFias,
+      @JsonKey(name: 'sort_by', includeIfNull: false) final String? sortBy,
+      @JsonKey(name: 'search', includeIfNull: false) final String? search,
+      @JsonKey(name: 'brand', includeIfNull: false) final String? brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
-          final List<int>? categoryIds,
+      final List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
-          final List<int>? productIds}) = _$_CatalogProductsRequest;
+      final List<int>? productIds}) = _$_CatalogProductsRequest;
 
   factory _CatalogProductsRequest.fromJson(Map<String, dynamic> json) =
       _$_CatalogProductsRequest.fromJson;

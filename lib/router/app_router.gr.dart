@@ -167,6 +167,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    OrderResultRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderResultRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderResultPageWidget(
+          key: args.key,
+          order: args.order,
+        ),
+      );
+    },
     CartRoute.name: (routeData) {
       final args =
           routeData.argsAs<CartRouteArgs>(orElse: () => const CartRouteArgs());
@@ -242,14 +252,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserProfileTabPage(),
       );
     },
-    OrderResultRoute.name: (routeData) {
-      final args = routeData.argsAs<OrderResultRouteArgs>();
+    OrderHistoryRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: OrderResultPageWidget(
-          key: args.key,
-          order: args.order,
-        ),
+        child: const OrderHistoryPageScope(),
       );
     },
   };
@@ -786,6 +792,44 @@ class AuthCodeRouteArgs {
 }
 
 /// generated route for
+/// [OrderResultPageWidget]
+class OrderResultRoute extends PageRouteInfo<OrderResultRouteArgs> {
+  OrderResultRoute({
+    Key? key,
+    required Order order,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderResultRoute.name,
+          args: OrderResultRouteArgs(
+            key: key,
+            order: order,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderResultRoute';
+
+  static const PageInfo<OrderResultRouteArgs> page =
+      PageInfo<OrderResultRouteArgs>(name);
+}
+
+class OrderResultRouteArgs {
+  const OrderResultRouteArgs({
+    this.key,
+    required this.order,
+  });
+
+  final Key? key;
+
+  final Order order;
+
+  @override
+  String toString() {
+    return 'OrderResultRouteArgs{key: $key, order: $order}';
+  }
+}
+
+/// generated route for
 /// [CartPageWidget]
 class CartRoute extends PageRouteInfo<CartRouteArgs> {
   CartRoute({
@@ -1004,39 +1048,15 @@ class UserProfileTab extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [OrderResultPageWidget]
-class OrderResultRoute extends PageRouteInfo<OrderResultRouteArgs> {
-  OrderResultRoute({
-    Key? key,
-    required Order order,
-    List<PageRouteInfo>? children,
-  }) : super(
-          OrderResultRoute.name,
-          args: OrderResultRouteArgs(
-            key: key,
-            order: order,
-          ),
+/// [OrderHistoryPageScope]
+class OrderHistoryRoute extends PageRouteInfo<void> {
+  const OrderHistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          OrderHistoryRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'OrderResultRoute';
+  static const String name = 'OrderHistoryRoute';
 
-  static const PageInfo<OrderResultRouteArgs> page =
-      PageInfo<OrderResultRouteArgs>(name);
-}
-
-class OrderResultRouteArgs {
-  const OrderResultRouteArgs({
-    this.key,
-    required this.order,
-  });
-
-  final Key? key;
-
-  final Order order;
-
-  @override
-  String toString() {
-    return 'OrderResultRouteArgs{key: $key, order: $order}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

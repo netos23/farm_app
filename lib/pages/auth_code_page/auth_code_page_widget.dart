@@ -78,10 +78,7 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
                 autofillHints: const [AutofillHints.oneTimeCode],
                 cursor: cursor,
                 preFilledWidget: preFilledWidget,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly
-                ]
-            ),
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
             SizedBox(
               height: 50,
               child: FilledButton(

@@ -35,7 +35,6 @@ class Order with _$Order {
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 }
 
-
 @freezed
 class OrderItem with _$OrderItem {
   factory OrderItem({
@@ -47,5 +46,6 @@ class OrderItem with _$OrderItem {
     int? product,
   }) = _OrderItem;
 
-  factory OrderItem.fromJson(Map<String, dynamic> json) => _$OrderItemFromJson(json);
+  factory OrderItem.fromJson(Map<String, dynamic> json) =>
+      _$OrderItemFromJson(json);
 }

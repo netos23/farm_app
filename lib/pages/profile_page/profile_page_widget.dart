@@ -5,6 +5,7 @@ import 'package:farm_app/pages/components/theme_switch.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'profile_page_wm.dart';
 
 // TODO: cover with documentation
@@ -59,21 +60,28 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                           onTap: wm.onBasketTap,
                         ),
                         ProfileCard(
-                          title: wm.localizations.showCase,
-                          image: 'assets/images/farmer.png',
-                          onTap: (){wm.router.push(FarmShowcaseRoute()); }//wm.onFarmShowCaseTap,
-                        ),
+                            title: wm.localizations.showCase,
+                            image: 'assets/images/farmer.png',
+                            onTap: () {
+                              wm.router.push(FarmShowcaseRoute());
+                            } //wm.onFarmShowCaseTap,
+                            ),
                         ProfileCard(
                           title: 'Calendar',
                           image: 'assets/images/calendar.png',
                           onTap: wm.onCalendarTap,
                         ),
+                        ProfileCard(
+                          title: 'Мои заказы',
+                          image: 'assets/images/order_history.png',
+                          onTap: wm.onOrderHistoryTap,
+                        ),
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: Visibility(
-                      visible: !isLogin,
+                  Visibility(
+                    visible: !isLogin,
+                    child: Expanded(
                       child: Text(
                         localizations.authRequired,
                         textAlign: TextAlign.center,
@@ -165,9 +173,12 @@ class ProfileCard extends StatelessWidget {
   final String title;
   final void Function() onTap;
 
-  const ProfileCard(
-      {Key? key, required this.image, required this.title, required this.onTap})
-      : super(key: key);
+  const ProfileCard({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +197,7 @@ class ProfileCard extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(32, 20, 32, 32),
               child: Image.asset(
                 image,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
           ),

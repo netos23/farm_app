@@ -36,6 +36,5 @@ abstract class AuthService {
   Future<void> deleteUser();
 
   @POST(AuthUrl.authRegister)
-  Future<void> register({
-    @Body() required Profile profile});
+  Future<void> register({@Body() required Profile profile});
 }
