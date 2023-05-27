@@ -133,6 +133,33 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    WebViewerRoute.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<WebViewerRouteArgs>(
+          orElse: () => WebViewerRouteArgs(
+                title: queryParams.getString(
+                  'title',
+                  '',
+                ),
+                url: queryParams.getString(
+                  'url',
+                  '',
+                ),
+                hideAppbar: queryParams.optBool('hideAppbar'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WebViewerPageWidget(
+          key: args.key,
+          title: args.title,
+          url: args.url,
+          onNavigationRequest: args.onNavigationRequest,
+          onPageFinished: args.onPageFinished,
+          onWillPop: args.onWillPop,
+          hideAppbar: args.hideAppbar,
+        ),
+      );
+    },
     ShowCaseRoute.name: (routeData) {
       final args = routeData.argsAs<ShowCaseRouteArgs>(
           orElse: () => const ShowCaseRouteArgs());
@@ -164,6 +191,16 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           email: args.email,
           wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    OrderResultRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderResultRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderResultPageWidget(
+          key: args.key,
+          order: args.order,
         ),
       );
     },
@@ -240,16 +277,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const UserProfileTabPage(),
-      );
-    },
-    OrderResultRoute.name: (routeData) {
-      final args = routeData.argsAs<OrderResultRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: OrderResultPageWidget(
-          key: args.key,
-          order: args.order,
-        ),
       );
     },
   };
@@ -653,6 +680,76 @@ class RegisterRouteArgs {
 }
 
 /// generated route for
+/// [WebViewerPageWidget]
+class WebViewerRoute extends PageRouteInfo<WebViewerRouteArgs> {
+  WebViewerRoute({
+    Key? key,
+    String title = '',
+    String url = '',
+    FutureOr<NavigationDecision> Function(NavigationRequest)?
+        onNavigationRequest,
+    void Function(String)? onPageFinished,
+    void Function()? onWillPop,
+    bool? hideAppbar,
+    List<PageRouteInfo>? children,
+  }) : super(
+          WebViewerRoute.name,
+          args: WebViewerRouteArgs(
+            key: key,
+            title: title,
+            url: url,
+            onNavigationRequest: onNavigationRequest,
+            onPageFinished: onPageFinished,
+            onWillPop: onWillPop,
+            hideAppbar: hideAppbar,
+          ),
+          rawQueryParams: {
+            'title': title,
+            'url': url,
+            'hideAppbar': hideAppbar,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'WebViewerRoute';
+
+  static const PageInfo<WebViewerRouteArgs> page =
+      PageInfo<WebViewerRouteArgs>(name);
+}
+
+class WebViewerRouteArgs {
+  const WebViewerRouteArgs({
+    this.key,
+    this.title = '',
+    this.url = '',
+    this.onNavigationRequest,
+    this.onPageFinished,
+    this.onWillPop,
+    this.hideAppbar,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  final String url;
+
+  final FutureOr<NavigationDecision> Function(NavigationRequest)?
+      onNavigationRequest;
+
+  final void Function(String)? onPageFinished;
+
+  final void Function()? onWillPop;
+
+  final bool? hideAppbar;
+
+  @override
+  String toString() {
+    return 'WebViewerRouteArgs{key: $key, title: $title, url: $url, onNavigationRequest: $onNavigationRequest, onPageFinished: $onPageFinished, onWillPop: $onWillPop, hideAppbar: $hideAppbar}';
+  }
+}
+
+/// generated route for
 /// [ShowCasePageWidget]
 class ShowCaseRoute extends PageRouteInfo<ShowCaseRouteArgs> {
   ShowCaseRoute({
@@ -782,6 +879,44 @@ class AuthCodeRouteArgs {
   @override
   String toString() {
     return 'AuthCodeRouteArgs{key: $key, email: $email, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [OrderResultPageWidget]
+class OrderResultRoute extends PageRouteInfo<OrderResultRouteArgs> {
+  OrderResultRoute({
+    Key? key,
+    required Order order,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderResultRoute.name,
+          args: OrderResultRouteArgs(
+            key: key,
+            order: order,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderResultRoute';
+
+  static const PageInfo<OrderResultRouteArgs> page =
+      PageInfo<OrderResultRouteArgs>(name);
+}
+
+class OrderResultRouteArgs {
+  const OrderResultRouteArgs({
+    this.key,
+    required this.order,
+  });
+
+  final Key? key;
+
+  final Order order;
+
+  @override
+  String toString() {
+    return 'OrderResultRouteArgs{key: $key, order: $order}';
   }
 }
 
@@ -1001,42 +1136,4 @@ class UserProfileTab extends PageRouteInfo<void> {
   static const String name = 'UserProfileTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [OrderResultPageWidget]
-class OrderResultRoute extends PageRouteInfo<OrderResultRouteArgs> {
-  OrderResultRoute({
-    Key? key,
-    required Order order,
-    List<PageRouteInfo>? children,
-  }) : super(
-          OrderResultRoute.name,
-          args: OrderResultRouteArgs(
-            key: key,
-            order: order,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderResultRoute';
-
-  static const PageInfo<OrderResultRouteArgs> page =
-      PageInfo<OrderResultRouteArgs>(name);
-}
-
-class OrderResultRouteArgs {
-  const OrderResultRouteArgs({
-    this.key,
-    required this.order,
-  });
-
-  final Key? key;
-
-  final Order order;
-
-  @override
-  String toString() {
-    return 'OrderResultRouteArgs{key: $key, order: $order}';
-  }
 }

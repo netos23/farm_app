@@ -166,9 +166,7 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
   }
 
   @override
-  void changeDay() {
-
-  }
+  void changeDay() {}
 
   @override
   void changeRepeat() {}
@@ -200,6 +198,25 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
       final order = await catalogService.postOrder(
         request: orderRequest,
       );
+
+      if (selectedPayment?.type == 'card') {
+        final resp = await AppComponents().dio.post('/payments/pay/', data: {
+          'id': order.id,
+        });
+
+        await context.router.push(
+          WebViewerRoute(
+            title: 'Оплата',
+            url: resp.data['url'],
+            onPageFinished: (url){
+              if(url.contains('success') || url.contains('failed')){
+                 context.router.pop();
+              }
+            }
+          ),
+        );
+      }
+
       cartService.loadCart(
         request: CalculatedCart(),
       );

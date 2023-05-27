@@ -51,6 +51,7 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
                       imageBanner: (imageUrl, link) => _ImageBannerWidget(
                         image: imageUrl,
                         link: link,
+                        onTap: wm.openLink,
                       ),
                       buttonBanner: (text, link) => _ButtonBannerWidget(
                         text: text,
@@ -66,6 +67,7 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
                       ),
                       sliderBanner: (items) => _SliderBannerWidget(
                         items: items,
+                        onTap: wm.openLink,
                       ),
                     ),
                   );
@@ -84,10 +86,13 @@ class _ImageBannerWidget extends StatelessWidget {
     Key? key,
     required this.image,
     this.link,
+    required this.onTap,
   }) : super(key: key);
 
   final String image;
   final String? link;
+
+  final ValueChanged<String>? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -98,22 +103,25 @@ class _ImageBannerWidget extends StatelessWidget {
       child: ClipRRect(
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(15),
-        child: AspectRatio(
-          aspectRatio: 1.0,
-          child: CachedNetworkImage(
-            fit: BoxFit.fill,
-            imageUrl: image,
-            progressIndicatorBuilder: (_,__,___){
-              return const Center(
-                child: LoadingIndicator(),
-              );
-            },
-            errorWidget: (_, __, ___) {
-              return Image.asset(
-                'assets/images/products.png',
-                fit: BoxFit.fill,
-              );
-            },
+        child: GestureDetector(
+          onTap: link != null ? () => onTap?.call(link!) : null,
+          child: AspectRatio(
+            aspectRatio: 1.0,
+            child: CachedNetworkImage(
+              fit: BoxFit.fill,
+              imageUrl: image,
+              progressIndicatorBuilder: (_, __, ___) {
+                return const Center(
+                  child: LoadingIndicator(),
+                );
+              },
+              errorWidget: (_, __, ___) {
+                return Image.asset(
+                  'assets/images/products.png',
+                  fit: BoxFit.fill,
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -214,9 +222,11 @@ class _SliderBannerWidget extends StatefulWidget {
   const _SliderBannerWidget({
     Key? key,
     required this.items,
+    required this.onTap,
   }) : super(key: key);
 
   final List<SliderItem> items;
+  final ValueChanged<String>? onTap;
 
   @override
   State<_SliderBannerWidget> createState() => _SliderBannerWidgetState();
@@ -242,26 +252,30 @@ class _SliderBannerWidgetState extends State<_SliderBannerWidget> {
             itemCount: widget.items.length,
             itemBuilder: (context, index) {
               final item = widget.items[index];
+              final link = widget.items[index].link;
               return Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16.0,
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: CachedNetworkImage(
-                    fit: BoxFit.fill,
-                    imageUrl: item.url,
-                    progressIndicatorBuilder: (_,__,___){
-                      return const Center(
-                        child: LoadingIndicator(),
-                      );
-                    },
-                    errorWidget: (_, __, ___) {
-                      return Image.asset(
-                        'assets/images/products.png',
-                        fit: BoxFit.fill,
-                      );
-                    },
+                child: GestureDetector(
+                  onTap: link != null ? () => widget.onTap?.call(link) : null,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      imageUrl: item.url,
+                      progressIndicatorBuilder: (_, __, ___) {
+                        return const Center(
+                          child: LoadingIndicator(),
+                        );
+                      },
+                      errorWidget: (_, __, ___) {
+                        return Image.asset(
+                          'assets/images/products.png',
+                          fit: BoxFit.fill,
+                        );
+                      },
+                    ),
                   ),
                 ),
               );

@@ -92,7 +92,8 @@ class CatalogPageWidgetModel
       _hasNext = true;
     }
 
-    final currentProducts = productsState.value?.data ?? [];
+    final List<Product> currentProducts =
+        refresh ? [] : productsState.value?.data ?? [];
     final selected = sortState.value?.data;
     try {
       _loading = true;
@@ -117,7 +118,7 @@ class CatalogPageWidgetModel
     } catch (e, s) {
       logger.e('Catalog error', e, s);
 
-      if(isMounted) {
+      if (isMounted) {
         context.showSnackBar('Не удалось загрузить продукты');
       }
     }

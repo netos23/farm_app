@@ -52,6 +52,7 @@ dependencies:
   uuid: ^3.0.7
   flutter_masked_text2: ^0.9.1
   url_launcher: ^6.1.11
+  webview_flutter: ^4.2.1
 
 dev_dependencies:
   flutter_test:
