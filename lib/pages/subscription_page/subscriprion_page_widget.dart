@@ -28,7 +28,7 @@ class SubscriptionPageWidget
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: !kIsWeb,
-        title: Text('Subscription'),
+        title: const Text('Мои подписки'),
         centerTitle: true,
       ),
       body: EntityStateNotifierBuilder(

@@ -107,7 +107,8 @@ class FarmShowcasePageWidgetModel
       _hasNext = true;
     }
 
-    final currentProducts = productsState.value?.data ?? [];
+    final List<Product> currentProducts =
+        refresh ? [] : productsState.value?.data ?? [];
     final selected = sortState.value?.data;
     try {
       _loading = true;

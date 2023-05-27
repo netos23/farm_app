@@ -56,7 +56,7 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                         onTap: wm.onEditProfileTap,
                       ),
                       ProfileCard(
-                        title: 'Subscription',
+                        title: 'Подписки',
                         image: 'assets/images/basket_t.png',
                         onTap: wm.onBasketTap,
                       ),
@@ -66,7 +66,7 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                         onTap: wm.onFarmShowCaseTap,
                       ),
                       ProfileCard(
-                        title: 'Calendar',
+                        title: 'Календарь',
                         image: 'assets/images/calendar.png',
                         onTap: wm.onCalendarTap,
                       ),
@@ -157,30 +157,28 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                             ),
                           ),
                         ),
-                        Flexible(
-                          child: Center(
-                            child: Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              height: 50,
-                              child: FilledButton(
-                                style: theme.filledButtonTheme.style?.copyWith(
-                                  fixedSize: const MaterialStatePropertyAll(
-                                    Size.fromHeight(50),
-                                  ),
+                        Center(
+                          child: Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16),
+                            height: 50,
+                            child: FilledButton(
+                              style: theme.filledButtonTheme.style?.copyWith(
+                                fixedSize: const MaterialStatePropertyAll(
+                                  Size.fromHeight(50),
                                 ),
-                                onPressed: () {
-                                  if (!isLogin) {
-                                    context.router.push(AuthRoute());
-                                  } else {
-                                    wm.profileUseCase.logout();
-                                  }
-                                },
-                                child: Center(
-                                  child: !isLogin
-                                      ? Text(localizations.login)
-                                      : Text(localizations.exit),
-                                ),
+                              ),
+                              onPressed: () {
+                                if (!isLogin) {
+                                  context.router.push(AuthRoute());
+                                } else {
+                                  wm.profileUseCase.logout();
+                                }
+                              },
+                              child: Center(
+                                child: !isLogin
+                                    ? Text(localizations.login)
+                                    : Text(localizations.exit),
                               ),
                             ),
                           ),

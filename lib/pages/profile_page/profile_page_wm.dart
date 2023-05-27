@@ -4,8 +4,10 @@ import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/domain/use_case/profile_use_case.dart';
 import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
+import 'package:farm_app/util/snack_bar_util.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:farm_app/router/app_router.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'profile_page_model.dart';
@@ -57,8 +59,7 @@ class ProfilePageWidgetModel
       (profileUseCase.profile.value!.email ?? '').isEmpty;
 
   bool get isClientUser =>
-      profileUseCase.profile.valueOrNull != null &&
-      (profileUseCase.profile.value!.brand ?? '').isNotEmpty;
+      profileUseCase.profile.valueOrNull?.role != 'farmer';
 
   final telegramLink =
       'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
@@ -93,7 +94,19 @@ class ProfilePageWidgetModel
   void onCalendarTap() {
     onUnauthorisedTap(() {
       onClientTap(() {
-        () {};
+        () async {
+          if(kIsWeb){
+            context.showSnackBar(
+              'ПОддерживается только в мобильном приложение',
+            );
+            return;
+          }
+
+          final resp = await AppComponents().dio.get('/subscriptions/calendar');
+          context.showSnackBar(
+            'Возникли проблемы при сохранении файла',
+          );
+        };
       });
     });
   }
@@ -205,18 +218,14 @@ class ProfilePageWidgetModel
   @override
   void onEditProfileTap() {
     onUnauthorisedTap(() {
-      onClientTap(() {
-        router.push(EditProfileRoute(profile: profileUseCase.profile.value));
-      });
+      router.push(EditProfileRoute(profile: profileUseCase.profile.value));
     });
   }
 
   @override
   void onBasketTap() {
     onUnauthorisedTap(() {
-      onClientTap(() {
-        router.navigate(SubscriptionRoute());
-      });
+      router.navigate(SubscriptionRoute());
     });
   }
 

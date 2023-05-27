@@ -53,6 +53,7 @@ dependencies:
   flutter_masked_text2: ^0.9.1
   url_launcher: ^6.1.11
   webview_flutter: ^4.2.1
+  share_plus: ^7.0.1
 
 dev_dependencies:
   flutter_test:
