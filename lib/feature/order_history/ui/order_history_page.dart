@@ -85,7 +85,7 @@ class OrderHistoryPage extends StatelessWidget {
                               height: 10,
                             ),
                             SizedBox(
-                              height: 120,
+                              height: 140,
                               child: ListView.separated(
                                 scrollDirection: Axis.horizontal,
                                 physics: const BouncingScrollPhysics(),
@@ -95,15 +95,16 @@ class OrderHistoryPage extends StatelessWidget {
 
                                   return SizedBox(
                                     width: 100,
-                                    height: 120,
+                                    height: 140,
                                     child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ClipRRect(
                                           borderRadius: const BorderRadius.all(
                                             Radius.circular(
-                                              20,
+                                              10,
                                             ),
                                           ),
                                           child: CachedNetworkImage(
@@ -112,6 +113,20 @@ class OrderHistoryPage extends StatelessWidget {
                                             fit: BoxFit.contain,
                                             imageUrl: item.picture,
                                           ),
+                                        ),
+                                        const SizedBox(
+                                          height: 3,
+                                        ),
+                                        Flexible(
+                                          child: Text(
+                                            item.name,
+                                            style: textTheme.bodySmall?.copyWith(
+                                              color: colorTheme.onBackground,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 3,
                                         ),
                                         Text(
                                           'Количество: ${item.count}',

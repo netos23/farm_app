@@ -645,6 +645,7 @@ mixin _$OrderItem {
   int? get id => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   String get picture => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   Decimal get price => throw _privateConstructorUsedError;
   int? get discount => throw _privateConstructorUsedError;
   int? get order => throw _privateConstructorUsedError;
@@ -665,6 +666,7 @@ abstract class $OrderItemCopyWith<$Res> {
       {int? id,
       int count,
       String picture,
+      String name,
       Decimal price,
       int? discount,
       int? order,
@@ -687,6 +689,7 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
     Object? id = freezed,
     Object? count = null,
     Object? picture = null,
+    Object? name = null,
     Object? price = null,
     Object? discount = freezed,
     Object? order = freezed,
@@ -704,6 +707,10 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
       picture: null == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
@@ -736,6 +743,7 @@ abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
       {int? id,
       int count,
       String picture,
+      String name,
       Decimal price,
       int? discount,
       int? order,
@@ -756,6 +764,7 @@ class __$$_OrderItemCopyWithImpl<$Res>
     Object? id = freezed,
     Object? count = null,
     Object? picture = null,
+    Object? name = null,
     Object? price = null,
     Object? discount = freezed,
     Object? order = freezed,
@@ -773,6 +782,10 @@ class __$$_OrderItemCopyWithImpl<$Res>
       picture: null == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
@@ -801,6 +814,7 @@ class _$_OrderItem implements _OrderItem {
       {this.id,
       required this.count,
       required this.picture,
+      required this.name,
       required this.price,
       this.discount,
       this.order,
@@ -816,6 +830,8 @@ class _$_OrderItem implements _OrderItem {
   @override
   final String picture;
   @override
+  final String name;
+  @override
   final Decimal price;
   @override
   final int? discount;
@@ -826,7 +842,7 @@ class _$_OrderItem implements _OrderItem {
 
   @override
   String toString() {
-    return 'OrderItem(id: $id, count: $count, picture: $picture, price: $price, discount: $discount, order: $order, product: $product)';
+    return 'OrderItem(id: $id, count: $count, picture: $picture, name: $name, price: $price, discount: $discount, order: $order, product: $product)';
   }
 
   @override
@@ -837,6 +853,7 @@ class _$_OrderItem implements _OrderItem {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.picture, picture) || other.picture == picture) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
@@ -847,7 +864,7 @@ class _$_OrderItem implements _OrderItem {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, count, picture, price, discount, order, product);
+      runtimeType, id, count, picture, name, price, discount, order, product);
 
   @JsonKey(ignore: true)
   @override
@@ -868,6 +885,7 @@ abstract class _OrderItem implements OrderItem {
       {final int? id,
       required final int count,
       required final String picture,
+      required final String name,
       required final Decimal price,
       final int? discount,
       final int? order,
@@ -882,6 +900,8 @@ abstract class _OrderItem implements OrderItem {
   int get count;
   @override
   String get picture;
+  @override
+  String get name;
   @override
   Decimal get price;
   @override
