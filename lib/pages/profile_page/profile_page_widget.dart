@@ -51,12 +51,12 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                         ProfileCard(
                           title: wm.localizations.myDetails,
                           image: userImage,
-                          onTap: () {},
+                          onTap: wm.onEditProfileTap,
                         ),
                         ProfileCard(
                           title: wm.localizations.basket,
                           image: 'assets/images/basket_t.png',
-                          onTap: () {},
+                          onTap: wm.onBasketTap,
                         ),
                         ProfileCard(
                           title: wm.localizations.showCase,

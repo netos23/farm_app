@@ -16,6 +16,7 @@ import 'package:farm_app/pages/register_page/register_page.dart';
 import 'package:farm_app/pages/show_case_page/show_case_page.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/edit_profile_page/edit_profile_page.dart';
 import '../pages/farm_show_case_page/farmer_showcase_page.dart';
 
 part 'app_router.gr.dart';
@@ -96,6 +97,9 @@ class AppRouter extends _$AppRouter {
                 ),
                 AutoRoute(
                   page: FarmShowcaseRoute.page,
+                ),
+                AutoRoute(
+                  page: EditProfileRoute.page,
                 ),
               ],
             ),

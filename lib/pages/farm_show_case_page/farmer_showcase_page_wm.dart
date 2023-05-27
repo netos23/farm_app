@@ -1,65 +1,222 @@
+import 'dart:async';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
-import 'package:farm_app/data/repository/dadata_repository.dart';
-import 'package:farm_app/domain/entity/cart/cart_product.dart';
-import 'package:farm_app/domain/entity/dadata/geo_data.dart';
+import 'package:farm_app/data/service/catalog_service.dart';
+import 'package:farm_app/domain/entity/catalog/catalog_products_request.dart';
 import 'package:farm_app/domain/models/product.dart';
+import 'package:farm_app/domain/models/profile.dart';
+import 'package:farm_app/domain/models/sorts.dart';
+import 'package:farm_app/domain/use_case/profile_use_case.dart';
+import 'package:farm_app/generated/app_localizations.dart';
 import 'package:farm_app/internal/app_components.dart';
-import 'package:farm_app/pages/farm_show_case_page/farmer_showcase_page_model.dart';
-import 'package:farm_app/pages/farm_show_case_page/farmer_showcase_page_widget.dart';
+import 'package:farm_app/internal/logger.dart';
+import 'package:farm_app/router/app_router.dart';
+import 'package:farm_app/util/snack_bar_util.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
+import 'farmer_showcase_page.dart';
 
 abstract class IFarmShowcasePageWidgetModel extends IWidgetModel
     implements IThemeProvider {
+  EntityStateNotifier<List<Product>> get productsState;
 
-  EntityStateNotifier<GeoData> get geoState;
+  EntityStateNotifier<Profile?> get profileState;
 
-  GeolocationDadataRepository get geolocationDadataRepository;
+  ProfileUseCase get  profileUseCase;
 
+  EntityStateNotifier<Sort> get sortState;
+
+  TextEditingController get searchController;
+
+  ScrollController get scrollController;
 
   void openSort();
 
   void openProduct({required Product product, required String tag});
 }
 
-FarmShowcasePageWidgetModel defaultFarmShowcasePageWidgetModelFactory(BuildContext context) {
-  return FarmShowcasePageWidgetModel(FarmShowcasePageModel());
+FarmShowcasePageWidgetModel defaultFarmShowcasePageWidgetModelFactory(
+    BuildContext context) {
+  return FarmShowcasePageWidgetModel(
+    model: FarmShowcasePageModel(),
+    catalogService: AppComponents().catalogService,
+  );
 }
 
-class FarmShowcasePageWidgetModel extends WidgetModel<FarmShowcasePageWidget, FarmShowcasePageModel>
+class FarmShowcasePageWidgetModel
+    extends WidgetModel<FarmShowcasePageWidget, FarmShowcasePageModel>
     with ThemeProvider
     implements IFarmShowcasePageWidgetModel {
-
+  final CatalogService catalogService;
+  @override
+  final productsState = EntityStateNotifier();
 
   @override
-  final geolocationDadataRepository = AppComponents().dadataRepository;
+  final profileState = EntityStateNotifier();
 
-  FarmShowcasePageWidgetModel(FarmShowcasePageModel model) : super(model);
+  @override
+  final scrollController = ScrollController();
+
+  @override
+  final searchController = TextEditingController();
+
+  @override
+  final sortState = EntityStateNotifier();
+
+  @override
+  final profileUseCase = AppComponents().profileUseCase;
+
+  StreamSubscription? _profileSubscriptions;
+
+  bool _hasNext = true;
+  bool _loading = false;
+  int _nextPage = 1;
+
+  List<int> get _categoryIds => widget.categotyId == null
+      ? []
+      : [
+    widget.categotyId!,
+  ];
+
+  FarmShowcasePageWidgetModel({
+    required FarmShowcasePageModel model,
+    required this.catalogService,
+  }) : super(model);
 
   @override
   void initWidgetModel() {
     super.initWidgetModel();
-    getCity();
+    productsState.loading();
+    searchController.text = widget.search ?? '';
+    searchController.addListener(loadProducts);
+    _profileSubscriptions = profileUseCase.profile.stream.listen((event) {
+      profileState.content(event);
+    });
+
+    loadProducts();
+  }
+
+  Future<void> loadProducts([bool refresh = true]) async {
+    if (!_hasNext && !refresh) {
+      return;
+    }
+
+    if (refresh) {
+      _nextPage = 1;
+      _hasNext = true;
+    }
+
+    final currentProducts = productsState.value?.data ?? [];
+    final selected = sortState.value?.data;
+    try {
+      _loading = true;
+
+      final products = await catalogService.getProducts(
+        page: _nextPage,
+        size: 4,
+        request: CatalogProductsRequest(
+          sortBy: selected?.key,
+          search: searchController.text,
+          categoryIds: _categoryIds,
+          productIds: widget.productIds,
+          brand: profileState.value?.data?.brand,
+        ),
+      );
+      currentProducts.addAll(products.results);
+      productsState.content(
+        List.of(currentProducts),
+      );
+      _loading = false;
+      _nextPage++;
+      _hasNext = products.next != null;
+    } catch (e, s) {
+      logger.e('FarmShowcase error', e, s);
+
+      if(isMounted) {
+        context.showSnackBar('Не удалось загрузить продукты');
+      }
+    }
   }
 
   @override
   void dispose() {
-    geoState.dispose();
+    _profileSubscriptions?.cancel();
+    searchController.removeListener(loadProducts);
+    searchController.dispose();
+    productsState.dispose();
     super.dispose();
   }
 
   @override
-  void openSort() {}
-
-  @override
-  void openProduct({required Product product, required String tag}) {
+  void openSort() {
+    showModalBottomSheet(
+      context: router.root.navigatorKey.currentContext!,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(25),
+          topLeft: Radius.circular(25),
+        ),
+      ),
+      useRootNavigator: true,
+      builder: _buildContent,
+    );
   }
 
-  Future<void> getCity() async {
-    final geoData = await geolocationDadataRepository.getGeolocationByIp();
-    geoState.content(geoData);
+  Widget _buildContent(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    final selected = sortState.value?.data;
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+            localizations.sort,
+            style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis),
+          ),
+        ),
+        ...Sort.sorts[localizations.localeName]!.map(
+              (s) => ListTile(
+            onTap: () {
+              _setSort(s, context);
+            },
+            leading: Checkbox.adaptive(
+              value: s == selected,
+              onChanged: (bool? value) {
+                _setSort(s, context);
+              },
+            ),
+            title: Text(
+              s.name,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                  overflow: TextOverflow.ellipsis),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _setSort(Sort s, BuildContext context) {
+    sortState.content(s);
+    loadProducts();
+    context.router.root.pop();
   }
 
   @override
-  final geoState = EntityStateNotifier();
+  void openProduct({
+    required Product product,
+    required String tag,
+  }) {
+    context.router.navigate(
+      ProductRoute(
+        productId: product.id,
+        product: product,
+        heroTag: tag,
+      ),
+    );
+  }
 }

@@ -27,6 +27,8 @@ mixin _$CatalogProductsRequest {
   String? get sortBy => throw _privateConstructorUsedError;
   @JsonKey(name: 'search', includeIfNull: false)
   String? get search => throw _privateConstructorUsedError;
+  @JsonKey(name: 'brand', includeIfNull: false)
+  String? get brand => throw _privateConstructorUsedError;
   @JsonKey(name: 'category_ids', includeIfNull: false)
   List<int>? get categoryIds => throw _privateConstructorUsedError;
   @JsonKey(name: 'product_ids', includeIfNull: false)
@@ -51,6 +53,8 @@ abstract class $CatalogProductsRequestCopyWith<$Res> {
           String? sortBy,
       @JsonKey(name: 'search', includeIfNull: false)
           String? search,
+      @JsonKey(name: 'brand', includeIfNull: false)
+          String? brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
           List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
@@ -74,6 +78,7 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
     Object? cityFias = freezed,
     Object? sortBy = freezed,
     Object? search = freezed,
+    Object? brand = freezed,
     Object? categoryIds = freezed,
     Object? productIds = freezed,
   }) {
@@ -89,6 +94,10 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
       search: freezed == search
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
+              as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
               as String?,
       categoryIds: freezed == categoryIds
           ? _value.categoryIds
@@ -117,6 +126,8 @@ abstract class _$$_CatalogProductsRequestCopyWith<$Res>
           String? sortBy,
       @JsonKey(name: 'search', includeIfNull: false)
           String? search,
+      @JsonKey(name: 'brand', includeIfNull: false)
+          String? brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
           List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
@@ -138,6 +149,7 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
     Object? cityFias = freezed,
     Object? sortBy = freezed,
     Object? search = freezed,
+    Object? brand = freezed,
     Object? categoryIds = freezed,
     Object? productIds = freezed,
   }) {
@@ -153,6 +165,10 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
       search: freezed == search
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
+              as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
               as String?,
       categoryIds: freezed == categoryIds
           ? _value._categoryIds
@@ -176,6 +192,8 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
           this.sortBy,
       @JsonKey(name: 'search', includeIfNull: false)
           this.search,
+      @JsonKey(name: 'brand', includeIfNull: false)
+          this.brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
           final List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
@@ -195,6 +213,9 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
   @override
   @JsonKey(name: 'search', includeIfNull: false)
   final String? search;
+  @override
+  @JsonKey(name: 'brand', includeIfNull: false)
+  final String? brand;
   final List<int>? _categoryIds;
   @override
   @JsonKey(name: 'category_ids', includeIfNull: false)
@@ -219,7 +240,7 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
 
   @override
   String toString() {
-    return 'CatalogProductsRequest(cityFias: $cityFias, sortBy: $sortBy, search: $search, categoryIds: $categoryIds, productIds: $productIds)';
+    return 'CatalogProductsRequest(cityFias: $cityFias, sortBy: $sortBy, search: $search, brand: $brand, categoryIds: $categoryIds, productIds: $productIds)';
   }
 
   @override
@@ -231,6 +252,7 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
                 other.cityFias == cityFias) &&
             (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
             (identical(other.search, search) || other.search == search) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
             const DeepCollectionEquality()
                 .equals(other._categoryIds, _categoryIds) &&
             const DeepCollectionEquality()
@@ -244,6 +266,7 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
       cityFias,
       sortBy,
       search,
+      brand,
       const DeepCollectionEquality().hash(_categoryIds),
       const DeepCollectionEquality().hash(_productIds));
 
@@ -270,6 +293,8 @@ abstract class _CatalogProductsRequest implements CatalogProductsRequest {
           final String? sortBy,
       @JsonKey(name: 'search', includeIfNull: false)
           final String? search,
+      @JsonKey(name: 'brand', includeIfNull: false)
+          final String? brand,
       @JsonKey(name: 'category_ids', includeIfNull: false)
           final List<int>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
@@ -287,6 +312,9 @@ abstract class _CatalogProductsRequest implements CatalogProductsRequest {
   @override
   @JsonKey(name: 'search', includeIfNull: false)
   String? get search;
+  @override
+  @JsonKey(name: 'brand', includeIfNull: false)
+  String? get brand;
   @override
   @JsonKey(name: 'category_ids', includeIfNull: false)
   List<int>? get categoryIds;

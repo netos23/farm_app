@@ -144,6 +144,18 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    EditProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<EditProfileRouteArgs>(
+          orElse: () => const EditProfileRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EditProfilePageWidget(
+          email: args.email,
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
     AuthCodeRoute.name: (routeData) {
       final args = routeData.argsAs<AuthCodeRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -167,12 +179,23 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     FarmShowcaseRoute.name: (routeData) {
+      final queryParams = routeData.queryParams;
       final args = routeData.argsAs<FarmShowcaseRouteArgs>(
-          orElse: () => const FarmShowcaseRouteArgs());
+          orElse: () => FarmShowcaseRouteArgs(
+                categotyId: queryParams.optInt('categotyId'),
+                productIds: queryParams.get(
+                  'productIds',
+                  const [],
+                ),
+                search: queryParams.optString('search'),
+              ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: FarmShowcasePageWidget(
           key: args.key,
+          categotyId: args.categotyId,
+          productIds: args.productIds,
+          search: args.search,
           wmFactory: args.wmFactory,
         ),
       );
@@ -649,6 +672,52 @@ class ShowCaseRouteArgs {
 }
 
 /// generated route for
+/// [EditProfilePageWidget]
+class EditProfileRoute extends PageRouteInfo<EditProfileRouteArgs> {
+  EditProfileRoute({
+    String? email,
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultEditProfilePageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EditProfileRoute.name,
+          args: EditProfileRouteArgs(
+            email: email,
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EditProfileRoute';
+
+  static const PageInfo<EditProfileRouteArgs> page =
+      PageInfo<EditProfileRouteArgs>(name);
+}
+
+class EditProfileRouteArgs {
+  const EditProfileRouteArgs({
+    this.email,
+    this.key,
+    this.wmFactory = defaultEditProfilePageWidgetModelFactory,
+  });
+
+  final String? email;
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'EditProfileRouteArgs{email: $email, key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [AuthCodePageWidget]
 class AuthCodeRoute extends PageRouteInfo<AuthCodeRouteArgs> {
   AuthCodeRoute({
@@ -739,6 +808,9 @@ class CartRouteArgs {
 class FarmShowcaseRoute extends PageRouteInfo<FarmShowcaseRouteArgs> {
   FarmShowcaseRoute({
     Key? key,
+    int? categotyId,
+    List<int> productIds = const [],
+    String? search,
     WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
             BuildContext)
         wmFactory = defaultFarmShowcasePageWidgetModelFactory,
@@ -747,8 +819,16 @@ class FarmShowcaseRoute extends PageRouteInfo<FarmShowcaseRouteArgs> {
           FarmShowcaseRoute.name,
           args: FarmShowcaseRouteArgs(
             key: key,
+            categotyId: categotyId,
+            productIds: productIds,
+            search: search,
             wmFactory: wmFactory,
           ),
+          rawQueryParams: {
+            'categotyId': categotyId,
+            'productIds': productIds,
+            'search': search,
+          },
           initialChildren: children,
         );
 
@@ -761,17 +841,26 @@ class FarmShowcaseRoute extends PageRouteInfo<FarmShowcaseRouteArgs> {
 class FarmShowcaseRouteArgs {
   const FarmShowcaseRouteArgs({
     this.key,
+    this.categotyId,
+    this.productIds = const [],
+    this.search,
     this.wmFactory = defaultFarmShowcasePageWidgetModelFactory,
   });
 
   final Key? key;
+
+  final int? categotyId;
+
+  final List<int> productIds;
+
+  final String? search;
 
   final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
       BuildContext) wmFactory;
 
   @override
   String toString() {
-    return 'FarmShowcaseRouteArgs{key: $key, wmFactory: $wmFactory}';
+    return 'FarmShowcaseRouteArgs{key: $key, categotyId: $categotyId, productIds: $productIds, search: $search, wmFactory: $wmFactory}';
   }
 }
 

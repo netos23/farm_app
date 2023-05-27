@@ -10,6 +10,7 @@ class CatalogProductsRequest with _$CatalogProductsRequest {
     @JsonKey(name: 'city_fias', includeIfNull: false) String? cityFias,
     @JsonKey(name: 'sort_by', includeIfNull: false) String? sortBy,
     @JsonKey(name: 'search', includeIfNull: false) String? search,
+    @JsonKey(name: 'brand', includeIfNull: false) String? brand,
     @JsonKey(name: 'category_ids', includeIfNull: false) List<int>? categoryIds,
     @JsonKey(name: 'product_ids', includeIfNull: false) List<int>? productIds,
   }) = _CatalogProductsRequest;

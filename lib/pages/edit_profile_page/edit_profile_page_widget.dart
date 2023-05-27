@@ -2,29 +2,29 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'register_page_wm.dart';
+import 'edit_profile_page_wm.dart';
 
 // TODO: cover with documentation
-/// Main widget for RegisterPage module
+/// Main widget for EditProfilePage module
 @RoutePage()
-class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
-  const RegisterPageWidget({
+class EditProfilePageWidget extends ElementaryWidget<IEditProfilePageWidgetModel> {
+  const EditProfilePageWidget({
     this.email,
     Key? key,
-    WidgetModelFactory wmFactory = defaultRegisterPageWidgetModelFactory,
+    WidgetModelFactory wmFactory = defaultEditProfilePageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
   final String? email;
 
   @override
-  Widget build(IRegisterPageWidgetModel wm) {
+  Widget build(IEditProfilePageWidgetModel wm) {
     final localizations = wm.localizations;
     final theme = wm.theme;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          localizations.registration,
+        title: const Text(
+          'Edit',
         ),
       ),
       body: Padding(
@@ -186,8 +186,8 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
                 style: theme.filledButtonTheme.style?.copyWith(
                     fixedSize:
                         const MaterialStatePropertyAll(Size.fromHeight(50))),
-                onPressed: wm.onRegister,
-                child: Text(localizations.getTheCode),
+                onPressed: wm.onEditProfile,
+                child: Text(localizations.save),
               ),
             ),
           ],

@@ -12,6 +12,7 @@ _$_CatalogProductsRequest _$$_CatalogProductsRequestFromJson(
       cityFias: json['city_fias'] as String?,
       sortBy: json['sort_by'] as String?,
       search: json['search'] as String?,
+      brand: json['brand'] as String?,
       categoryIds: (json['category_ids'] as List<dynamic>?)
           ?.map((e) => e as int)
           .toList(),
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$_CatalogProductsRequestToJson(
   writeNotNull('city_fias', instance.cityFias);
   writeNotNull('sort_by', instance.sortBy);
   writeNotNull('search', instance.search);
+  writeNotNull('brand', instance.brand);
   writeNotNull('category_ids', instance.categoryIds);
   writeNotNull('product_ids', instance.productIds);
   return val;
