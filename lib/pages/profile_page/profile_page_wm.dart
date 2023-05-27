@@ -7,6 +7,7 @@ import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
+
 import 'profile_page_model.dart';
 import 'profile_page_widget.dart';
 
@@ -23,6 +24,8 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   void onBasketTap();
 
   void onCalendarTap();
+
+  void onOrderHistoryTap();
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -256,5 +259,12 @@ class ProfilePageWidgetModel
         ),
       ],
     );
+  }
+
+  @override
+  void onOrderHistoryTap() {
+    onUnauthorisedTap(() {
+      router.push(const OrderHistoryRoute());
+    });
   }
 }

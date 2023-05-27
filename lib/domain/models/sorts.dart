@@ -17,7 +17,7 @@ class Sort {
       Sort(key: 'asc_discount', name: 'По возрастанию скидки'),
       Sort(key: 'desc_discount', name: 'По убыванию скидки'),
     ],
-    'en': const  [
+    'en': const [
       Sort(key: 'popularity', name: 'Popularity'),
       Sort(key: 'asc_price', name: 'Asc price'),
       Sort(key: 'desc_price', name: 'Desc price'),

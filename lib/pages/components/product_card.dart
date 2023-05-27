@@ -41,7 +41,7 @@ class ProductCard extends StatelessWidget {
                     child: CachedNetworkImage(
                       fit: BoxFit.fill,
                       imageUrl: product.picture,
-                      progressIndicatorBuilder: (_,__,___){
+                      progressIndicatorBuilder: (_, __, ___) {
                         return const Center(
                           child: LoadingIndicator(),
                         );

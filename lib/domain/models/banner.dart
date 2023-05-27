@@ -36,18 +36,17 @@ sealed class ShowCaseBanner with _$ShowCaseBanner {
     required List<SliderItem> images,
   }) = SliderBanner;
 
-  factory ShowCaseBanner.fromJson(Map<String, dynamic> json) => _$ShowCaseBannerFromJson(json);
+  factory ShowCaseBanner.fromJson(Map<String, dynamic> json) =>
+      _$ShowCaseBannerFromJson(json);
 }
-
-
 
 @freezed
 class SliderItem with _$SliderItem {
-    const factory SliderItem({
-      required String url,
-      String? link,
+  const factory SliderItem({
+    required String url,
+    String? link,
   }) = _SliderItem;
 
-    factory SliderItem.fromJson(Map<String, dynamic> json)
-    => _$SliderItemFromJson(json);
+  factory SliderItem.fromJson(Map<String, dynamic> json) =>
+      _$SliderItemFromJson(json);
 }

@@ -78,7 +78,7 @@ class RegisterPageWidgetModel
         phone: phoneNumber.text,
         birthDate: bitrhdayController.text,
         gender: genderController.value,
-        role: isFarmer.value ? 'farmer' : 'client');
+        role: (isFarmer.valueOrNull ?? false) ? 'farmer' : 'client');
 
     try {
       await authRepository.register(profile: request);

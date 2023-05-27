@@ -52,7 +52,7 @@ class ShowCasePageWidgetModel
       bannersState.loading();
       final banners = await bannerService.getBanners();
       bannersState.content(banners);
-    } catch (e,s) {
+    } catch (e, s) {
       logger.e('Cant get banner', e, s);
       context.showSnackBar(
         'Не удалось получить информацию о баннерах',

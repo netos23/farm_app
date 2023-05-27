@@ -117,7 +117,7 @@ class CatalogPageWidgetModel
     } catch (e, s) {
       logger.e('Catalog error', e, s);
 
-      if(isMounted) {
+      if (isMounted) {
         context.showSnackBar('Не удалось загрузить продукты');
       }
     }

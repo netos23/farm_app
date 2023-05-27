@@ -17,7 +17,7 @@ abstract interface class IThemeProvider {
 mixin ThemeProvider {
   BuildContext get context;
 
-  AppLocalizations get localizations => AppLocalizations.of(context)!;
+  AppLocalizations get localizations => AppLocalizations.of(context);
 
   ThemeData get theme => Theme.of(context);
 
@@ -26,5 +26,4 @@ mixin ThemeProvider {
   ColorScheme get colorScheme => theme.colorScheme;
 
   StackRouter get router => context.router;
-
 }

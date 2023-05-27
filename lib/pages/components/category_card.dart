@@ -34,7 +34,7 @@ class CategoryCard extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 imageUrl: url ?? '',
-                progressIndicatorBuilder: (_,__,___){
+                progressIndicatorBuilder: (_, __, ___) {
                   return const Center(
                     child: LoadingIndicator(),
                   );
@@ -52,9 +52,8 @@ class CategoryCard extends StatelessWidget {
               child: Text(
                 category.name,
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.onBackground,
-                  overflow: TextOverflow.ellipsis
-                ),
+                    color: theme.colorScheme.onBackground,
+                    overflow: TextOverflow.ellipsis),
               ),
             ),
           ],

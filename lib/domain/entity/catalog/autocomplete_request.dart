@@ -9,9 +9,10 @@ class AutocompleteRequest with _$AutocompleteRequest {
     explicitToJson: true,
     includeIfNull: false,
   )
-    factory AutocompleteRequest({
-      required String searchRequest,
-    }) = _AutocompleteRequest;
+  factory AutocompleteRequest({
+    required String searchRequest,
+  }) = _AutocompleteRequest;
 
-    factory AutocompleteRequest.fromJson(Map<String, dynamic> json) => _$AutocompleteRequestFromJson(json);
+  factory AutocompleteRequest.fromJson(Map<String, dynamic> json) =>
+      _$AutocompleteRequestFromJson(json);
 }

@@ -9,10 +9,8 @@ class SortType with _$SortType {
     explicitToJson: true,
     includeIfNull: false,
   )
-    factory SortType({
-      String? id,
-      String? name
-}) = _SortType;
+  factory SortType({String? id, String? name}) = _SortType;
 
-    factory SortType.fromJson(Map<String, dynamic> json) => _$SortTypeFromJson(json);
+  factory SortType.fromJson(Map<String, dynamic> json) =>
+      _$SortTypeFromJson(json);
 }
