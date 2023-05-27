@@ -61,12 +61,12 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                         ProfileCard(
                           title: wm.localizations.showCase,
                           image: 'assets/images/farmer.png',
-                          onTap: wm.onFarmShowCaseTap,
+                          onTap: (){wm.router.push(FarmShowcaseRoute()); }//wm.onFarmShowCaseTap,
                         ),
                         ProfileCard(
                           title: 'Calendar',
                           image: 'assets/images/calendar.png',
-                          onTap: () {},
+                          onTap: wm.onCalendarTap,
                         ),
                       ],
                     ),

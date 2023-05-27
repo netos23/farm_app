@@ -2,6 +2,7 @@ import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/service/catalog_service.dart';
 import 'package:farm_app/domain/models/deliveries_request.dart';
 import 'package:farm_app/domain/models/delivery.dart';
+import 'package:farm_app/domain/models/order_request.dart';
 import 'package:farm_app/internal/app_components.dart';
 import 'package:farm_app/internal/logger.dart';
 import 'package:farm_app/util/snack_bar_util.dart';
@@ -165,5 +166,22 @@ class OrderPageWidgetModel extends WidgetModel<OrderPageWidget, OrderPageModel>
 
   @override
   void makeOrder() {
+    final deliveries = deliveriesState.value?.data?.$1 ?? [];
+    final selectedDelivery = deliveriesState.value?.data?.$2;
+    final selectedPayment = paymentsState.value?.data?.$2;
+    final order = OrderRequest(
+        products: widget.productIds,
+        user_name: nameController.text,
+        user_phone: phoneController.text,
+        user_email: emailController.text,
+        delivery_id: selectedDelivery?.id ?? '',
+        delivery_type: selectedDelivery?.type ?? '',
+        delivery_date: dateState.value?.data?.toString() ?? '',
+        payment_id: selectedPayment?.id ?? '',
+        payment_type: selectedPayment?.type ?? '',
+        address: addressController.text,
+        comment: commentController.text,
+        repeated_days: repeatState.value?.data ?? 1);
+    catalogService.postOrder(request: order);
   }
 }

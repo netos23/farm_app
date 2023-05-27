@@ -3,6 +3,7 @@ import 'package:elementary/elementary.dart';
 import 'package:farm_app/pages/components/loading_indicator.dart';
 import 'package:farm_app/pages/components/product_card.dart';
 import 'package:farm_app/pages/components/search_widget.dart';
+import 'package:farm_app/router/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -46,6 +47,10 @@ class FarmShowcasePageWidget extends ElementaryWidget<IFarmShowcasePageWidgetMod
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {wm.router.push(FarmProductRegistrationRoute()); },
+        child: const Icon(Icons.add),
       ),
       body: EntityStateNotifierBuilder(
         listenableEntityState: wm.productsState,

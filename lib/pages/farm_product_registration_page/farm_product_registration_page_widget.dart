@@ -1,32 +1,30 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
-import 'package:farm_app/domain/models/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'edit_profile_page_wm.dart';
+import 'farm_product_registration_page_wm.dart';
 
 // TODO: cover with documentation
-/// Main widget for EditProfilePage module
+/// Main widget for FarmProductRegistrationPage module
 @RoutePage()
-class EditProfilePageWidget
-    extends ElementaryWidget<IEditProfilePageWidgetModel> {
-  const EditProfilePageWidget({
-    this.profile,
+class FarmProductRegistrationPageWidget extends ElementaryWidget<IFarmProductRegistrationPageWidgetModel> {
+  const FarmProductRegistrationPageWidget({
+    this.email,
     Key? key,
-    WidgetModelFactory wmFactory = defaultEditProfilePageWidgetModelFactory,
+    WidgetModelFactory wmFactory = defaultFarmProductRegistrationPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
-  final Profile? profile;
+  final String? email;
 
   @override
-  Widget build(IEditProfilePageWidgetModel wm) {
+  Widget build(IFarmProductRegistrationPageWidgetModel wm) {
     final localizations = wm.localizations;
     final theme = wm.theme;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'Edit',
+        title: Text(
+          localizations.registration,
         ),
       ),
       body: Padding(
@@ -170,17 +168,15 @@ class EditProfilePageWidget
             StreamBuilder<bool>(
                 stream: wm.isFarmer.stream,
                 initialData: false,
-                builder: (context, isFarmerSnapshot) {
-                  final isFarmValue =
-                      isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
-                  return _FarmerCheckbox(
-                    value: isFarmValue,
-                    onChanged: () {
-                      wm.isFarmer.add(!isFarmValue);
-                    },
-                    text: 'Зарегистрироваться как фермер',
-                  );
-                }),
+                builder: (context, isFarmerSnapshot){
+                  final isFarmValue = isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
+              return _FarmerCheckbox(
+                value: isFarmValue,
+                onChanged: () {
+                  wm.isFarmer.add(!isFarmValue);
+                }, text: 'Зарегистрироваться как фермер',
+              );
+            }),
             const SizedBox(
               height: 16,
             ),
@@ -190,10 +186,8 @@ class EditProfilePageWidget
                 style: theme.filledButtonTheme.style?.copyWith(
                     fixedSize:
                         const MaterialStatePropertyAll(Size.fromHeight(50))),
-                onPressed: wm.onEditProfile,
-                child: Center(
-                  child: Text(localizations.save),
-                ),
+                onPressed: wm.onFarmProductRegistration,
+                child: Center(child: Text(localizations.getTheCode)),
               ),
             ),
           ],
@@ -255,6 +249,7 @@ class _FarmerCheckbox extends StatelessWidget {
     );
   }
 }
+
 
 class _GenderCheckbox extends StatelessWidget {
   const _GenderCheckbox({

@@ -150,7 +150,7 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: EditProfilePageWidget(
-          email: args.email,
+          profile: args.profile,
           key: args.key,
           wmFactory: args.wmFactory,
         ),
@@ -196,6 +196,18 @@ abstract class _$AppRouter extends RootStackRouter {
           categotyId: args.categotyId,
           productIds: args.productIds,
           search: args.search,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    FarmProductRegistrationRoute.name: (routeData) {
+      final args = routeData.argsAs<FarmProductRegistrationRouteArgs>(
+          orElse: () => const FarmProductRegistrationRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: FarmProductRegistrationPageWidget(
+          email: args.email,
+          key: args.key,
           wmFactory: args.wmFactory,
         ),
       );
@@ -675,7 +687,7 @@ class ShowCaseRouteArgs {
 /// [EditProfilePageWidget]
 class EditProfileRoute extends PageRouteInfo<EditProfileRouteArgs> {
   EditProfileRoute({
-    String? email,
+    Profile? profile,
     Key? key,
     WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
             BuildContext)
@@ -684,7 +696,7 @@ class EditProfileRoute extends PageRouteInfo<EditProfileRouteArgs> {
   }) : super(
           EditProfileRoute.name,
           args: EditProfileRouteArgs(
-            email: email,
+            profile: profile,
             key: key,
             wmFactory: wmFactory,
           ),
@@ -699,12 +711,12 @@ class EditProfileRoute extends PageRouteInfo<EditProfileRouteArgs> {
 
 class EditProfileRouteArgs {
   const EditProfileRouteArgs({
-    this.email,
+    this.profile,
     this.key,
     this.wmFactory = defaultEditProfilePageWidgetModelFactory,
   });
 
-  final String? email;
+  final Profile? profile;
 
   final Key? key;
 
@@ -713,7 +725,7 @@ class EditProfileRouteArgs {
 
   @override
   String toString() {
-    return 'EditProfileRouteArgs{email: $email, key: $key, wmFactory: $wmFactory}';
+    return 'EditProfileRouteArgs{profile: $profile, key: $key, wmFactory: $wmFactory}';
   }
 }
 
@@ -861,6 +873,53 @@ class FarmShowcaseRouteArgs {
   @override
   String toString() {
     return 'FarmShowcaseRouteArgs{key: $key, categotyId: $categotyId, productIds: $productIds, search: $search, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [FarmProductRegistrationPageWidget]
+class FarmProductRegistrationRoute
+    extends PageRouteInfo<FarmProductRegistrationRouteArgs> {
+  FarmProductRegistrationRoute({
+    String? email,
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultFarmProductRegistrationPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FarmProductRegistrationRoute.name,
+          args: FarmProductRegistrationRouteArgs(
+            email: email,
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'FarmProductRegistrationRoute';
+
+  static const PageInfo<FarmProductRegistrationRouteArgs> page =
+      PageInfo<FarmProductRegistrationRouteArgs>(name);
+}
+
+class FarmProductRegistrationRouteArgs {
+  const FarmProductRegistrationRouteArgs({
+    this.email,
+    this.key,
+    this.wmFactory = defaultFarmProductRegistrationPageWidgetModelFactory,
+  });
+
+  final String? email;
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'FarmProductRegistrationRouteArgs{email: $email, key: $key, wmFactory: $wmFactory}';
   }
 }
 

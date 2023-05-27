@@ -187,7 +187,7 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
                     fixedSize:
                         const MaterialStatePropertyAll(Size.fromHeight(50))),
                 onPressed: wm.onRegister,
-                child: Text(localizations.getTheCode),
+                child: Center(child: Text(localizations.getTheCode)),
               ),
             ),
           ],

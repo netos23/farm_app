@@ -3,11 +3,13 @@ import 'package:elementary/elementary.dart';
 import 'package:farm_app/domain/models/category.dart';
 import 'package:farm_app/domain/models/product.dart';
 import 'package:farm_app/domain/models/product_with_count.dart';
+import 'package:farm_app/domain/models/profile.dart';
 import 'package:farm_app/pages/auth_code_page/auth_code_page.dart';
 import 'package:farm_app/pages/auth_page/auth_page.dart';
 import 'package:farm_app/pages/cart_page/cart_page.dart';
 import 'package:farm_app/pages/catalog_page/catalog_page.dart';
 import 'package:farm_app/pages/category_page/category_page.dart';
+import 'package:farm_app/pages/farm_product_registration_page/farm_product_registration_page.dart';
 import 'package:farm_app/pages/home_page/home_page.dart';
 import 'package:farm_app/pages/order_page/order_page.dart';
 import 'package:farm_app/pages/product_page/product_page.dart';
@@ -97,6 +99,9 @@ class AppRouter extends _$AppRouter {
                 ),
                 AutoRoute(
                   page: FarmShowcaseRoute.page,
+                ),
+                AutoRoute(
+                  page: FarmProductRegistrationRoute.page,
                 ),
                 AutoRoute(
                   page: EditProfileRoute.page,

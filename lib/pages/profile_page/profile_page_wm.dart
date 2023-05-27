@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/domain/use_case/profile_use_case.dart';
@@ -20,6 +21,8 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   void onEditProfileTap();
 
   void onBasketTap();
+
+  void onCalendarTap();
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -36,6 +39,14 @@ class ProfilePageWidgetModel
   ProfilePageWidgetModel(ProfilePageModel model) : super(model);
   @override
   final profileUseCase = AppComponents().profileUseCase;
+
+  bool get isUnauthorisedUser =>
+      profileUseCase.profile.valueOrNull == null ||
+      (profileUseCase.profile.value!.email ?? '').isEmpty;
+
+  bool get isClientUser =>
+      profileUseCase.profile.valueOrNull != null &&
+      (profileUseCase.profile.value!.brand ?? '').isNotEmpty;
 
   @override
   void initWidgetModel() {
@@ -56,29 +67,29 @@ class ProfilePageWidgetModel
 
   @override
   void onFarmShowCaseTap() {
-    if (profileUseCase.profile.valueOrNull != null &&
-        (profileUseCase.profile.value!.brand ?? '').isNotEmpty) {
-      router.push(FarmShowcaseRoute());
-    } else {
-      showModalBottomSheet(
-        context: router.root.navigatorKey.currentContext!,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(25),
-            topLeft: Radius.circular(25),
-          ),
-        ),
-        builder: _buildContent,
-      );
-    }
+    onUnauthorisedTap(() {
+      onClientTap(() {
+        router.push(FarmShowcaseRoute());
+      });
+    });
   }
 
-  Widget _buildContent(BuildContext context) {
+  @override
+  void onCalendarTap() {
+    onUnauthorisedTap(() {
+      onClientTap(() {
+        () {};
+      });
+    });
+  }
+
+  Widget _buildClientContent(BuildContext context) {
     final localizations = AppLocalizations.of(context);
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
           child: Text(
             'Данный раздел доступен только пользователям, зарегистрированным в качестве фермера. Чтобы стать фермером - перейдите в раздел "Мои данные" и измените свой статус',
             maxLines: 6,
@@ -87,17 +98,163 @@ class ProfilePageWidgetModel
                 overflow: TextOverflow.ellipsis),
           ),
         ),
+        Column(
+          children: [
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.popRoute();
+                    context.pushRoute(EditProfileRoute());
+                  },
+                  child: const Center(
+                    child: Text('Become a farmer'),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                margin: const EdgeInsets.symmetric(vertical: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.popRoute();
+                  },
+                  child: const Center(
+                    child: Text('Позже'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
 
   @override
+  void onUnauthorisedTap(void Function() onTap) {
+    if (isUnauthorisedUser) {
+      showModalBottomSheet(
+        context: router.root.navigatorKey.currentContext!,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(25),
+            topLeft: Radius.circular(25),
+          ),
+        ),
+        builder: _buildUnauthorisedContent,
+      );
+    } else {
+      onTap();
+    }
+  }
+
+  @override
+  void onClientTap(void Function() onTap) {
+    if (isClientUser) {
+      showModalBottomSheet(
+        context: router.root.navigatorKey.currentContext!,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(25),
+            topLeft: Radius.circular(25),
+          ),
+        ),
+        builder: _buildClientContent,
+      );
+    } else {
+      onTap();
+    }
+  }
+
+  @override
   void onEditProfileTap() {
-    router.push(EditProfileRoute());
+    onUnauthorisedTap(() {
+      onClientTap(() {
+        router.push(EditProfileRoute());
+      });
+    });
   }
 
   @override
   void onBasketTap() {
     router.navigate(const BasketTab());
+  }
+
+  Widget _buildUnauthorisedContent(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
+          child: Text(
+            'Данный раздел доступен только авторизованным пользователям, войдите или зарегистрируйтесь',
+            maxLines: 6,
+            style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+                overflow: TextOverflow.ellipsis),
+          ),
+        ),
+        Column(
+          children: [
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.popRoute();
+                    context.pushRoute(AuthRoute());
+                  },
+                  child: Center(
+                    child: Text(localizations.login),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                margin: const EdgeInsets.symmetric(vertical: 16),
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                      Size.fromHeight(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.popRoute();
+                  },
+                  child: const Center(
+                    child: Text('Позже'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

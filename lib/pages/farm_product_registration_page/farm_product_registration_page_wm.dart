@@ -8,14 +8,14 @@ import 'package:farm_app/util/snack_bar_util.dart';
 import 'package:farm_app/util/value_stream_wrapper.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
-import 'edit_profile_page_model.dart';
-import 'edit_profile_page_widget.dart';
+import 'farm_product_registration_page_model.dart';
+import 'farm_product_registration_page_widget.dart';
 
-abstract class IEditProfilePageWidgetModel extends IWidgetModel
+abstract class IFarmProductRegistrationPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   ValueStreamWrapper<bool> get isFarmer;
 
-  ValueStreamWrapper<String?> get  genderController;
+  ValueStreamWrapper<String> get genderController;
 
   AuthRepository get authRepository;
 
@@ -29,21 +29,21 @@ abstract class IEditProfilePageWidgetModel extends IWidgetModel
 
   TextEditingController get phoneNumber;
 
-  onEditProfile();
+  onFarmProductRegistration();
 }
 
-EditProfilePageWidgetModel defaultEditProfilePageWidgetModelFactory(
+FarmProductRegistrationPageWidgetModel defaultFarmProductRegistrationPageWidgetModelFactory(
     BuildContext context) {
-  return EditProfilePageWidgetModel(EditProfilePageModel());
+  return FarmProductRegistrationPageWidgetModel(FarmProductRegistrationPageModel());
 }
 
 // TODO: cover with documentation
-/// Default widget model for EditProfilePageWidget
-class EditProfilePageWidgetModel
-    extends WidgetModel<EditProfilePageWidget, EditProfilePageModel>
+/// Default widget model for FarmProductRegistrationPageWidget
+class FarmProductRegistrationPageWidgetModel
+    extends WidgetModel<FarmProductRegistrationPageWidget, FarmProductRegistrationPageModel>
     with ThemeProvider
-    implements IEditProfilePageWidgetModel {
-  EditProfilePageWidgetModel(EditProfilePageModel model) : super(model);
+    implements IFarmProductRegistrationPageWidgetModel {
+  FarmProductRegistrationPageWidgetModel(FarmProductRegistrationPageModel model) : super(model);
 
   @override
   AuthRepository authRepository = AuthRepository(AppComponents().authService);
@@ -65,26 +65,20 @@ class EditProfilePageWidgetModel
 
   @override
   void initWidgetModel() {
+    emailController.text = widget.email ?? '';
     super.initWidgetModel();
-    emailController.text = widget.profile?.email ?? '';
-    firstNameController.text = widget.profile?.firstName ?? '';
-    secondNameController.text = widget.profile?.secondName ?? '';
-    phoneNumber.text = widget.profile?.phone ?? '';
-    genderController.add(widget.profile?.gender);
-    isFarmer.add(widget.profile?.role == 'farmer');
   }
 
   @override
-  Future<void> onEditProfile() async {
+  Future<void> onFarmProductRegistration() async {
     final request = Profile(
-      email: emailController.text,
-      firstName: firstNameController.text,
-      secondName: secondNameController.text,
-      phone: phoneNumber.text,
-      birthDate: bitrhdayController.text,
-      gender: genderController.value,
-      role: isFarmer.value ? 'farmer' : 'client'
-    );
+        email: emailController.text,
+        firstName: firstNameController.text,
+        secondName: secondNameController.text,
+        phone: phoneNumber.text,
+        birthDate: bitrhdayController.text,
+        gender: genderController.value,
+        role: isFarmer.value ? 'farmer' : 'client');
 
     try {
       await authRepository.register(profile: request);
@@ -107,11 +101,10 @@ class EditProfilePageWidgetModel
     genderController.dispose();
     isFarmer.dispose();
     super.dispose();
-
   }
 
   @override
-  ValueStreamWrapper<String?> genderController = ValueStreamWrapper();
+  ValueStreamWrapper<String> genderController = ValueStreamWrapper();
 
   @override
   ValueStreamWrapper<bool> isFarmer = ValueStreamWrapper();

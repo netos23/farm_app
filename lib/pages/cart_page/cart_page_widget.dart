@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:farm_app/pages/components/basket_card.dart';
 import 'package:farm_app/pages/components/loading_indicator.dart';
-import 'package:farm_app/pages/components/product_card.dart';
 import 'package:farm_app/pages/components/search_widget.dart';
 import 'package:farm_app/router/app_router.dart';
 import 'package:flutter/foundation.dart';
@@ -65,13 +64,19 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                   if (!logIn)
                     Expanded(
                       child: Center(
-                        child: FilledButton(
-                          onPressed: () async {
-                            await router.pop();
-                            await router.navigate(AuthRoute());
-                          },
-                          child: Text(
-                            localizations.login,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          height: 50,
+                          child: FilledButton(
+                            onPressed: () async {
+                              await router.pop();
+                              await router.navigate(AuthRoute());
+                            },
+                            child: Center(
+                              child: Text(
+                                localizations.login,
+                              ),
+                            ),
                           ),
                         ),
                       ),
