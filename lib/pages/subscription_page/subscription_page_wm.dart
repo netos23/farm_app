@@ -39,11 +39,13 @@ abstract class ISubscriptionPageWidgetModel extends IWidgetModel
   void order();
 }
 
-SubscriptionPageWidgetModel defaultSubscriptionPageWidgetModelFactory(BuildContext context) {
+SubscriptionPageWidgetModel defaultSubscriptionPageWidgetModelFactory(
+    BuildContext context) {
   return SubscriptionPageWidgetModel(SubscriptionPageModel());
 }
 
-class SubscriptionPageWidgetModel extends WidgetModel<SubscriptionPageWidget, SubscriptionPageModel>
+class SubscriptionPageWidgetModel
+    extends WidgetModel<SubscriptionPageWidget, SubscriptionPageModel>
     with ThemeProvider
     implements ISubscriptionPageWidgetModel {
   @override

@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    OrderHistoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrderHistoryPageScope(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       final args = routeData.argsAs<ProfileRouteArgs>(
           orElse: () => const ProfileRouteArgs());
@@ -215,6 +221,17 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    SubscriptionRoute.name: (routeData) {
+      final args = routeData.argsAs<SubscriptionRouteArgs>(
+          orElse: () => const SubscriptionRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: SubscriptionPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
     FarmShowcaseRoute.name: (routeData) {
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<FarmShowcaseRouteArgs>(
@@ -279,18 +296,21 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserProfileTabPage(),
       );
     },
-    SubscriptionRoute.name: (routeData) {
-      final args = routeData.argsAs<SubscriptionRouteArgs>(
-          orElse: () => const SubscriptionRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: SubscriptionPageWidget(
-          key: args.key,
-          wmFactory: args.wmFactory,
-        ),
-      );
-    },
   };
+}
+
+/// generated route for
+/// [OrderHistoryPageScope]
+class OrderHistoryRoute extends PageRouteInfo<void> {
+  const OrderHistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          OrderHistoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderHistoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -972,6 +992,47 @@ class CartRouteArgs {
 }
 
 /// generated route for
+/// [SubscriptionPageWidget]
+class SubscriptionRoute extends PageRouteInfo<SubscriptionRouteArgs> {
+  SubscriptionRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultSubscriptionPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SubscriptionRoute.name,
+          args: SubscriptionRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SubscriptionRoute';
+
+  static const PageInfo<SubscriptionRouteArgs> page =
+      PageInfo<SubscriptionRouteArgs>(name);
+}
+
+class SubscriptionRouteArgs {
+  const SubscriptionRouteArgs({
+    this.key,
+    this.wmFactory = defaultSubscriptionPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'SubscriptionRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [FarmShowcasePageWidget]
 class FarmShowcaseRoute extends PageRouteInfo<FarmShowcaseRouteArgs> {
   FarmShowcaseRoute({
@@ -1147,45 +1208,4 @@ class UserProfileTab extends PageRouteInfo<void> {
   static const String name = 'UserProfileTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [SubscriptionPageWidget]
-class SubscriptionRoute extends PageRouteInfo<SubscriptionRouteArgs> {
-  SubscriptionRoute({
-    Key? key,
-    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-            BuildContext)
-        wmFactory = defaultSubscriptionPageWidgetModelFactory,
-    List<PageRouteInfo>? children,
-  }) : super(
-          SubscriptionRoute.name,
-          args: SubscriptionRouteArgs(
-            key: key,
-            wmFactory: wmFactory,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'SubscriptionRoute';
-
-  static const PageInfo<SubscriptionRouteArgs> page =
-      PageInfo<SubscriptionRouteArgs>(name);
-}
-
-class SubscriptionRouteArgs {
-  const SubscriptionRouteArgs({
-    this.key,
-    this.wmFactory = defaultSubscriptionPageWidgetModelFactory,
-  });
-
-  final Key? key;
-
-  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-      BuildContext) wmFactory;
-
-  @override
-  String toString() {
-    return 'SubscriptionRouteArgs{key: $key, wmFactory: $wmFactory}';
-  }
 }

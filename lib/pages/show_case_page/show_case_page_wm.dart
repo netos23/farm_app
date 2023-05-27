@@ -69,7 +69,7 @@ class ShowCasePageWidgetModel
 
   @override
   Future<void> openLink(String value) async {
-    if(await canLaunchUrlString(value)){
+    if (await canLaunchUrlString(value)) {
       launchUrlString(value);
     }
   }

@@ -12,7 +12,8 @@ import 'subscription_page_wm.dart';
 // TODO: cover with documentation
 /// Main widget for CartPage module
 @RoutePage()
-class SubscriptionPageWidget extends ElementaryWidget<ISubscriptionPageWidgetModel> {
+class SubscriptionPageWidget
+    extends ElementaryWidget<ISubscriptionPageWidgetModel> {
   const SubscriptionPageWidget({
     Key? key,
     WidgetModelFactory wmFactory = defaultSubscriptionPageWidgetModelFactory,

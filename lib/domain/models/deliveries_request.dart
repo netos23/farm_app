@@ -7,7 +7,6 @@ part 'deliveries_request.g.dart';
 @freezed
 class DeliveriesRequest with _$DeliveriesRequest {
   factory DeliveriesRequest({
-    @JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
     required List<ProductWithCount> products,
   }) = _DeliveriesRequest;
 

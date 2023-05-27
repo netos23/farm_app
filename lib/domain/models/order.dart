@@ -40,6 +40,7 @@ class OrderItem with _$OrderItem {
   factory OrderItem({
     int? id,
     required int count,
+    required String picture,
     required Decimal price,
     int? discount,
     int? order,

@@ -8,7 +8,6 @@ part of 'deliveries_request.dart';
 
 _$_DeliveriesRequest _$$_DeliveriesRequestFromJson(Map<String, dynamic> json) =>
     _$_DeliveriesRequest(
-      cityFias: json['city_fias'] as String?,
       products: (json['products'] as List<dynamic>)
           .map((e) => ProductWithCount.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -17,7 +16,6 @@ _$_DeliveriesRequest _$$_DeliveriesRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_DeliveriesRequestToJson(
         _$_DeliveriesRequest instance) =>
     <String, dynamic>{
-      'city_fias': instance.cityFias,
       'products': instance.products,
     };
 

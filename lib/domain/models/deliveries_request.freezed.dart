@@ -20,8 +20,6 @@ DeliveriesRequest _$DeliveriesRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DeliveriesRequest {
-  @JsonKey(name: 'city_fias', includeIfNull: true)
-  String? get cityFias => throw _privateConstructorUsedError;
   List<ProductWithCount> get products => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,9 +34,7 @@ abstract class $DeliveriesRequestCopyWith<$Res> {
           DeliveriesRequest value, $Res Function(DeliveriesRequest) then) =
       _$DeliveriesRequestCopyWithImpl<$Res, DeliveriesRequest>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
-      List<ProductWithCount> products});
+  $Res call({List<ProductWithCount> products});
 }
 
 /// @nodoc
@@ -54,14 +50,9 @@ class _$DeliveriesRequestCopyWithImpl<$Res, $Val extends DeliveriesRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cityFias = freezed,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
-      cityFias: freezed == cityFias
-          ? _value.cityFias
-          : cityFias // ignore: cast_nullable_to_non_nullable
-              as String?,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -78,9 +69,7 @@ abstract class _$$_DeliveriesRequestCopyWith<$Res>
       __$$_DeliveriesRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
-      List<ProductWithCount> products});
+  $Res call({List<ProductWithCount> products});
 }
 
 /// @nodoc
@@ -94,14 +83,9 @@ class __$$_DeliveriesRequestCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cityFias = freezed,
     Object? products = null,
   }) {
     return _then(_$_DeliveriesRequest(
-      cityFias: freezed == cityFias
-          ? _value.cityFias
-          : cityFias // ignore: cast_nullable_to_non_nullable
-              as String?,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -113,17 +97,12 @@ class __$$_DeliveriesRequestCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DeliveriesRequest implements _DeliveriesRequest {
-  _$_DeliveriesRequest(
-      {@JsonKey(name: 'city_fias', includeIfNull: true) this.cityFias,
-      required final List<ProductWithCount> products})
+  _$_DeliveriesRequest({required final List<ProductWithCount> products})
       : _products = products;
 
   factory _$_DeliveriesRequest.fromJson(Map<String, dynamic> json) =>
       _$$_DeliveriesRequestFromJson(json);
 
-  @override
-  @JsonKey(name: 'city_fias', includeIfNull: true)
-  final String? cityFias;
   final List<ProductWithCount> _products;
   @override
   List<ProductWithCount> get products {
@@ -134,7 +113,7 @@ class _$_DeliveriesRequest implements _DeliveriesRequest {
 
   @override
   String toString() {
-    return 'DeliveriesRequest(cityFias: $cityFias, products: $products)';
+    return 'DeliveriesRequest(products: $products)';
   }
 
   @override
@@ -142,15 +121,13 @@ class _$_DeliveriesRequest implements _DeliveriesRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DeliveriesRequest &&
-            (identical(other.cityFias, cityFias) ||
-                other.cityFias == cityFias) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, cityFias, const DeepCollectionEquality().hash(_products));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -168,16 +145,12 @@ class _$_DeliveriesRequest implements _DeliveriesRequest {
 }
 
 abstract class _DeliveriesRequest implements DeliveriesRequest {
-  factory _DeliveriesRequest(
-      {@JsonKey(name: 'city_fias', includeIfNull: true) final String? cityFias,
-      required final List<ProductWithCount> products}) = _$_DeliveriesRequest;
+  factory _DeliveriesRequest({required final List<ProductWithCount> products}) =
+      _$_DeliveriesRequest;
 
   factory _DeliveriesRequest.fromJson(Map<String, dynamic> json) =
       _$_DeliveriesRequest.fromJson;
 
-  @override
-  @JsonKey(name: 'city_fias', includeIfNull: true)
-  String? get cityFias;
   @override
   List<ProductWithCount> get products;
   @override

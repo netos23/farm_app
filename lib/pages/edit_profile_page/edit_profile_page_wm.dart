@@ -113,5 +113,5 @@ class EditProfilePageWidgetModel
   ValueStreamWrapper<bool> isFarmer = ValueStreamWrapper();
 
   @override
-  ProfileUseCase  profileUseCase = AppComponents().profileUseCase;
+  ProfileUseCase profileUseCase = AppComponents().profileUseCase;
 }
