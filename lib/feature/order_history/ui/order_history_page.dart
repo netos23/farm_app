@@ -116,10 +116,12 @@ class OrderHistoryPage extends StatelessWidget {
                                         const SizedBox(
                                           height: 3,
                                         ),
-                                        Text(
-                                          item.name,
-                                          style: textTheme.bodySmall?.copyWith(
-                                            color: colorTheme.onBackground,
+                                        Flexible(
+                                          child: Text(
+                                            item.name,
+                                            style: textTheme.bodySmall?.copyWith(
+                                              color: colorTheme.onBackground,
+                                            ),
                                           ),
                                         ),
                                         const SizedBox(
