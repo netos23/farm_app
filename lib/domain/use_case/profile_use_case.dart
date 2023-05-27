@@ -31,7 +31,6 @@ class ProfileUseCase implements LifecycleComponent{
     }
   }
 
-
   Future<void> logout() async {
     await repository.deleteTokens();
     profile.add(null);

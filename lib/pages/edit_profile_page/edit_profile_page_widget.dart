@@ -25,8 +25,8 @@ class EditProfilePageWidget
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'Edit',
+        title: Text(
+          localizations.myInfo,
         ),
       ),
       body: Padding(
