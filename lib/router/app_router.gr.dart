@@ -290,6 +290,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    OrderHistoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrderHistoryPageScope(),
+      );
+    },
   };
 }
 
@@ -1188,4 +1194,18 @@ class SubscriptionRouteArgs {
   String toString() {
     return 'SubscriptionRouteArgs{key: $key, wmFactory: $wmFactory}';
   }
+}
+
+/// generated route for
+/// [OrderHistoryPageScope]
+class OrderHistoryRoute extends PageRouteInfo<void> {
+  const OrderHistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          OrderHistoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderHistoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

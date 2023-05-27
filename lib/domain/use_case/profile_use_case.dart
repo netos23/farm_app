@@ -57,4 +57,4 @@ class ProfileUseCase implements LifecycleComponent {
         request: RegisterBrandRequest(brand: text, address: text2));
   }
 }
-}
+

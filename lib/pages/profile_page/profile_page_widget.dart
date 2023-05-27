@@ -46,138 +46,148 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
               final hasNotBrand = profileSnapshot.data?.brand == null ||
                   (profileSnapshot.data?.brand ?? '').isEmpty;
               final userImage = getUserImage(gender: profile?.gender);
-              return Column(
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: ProfileGrid(
-                      profileCards: [
-                        ProfileCard(
-                          title: wm.localizations.myDetails,
-                          image: userImage,
-                          onTap: wm.onEditProfileTap,
-                        ),
-                        ProfileCard(
-                          title: 'Subscription',
-                          image: 'assets/images/basket_t.png',
-                          onTap: wm.onBasketTap,
-                        ),
-                        ProfileCard(
-                            title: wm.localizations.showCase,
-                            image: 'assets/images/farmer.png',
-                            onTap: () {
-                              wm.router.push(FarmShowcaseRoute());
-                            } //wm.onFarmShowCaseTap,
+              return CustomScrollView(
+                slivers: [
+                  SliverProfileGrid(
+                    profileCards: [
+                      ProfileCard(
+                        title: wm.localizations.myDetails,
+                        image: userImage,
+                        onTap: wm.onEditProfileTap,
+                      ),
+                      ProfileCard(
+                        title: 'Subscription',
+                        image: 'assets/images/basket_t.png',
+                        onTap: wm.onBasketTap,
+                      ),
+                      ProfileCard(
+                          title: wm.localizations.showCase,
+                          image: 'assets/images/farmer.png',
+                          onTap: () {
+                            wm.router.push(FarmShowcaseRoute());
+                          } //wm.onFarmShowCaseTap,
+                          ),
+                      ProfileCard(
+                        title: 'Calendar',
+                        image: 'assets/images/calendar.png',
+                        onTap: wm.onCalendarTap,
+                      ),
+                      ProfileCard(
+                        title: 'Мои заказы',
+                        image: 'assets/images/order_history.png',
+                        onTap: wm.onOrderHistoryTap,
+                      ),
+                    ],
+                  ),
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        Visibility(
+                          visible: !isLogin,
+                          child: Expanded(
+                            child: Text(
+                              localizations.authRequired,
+                              textAlign: TextAlign.center,
+                              style: textTheme.bodyLarge?.copyWith(
+                                color: colorTheme.onBackground,
+                              ),
                             ),
-                        ProfileCard(
-                          title: 'Calendar',
-                          image: 'assets/images/calendar.png',
-                          onTap: wm.onCalendarTap,
+                          ),
                         ),
-                        ProfileCard(
-                          title: 'Мои заказы',
-                          image: 'assets/images/order_history.png',
-                          onTap: wm.onOrderHistoryTap,
+                        Visibility(
+                          visible: isLogin,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            height: 57,
+                            child: Card(
+                              child: InkWell(
+                                onTap: wm.linkToTelegram,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/telegram_icon.png',
+                                      width: 21,
+                                      height: 21,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16.0),
+                                      child: Text(
+                                        'Получать уведомления в Телеграм',
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(
+                                                color:
+                                                    theme.colorScheme.onSurface,
+                                                overflow:
+                                                    TextOverflow.ellipsis),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Visibility(
+                          visible: isFarmer && hasNotBrand,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            height: 57,
+                            child: Card(
+                              child: InkWell(
+                                onTap: wm.registerBrand,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16.0),
+                                      child: Text(
+                                        'Зарегистрировать свой бренд',
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(
+                                                color:
+                                                    theme.colorScheme.onSurface,
+                                                overflow:
+                                                    TextOverflow.ellipsis),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Center(
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              height: 50,
+                              child: FilledButton(
+                                style: theme.filledButtonTheme.style?.copyWith(
+                                  fixedSize: const MaterialStatePropertyAll(
+                                    Size.fromHeight(50),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  if (!isLogin) {
+                                    context.router.push(AuthRoute());
+                                  } else {
+                                    wm.profileUseCase.logout();
+                                  }
+                                },
+                                child: Center(
+                                  child: !isLogin
+                                      ? Text(localizations.login)
+                                      : Text(localizations.exit),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
-                    ),
-                  ),
-                  Visibility(
-                    visible: !isLogin,
-                    child: Expanded(
-                      child: Text(
-                        localizations.authRequired,
-                        textAlign: TextAlign.center,
-                        style: textTheme.bodyLarge?.copyWith(
-                          color: colorTheme.onBackground,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Visibility(
-                    visible: isLogin,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      height: 57,
-                      child: Card(
-                        child: InkWell(
-                          onTap: wm.linkToTelegram,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                'assets/images/telegram_icon.png',
-                                width: 21,
-                                height: 21,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
-                                child: Text(
-                                  'Получать уведомления в Телеграм',
-                                  style: theme.textTheme.bodyMedium?.copyWith(
-                                      color: theme.colorScheme.onSurface,
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Visibility(
-                    visible: isFarmer && hasNotBrand,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      height: 57,
-                      child: Card(
-                        child: InkWell(
-                          onTap: wm.registerBrand,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
-                                child: Text(
-                                  'Зарегистрировать свой бренд',
-                                  style: theme.textTheme.bodyMedium?.copyWith(
-                                      color: theme.colorScheme.onSurface,
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Center(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        height: 50,
-                        child: FilledButton(
-                          style: theme.filledButtonTheme.style?.copyWith(
-                            fixedSize: const MaterialStatePropertyAll(
-                              Size.fromHeight(50),
-                            ),
-                          ),
-                          onPressed: () {
-                            if (!isLogin) {
-                              context.router.push(AuthRoute());
-                            } else {
-                              wm.profileUseCase.logout();
-                            }
-                          },
-                          child: Center(
-                            child: !isLogin
-                                ? Text(localizations.login)
-                                : Text(localizations.exit),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ],
@@ -198,8 +208,8 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
   }
 }
 
-class ProfileGrid extends StatelessWidget {
-  const ProfileGrid({
+class SliverProfileGrid extends StatelessWidget {
+  const SliverProfileGrid({
     Key? key,
     required this.profileCards,
   }) : super(key: key);
@@ -207,25 +217,26 @@ class ProfileGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: profileCards.length,
-      gridDelegate: kIsWeb
-          ? const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 300,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 1,
-            )
-          : const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 1,
-            ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      itemBuilder: (context, index) {
-        return profileCards[index];
-      },
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      sliver: SliverGrid(
+        delegate: SliverChildListDelegate(
+          profileCards,
+        ),
+        gridDelegate: kIsWeb
+            ? const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 300,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 1,
+              )
+            : const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 1,
+              ),
+      ),
     );
   }
 }
