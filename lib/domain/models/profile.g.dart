@@ -15,6 +15,7 @@ _$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
       role: json['role'] as String?,
       phone: json['phone'] as String?,
       brand: json['brand'] as String?,
+      tgChatStartLink: json['tg_chat_start_link'] as String?,
     );
 
 Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) {
@@ -35,5 +36,6 @@ Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) {
   writeNotNull('role', instance.role);
   writeNotNull('phone', instance.phone);
   writeNotNull('brand', instance.brand);
+  writeNotNull('tg_chat_start_link', instance.tgChatStartLink);
   return val;
 }

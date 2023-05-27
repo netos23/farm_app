@@ -18,6 +18,7 @@ import 'package:farm_app/pages/product_page/product_page.dart';
 import 'package:farm_app/pages/profile_page/profile_page.dart';
 import 'package:farm_app/pages/register_page/register_page.dart';
 import 'package:farm_app/pages/show_case_page/show_case_page.dart';
+import 'package:farm_app/pages/subscription_page/subscription_page.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/edit_profile_page/edit_profile_page.dart';
