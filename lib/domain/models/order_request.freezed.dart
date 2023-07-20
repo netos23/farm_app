@@ -382,7 +382,8 @@ class _$_OrderRequest implements _OrderRequest {
 
 abstract class _OrderRequest implements OrderRequest {
   factory _OrderRequest(
-      {@JsonKey(name: 'city_fias', includeIfNull: false) final String? cityFias,
+      {@JsonKey(name: 'city_fias', includeIfNull: false)
+          final String? cityFias,
       required final List<ProductWithCount> products,
       required final String user_name,
       required final String user_phone,
@@ -392,10 +393,11 @@ abstract class _OrderRequest implements OrderRequest {
       required final String delivery_date,
       required final String payment_id,
       required final String payment_type,
-      @JsonKey(includeIfNull: false) final String? address,
+      @JsonKey(includeIfNull: false)
+          final String? address,
       required final String comment,
       @JsonKey(includeIfNull: false)
-      final int? repeated_days}) = _$_OrderRequest;
+          final int? repeated_days}) = _$_OrderRequest;
 
   factory _OrderRequest.fromJson(Map<String, dynamic> json) =
       _$_OrderRequest.fromJson;

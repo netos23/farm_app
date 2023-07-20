@@ -87,7 +87,6 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
                         const MaterialStatePropertyAll(Size.fromHeight(50))),
                 onPressed: () {
                   wm.confirmCode();
-                  router.popUntilRoot();
                 },
                 child: Center(
                   child: Text(localizations.confirm),

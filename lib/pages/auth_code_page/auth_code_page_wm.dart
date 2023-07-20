@@ -2,6 +2,7 @@ import 'package:elementary/elementary.dart';
 import 'package:farm_app/data/repository/auth_repository.dart';
 import 'package:farm_app/domain/entity/auth/auth_email_part2_request.dart';
 import 'package:farm_app/internal/app_components.dart';
+import 'package:farm_app/internal/logger.dart';
 import 'package:farm_app/util/wm_extensions.dart';
 import 'package:flutter/material.dart';
 import 'auth_code_page_model.dart';
@@ -32,12 +33,18 @@ class AuthCodePageWidgetModel
 
   @override
   Future<void> confirmCode() async {
-    await authRepository.emailPart2(
-      request: AuthEmailPart2Request(
-        email: widget.email,
-        code: codeController.text,
-      ),
-    );
+    try{
+      await authRepository.emailPart2(
+        request: AuthEmailPart2Request(
+          email: widget.email,
+          code: codeController.text,
+        ),
+      );
+      router.popUntilRoot();
+    }catch(e){
+      logger.wtf('sde');
+    }
+
   }
 
   AuthCodePageWidgetModel(AuthCodePageModel model) : super(model);

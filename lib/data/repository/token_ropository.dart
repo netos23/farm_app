@@ -45,12 +45,12 @@ class TokenRepository extends ChangeNotifier {
   void saveTokens({
     required String accessToken,
     required String refreshToken,
-  }) async {
+  }) {
     _accessToken = accessToken;
     _refreshToken = refreshToken;
     notifyListeners();
     if (_useCaching) {
-      await _persistTokens();
+      _persistTokens();
     }
   }
 

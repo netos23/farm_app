@@ -40,6 +40,12 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
   @override
   Future<void> onSendCode() async {
     final request = emailController.text;
+
+    if(RegExp(r'[a-z]+@[a-z]\.').hasMatch(request)){
+      context.showSnackBar('введите email');
+      return;
+    }
+
     try {
       await authRepository.emailPart1(
         request: AuthEmailPart1Request(
